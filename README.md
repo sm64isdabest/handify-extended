@@ -30,15 +30,14 @@ Este projeto consiste no desenvolvimento de um marketplace de produtos artesanai
 
 * Cadastro de produtores e produtos.
 * Sistema de carrinho de compras.
-* Checkout com cálculo de frete.
 * Painel administrativo para gestão de produtos e pedidos.
 * Filtro de produtos por categoria.
 
 ## 🛠️ **Tecnologias Utilizadas:**
 
 * HTML, CSS, JavaScript
-* Banco de dados MySQL
-* Framework backend (Node.js ou PHP)
+* Figma
+* Framework (Bootstrap)
 
 ## 📦 **Estrutura da Plataforma:**
 
