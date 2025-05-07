@@ -1,6 +1,8 @@
 # Marketplace de Produtos Artesanais - Projeto SENAI
 
+
 Este projeto consiste no desenvolvimento de um marketplace de produtos artesanais como parte da avaliação final do curso técnico em Informática do SENAI. O objetivo é criar uma plataforma web que permita a exposição, comercialização e gestão de produtos artesanais, conectando produtores locais a consumidores finais.
+
 
 ## 🎯 **Objetivo do Projeto:**
 
