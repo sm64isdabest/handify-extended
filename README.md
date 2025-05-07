@@ -6,8 +6,8 @@ Este projeto consiste no desenvolvimento de um marketplace de produtos artesanai
 
 ## 🎯 **Objetivo do Projeto:**
 
-* Desenvolver um sistema completo de marketplace, incluindo cadastro de produtos, carrinho de compras, sistema de pagamento e painel administrativo.
-* Avaliar as competências dos alunos em HTML, CSS, JavaScript, banco de dados e lógica de programação.
+* Desenvolver um sistema completo de marketplace, incluindo cadastro de produtos, carrinho de compras e sistema de pagamento.
+* Avaliar as competências dos alunos em HTML, CSS, API, Figma, Metodologia ágil JavaScript e lógica de programação.
 * Implementar boas práticas de usabilidade, segurança e responsividade.
 
 ## ✅ **Requisitos Funcionais:**
