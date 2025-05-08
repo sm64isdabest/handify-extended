@@ -1,7 +1,7 @@
-*{
+/* *{
     background-color: #FBFBFB;
-} 
+} */
 
-/* .bg-bege {
-    background-color: #2B2B2B;
- }  */
+.fundo_madeira {
+    background-image: url(../images/CadastroUsers/fundo_madeira.png);
+}
