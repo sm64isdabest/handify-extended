@@ -23,6 +23,11 @@ input {
   width: 30rem;
 }
 
+.botoes {
+    border-color: rgb(57 38 33);
+    border-style: solid;
+}
+
 .lojas {
   background: none;
   border-color: rgb(57 38 33);
