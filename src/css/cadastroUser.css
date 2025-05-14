@@ -19,13 +19,28 @@ form {
   text-align: center;
 }
 
+label {
+    background-color: rgb(255, 255, 255);
+    margin: 0.5rem;
+    border-radius: 10rem;
+    border-color: black;
+    border-style: solid;
+
+}
+
 input {
-  width: 30rem;
+    flex-direction: column;
+    background: none;
+    border: none;
+    width: 30rem;
+   
 }
 
 .botoes {
-    border-color: rgb(57 38 33);
-    border-style: solid;
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+    gap: 0.5rem;
 }
 
 .lojas {
@@ -39,8 +54,10 @@ input {
 }
 
 .consumidores {
+  background-color: rgb(57 38 33);
   border-color: rgb(57 38 33);
   border-style: solid;
+  color: white;
   border-radius: 30px;
   padding: 0.5rem;
   padding-left: 4rem;
