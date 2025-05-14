@@ -1,4 +1,52 @@
-/* *{
-    background-color: #FBFBFB;
-} */
+body {
+  background-color: #faecce;
+}
 
+.fundo_madeira {
+  background-image: url(../images/CadastroUsers/fundo_madeira.png);
+}
+
+.informacoes {
+  display: flex;
+  /* margin: 10px; */
+  padding: 30px;
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+form {
+  flex-direction: column;
+  text-align: center;
+}
+
+input {
+  width: 30rem;
+}
+
+.lojas {
+  background: none;
+  border-color: rgb(57 38 33);
+  border-style: solid;
+  border-radius: 30px;
+  padding: 0.5rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+.consumidores {
+  border-color: rgb(57 38 33);
+  border-style: solid;
+  border-radius: 30px;
+  padding: 0.5rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+}
+
+footer {
+  display: flex;
+}
+
+.redes_sociais button {
+  border: none;
+  background: none;
+}
