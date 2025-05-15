@@ -1,4 +1,4 @@
-<img src="Handify.jpg" alt="Boas-Vindas Ao Projeto Acadêmico">
+<img src="Handify.png" alt="Boas-Vindas Ao Projeto Acadêmico">
 
 # Marketplace de Produtos Artesanais - Projeto SENAI
 
