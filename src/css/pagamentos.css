@@ -1,0 +1,215 @@
+body {
+    background: #fbe9c6;
+    font-family: 'Montserrat', Arial, sans-serif;
+    color: #3d2b23;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+header {
+    background: #fff;
+    /* Removido a linha marrom */
+    border-bottom: none;
+    padding: 0;
+    position: relative; /* Removido sticky */
+    top: 0;
+    z-index: 1;
+}
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100vw;
+    padding: 0.5rem 2.5rem 0.5rem 1.5rem;
+}
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.logo-area img {
+    height: 48px;
+}
+.header-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-left: 8px;
+    letter-spacing: 1px;
+}
+.header-links {
+    display: flex;
+    gap: 24px;
+}
+.header-links a {
+    color: #3d2b23;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.98rem;
+    transition: color 0.2s;
+}
+.header-links a:hover {
+    color: #b88c4a;
+}
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background: url("../images/fundos/fundo_madeira.png");
+    background-size: cover;
+    padding: 40px 0 0 0;
+}
+.payment-container {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px #0002;
+    padding: 36px 0 36px 0;
+    max-width: 1100px;
+    width: 96%;
+    margin: 0 auto;
+    position: relative;
+    border: none;
+}
+.back-btn {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background: #5a3e36;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+.back-btn:hover {
+    background: #b88c4a;
+}
+.payment-title {
+    text-align: center;
+    font-size: 2.1rem;
+    font-weight: 700;
+    margin-bottom: 48px;
+    margin-top: 0;
+    letter-spacing: 1px;
+    color: #3d2b23;
+}
+.payment-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    align-items: center;
+    width: 100%;
+}
+.payment-option {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    background: #fff;
+    border: 1px solid #3d2b23;
+    border-radius: 12px;
+    padding: 28px 36px;
+    width: 80%;
+    max-width: 600px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: none;
+}
+.payment-option:hover {
+    border: 2px solid #b88c4a;
+    box-shadow: 0 2px 12px #b88c4a22;
+}
+.payment-icon {
+    width: 90px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.payment-icon img {
+    max-width: 80px;
+    max-height: 40px;
+    object-fit: contain;
+}
+.payment-label {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #3d2b23;
+}
+footer {
+    background: #fff;
+    /* Removido a linha marrom */
+    border-top: none;
+    padding: 10px 0 6px 0;
+    font-size: 0.93rem;
+    color: #3d2b23;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 40px;
+    position: relative; /* Removido fixed */
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    z-index: 1;
+    margin-top: 32px; /* Espaço após o conteúdo */
+}
+.footer-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+.footer-icons {
+    display: flex;
+    gap: 8px;
+}
+.footer-icons img {
+    width: 16px;
+    height: 16px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.footer-icons img:hover {
+    opacity: 1;
+}
+@media (max-width: 700px) {
+    .payment-option {
+        width: 98%;
+        font-size: 1.1rem;
+        padding: 18px 10px;
+        gap: 16px;
+    }
+    .payment-icon {
+        width: 48px;
+        height: 32px;
+    }
+    .payment-title {
+        font-size: 1.2rem;
+    }
+    .payment-container {
+        padding: 18px 0 18px 0;
+    }
+    .back-btn {
+        top: 10px;
+        left: 10px;
+        width: 32px;
+        height: 32px;
+        font-size: 1.1rem;
+    }
+    .header-content {
+        flex-direction: column;
+        gap: 8px;
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    }
+}
