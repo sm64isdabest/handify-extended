@@ -148,3 +148,39 @@ footer .social-icons a i {
   font-size: 1.15rem !important;
   padding: 0.19rem;
 }
+@media (max-width: 768px) and (max-width: 1024px) {
+  .cadastro-container {
+    padding: 30px;
+  }
+  .image-container {
+    text-align: center; 
+  }
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+  }
+  .form-container {
+    max-width: 330px;
+    justify-content: center;
+    align-items: center;
+  }
+  .form-container h1 {
+    font-size: 28px;
+  }
+  .form-container h3 {
+    font-size: 16px;
+  }
+  .form-container form label {
+    font-size: 14px;
+  }
+  .form-container .buttons button {
+    padding: 10px 10px;
+    font-size: 12px; 
+  }
+  .form-container .buttons{
+    gap: 10px; 
+  }
+  footer {
+    padding: 10px; 
+  }
+}
