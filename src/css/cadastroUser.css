@@ -40,7 +40,7 @@ header nav ul li a {
 }
 
 header nav ul li a.entrar {
-  background-color: #5a3e36;
+  background-color: #593d36;
   color: white;
   padding: 0.9rem;
   border-radius: 15px;
@@ -48,6 +48,12 @@ header nav ul li a.entrar {
 
 header nav ul li a.entrar i {
   margin-right: 0.3rem;
+}
+
+#list {
+  display: none;
+  background: none;
+  border: none;
 }
 
 .cadastro-container {
@@ -62,7 +68,20 @@ header nav ul li a.entrar i {
 
 .image-container img {
   max-width: 100%;
+  min-width: 265px;
   border-radius: 10px;
+}
+
+.image-computer {
+  display: block;
+}
+
+.image-tablet {
+  display: none;
+}
+
+.image-mobile {
+  display: none;
 }
 
 .form-container {
@@ -107,11 +126,13 @@ header nav ul li a.entrar i {
 
 .form-container .buttons {
   display: flex;
-  justify-content: space-between;
+  margin-top: 15px;
+  gap: 10px;
 }
 
 .form-container .buttons button {
-  padding: 10px 20px;
+  width: 100%;
+  padding: 10px;
   border-radius: 1.2rem;
   color: #333;
   font-weight: bold;
@@ -123,11 +144,13 @@ header nav ul li a.entrar i {
 .form-container .buttons button.active {
   background-color: #5a3e36;
   color: #fff;
-  width: 13rem;
 }
 
-.form-container .buttons button.active1 {
-  width: 12rem; 
+span {
+  position: absolute;
+  display: none;
+  font-weight: bold;
+  color: red;
 }
 
 footer {
@@ -145,6 +168,148 @@ footer {
 
 footer .social-icons a i {
   color: #5a3e36;
-  font-size: 1.15rem !important;
+  font-size: 1.15rem;
   padding: 0.19rem;
+}
+
+#list {
+  border-radius: 100%;
+  margin: -10px;
+}
+
+#list i {
+  font-size: xx-large;
+}
+
+#popup-menu {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  padding: 1.2rem 1.2rem;
+  z-index: 2000;
+  display: none;
+}
+
+#popup-menu .popup-list a {
+  display: block;
+  margin: 0.7rem 0;
+  background: #5a3e36;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 16px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .form-container {
+    width: 300px;
+    min-width: 295px;
+  }
+
+  .image-container img {
+    width: 300px;
+    min-width: 200px;
+    content: url("../images/fundos/objetos_artesanais2.png");
+  }
+
+  .form-container {
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  .form-container h1 {
+    font-size: 2rem;
+  }
+
+  .form-container h3 {
+    font-size: 1rem;
+  }
+
+  header nav ul {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  header nav ul li a.entrar {
+    width: 100%;
+    text-align: center;
+  }
+
+  .form-container form label {
+    width: 100%;
+  }
+
+  .form-container .buttons {
+    justify-content: center;
+  }
+
+  header > i.bi {
+    display: block;
+  }
+}
+
+@media (max-width: 521px) {
+  .cadastro-container {
+    padding: 0;
+    flex-direction: column;
+  }
+
+  #list {
+    display: block;
+  }
+
+  header {
+    position: fixed;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  header nav ul {
+    display: none;
+  }
+
+  #popup-menu ul {
+    list-style: none;
+    margin-left: -1.5rem;
+  }
+
+  header nav ul li a.entrar {
+    display: none;
+  }
+
+  .form-container {
+    width: 100%;
+    min-width: 100%;
+    margin: 2rem 0;
+  }
+
+  .form-container h1 {
+    font-size: 2.75rem;
+  }
+
+  .form-container h3 {
+    font-size: 0.9rem;
+  }
+
+  .form-container form label {
+    width: 100%;
+  }
+
+  .image-container img {
+    margin-top: 65px;
+    width: 521px;
+    content: url("../images/fundos/objetos_artesanais3.png");
+  }
+
+  footer {
+    padding: 1rem;
+    flex-direction: column-reverse;
+    font-size: 0.7rem;
+  }
 }
