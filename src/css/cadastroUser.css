@@ -51,6 +51,8 @@ header nav ul li a.entrar i {
 }
 
 #list {
+  width: 50px;
+  height: 50px;
   display: none;
   background: none;
   border: none;
@@ -154,6 +156,7 @@ span {
 }
 
 footer {
+  /* position: fixed; */
   font-family: "Work Sans", sans-serif;
   font-weight: 400;
   display: flex;
