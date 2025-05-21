@@ -155,9 +155,6 @@ footer {
     justify-content: space-between;
     align-items: center;
     min-height: 40px;
-    position: relative;
-    left: 0;
-    bottom: 0;
     width: 100%;
 }
 .conteudo-rodape {
@@ -288,7 +285,10 @@ footer {
 }
 
 
-@media (max-width: 600px) { /* MOBILE: até 600px */
+@media (max-width: 720px) { /* MOBILE: até 600px */
+
+    
+
     .conteudo-cabecalho {
         padding: 0.5rem 0.5rem;
         flex-direction: row;
@@ -399,12 +399,12 @@ footer {
     justify-content: center;
 }
 
-/* MOBILE: até 600px */
-@media (max-width: 600px) {
+/* Ocultar "Sobre" e "Contatos" */
+@media (max-width: 720px) {
     .links-cabecalho {
-        display: none !important;
+        display: none ;
     }
     .menu-mobile {
-        display: flex !important;
+        display: flex ;
     }
 }
