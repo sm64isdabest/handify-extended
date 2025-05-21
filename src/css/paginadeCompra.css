@@ -1,0 +1,331 @@
+/* Estilo do cabeçalho */
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #FAECCE;
+   background-image: url("../images/fundos/fundo_palha.png");
+}
+
+header {
+    font-family: "Alexandria", sans-serif;
+    background-color: #fff;
+    border-bottom: 2px solid #5a3e36;
+    padding: 10px 20px;
+}
+
+  header .logo {
+    height: 50px;
+    margin-top: -1rem;
+  }
+  
+  header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  header nav ul li a.entrar {
+    background-color: #5a3e36;
+    color: white;
+    padding: 0.9rem;
+    border-radius: 15px;
+  }
+  
+  header nav ul li a.entrar i {
+    margin-right: 0.3rem;
+  }
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 50px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #5a3e36;
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    padding: 5px 10px;
+    width: 30rem;
+    margin-right: 30rem;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    font-size: 14px;
+    width: 100%;
+    background: none;
+}
+
+input::placeholder {
+  color: white;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+nav ul li a.entrar {
+    background-color: #5a3e36;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+/* Ajuste para separar o botão do carrinho e centralizar os outros com espaçamento */
+.menu-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza os botões */
+    gap: 2.5rem; /* Espaçamento entre os botões */
+    margin-top: 2rem;
+    margin-block-end: -0.7rem;
+    margin-left: 30rem;
+}
+
+.menu-bar button {
+    background-color: #5a3e36;
+    color: #fff;
+    border: none;
+    border-radius: 0.6rem 0.6rem 0 0; /* Define bordas arredondadas apenas no topo */
+    cursor: pointer;
+    font-size: 14px;
+    height: 2rem; /* Altura do botão */
+    width: auto; /* Largura automática */
+}
+
+.menu-bar button.cart {
+    margin-left: auto; /* Move o botão do carrinho para a extremidade direita */
+    font-size: 18px;
+    gap: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+    margin-block-end: -0.1rem;
+}    
+
+.menu-bar button:hover {
+    background-color: #000000;
+}
+
+/* Estilo para a página de compra de produtos */
+.product-page {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+     height: 65vh;
+    background-color: white;
+    border-radius: 2rem;
+    margin: 2rem;
+}
+
+.product-gallery {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.product-gallery .thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.product-gallery .thumbnails img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 5px;
+}
+
+.product-gallery .thumbnails img:hover {
+    border-color: #5a3e36;
+}
+
+.product-gallery .main-image img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-details {
+    margin-bottom: 2rem;
+    width: 20rem;
+    margin: auto;
+}
+
+.product-details h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+.sair{
+    background-color: #5a3e36;
+    color: white;
+    border-radius: 2rem;
+}
+
+.product-details .price {
+    display: flex;
+    font-size: 2.5rem;
+    flex-direction: column;
+    font-weight: bold;
+    color: #5a3e36;
+    margin-bottom: 0.5rem;
+}
+.avaliar{
+    display: block;
+    justify-content: space-between;
+}
+.product-details .price .old-price {
+    text-decoration: line-through;
+    font-size: 1.3rem;
+    color: #ff0000;
+    margin-right: 0.5rem;
+}
+
+.product-details .installments {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.product-details .payment-methods {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.product-info {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.product-info p {
+    margin: 0.5rem 0;
+}
+.color{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    
+}
+.handle-color{
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+.material{
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+}
+.bolsa{
+    background-color: #78452B;
+    width: 10rem;
+    border-radius: 0.4rem;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.alça{
+    background-color: #75350C;
+    width: 12rem;
+    border-radius: 0.4rem;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+
+.palha{
+    border: solid #FFB789;
+    border-radius: 1rem;
+  
+}
+
+.purchase-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    border: solid black;
+    border-radius: 2rem;
+    width: 20rem;
+    padding: 2rem;
+    height: 27rem;
+}
+
+.delivery-info, .stock-info {
+    font-size: 1rem;
+    color: #333;
+}
+.gratis{
+    color: #FE5F2F;
+}
+.compra{
+    color: #FE5F2F;
+}
+.devol{
+    color: #FE5F2F;
+}
+.purchase-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    margin-top: -1.9rem;
+}
+
+
+.purchase-buttons button {
+    background-color: #392621;
+    width: 20rem;
+    color: #fff;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.purchase-buttons button:hover {
+    background-color: #000000;
+}
+
+
