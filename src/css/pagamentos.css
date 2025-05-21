@@ -399,7 +399,7 @@ footer {
     justify-content: center;
 }
 
-/* Ocultar "Sobre" e "Contatos" e exibir o sanduiche */
+/* Ocultar "Sobre" e "Contatos"*/
 @media (max-width: 720px) {
     .links-cabecalho {
         display: none ;
