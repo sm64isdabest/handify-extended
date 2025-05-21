@@ -4,15 +4,18 @@ body {
     background: #f8f6f2;
     color: #4d3a1a;
 }
+
 .sobre-header {
     background: #fff;
-    box-shadow: 0 2px 8px rgba(90,60,26,0.07);
+    box-shadow: 0 2px 8px rgba(90, 60, 26, 0.07);
     padding: 0;
 }
+
 .sobre-navbar {
     width: 100%;
     padding: 0.5rem 0;
 }
+
 .sobre-navbar-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -22,9 +25,11 @@ body {
     padding: 0 2vw;
     gap: 2.5rem;
 }
+
 .sobre-navbar-brand img {
     height: 45px;
 }
+
 .sobre-navbar-menu {
     display: flex;
     align-items: center;
@@ -33,6 +38,7 @@ body {
     margin: 0 0 0 2.5rem;
     padding: 0;
 }
+
 .sobre-navbar-link {
     text-decoration: none;
     color: #fff;
@@ -45,21 +51,27 @@ body {
     align-items: center;
     position: relative;
     transition: background 0.2s, color 0.2s;
-    box-shadow: 0 2px 8px rgba(90,60,26,0.08);
+    box-shadow: 0 2px 8px rgba(90, 60, 26, 0.08);
 }
-.sobre-navbar-link:hover, .sobre-navbar-link.active {
+
+.sobre-navbar-link:hover,
+.sobre-navbar-link.active {
     background: #2d1c13;
     color: #fff;
 }
+
 .sobre-navbar-btn {
     margin-left: 0.5rem;
+    gap: 0.5rem;
 }
+
 .icon-navbar {
     width: 20px;
     height: 20px;
     margin-right: 0.7rem;
     filter: brightness(0) invert(1);
 }
+
 .sobre-navbar-link-contato {
     background: none;
     color: #392621;
@@ -68,23 +80,30 @@ body {
     padding: 0.7rem 2rem;
     font-size: 1.1rem;
 }
+
 .sobre-navbar-link-contato.active,
 .sobre-navbar-link-contato:hover {
     color: #392621;
     background: none;
 }
+
 .sobre-search-form {
     display: none;
 }
+
 .sobre-main {
     background: #FAECCE;
     min-height: 100vh;
     padding-bottom: 40px;
 }
+
 .sobre-hero {
-    padding: 3rem 0 2rem 0;
-    background: url('../images/fundos/Fundo-pagSobre0.png')
+    padding: 6rem 0 8rem 0;
+    background: url('../images/fundos/Fundo-pagSobre0.png');
+    border-top: 0.2rem solid #39312b;
+    border-bottom: 0.2rem solid #39312b;
 }
+
 .sobre-hero-content {
     display: flex;
     flex-wrap: wrap;
@@ -94,10 +113,11 @@ body {
     margin: 0 auto;
     gap: 2rem;
 }
+
 .sobre-hero-text {
     background-color: #fff;
     border-radius: 18px;
-    box-shadow: 0 4px 16px rgba(90,60,26,0.10);
+    box-shadow: 0 4px 16px rgba(90, 60, 26, 0.10);
     flex: 1 1 350px;
     min-width: 320px;
     max-width: 500px;
@@ -106,6 +126,7 @@ body {
     flex-direction: column;
     justify-content: center;
 }
+
 .sobre-hero-text h1 {
     color: #39312b;
     font-size: 2.3rem;
@@ -113,12 +134,14 @@ body {
     margin-bottom: 1.2rem;
     line-height: 1.15;
 }
+
 .sobre-hero-text p {
     font-size: 1.08rem;
     margin-bottom: 2.1rem;
     color: #5a3c1a;
     letter-spacing: 0.01em;
 }
+
 .sobre-btn {
     background: #4a362c;
     color: #fff;
@@ -134,12 +157,14 @@ body {
     justify-content: center;
     gap: 0.7rem;
     width: 100%;
-    box-shadow: 0 2px 8px rgba(90,60,26,0.08);
+    box-shadow: 0 2px 8px rgba(90, 60, 26, 0.08);
     cursor: pointer;
 }
+
 .sobre-btn:hover {
     background: #2d1c13;
 }
+
 .icon-btn {
     display: inline-block;
     width: 18px;
@@ -149,28 +174,31 @@ body {
     filter: brightness(0) invert(1);
     margin-right: 0.5rem;
 }
+
 .sobre-hero-img {
     background: #fff;
     border-radius: 18px;
-    box-shadow: 0 4px 16px rgba(90,60,26,0.10);
+    box-shadow: 0 4px 16px rgba(90, 60, 26, 0.10);
     flex: 1 1 320px;
-    min-width: 280px;
-    max-width: 370px;
+    /* min-width: 280px;
+    max-width: 370px; */
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+    padding: 1.0rem 1.2rem 1.0rem 1.2rem;
 }
+
 .sobre-hero-img img {
     width: 100%;
     height: auto;
     border-radius: 12px;
     object-fit: cover;
 }
+
 .sobre-info {
     background: #fdf6ea;
     border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(90,60,26,0.07);
+    box-shadow: 0 2px 12px rgba(90, 60, 26, 0.07);
     max-width: 900px;
     margin: 2.5rem auto;
     padding: 2rem 2vw 2.5rem 2vw;
@@ -178,38 +206,48 @@ body {
     flex-direction: column;
     gap: 1.5rem;
 }
+
 .sobre-info-top {
     display: flex;
-    gap: 1.5rem;
+    gap: 1.2rem;
     align-items: stretch;
 }
+
 .sobre-info-text-box {
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(90,60,26,0.08);
-    flex: 2;
-    padding: 1.5rem 1.2rem 1.2rem 1.5rem;
+    flex: 1.2;
+    padding: 1.2rem 1.2rem 1.2rem 1.2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    min-width: 320px;
+    max-width: 420px;
 }
+
 .sobre-info-title {
     font-family: 'Pacifico', 'Segoe Script', cursive, Arial, sans-serif;
-    color: #5a3c1a;
-    font-size: 2rem;
+    color: #392621;
+    font-size: 2.1rem;
     margin-bottom: 0.7rem;
     font-weight: 600;
+    text-align: center;
 }
+
 .sobre-info-desc {
     color: #4d3a1a;
     font-size: 1.08rem;
-    text-align: left;
-    line-height: 1.6;
+    text-align: justify;
+    line-height: 1.7;
+    margin: 0;
 }
+
 .sobre-info-img-box {
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(90,60,26,0.08);
+    box-shadow: 0 2px 8px rgba(90, 60, 26, 0.08);
     flex: 1.2;
     display: flex;
     align-items: center;
@@ -218,12 +256,36 @@ body {
     min-width: 180px;
     max-width: 260px;
 }
-.sobre-info-img-box1 img {
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-   
+
+.sobre-info-img-box1 {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(90,60,26,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6.5rem;
+    min-width: 260px;
+    max-width: 320px;
+    height: 220px;
 }
+
+.sobre-info-img-box1 img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(90,60,26,0.10);
+    background: #fff;
+}
+
+.sobre-info-img-box1 img {
+    width: 300%;
+    height: 180%;
+    border-radius: 8px;
+
+}
+
 .sobre-info-cards {
     display: flex;
     gap: 0.4rem;
@@ -231,10 +293,11 @@ body {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
+
 .sobre-info-card {
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(90,60,26,0.08);
+    box-shadow: 0 2px 8px rgba(90, 60, 26, 0.08);
     flex: 1 1 0;
     padding: 0.4rem 0.6rem 0.4rem 0.6rem;
     display: flex;
@@ -244,6 +307,7 @@ body {
     max-width: 260px;
     gap: 0.3rem;
 }
+
 .sobre-info-card img {
     width: 70px;
     height: 70px;
@@ -252,6 +316,7 @@ body {
     margin-bottom: 0;
     flex-shrink: 0;
 }
+
 .sobre-info-card p {
     font-size: 0.96rem;
     color: #4d3a1a;
@@ -259,36 +324,41 @@ body {
     margin: 0 0 0 0.2rem;
     line-height: 1.35;
 }
+
 .sobre-info-bottom {
     display: flex;
     gap: 1.2rem;
     align-items: stretch;
 }
+
 .sobre-info-card-wide {
     flex: 2;
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(90,60,26,0.08);
+    box-shadow: 0 2px 8px rgba(90, 60, 26, 0.08);
     padding: 1.1rem 1.2rem 1.1rem 1.2rem;
     display: flex;
     align-items: center;
 }
+
 .sobre-info-card-wide p {
     font-size: 1.01rem;
     color: #4d3a1a;
     text-align: left;
     margin: 0;
 }
+
 .sobre-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
 }
+
 .sobre-card {
     background: #f8f6f2;
     border-radius: 18px;
-    box-shadow: 0 2px 8px rgba(90,60,26,0.08);
+    box-shadow: 0 2px 8px rgba(90, 60, 26, 0.08);
     width: 320px;
     padding: 1.2rem 1rem 1rem 1rem;
     display: flex;
@@ -296,9 +366,11 @@ body {
     align-items: center;
     transition: transform 0.2s;
 }
+
 .sobre-card:hover {
     transform: translateY(-4px) scale(1.02);
 }
+
 .sobre-card img {
     width: 214px;
     height: 233px;
@@ -306,136 +378,343 @@ body {
     border-radius: 14px;
     margin-bottom: 1rem;
 }
+
 .sobre-card p {
     font-size: 1rem;
     color: #4d3a1a;
     text-align: justify;
 }
+
 .sobre-contato {
-    max-width: 1200px;
+    /* max-width: 900px; */
     margin: 2rem auto 0 auto;
-    background: #fff;
-    border-radius: 18px;
-    box-shadow: 0 2px 8px rgba(90,60,26,0.08);
+    box-shadow: 0 2px 8px rgba(90, 60, 26, 0.08);
     padding: 2rem 2vw 2.5rem 2vw;
+    border-top: 0.2rem solid #39312b;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
+
 .sobre-contato h3 {
-    color: #5a3c1a;
+    color: #392621;
     font-weight: bold;
     margin-bottom: 2rem;
-    font-size: 1.5rem;
+    font-size: 2.0rem;
     text-align: center;
 }
+
 .sobre-contato-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
     justify-content: center;
+    width: 100%;
 }
-.sobre-contato-card {
+
+.sobre-contato-card1 {
     background: #392621;
     border-radius: 12px;
-    box-shadow: 0 1px 4px rgba(90,60,26,0.05);
+    box-shadow: 0 1px 4px rgba(90, 60, 26, 0.05);
     padding: 1.2rem 1rem;
     width: 320px;
+    height: 120px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 }
-.sobre-contato-card h5 {
+
+.sobre-contato-card1 h5 {
     margin: 0 0 0.5rem 0;
     color: #FFFFFF;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
 }
-.sobre-contato-card small {
+
+.sobre-contato-card1 small {
     color: #FFFFFF;
     margin-bottom: 0.5rem;
     display: block;
+    font-size: 0.9rem;
 }
-.sobre-contato-card p {
+
+.sobre-contato-card1 p {
     color: #FFFFFF;
-    font-size: 1.1rem;
+    font-size: 1.0rem;
+    font-weight: bold;
+    margin: 0.5rem 0 0 0;
+    /* display: flex;
+    align-items: center; */
+}
+
+.sobre-contato-card1 button{
+    background: #4B3A35;
+    border: none;
+    border-radius: 12px;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.sobre-contato-card2 {
+    background: #392621;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(90, 60, 26, 0.05);
+    padding: 1.2rem 1.0rem;
+    width: 320px;
+    height: 230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sobre-contato-card2 h5 {
+    margin: 0 0 0.5rem 0;
+    color: #FFFFFF;
+    font-size: 1.3rem;
+}
+
+.sobre-contato-card2 small {
+    color: #FFFFFF;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-size: 0.9rem;
+}
+
+.sobre-contato-card2 p {
+    color: #FFFFFF;
+    font-size: 1.2rem;
     font-weight: bold;
     margin: 0.5rem 0 0 0;
 }
-.sobre-footer {
-    background: #fff;
-    color: #5a3c1a;
-    text-align: center;
-    padding: 1.2rem 0 0.7rem 0;
-    font-size: 1rem;
-    margin-top: 2rem;
+
+.sobre-contato-card2 button{
+    background: #4B3A35;
+    border: none;
+    width: 100%;
+    border-radius: 12px;
+    margin: 13px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
 }
+    
+.sobre-contato-card3 {
+    background: #392621;
+    border-radius: 12px;
+    box-shadow: 0 1px 4px rgba(90, 60, 26, 0.05);
+    padding: 1.2rem 1rem;
+    width: 320px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sobre-contato-card3 a i{
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card3{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.sobre-contato-card3 button{
+    background: #4B3A35;
+    border: none;
+    width: 100%;
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.sobre-contato-card3 h5 {
+    margin: 0 0 0.5rem 0;
+    color: #FFFFFF;
+    font-size: 1.3rem;
+}
+
+.sobre-contato-card3 small {
+    color: #FFFFFF;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-size: 0.9rem;
+}
+
+.sobre-contato-card3 p {
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0.5rem 0 0 0;
+}
+
+footer {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 0 0.7rem 0;
+    gap: 2.5rem;
+}
+footer p {
+    margin: 0 0.7rem 0 0;
+    color: #392621;
+    font-size: 1rem;
+    font-weight: 500;
+}
+footer .redes_sociais {
+    display: flex;
+    gap: 0.7rem;
+    justify-content: center;
+    align-items: center;
+}
+footer .redes_sociais a i {
+    color: #5a3e36;
+    font-size: 1.25rem !important;
+    padding: 0.19rem;
+    transition: color 0.2s;
+}
+footer .redes_sociais a i:hover {
+    color: #b88c4a;
+}
+@media (max-width: 600px) {
+    footer {
+        flex-direction: column;
+        font-size: 0.8rem;
+        padding: 1rem 0 0.5rem 0;
+        gap: 0.5rem;
+    }
+    footer .redes_sociais {
+        gap: 0.4rem;
+    }
+    footer p {
+        margin: 0 0 0.3rem 0;
+    }
+}
+
 @media (max-width: 900px) {
-    .sobre-hero-content, .sobre-info-content, .sobre-cards, .sobre-contato-cards {
+
+    .sobre-hero-content,
+    .sobre-info-content,
+    .sobre-cards,
+    .sobre-contato-cards {
         flex-direction: column;
         align-items: stretch;
     }
+
     .sobre-hero-content {
         flex-direction: column;
         gap: 1.5rem;
     }
-    .sobre-hero-text, .sobre-hero-img {
+
+    .sobre-hero-text,
+    .sobre-hero-img {
         max-width: 100%;
         min-width: 0;
     }
-    .sobre-hero-img img, .sobre-info-gallery img {
+
+    .sobre-hero-img img,
+    .sobre-info-gallery img {
         max-width: 100%;
     }
-    .sobre-card, .sobre-contato-card {
+
+    .sobre-card,
+    .sobre-contato-card {
         width: 100%;
     }
+
     .sobre-navbar-container {
         flex-direction: column;
         align-items: stretch;
         gap: 1rem;
     }
+
     .sobre-navbar-menu {
         flex-wrap: wrap;
         gap: 0.5rem;
         justify-content: flex-end;
         margin-left: 0;
     }
+
     .sobre-navbar-link {
         width: 100%;
         justify-content: flex-start;
     }
-    .sobre-info-top, .sobre-info-cards, .sobre-info-bottom {
+
+    .sobre-info-top,
+    .sobre-info-cards,
+    .sobre-info-bottom {
         flex-direction: column;
         gap: 1rem;
     }
-    .sobre-info-img-box, .sobre-info-card, .sobre-info-card-wide {
+
+    .sobre-info-img-box,
+    .sobre-info-card,
+    .sobre-info-card-wide {
         max-width: 100%;
     }
+
     .sobre-info-card {
         flex-direction: column;
         align-items: center;
         max-width: 100%;
         gap: 0.4rem;
     }
+
     .sobre-info-card img {
         margin-bottom: 0.5rem;
         margin-right: 0;
     }
+
     .sobre-info-card p {
         margin: 0;
     }
+
+    .sobre-info-img-box1 {
+        min-width: 0;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .sobre-info-img-box1 img {
+        height: auto;
+        min-height: 120px;
+    }
 }
+
 @media (max-width: 600px) {
     .sobre-navbar-container {
         flex-direction: column;
         gap: 1rem;
     }
-    .sobre-main, .sobre-info, .sobre-contato {
+
+    .sobre-main,
+    .sobre-info,
+    .sobre-contato {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
     }
+
     .sobre-hero {
         padding: 1.5rem 0 1rem 0;
     }
+
     .sobre-info {
         padding: 1.2rem 0.5rem 1rem 0.5rem;
     }
+
     .sobre-contato {
         padding: 1.2rem 0.5rem 1.5rem 0.5rem;
     }
