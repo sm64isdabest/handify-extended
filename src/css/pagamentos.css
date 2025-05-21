@@ -399,7 +399,7 @@ footer {
     justify-content: center;
 }
 
-/* Ocultar "Sobre" e "Contatos"*/
+/* Ocultar "Sobre" e "Contatos" */
 @media (max-width: 720px) {
     .links-cabecalho {
         display: none ;
