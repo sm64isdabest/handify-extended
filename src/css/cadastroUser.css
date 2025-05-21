@@ -16,8 +16,8 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
+  background-color: white;
+  border-bottom: 2px solid #593d36;
 }
 
 header .logo {
@@ -60,9 +60,10 @@ header nav ul li a.entrar i {
 
 .cadastro-container {
   display: flex;
+  flex: 1;
+  min-height: calc(100vh - 150px);
   justify-content: center;
   align-items: center;
-  padding: 50px;
   background-image: url("../images/fundos/fundo_madeira.png");
   background-size: cover;
   background-position: center;
@@ -156,14 +157,15 @@ span {
 }
 
 footer {
-  /* position: fixed; */
+  position: relative;
+  height: 80px;
   font-family: "Work Sans", sans-serif;
   font-weight: 400;
   display: flex;
   font-size: 0.8rem;
   text-align: center;
-  background-color: #fff;
-  border-top: 1px solid #ddd;
+  background-color: white;
+  border-top: 2px solid #593d36;
   flex-direction: row;
   justify-content: space-between;
   padding: 1.6rem;
@@ -222,6 +224,8 @@ footer .social-icons a i {
   }
 
   .form-container {
+    padding: 0;
+    padding-left: 20px;
     max-width: 100%;
     margin-left: 0;
   }
@@ -252,7 +256,7 @@ footer .social-icons a i {
     justify-content: center;
   }
 
-  header > i.bi {
+  header>i.bi {
     display: block;
   }
 }
@@ -287,6 +291,7 @@ footer .social-icons a i {
   }
 
   .form-container {
+    padding: 20px;
     width: 100%;
     min-width: 100%;
     margin: 2rem 0;
@@ -311,7 +316,7 @@ footer .social-icons a i {
   }
 
   footer {
-    padding: 1rem;
+    justify-content: center;
     flex-direction: column-reverse;
     font-size: 0.7rem;
   }
