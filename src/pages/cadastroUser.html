@@ -31,28 +31,24 @@
           </li>
         </ul>
         <!-- PARA DISPOSITIVOS MÓVEIS -->
-        <button id="list-button" onclick=""><i class="bi bi-list"></i></button>
+        <button id="list"><i class="bi bi-list"></i></button>
       </nav>
+      <div id="popup-menu">
+        <ul class="popup-list">
+          <li>
+            <a href="loginUser.html"><i class="bi bi-person"></i>Entrar</a>
+          </li>
+          <li><a href="paginaSobre.html">Sobre</a></li>
+          <li><a href="#">Contato</a></li>
+          <li><a href="pesquisaProdutos.html">Produtos</a></li>
+        </ul>
+      </div>
     </header>
     <main>
       <section class="cadastro-container">
         <div class="image-container">
-          <!-- IMAGEM PARA COMPUTADOR -->
           <img
-            class="image-computer"
             src="../images/fundos/objetos_artesanais.png"
-            alt="Objetos artesanais"
-          />
-          <!-- IMAGEM PARA TABLET -->
-          <img
-            class="image-tablet"
-            src="../images/fundos/objetos_artesanais2.png"
-            alt="Objetos artesanais"
-          />
-          <!-- IMAGEM PARA CELULAR -->
-          <img
-            class="image-mobile"
-            src="../images/fundos/"
             alt="Objetos artesanais"
           />
         </div>
@@ -65,23 +61,43 @@
           <form>
             <label for="userName">
               <i class="bi bi-person"></i>
-              <input type="text" placeholder="Usuário" />
+              <input
+                type="text"
+                id="userName"
+                autocomplete="username"
+                placeholder="Usuário"
+              />
             </label>
 
             <label for="userEmail">
               <i class="bi bi-envelope"></i>
-              <input type="email" placeholder="E-mail" />
+              <input
+                type="email"
+                id="userEmail"
+                autocomplete="email"
+                placeholder="E-mail"
+              />
             </label>
 
             <label for="userPass">
               <i class="bi bi-key"></i>
-              <input type="password" placeholder="Insira sua senha" />
+              <input
+                type="password"
+                id="userPass"
+                placeholder="Insira sua senha"
+              />
             </label>
 
             <label for="userPassConfirm">
               <i class="bi bi-lock"></i>
-              <input type="password" placeholder="Confirme sua senha" />
+              <input
+                type="password"
+                id="userPassConfirm"
+                placeholder="Confirme sua senha"
+              />
             </label>
+
+            <span>Por favor, preencha todos os campos!</span>
 
             <div class="buttons">
               <button type="button" class="active1">Para Lojas</button>
@@ -112,6 +128,8 @@
     </footer>
 
     <script src="../js/cadastroUser/updateText.js"></script>
+    <script src="../js/cadastroUser/inputSpanShow.js"></script>
+    <script src="../js/cadastroUser/mobilePop-up.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
