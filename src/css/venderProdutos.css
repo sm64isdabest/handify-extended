@@ -47,8 +47,6 @@ header nav ul li a.entrar i {
   margin-right: 0.3rem;
 }
 
-
-
 body {
   font-family: 'Montserrat', Arial, sans-serif;
 }
@@ -67,7 +65,7 @@ main {
   align-items: flex-start;
   gap: 24px;
   margin: 32px 16px;
-  
+
 }
 
 
@@ -76,11 +74,12 @@ main {
   flex-direction: column;
   gap: 16px;
   margin-top: 15px;
-  margin-right: -2,7rem;
+  margin-right: -2, 7rem;
   margin-left: 2rem;
 }
 
-.btn-add, .btn-back {
+.btn-add,
+.btn-back {
   width: 56px;
   height: 56px;
   border-radius: 12px;
@@ -137,7 +136,7 @@ main {
   margin-top: 8px;
 }
 
-.info-produto > div {
+.info-produto>div {
   background: #fff;
   border: 2px solid #333;
   border-radius: 12px;
@@ -151,7 +150,7 @@ main {
   font-weight: 400;
 }
 
-.nome-produto input{
+.nome-produto input {
   width: 100%;
   height: 100%;
   border: none;
@@ -205,7 +204,8 @@ main {
   font-size: 1.2rem;
 }
 
-.comprar-agora, .adicionar-carrinho {
+.comprar-agora,
+.adicionar-carrinho {
   background: #fff;
   border: 2px solid #333;
   border-radius: 8px;
@@ -216,12 +216,12 @@ main {
   transition: background 0.2s;
 }
 
-.comprar-agora:hover, .adicionar-carrinho:hover {
+.comprar-agora:hover,
+.adicionar-carrinho:hover {
   background: #f0f0f0;
 }
 
 .container-produto {
-
   display: flex;
   flex-direction: row;
   gap: 50px;
@@ -235,6 +235,10 @@ main {
   border: #000000 3px solid;
   padding-top: 3rem;
   padding-bottom: 3rem;
+}
+
+.mobile {
+ display: none;
 }
 
 .quadro-descricao {
@@ -256,8 +260,7 @@ main {
   text-align: center;
 }
 
-
-.valor-produto input{
+.valor-produto input {
   width: 100%;
   height: 100%;
   border: none;
@@ -266,7 +269,7 @@ main {
   font-weight: 400;
 }
 
-.parcelas-produto input{
+.parcelas-produto input {
   width: 100%;
   height: 100%;
   border: none;
@@ -275,7 +278,7 @@ main {
   font-weight: 400;
 }
 
-.descricao-produto input{
+.descricao-produto input {
   width: 100%;
   height: 100%;
   border: none;
@@ -284,7 +287,7 @@ main {
   font-weight: 400;
 }
 
-.quantidade-produto input{
+.quantidade-produto input {
   width: 100%;
   height: 100%;
   border: none;
@@ -293,14 +296,14 @@ main {
   font-weight: 400;
 }
 
-.quadro-descricao input{
+.quadro-descricao input {
   width: 90%;
   height: 90%;
   border: none;
   background: transparent;
-  padding-bottom: 600px;
+  padding-bottom: 500px;
   font-size: 1.5rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 
@@ -324,4 +327,323 @@ footer .social-icons a i {
   color: #5a3e36;
   font-size: 1.15rem !important;
   padding: 0.19rem;
+}
+
+/* Estilos para Tablets (Media Query) */
+@media (min-width: 602px) and (max-width: 992px) {
+
+    /* HEADER */
+    header {
+        padding: 1.5rem 2rem; /* Aumenta um pouco o padding */
+    }
+
+    header .logo {
+        height: 45px; /* Levemente menor que desktop, maior que mobile */
+        margin-top: 0; /* Ajusta a margem */
+    }
+
+    header nav ul {
+        gap: 15px; /* Reduz o espaço entre os itens */
+    }
+
+    header nav ul li a {
+        font-size: 0.95rem; /* Ajusta o tamanho da fonte */
+    }
+
+    header nav ul li a.entrar {
+        padding: 0.8rem 1.2rem; /* Ajusta o padding */
+        font-size: 0.9rem;
+    }
+
+    /* MAIN SECTION */
+    main {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .container-produto {
+        flex-direction: column; /* Em tablets, podemos começar a empilhar os elementos para melhor aproveitamento vertical */
+        align-items: center; /* Centraliza os elementos quando empilhados */
+        width: 90%; /* Ocupa um pouco mais de largura */
+        margin: 30px auto; /* Centraliza e ajusta margem */
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        gap: 30px; /* Reduz o espaçamento entre os blocos empilhados */
+    }
+
+    .sidebar {
+        flex-direction: row; /* Para tablets, os botões da sidebar podem ficar lado a lado no topo ou base */
+        width: 100%; /* Ocupa a largura total do container */
+        justify-content: center; /* Centraliza os botões */
+        margin: 0; /* Remove margens extras */
+        padding-bottom: 1rem; /* Espaço para separar do próximo elemento */
+        border-bottom: 1px solid #eee; /* Linha divisória */
+    }
+
+    .sidebar .btn-add,
+    .sidebar .btn-back {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+        margin: 0 10px; /* Espaçamento entre os botões */
+    }
+
+    .btn-back { /* Ajuste específico para o botão voltar na sidebar do tablet */
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+
+    .imagem-produto {
+        width: 80%; /* A imagem pode ser um pouco menor para dar espaço ou centralizar */
+        height: 400px; /* Ajusta a altura */
+        margin: 0; /* Remove margens extras */
+    }
+
+    .imagem-produto .btn-add { /* Oculta o botão de adição dentro da imagem, se o da sidebar estiver ativo */
+        display: none;
+    }
+
+    .sidebar .btn-add {
+    display: none;
+  }
+  
+  .sidebar {
+    width: 100%;
+    padding-left: 10px;
+    align-items: start;
+  }
+
+  .mobile {
+    display: block;
+    /* margin-right: calc(100vh - 225px); */
+  }
+
+    .info-produto {
+        width: 80%; /* Ocupa uma boa parte da largura */
+        margin-top: 0; /* Remove margens extras */
+        align-items: stretch; /* Garante que os inputs preencham a largura */
+    }
+
+    .info-produto > div {
+        min-width: unset; /* Remove o min-width para maior flexibilidade */
+        width: 100%; /* Preenche a largura disponível */
+        font-size: 1.2rem;
+    }
+
+    .nome-produto input,
+    .valor-produto input,
+    .parcelas-produto input,
+    .descricao-produto input,
+    .quantidade-produto input {
+        font-size: 1.4rem; /* Ajusta o tamanho da fonte para melhor leitura */
+    }
+
+    .destaque-produto {
+        min-width: unset; /* Remove o min-width */
+        width: 80%; /* Ocupa uma boa parte da largura */
+        margin: 0; /* Remove margens extras */
+    }
+
+    .titulo-destaque {
+        font-size: 1.1rem;
+    }
+
+    .botoes-destaque button {
+        height: 35px;
+        font-size: 1.15rem;
+    }
+
+    .comprar-agora,
+    .adicionar-carrinho {
+        font-size: 1rem;
+        padding: 10px 0;
+    }
+
+    .quadro-descricao {
+        width: 90%; /* Ocupa mais largura */
+        height: 70vh; /* Ajusta a altura para não ser tão longa */
+        margin: 30px auto;
+    }
+
+    .quadro-descricao input {
+        width: 95%; /* Ocupa mais largura dentro do quadro */
+        height: 95%; /* Ocupa mais altura dentro do quadro */
+        padding-bottom: 0; /* Remove o padding-bottom excessivo */
+        font-size: 1.3rem; /* Ajusta o tamanho da fonte */
+        padding-bottom: 320px;
+    }
+
+    /* FOOTER */
+    footer {
+        flex-direction: row; /* Mantém em linha */
+        justify-content: space-between; /* Mantém espaçamento */
+        padding: 1.2rem 2rem; /* Ajusta o padding */
+        font-size: 0.9rem;
+    }
+
+    footer .social-icons {
+        margin-top: 0; /* Remove ajustes específicos de mobile */
+    }
+
+    footer .social-icons a i {
+        font-size: 1.3rem !important; /* Ícones levemente maiores */
+    }
+}
+
+
+@media (max-width: 601px) {
+  header {
+    flex-direction: row;
+    /* Empilha logo e navegação */
+    padding: 0.8rem;
+
+  }
+
+  header nav ul li a.entrar {
+    padding: 0.7rem 1.5rem;
+    /* Ajusta o padding do botão */
+    border-radius: 100rem;
+    width: rem;
+
+  }
+
+  .venda-container {
+    flex-direction: column;
+    /* Empilha os elementos do container de venda */
+    align-items: center;
+    margin: 20px 10px;
+  }
+
+  .btn-add {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+  }
+
+  .btn-back {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    margin-left: 0;
+  }
+
+  .imagem-produto {
+    width: 90%;
+    /* Ocupa a maior parte da largura */
+    height: 300px;
+    /* Reduz a altura */
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+
+  .info-produto {
+    width: 90%;
+    margin-top: 20px;
+    align-items: center;
+    /* Centraliza os itens de informação */
+  }
+
+  .info-produto>div {
+    min-width: unset;
+    /* Remove o min-width para permitir ajuste */
+    width: 90%;
+    /* Ajusta a largura */
+    font-size: 1.1rem;
+    text-align: center;
+    /* Centraliza o texto */
+  }
+
+  .nome-produto input,
+  .valor-produto input,
+  .parcelas-produto input,
+  .descricao-produto input,
+  .quantidade-produto input {
+    font-size: 1.3rem;
+    /* Ajusta o tamanho da fonte dos inputs */
+  }
+
+  .destaque-produto {
+    min-width: unset;
+    /* Remove o min-width */
+    width: 90%;
+    /* Ajusta a largura */
+    margin-left: 00;
+    margin-right: 0;
+
+  }
+
+  .titulo-destaque {
+    font-size: 0.9rem;
+  }
+
+  .botoes-destaque button {
+    height: 28px;
+    font-size: 1.1rem;
+  }
+
+  .comprar-agora,
+  .adicionar-carrinho {
+    font-size: 0.9rem;
+    padding: 6px 0;
+  }
+
+  .container-produto {
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    width: 90%;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .sidebar .btn-add {
+    display: none;
+  }
+  
+  .sidebar {
+    width: 100%;
+    padding-left: 10px;
+    align-items: start;
+  }
+
+  .mobile {
+    display: block;
+    /* margin-right: calc(100vh - 225px); */
+  }
+
+  .quadro-descricao {
+    height: 60vh;
+    /* Reduz a altura */
+    width: 90%;
+  }
+
+  .quadro-descricao span {
+    font-size: 1rem;
+  }
+
+  .quadro-descricao input {
+    padding-bottom: 100px;
+    /* Reduz o padding para o input */
+    font-size: 1.2rem;
+    width: 90%;
+    height: 90%;
+    padding-bottom: 250px;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  footer {
+    flex-direction: row;
+    /* Empilha os elementos do rodapé */
+    padding: 1rem;
+    font-size: 0.8rem;
+    gap: 10px;
+    /* Adiciona espaço entre os elementos */
+  }
+
+  footer .social-icons {
+    margin-top: -0.2rem;
+  }
 }
