@@ -1,21 +1,20 @@
 console.log("mobilePop-up.js loaded");
 
 const menuIcon = document.getElementById("list");
+const Icon = menuIcon.querySelector("i");
 const popupMenu = document.getElementById("popup-menu");
 
 menuIcon.addEventListener("click", function (e) {
   e.stopPropagation();
   if (popupMenu.style.display === "block") {
     menuIcon.style.backgroundColor = "white";
-    menuIcon.style.color = "black"
+    Icon.style.color = "black";
     popupMenu.style.display = "none";
-    console.log("oi")
     return;
   }
   menuIcon.style.backgroundColor = "#593d36";
-  menuIcon.style.color = "white"
+  Icon.style.color = "white";
   popupMenu.style.display = "block";
-  console.log("oi2")
 });
 
 document.addEventListener("click", function (e) {
