@@ -66,6 +66,8 @@ header {
     border-radius: 20px;
     padding: 5px 10px;
     width: 30rem;
+    margin-left: 10rem;
+    position: absolute;
 }
 
 .search-bar i {
@@ -115,13 +117,18 @@ nav ul li a.entrar {
     border-radius: 5px;
 }
 
-/* Ajuste para separar o botão do carrinho e centralizar os outros com espaçamento */
 .menu-bar {
     display: flex;
     align-items: center;
     justify-content: center; 
     margin-top: 2rem;
     margin-block-end: -0.7rem;
+}
+.menu-bar div{
+    display: flex;
+    gap: 1rem;
+    margin: 0 auto;
+    justify-content: end;
 }
 
 .menu-bar button {
@@ -144,7 +151,6 @@ nav ul li a.entrar {
     background-color: #000000;
 }
 
-/* CSS para a página de compra de produtos */
 .product-page {
     display: flex;
     flex-direction: row;
@@ -200,6 +206,7 @@ nav ul li a.entrar {
 }
 .sair{
     background-color: #5a3e36;
+    border: none;
     color: white;
     border-radius: 2rem;
     cursor: pointer;
@@ -469,10 +476,6 @@ span i {
    align-items: center;
 }
 
-/* .produtos .card{
-    border: none;
-} */
-
 footer {
   font-family: "Work Sans", sans-serif;
   font-weight: 400;
@@ -488,6 +491,9 @@ footer {
 
 footer .social-icons a i {
   color: #5a3e36;
-  font-size: 1.15rem !important;
+  font-size: 1.15rem;
   padding: 0.19rem;
+}
+@media (max-width: 1309px) {
+
 }
