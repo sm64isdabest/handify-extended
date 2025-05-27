@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Handify - Página Principal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/paginaPrincipal.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <img src="../images/logo-handify.png" alt="Handify" class="logo">
+            <input type="text" class="search-bar" placeholder="Buscar produtos...">
+            <nav class="nav-links">
+                <a href="#">Produtos</a>
+                <a href="#">Contatos</a>
+                <a href="#">Sobre</a>
+                <button class="btn-entrar"><i class="bi bi-person"></i> Entrar</button>
+            </nav>
+            <button class="cart-btn"><i class="bi bi-cart"></i></button>
+            <button class="menu-mobile"><i class="bi bi-list"></i></button>
+        </div>
+        <div class="header-menu">
+            <button class="menu-btn">Categorias <i class="bi bi-chevron-down"></i></button>
+            <button class="menu-btn">Ofertas <i class="bi bi-chevron-down"></i></button>
+            <button class="menu-btn">Torne-se vendedor</button>
+            <button class="menu-btn">Histórico</button>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner" style="background: url('../images/carrousel/BannerCarrousel1.png')">
+        <button class="banner-arrow"><i class="bi bi-chevron-left"></i></button>
+      
+        <button class="banner-arrow"><i class="bi bi-chevron-right"></i></button>
+    </section>
+
+    <!-- Ofertas -->
+    <main>
+        <section class="ofertas">
+            <div class="oferta-dia card">
+                <span class="oferta-titulo">Oferta do dia</span>
+                <span class="oferta-descricao">Bolsa de palha</span>
+                <img src="../images/produtos/bolsa.png" alt="Bolsa de palha">
+                <span class="oferta-desconto">50% OFF</span>
+                <span class="oferta-preco-antigo">de: <s>R$ 279,90</s></span>
+                <span class="oferta-preco-novo">por apenas: <b>R$ 139,95</b></span>
+                <button class="oferta-btn">Comprar</button>
+            </div>
+            <div class="oferta-semanal card">
+                <span class="oferta-titulo">Oferta Semanal</span>
+                <span class="oferta-descricao">Vassoura De Palha</span>
+                <img src="../images/produtos/Vassoura.png" alt="Vassoura de palha">
+                <span class="oferta-desconto">80% OFF</span>
+                <span class="oferta-preco-antigo">de: <s>R$ 182,90</s></span>
+                <span class="oferta-preco-novo">por apenas: <b>R$ 36,58</b></span>
+                <button class="oferta-btn">Comprar</button>
+            </div>
+            <div class="outras-ofertas card">
+                <span class="outras-titulo">Outras Ofertas</span>
+                <div class="outras-lista">
+                    <div>
+                        <img src="../images/produtos/jarro-pintado.png" alt="Jarros pintados">
+                        <span>Vasos pintados</span>
+                    </div>
+                    <div>
+                        <img src="../images/produtos/porta-retrato.png" alt="Porta-retratos">
+                        <span>Porta-retratos</span>
+                    </div>
+                    <div>
+                        <img src="../images/produtos/panela-barro.png" alt="Panela de barro">
+                        <span>Panela de barro</span>
+                    </div>
+                    <div>
+                        <img src="../images/produtos/colher-pau.png" alt="Colher de pau">
+                        <span>Colher de pau</span>
+                    </div>
+                </div>
+                <button class="oferta-btn">Veja mais</button>
+            </div>
+        </section>
+
+        <!-- Produtos para cozinha -->
+        <section class="produtos card">
+            <h3>Produtos para cozinha</h3>
+            <div class="produtos-lista">
+                <div class="produto">
+                    <img src="../images/produtos/utensilios-madeira.png" alt="Utensílios de cozinha bambu">
+                    <span class="produto-nome">Utensílios de cozinha bambu 6 peças</span>
+                    <span class="produto-preco">R$ 189,90 <span class="produto-desconto">24% OFF</span></span>
+                </div>
+                <div class="produto">
+                    <img src="../images/produtos/passadeira.png" alt="Kit Passadeira Tapete 3 peças">
+                    <span class="produto-nome">Kit Passadeira Tapete 3 peças</span>
+                    <span class="produto-preco">R$ 59,90 <span class="produto-desconto">50% OFF</span></span>
+                </div>
+                <div class="produto">
+                    <img src="../images/produtos/descanço-panela.png" alt="Descanso de panela">
+                    <span class="produto-nome">Descanso de Panela</span>
+                    <span class="produto-preco">R$ 45,90 <span class="produto-desconto">35% OFF</span></span>
+                </div>
+                <div class="produto">
+                    <img src="../images/produtos/faqueiro.png" alt="Suporte de faqueiro">
+                    <span class="produto-nome">Suporte de Faqueiro</span>
+                    <span class="produto-preco">R$ 78,90 <span class="produto-desconto">10% OFF</span></span>
+                </div>
+                <div class="produto">
+                    <img src="../images/produtos/panela-pedra.png" alt="Panela de Pedra Sabão 21cm">
+                    <span class="produto-nome">Panela de Pedra Sabão 21cm</span>
+                    <span class="produto-preco">R$ 315,90 <span class="produto-desconto">36% OFF</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Produtos decorativos -->
+        <section class="produtos card">
+            <h3>Produtos decorativos</h3>
+            <div class="produtos-lista">
+                <div class="produto">
+                    <img src="../images/produtos/Passaro-madeira.png" alt="Escultura de ratinho de madeira">
+                    <span class="produto-nome">Escultura de pássaro de madeira</span>
+                    <span class="produto-preco">R$ 59,90 <span class="produto-desconto">13% OFF</span></span>
+                </div>
+                <div class="produto">
+                    <img src="../images/produtos/mao-madeira.png" alt="Mão rústica de madeira">
+                    <span class="produto-nome">Mão rústica de madeira</span>
+                    <span class="produto-preco">R$ 62,90 <span class="produto-desconto">16% OFF</span></span>
+                </div>
+                <div class="produto">
+                    <img src="../images/produtos/Quadro-envelhecido.png" alt="Quadro Ratinho entalhado de Ferro">
+                    <span class="produto-nome">Quadro Ratinho entalhado de Ferro</span>
+                    <span class="produto-preco">R$ 69,90 <span class="produto-desconto">21% OFF</span></span>
+                </div>
+                <div class="produto">
+                    <img src="../images/produtos/Jarro-flor.png" alt="Jarro de Flor Palha de Milho">
+                    <span class="produto-nome">Jarro de Flor Palha de Milho</span>
+                    <span class="produto-preco">R$ 365,90 <span class="produto-desconto">12% OFF</span></span>
+                </div>
+                <div class="produto">
+                    <img src="../images/produtos/Pato-madeira.png" alt="Escultura de pato de madeira">
+                    <span class="produto-nome">Escultura de pato de madeira</span>
+                    <span class="produto-preco">R$ 59,90 <span class="produto-desconto">13% OFF</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Móveis -->
+        <section class="produtos card">
+            <h3>Móveis</h3>
+            <div class="produtos-lista">
+                <div class="produto">
+                    <img src="../images/produtos/Poltrona-Fibra.png" alt="Poltrona fibra natural">
+                    <span class="produto-nome">Poltrona - fibra natural</span>
+                    <span class="produto-preco">R$ 1489,90 <span class="oferta-desconto">21% OFF</span></span>
+                </div>
+                <div class="produto">
+                    <img src="../images/produtos/Armario.png" alt="Armário de vime - portas de tecido">
+                    <span class="produto-nome">Armário de vime - portas de tecido</span>
+                    <span class="produto-preco">R$ 1029,90 <span class="produto-desconto">20% OFF</span></span>
+                </div>
+                <div class="produto">
+                    <img src="../images/produtos/Mesa.png" alt="Mesa de centro - fibra natural">
+                    <span class="produto-nome">Mesa de centro - fibra natural</span>
+                    <span class="produto-preco">R$ 979,90 <span class="produto-desconto">36% OFF</span></span>
+                </div>
+                <div class="produto">
+                    <img src="../images/produtos/Poltrona-Positano.png" alt="Poltrona pedico - fibra natural">
+                    <span class="produto-nome">Poltrona pedico - fibra natural</span>
+                    <span class="produto-preco">R$ 1559,90 <span class="produto-desconto">26% OFF</span></span>
+                </div>
+                <div class="produto">
+                    <img src="../images/produtos/Banqueta.png" alt="Banqueta de vime">
+                    <span class="produto-nome">Banqueta de vime</span>
+                    <span class="produto-preco">R$ 398,90 <span class="produto-desconto">10% OFF</span></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefícios -->
+        <section class="beneficios">
+            <div class="beneficio card">
+                <i class="bi bi-shield-check"></i>
+                <h4>Segurança</h4>
+                <p>Este site utiliza protocolos de segurança avançados para garantir a proteção de seus dados durante a navegação.</p>
+            </div>
+            <div class="beneficio card">
+                <i class="bi bi-patch-check"></i>
+                <h4>Confiável</h4>
+                <p>Pode confiar: aqui tudo é feito com cuidado, segurança e respeito por você.</p>
+            </div>
+            <div class="beneficio card">
+                <i class="bi bi-truck"></i>
+                <h4>Frete grátis</h4>
+                <p>Do carrinho até a sua casa, com segurança, carinho e frete grátis.</p>
+            </div>
+        </section>
+
+        <!-- Atendimento -->
+        <section class="atendimento">
+            <div class="atendimento-card card">
+                <h4>Compre pelo telefone</h4>
+                <p>Atendimento das 8h às 19h de <b>segunda a sexta</b>. 8h às 14h aos <b>sábados</b>.</p>
+                <span>(71) 97534-4397</span>
+                <span>0800-020-5243</span>
+            </div>
+            <div class="atendimento-card card">
+                <h4>Atendimento ao cliente</h4>
+                <p>Das 08h às 19h de segunda a sábado, exceto feriados.</p>
+                <span>handifycontato@gmail.com</span>
+                <span>0800-020-6639</span>
+            </div>
+            <div class="atendimento-card card">
+                <h4>Compre pelo Whatsapp</h4>
+                <p>Para todo o território nacional. Horário de atendimento sujeito à região.</p>
+                <span><i class="bi bi-whatsapp"></i> (71) 9985-7897</span>
+                <span><i class="bi bi-whatsapp"></i> (71) 9535-6332</span>
+            </div>
+        </section>
+    </main>
+
+        <!-- Formas de pagamento -->
+        <section class="pagamento card">
+            <h4>Formas de pagamento</h4>
+            <div class="pagamento-icones">
+                <img src="../images/icones/visa-logo.png" alt="Visa">
+                <img src="../images/icones/Mastercard.png" alt="Mastercard">
+                <img src="../images/icones/Logo-ELO.png" alt="Elo">
+                <img src="../images/icones/Logo-BOLETO.png" alt="Boleto">
+                <img src="../images/icones/Logo-PIX.png" alt="Pix">
+            </div>
+        </section>
+
+    <footer>
+        <span>© 2025 HANDIFY. Todos os direitos reservados.</span>
+        <div class="footer-icons">
+            <i class="bi bi-whatsapp"></i>
+            <i class="bi bi-youtube"></i>
+            <i class="bi bi-twitter-x"></i>
+            <i class="bi bi-instagram"></i>
+        </div>
+    </footer>
+</body>
+</html>
