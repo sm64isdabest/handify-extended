@@ -21,25 +21,32 @@ body {
 }
 
 .sobre-navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 2vw;
     gap: 2.5rem;
+    padding: 0 2vw;
+}
+
+
+.sobre-navbar-brand{
+  display: flex;
+justify-content: flex-start;
+align-items: center;
 }
 
 .sobre-navbar-brand img {
     height: 45px;
+    /* display: flex;
+    justify-content: flex-end; */
 }
 
 .sobre-navbar-menu {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
     list-style: none;
-    margin: 0 0 0 2.5rem;
+    margin: 0;
     padding: 0;
 }
 
@@ -426,7 +433,7 @@ body {
 
 .sobre-contato-card1 p {
     color: #FFFFFF;
-    font-size: 1.0rem;
+    font-size: 1.2rem;
     /* font-weight: bold; */
     margin: 0.5rem 0 0 0;
     /* display: flex;
@@ -579,7 +586,6 @@ footer .redes_sociais a i:hover {
 }
 
 @media (max-width: 900px) {
-    .sobre-hero-content,
     .sobre-info-top,
     .sobre-info-cards,
     .sobre-info-bottom,
@@ -589,7 +595,21 @@ footer .redes_sociais a i:hover {
         align-items: center;
         gap: 1.2rem;
     }
+
+    /* .sobre-navbar{
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    } */
+
+    /* .sobre-navbar-container{
+        flex-direction: column;
+        align-items: center;
+        display: block;
+    } */
     
+    .sobre-navbar-brand{
+        display: block;
+    }
     
     .sobre-info-text-box,
     .sobre-info-img-box1,
@@ -600,14 +620,31 @@ footer .redes_sociais a i:hover {
         width: 100%;
     }
 
+    .sobre-info-desc{
+        font-size: 1.5rem;
+    }
+
+    .sobre-info-title {
+        font-size: 2.6rem;
+    }
+
     .sobre-info-text-box{
-        padding: 1.2rem 0.7rem;
+        width: 78%;
     }
     
+    .sobre-hero{
+        padding: 4rem 0 5rem 0;
+    }
+
     .sobre-hero-text{
+        margin-left: 3%;
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .sobre-hero-img {
+        margin-right: 3%;
     }
 
     .sobre-hero-text h1 {
@@ -617,6 +654,7 @@ footer .redes_sociais a i:hover {
 
     .sobre-info-img-box1 {
         height: auto;
+        width: 76%;
         padding: 0.5rem;
     }
 
@@ -676,12 +714,16 @@ footer .redes_sociais a i:hover {
 }
 
 @media (max-width: 600px) {
-    .sobre-main,
     .sobre-info,
     .sobre-contato {
         padding-left: 0.5rem;
         padding-right: 0.5rem;
     }
+
+    /* .sobre-main{
+        
+    } */
+
     .sobre-info-img-box1 img {
         min-width: 0;
         width: 100%;
@@ -698,16 +740,39 @@ footer .redes_sociais a i:hover {
     .sobre-info-desc {
         font-size: 0.98rem;
     }
+
+    .sobre-hero-img{
+        width: 55%;
+    }
+
+    .sobre-hero-text {
+       margin: 1%;
+    }
+
     .sobre-hero-text h1 {
-        font-size: 1.3rem;
+        font-size: 2.8rem;
+        margin-left: 0.8rem;
+        margin-right: 1.5rem;
+        text-align: start;
     }
     .sobre-hero-text p {
-        font-size: 0.98rem;
+        font-size: 1.7rem;
+        margin-bottom: 1.5rem;
+        margin-left: 0.8rem;
+        text-align: start;
     }
+
     .sobre-btn {
         font-size: 0.98rem;
-        padding: 0.7rem 0;
+        width: 85%;
+        height: 25%;
     }
+
+    .sobre-info-text-box{
+        width: 50%;
+        /* padding: 1.2rem 0.7rem; */
+    }
+
     .sobre-info-card img {
         width: 55px;
         height: 55px;
@@ -718,13 +783,11 @@ footer .redes_sociais a i:hover {
     .sobre-info-card-wide p {
         font-size: 0.93rem;
     }
-    .sobre-contato-card1,
-    .sobre-contato-card2,
-    .sobre-contato-card3 {
-        width: 100%;
-        min-width: 0;
-        padding: 1rem 0.5rem;
+
+    .sobre-contato{
+        margin: 7%;
     }
+
 
     .sobre-contato h3 {
         font-size: 1.2rem;
