@@ -1,3 +1,4 @@
+
 /* Estilo do cabeçalho */
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
@@ -151,6 +152,7 @@ nav ul li a.entrar {
     background-color: #000000;
 }
 
+/* CSS para a página de compra de produtos */
 .product-page {
     display: flex;
     flex-direction: row;
@@ -292,12 +294,12 @@ nav ul li a.entrar {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;;
+    gap: 1.5rem;
     border: solid black;
     border-radius: 1.1rem;
-    height: 30rem;
-    width: 25rem;
-    margin-right: 1rem;
+    padding: 0.3rem;
+    width: auto;
+    margin-right: 0.3rem;
 }
 
 .delivery-info, .stock-info {
@@ -469,6 +471,9 @@ span i {
     padding: 1rem;
     border-radius: 1rem;
 }
+.Produtos-similares h1{
+    font-weight: bold;
+}
 
 .produtos{
     display: flex;
@@ -494,6 +499,323 @@ footer .social-icons a i {
   font-size: 1.15rem;
   padding: 0.19rem;
 }
+.botoes_adc{
+    display: none;
+ }
+ .text_tablet{
+    display: none;
+ }
+ .sub_text_tablet{
+    display: none;
+ }
 @media (max-width: 1309px) {
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+  .search-bar {
+    width: 40vw;
+    min-width: 8rem;
+    max-width: 22rem;
+    position: absolute;
+    margin-left: 10rem;
+  }
+  .product-page{
+    height: auto;
+  }
+  .purchase-info{
+    width: auto;
+  }
+  .purchase-info p{
+    font-size: 0.9rem;
+  }
+  .botoes_adc{
+    display: none;
+ }
+ .text_tablet{
+    display: none;
+ }
+ .sub_text_tablet{
+    display: none;
+ }
+}
+@media (max-width: 1018px) {
+    html, body {
+    width: 100vw;
+    min-height: 100vh;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  .descricao-produto p{
+    font-size: 1rem;
+  }
+  .sub-card-text{
+    font-size: 2.3rem;
+  }
+  .other-offers h2{
+    font-size: 2.3rem;
+  }
+  .descricao-produto h2{
+    font-size: 2.3rem;
+  }
+  .reviews-destaque .opn{
+    font-size: 2.3rem;
+    margin-bottom: 1rem;
+  }
+  .reviews-container{
+    gap: 3rem;
+  }
+  .avaliações h2{
+    font-size: 2.3rem;
+  }
+  .avaliações p{
+    font-size: 1.7rem;
+  }
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+  .product-page{
+    height: auto;
+    width: auto;
+     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+     height: 65vh;
+    background-color: white;
+    border-radius: 2rem;
+    margin: 2rem;
+  }
+  .product-info{
+    margin-top: 0.1rem;
+    font-size: 0.9rem;
+    gap: 1.0em;
+    height: 10rem;
+    width: 15rem;
+  }
+  .product-gallery .main-image img {
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.product-details h1{
+    font-size: 40px;
+}
+.purchase-buttons button{
+    width: 15rem;
+    height: auto;
+}
+.product-details .price {
+    display: flex;
+    font-size: 2.0rem;
+    flex-direction: column;
+    font-weight: bold;
+    color: #5a3e36;
+    margin-bottom: 0.5rem;
+}
+.product-details .price .old-price {
+    text-decoration: line-through;
+    font-size: 1.0rem;
+    color: #ff0000;
+    margin-right: 0.5rem;
+}
+  .search-bar {
+    width: 22rem;
+    min-width: 6rem;
+    max-width: 90vw;
+    position: static;
+    margin-left: 0;
+  }
+  .botoes_adc{
+    display: none;
+ }
+ .text_tablet{
+    display: none;
+ }
+ .sub_text_tablet{
+    display: none;
+ }
+}
+@media (max-width: 934px) {
+ .purchase-info p{
+    font-size: 0.8rem;
+    gap: 0.1rem;
+ }
+ .purchase-buttons button{
+    width: 15rem;
+    height: 3rem;
+}
+.botoes_adc{
+    display: none;
+ }
+ .text_tablet{
+    display: none;
+ }
+ .sub_text_tablet{
+    display: none;
+ }
+}
+@media (max-width: 832px) {
+ .purchase-info p{
+    font-size: 0.8rem;
+    gap: 0.1rem;
+ }
+ .sub-card-text{
+    font-size: 2rem;
+  }
+  .other-offers h2{
+    font-size: 2rem;
+  }
+  .descricao-produto h2{
+    font-size: 2rem;
+  }
+ .purchase-buttons button{
+    width: 15rem;
+    height: 3rem;
+}
+.product-details h1{
+    font-size: 30px;
+}
+.product-info{
+    font-size: 0.9rem;
+}
+.product-gallery .main-image img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.botoes_adc{
+    display: none;
+ }
+ .text_tablet{
+    display: none;
+ }
+ .sub_text_tablet{
+    display: none;
+ }
+}
+@media (max-width: 768px) {
+ .purchase-info{
+    display: none;
+ }
+ .card-title{
+    font-size: 1rem;
+ }
+ .sub-card-text{
+    font-size: 1.8rem;
+ }
+ .product-info{
+    font-size: 1rem;
+ }
+ .product-page{
+    height: 80vh;
+ }
+ .botoes_adc{
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    align-items: center;
+    width: auto;
+    margin-top: 2.5rem;
+ }
+ .text_tablet{
+    margin-top: 3rem;
+    display: block;
+    font-size: 1.4rem;
+ }
+ .sub_text_tablet{
+    display: block;
+ }
+ .product-details h1{
+    font-size: 2.7rem;
+ }
+ .botoes_adc button{
+    background-color: #392621;
+    color: #fff;
+    width: 15rem;
+    height: 3.7rem;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin-left: -18rem;
+ }
+ .product-gallery .main-image img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.main-image{
+   flex-direction: column;
+   margin: auto;
+}
+.main-image img{
+    width: 240px;
+    height: 240px; 
+}
+}
+@media (max-width: 700px) {
+  .card-title{
+    font-size: 0.9rem;
+ }
+ .botoes_adc button{
+    background-color: #392621;
+    color: #fff;
+    width: 13rem;
+    height: 3.5rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+    margin-left: -18rem;
+ }
 
+ .botoes_adc{
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    align-items: center;
+    width: auto;
+    margin-top: 2.5rem;
+ }
+ .offer-item img{
+    height: 100px;
+    width: 100px;
+ }
+ .sub-card-text{
+    font-size: 1.6rem;
+ }
+ }
+@media (max-width: 665px) {
+.botoes_adc button{
+    background-color: #392621;
+    color: #fff;
+    width: 13rem;
+    height: 3.5rem;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1rem;
+    margin-left: -14rem;
+ }
+ .product-page{
+    height: 100vh;
+ }
+ .btn_2{
+    margin-right: 3rem;
+ }
+}
+@media (max-width: 595px) {
+    
 }
