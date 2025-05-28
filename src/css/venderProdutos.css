@@ -329,6 +329,7 @@ footer .social-icons a i {
   padding: 0.19rem;
 }
 
+
 /* Estilos para Tablets (Media Query) */
 @media (min-width: 602px) and (max-width: 992px) {
 
@@ -351,8 +352,10 @@ footer .social-icons a i {
     }
 
     header nav ul li a.entrar {
-        padding: 0.8rem 1.2rem; /* Ajusta o padding */
-        font-size: 0.9rem;
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+        margin-left: 0;
     }
 
     /* MAIN SECTION */
@@ -374,10 +377,8 @@ footer .social-icons a i {
     .sidebar {
         flex-direction: row; /* Para tablets, os botões da sidebar podem ficar lado a lado no topo ou base */
         width: 100%; /* Ocupa a largura total do container */
-        justify-content: center; /* Centraliza os botões */
-        margin: 0; /* Remove margens extras */
+        margin: 20; /* Remove margens extras */
         padding-bottom: 1rem; /* Espaço para separar do próximo elemento */
-        border-bottom: 1px solid #eee; /* Linha divisória */
     }
 
     .sidebar .btn-add,
@@ -387,6 +388,12 @@ footer .social-icons a i {
         font-size: 1.8rem;
         margin: 0 10px; /* Espaçamento entre os botões */
     }
+
+    .btn-add {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+  }
 
     .btn-back { /* Ajuste específico para o botão voltar na sidebar do tablet */
         width: 45px;
@@ -401,7 +408,7 @@ footer .social-icons a i {
     }
 
     .imagem-produto .btn-add { /* Oculta o botão de adição dentro da imagem, se o da sidebar estiver ativo */
-        display: none;
+        display: block;
     }
 
     .sidebar .btn-add {
@@ -501,11 +508,10 @@ footer .social-icons a i {
   }
 
   header nav ul li a.entrar {
-    padding: 0.7rem 1.5rem;
-    /* Ajusta o padding do botão */
-    border-radius: 100rem;
-    width: rem;
-
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+    margin-left: 0;
   }
 
   .venda-container {
