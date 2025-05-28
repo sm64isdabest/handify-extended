@@ -1,136 +1,271 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Handify - Pesquisa</title>
-    <link rel="stylesheet" href="../css/paginapesquisa.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-</head>
+    <link rel="stylesheet" href="../css/paginapesquisa.css" />
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<body>
+  <body>
     <header>
-        <nav>
-            <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
-            <div class="search-bar">
-                <input type="text" placeholder="Buscar produtos..." />
-                <i class="bi bi-search"></i>
-            </div>
-            <ul>
-                <li><a href="#">Produtos</a></li>
-                <li><a href="#">Contato</a></li>
-                <li><a href="paginaSobre.html">Sobre</a></li>
-                <li>
-                    <a href="#" class="entrar"><i class="bi bi-person"></i>Entrar</a>
-                </li>
-            </ul>
-            <!-- PARA DISPOSITIVOS MÓVEIS -->
-            <button id="list"><i class="bi bi-list"></i></button>
-            <div id="popup-menu">
-                <ul class="popup-list">
-                    <li>
-                        <a href="loginUser.html"><i class="bi bi-person"></i>Entrar</a>
-                    </li>
-                    <li><a href="paginaSobre.html">Sobre</a></li>
-                    <li><a href="#">Contato</a></li>
-                    <li><a href="pesquisaProdutos.html">Produtos</a></li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="menu-bar">
-            <div>
-                <button>Categorias</button>
-                <button>Ofertas</button>
-                <button>Vender</button>
-                <button>Histórico</button>
-            </div>
-            <button class="cart"><i class="bi bi-cart"></i></button>
+      <nav>
+        <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+        <div class="search-bar">
+          <input type="text" placeholder="Buscar produtos..." />
+          <i class="bi bi-search"></i>
         </div>
+        <ul>
+          <li><a href="#">Produtos</a></li>
+          <li><a href="#">Contato</a></li>
+          <li><a href="paginaSobre.html">Sobre</a></li>
+          <li>
+            <a href="#" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+          </li>
+        </ul>
+        <!-- PARA DISPOSITIVOS MÓVEIS -->
+        <button id="list"><i class="bi bi-list"></i></button>
+        <div id="popup-menu">
+          <ul class="popup-list">
+            <li>
+              <a href="loginUser.html"><i class="bi bi-person"></i>Entrar</a>
+            </li>
+            <li><a href="paginaSobre.html">Sobre</a></li>
+            <li><a href="#">Contato</a></li>
+            <li><a href="pesquisaProdutos.html">Produtos</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="menu-bar">
+        <div>
+          <button>Categorias</button>
+          <button>Ofertas</button>
+          <button>Vender</button>
+          <button>Histórico</button>
+        </div>
+        <button class="cart"><i class="bi bi-cart"></i></button>
+      </div>
     </header>
 
-    <main>
-        <section class="filtros">
-            <ul class="categorias">
-                <h2>Categorias</h2>
-                <li><a href="#">Kit de Bolsas</a></li>
-                <li><a href="#">Bolsas</a></li>
-                <li><a href="#">Mochilas</a></li>
-                <li><a href="#">Bijuterias</a></li>
-                <li><a href="#">Acessórios</a></li>
-                <li><a href="#">Necessaires</a></li>
-                <li><a href="#">Pochetes</a></li>
-                <li><a href="#">Lancheiras</a></li>
-                <li><a href="#">Pastas Executivas</a></li>
-            </ul>
-
-            <ul class="marcas">
-                <h2>Marcas</h2>
-                <li><a href="#">Farm</a></li>
-                <li><a href="#">Selten</a></li>
-                <li><a href="#">Chenson</a></li>
-                <li><a href="#">Moupad</a></li>
-                <li><a href="#">HWJ</a></li>
-                <li><a href="#">Denlex</a></li>
-                <li><a href="#">M3M</a></li>
-                <li><a href="#">Mariart</a></li>
-                <li><a href="#">Daniella Marques</a></li>
-            </ul>
-
-            <form>
-                <h2>Preço</h2>
-                <label><input type="radio" name="price" value="60"> Até R$60</label>
-                <br>
-                <label><input type="radio" name="price" value="100"> R$60 a R$100</label>
-                <br>
-                <label><input type="radio" name="price" value="100+"> Mais de R$100</label>
-            </form>
-        </section>
-
-        <section class="produtos">
-            <h2>Produtos encontrados</h2>
-            <div class="fundo">
-                <div class="card" style="background-color: #4a2c2a;width: 15rem;border-radius: 1.5rem;">
-                    <img src="../images/produtos/bolsa-flor.png" class="card-img-top" alt="..." />
-                    <div class="card-body" style="padding: 0.1rem">
-                        <h5 class="card-title">Bolsa De Palha Natural Quadrada Artesanal Modelo Grande</h5>
-                        <h5 class="avaliacoes">
-                            4.6
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-fill"></i>
-                            <i class="bi bi-star-half"></i>
-                            (81)
-                        </h5>
-                        <p class="card-text">R$ 294,90</p>
-                        <div class="precos">
-                            <p class="sub-card-text">R$ 280,15</p>
-                            <p id="oferta">5% OFF</p>
-                        </div>
-                        <button>Ver mais</button>
-                    </div>
-                </div>
-            </div>
-            <!-- Repetir estrutura para outros produtos -->
-        </section>
-    </main>
-    <footer>
-        <p>© 2025 HANDIFY. Todos os direitos reservados.</p>
-        <div class="social-icons">
-            <a href="https://web.whatsapp.com/" target="_blank"><i class="bi bi-whatsapp"></i></a>
-            <a href="https://www.youtube.com/" target="_blank"><i class="bi bi-youtube"></i></a>
-            <a href="https://x.com/" target="_blank"><i class="bi bi-twitter-x"></i></a>
-            <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram"></i></a>
+    <div id="carouselExample" class="carousel slide">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="../images/fundos/ofertabannernobkg1.png" class="d-block mx-auto" alt="" />
         </div>
+        <!-- <div class="carousel-item">
+          <img src="" class="d-block w-100" alt="" />
+        </div>
+        <div class="carousel-item">
+          <img src="" class="d-block w-100" alt="" />
+        </div> -->
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <main>
+      <section class="filtros">
+        <ul class="categorias">
+          <h2>Categorias</h2>
+          <li><a href="#">Kit de Bolsas</a></li>
+          <li><a href="#">Bolsas</a></li>
+          <li><a href="#">Mochilas</a></li>
+          <li><a href="#">Bijuterias</a></li>
+          <li><a href="#">Acessórios</a></li>
+          <li><a href="#">Necessaires</a></li>
+          <li><a href="#">Pochetes</a></li>
+          <li><a href="#">Lancheiras</a></li>
+          <li><a href="#">Pastas Executivas</a></li>
+        </ul>
+
+        <ul class="marcas">
+          <h2>Marcas</h2>
+          <li><a href="#">Farm</a></li>
+          <li><a href="#">Selten</a></li>
+          <li><a href="#">Chenson</a></li>
+          <li><a href="#">Moupad</a></li>
+          <li><a href="#">HWJ</a></li>
+          <li><a href="#">Denlex</a></li>
+          <li><a href="#">M3M</a></li>
+          <li><a href="#">Mariart</a></li>
+          <li><a href="#">Daniella Marques</a></li>
+        </ul>
+
+        <ul class="preco">
+          <h2>Preço</h2>
+          <label><input type="radio" name="price" value="60" /> Até R$60</label>
+          <br />
+          <label
+            ><input type="radio" name="price" value="100" /> R$60 a R$100</label
+          >
+          <br />
+          <label
+            ><input type="radio" name="price" value="100+" /> Mais de
+            R$100</label
+          >
+        </ul>
+      </section>
+
+      <section class="produtos">
+        <h2>Produtos encontrados</h2>
+        <div class="fundo">
+          <div
+            class="card"
+            style="
+              background-color: #4b3a35;
+              width: 15rem;
+              border-radius: 1.5rem;
+              border: #3c2924 solid;
+            "
+          >
+            <img
+              src="../images/produtos/bolsa-flor.png"
+              class="card-img-top"
+              alt="..."
+            />
+            <div class="card-body" style="padding: 0.1rem">
+              <h5 class="card-title">
+                Bolsa De Palha Natural Quadrada Artesanal Modelo Grande
+              </h5>
+              <h5 class="avaliacoes">
+                4.6
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-half"></i>
+                (81)
+              </h5>
+              <p class="card-text preco-original">R$ 294,90</p>
+              <div class="precos">
+                <p class="sub-card-text">R$ 280,15</p>
+                <p id="oferta">5% OFF</p>
+              </div>
+              <button>Ver mais</button>
+            </div>
+          </div>
+        </div>
+        <!-- Repetir estrutura para outros produtos -->
+      </section>
+    </main>
+
+    <div class="caracteristicas">
+      <div class="card" style="width: 25rem; height: 12rem">
+        <i class="bi bi-shield-check"></i>
+        <div class="card-body">
+          <h5 class="card-title">Segurança</h5>
+          <p class="card-text">
+            Este site utiliza protocolos de segurança avançados para garantir a
+            proteção de seus dados durante a navegação.
+          </p>
+        </div>
+      </div>
+      <div class="card" style="width: 25rem; height: 12rem">
+        <i class="bi bi-patch-check"></i>
+        <div class="card-body">
+          <h5 class="card-title">Confiável</h5>
+          <p class="card-text">
+            Pode confiar: aqui tudo é feito com cuidado, segurança e respeito
+            por você.
+          </p>
+        </div>
+      </div>
+      <div class="card" style="width: 25rem; height: 12rem">
+        <i class="bi bi-truck"></i>
+        <div class="card-body">
+          <h5 class="card-title">Frete grátis</h5>
+          <p class="card-text">
+            Do carrinho até a sua casa, com segurança, carinho e frete grátis.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="contatos">
+      <div class="card" style="width: 25rem; height: 20rem">
+        <div class="card-body">
+          <h5 class="card-title">Compre pelo telefone</h5>
+          <p class="card-text">
+            Atendimento das 8h às 19h de segunda a sexta. 8h às 14h aos sábados.
+          </p>
+          <button>(71) 97534-4397</button>
+          <button>0800-020-5243</button>
+        </div>
+      </div>
+      <div class="card" style="width: 25rem; height: 20rem">
+        <div class="card-body">
+          <h5 class="card-title">Atendimento ao cliente</h5>
+          <p class="card-text">
+            Das 08h às 19h de segunda a sábado,<br />
+            exceto feriados.
+          </p>
+          <button>handifycontato</button>
+          <button>0800-020-6639</button>
+        </div>
+      </div>
+      <div class="card" style="width: 25rem; height: 20rem">
+        <div class="card-body">
+          <h5 class="card-title">Compre pelo Whatsapp</h5>
+          <p class="card-text">
+            Para todo o território nacional. Horário de atendimento sujeito à
+            região.
+          </p>
+          <button><i class="bi bi-whatsapp"></i> (71) 9985-7897</button>
+          <button>(71) 9535-6332</button>
+        </div>
+      </div>
+    </div>
+
+<footer>
+      <p>© 2025 HANDIFY. Todos os direitos reservados.</p>
+      <div class="social-icons">
+        <a href="https://web.whatsapp.com/" target="_blank"
+          ><i class="bi bi-whatsapp"></i
+        ></a>
+        <a href="https://www.youtube.com/" target="_blank"
+          ><i class="bi bi-youtube"></i
+        ></a>
+        <a href="https://x.com/" target="_blank"
+          ><i class="bi bi-twitter-x"></i
+        ></a>
+        <a href="https://www.instagram.com/" target="_blank"
+          ><i class="bi bi-instagram"></i
+        ></a>
+      </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
-        crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
