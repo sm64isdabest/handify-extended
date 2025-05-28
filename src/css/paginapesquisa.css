@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 body {
-  background-color: #FAECCE;
+  background-color: #faecce;
 }
 
 header {
@@ -141,6 +141,7 @@ input::placeholder {
   gap: 1rem;
   margin: 0 auto;
   justify-content: end;
+  text-align: center;
 }
 
 .menu-bar button {
@@ -150,6 +151,8 @@ input::placeholder {
   border-radius: 0.6rem 0.6rem 0 0;
   font-size: 14px;
   height: 2rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
   width: auto;
 }
 
@@ -158,23 +161,35 @@ input::placeholder {
   height: 2rem;
   width: 2rem;
   margin-right: 1rem;
+  padding-left: 0.1rem;
+  padding-right: 0.1rem;
 }
 
 .menu-bar dbutton:hover {
   background-color: #000000;
 }
 
+.carousel,
+.slide {
+  background-image: url("../images/fundos/fundo_palha.png");
+  border-bottom: #4a2c2a;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+
 main {
   display: flex;
   padding: 20px;
-  background-color: #f9f5f0;
+  background-color: #faecce;
 }
 
 .filtros {
-  width: 20%;
-  padding: 10px;
+  padding: 15px;
   background-color: #fff;
-  border-right: 1px solid #ccc;
+  border-radius: 1rem;
 }
 
 .filtros h2 {
@@ -239,6 +254,7 @@ main {
 .categorias {
   border: solid black;
   border-radius: 1rem;
+  width: 15rem;
 }
 
 .marcas {
@@ -246,14 +262,24 @@ main {
   border-radius: 1rem;
 }
 
+.preco {
+  border: solid black;
+  border-radius: 1rem;
+}
+
 .filtros h2 {
-  background-color: #593d36;
-  width: 6rem;
+  background-color: #4b3a35;
+  padding: 0.1rem;
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
+  border: solid 0.2rem;
+  border-color: #3c2924;
+  width: fit-content;
   border-radius: 1rem;
   color: white;
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
   margin-left: 1rem;
-  text-align: center;
+  text-align: start;
 }
 
 .filtros li {
@@ -264,16 +290,26 @@ main {
 .filtros form {
   border: solid black;
   border-radius: 1rem;
+}
 
+.card-title {
+  padding-top: 0.5rem;
 }
 
 .card-body h5 {
   color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-align: start;
+}
+
+.card-body .avaliacoes {
+  color: #828282;
   font-size: small;
 }
 
 .avaliacoes i {
-  color: #FFC700;
+  color: #ffc700;
 }
 
 .precos {
@@ -283,43 +319,49 @@ main {
 }
 
 .sub-card-text {
-  font-size:x-large;
+  font-size: x-large;
   color: white;
 }
 
 .precos #oferta {
-  background-color: #4BAC3F;
+  background-color: #4bac3f;
   font-size: medium;
+  margin-top: 0.5rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  color: white;
   border-radius: 1rem;
-  padding: 0.2rem;
 }
 
 .card-body {
-  color:white;
+  color: white;
   padding: 0.1rem;
 }
 
 .card-body .card-text {
   text-decoration: line-through;
   background-color: red;
-  width: 4rem;
+  color: white;
   border-radius: 1rem;
   font-size: small;
 }
 
-.card-body button{
+.preco-original {
+  width: 4rem;
+}
+
+.card-body button {
   color: #593d36;
   background-color: white;
   border-radius: 30rem;
-  width:100%;
+  width: 100%;
 }
 
 footer {
   font-family: "Work Sans", sans-serif;
   font-weight: 400;
   display: flex;
-    color: #593d36;
-
+  color: #593d36;
   font-size: 0.8rem;
   text-align: center;
   background-color: #fff;
@@ -329,10 +371,105 @@ footer {
   padding: 1.6rem;
 }
 
+.caracteristicas {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #faecce;
+  gap: 12rem;
+}
+
+.caracteristicas .card {
+  border: solid grey;
+  border-radius: 1rem;
+  align-items: center;
+}
+
+.caracteristicas .card-body {
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.caracteristicas .card i {
+  font-size: 2rem;
+}
+
+.caracteristicas .card-body h5 {
+  color: black;
+  font-size: 1rem;
+}
+
+.caracteristicas .card p {
+  width: auto;
+  height: auto;
+  color: #000000;
+  background: none;
+  text-decoration: none;
+}
+
+footer {
+  position: relative;
+  height: 80px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  display: flex;
+  font-size: 0.8rem;
+  text-align: center;
+  background-color: white;
+  border-top: 2px solid #593d36;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1.6rem;
+}
+
 footer .social-icons a i {
   color: #5a3e36;
   font-size: 1.15rem;
   padding: 0.19rem;
+}
+
+.contatos {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  display: flex;
+  gap: 12rem;
+  background-color: #faecce;
+}
+
+.contatos .card {
+  border: solid grey;
+  border-radius: 1rem;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.contatos .card-body h5{
+  color: #000000;
+  font-size: 1.7rem;
+  align-items: center;
+  text-align: center;
+}
+
+.contatos .card-body p{
+  color: #000000;
+  background: none;
+  text-decoration: none;
+  align-items: center;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.contatos .card button{
+  background-color: #4B3A35;
+  color: white;
+  width: 14rem;
+  height: 4rem;
+  margin-top: 1rem;
+  border: none;
 }
 
 @media (max-width: 768px) {
@@ -346,12 +483,10 @@ footer .social-icons a i {
     text-align: center;
   }
 
-  header>i.bi {
+  header > i.bi {
     display: block;
   }
-
 }
-
 
 @media (max-width: 521px) {
   #list {
@@ -377,10 +512,8 @@ footer .social-icons a i {
     display: none;
   }
 
-
   .search-bar i {
     color: rgb(255, 255, 255);
     cursor: pointer;
   }
-
 }
