@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="../css/paginaPrincipal.css" />
-    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -19,9 +18,11 @@
     />
   </head>
   <body style="background-color: #FAECCE;">
-    <!-- Header -->
     <header>
       <div class="header-container">
+        <button class="bibi-list-btn" aria-label="Menu Lista">
+          <i class="bibi bibi-list"></i>
+        </button>
         <img src="../images/logo-handify.png" alt="Handify" class="logo" />
         <input
           type="text"
@@ -51,53 +52,39 @@
       </div>
     </header>
 
-    <!-- Banner -->
-    <section class="banner">
       <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="../images/carrousel/BannerCarrousel1.png"
-              class="d-block w-50"
-              alt="..."
-            />
-          </div>
-          <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="..." />
-          </div>
-          <div class="carousel-item">
-            <img src="..." class="d-block w-100" alt="..." />
-          </div>
-        </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </section>
+       <div class="carousel-inner">
+         <div class="carousel-item active">
+           <img src="../images/carrousel/ofertabannernobkg1.png" class="d-block mx-auto" alt="" />
+         </div>
+       </div>
+       <button
+         class="carousel-control-prev"
+         type="button"
+         data-bs-target="#carouselExample"
+         data-bs-slide="prev"
+       >
+         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+         <span class="visually-hidden">Previous</span>
+       </button>
+       <button
+         class="carousel-control-next"
+         type="button"
+         data-bs-target="#carouselExample"
+         data-bs-slide="next"
+       >
+         <span class="carousel-control-next-icon" aria-hidden="true"></span>
+         <span class="visually-hidden">Next</span>
+       </button>
+     </div>                  
 
-    <!-- Ofertas -->
     <main>
       <section class="ofertas">
         <div style="display: flex; flex-direction: column; gap: 24px;">
-          <div class="oferta-dia card" style="height: 25rem;">
+          <div class="rounded-4 oferta-dia card" style="height: 25rem;">
             <div class="oferta-header">
               <span class="oferta-titulo">Oferta do dia</span>
-              <img src="../images/icone-flor.png" class="oferta-flor" alt="Flor" />
+              <img src="../images/icones/Flor.png" class="oferta-flor" alt="Flor" />
             </div>
             <span class="oferta-descricao">Bolsa de palha</span>
             <div class="oferta-conteudo">
@@ -110,10 +97,10 @@
               </div>
             </div>
           </div>
-          <div class="oferta-semanal card" style="height: 25rem;">
+          <div class="rounded-4 oferta-semanal card" style="height: 25rem;">
             <div class="oferta-header">
               <span class="oferta-titulo">Oferta Semanal</span>
-              <img src="../images/icone-flor.png" class="oferta-flor" alt="Flor" />
+              <img src="../images/icones/Flor.png" class="oferta-flor" alt="Flor" />
             </div>
             <span class="oferta-descricao">Vassoura De Palha</span>
             <div class="oferta-conteudo">
@@ -127,10 +114,10 @@
             </div>
           </div>
         </div>
-        <div class="outras-ofertas card">
+        <div class="rounded-4 outras-ofertas card">
           <div class="outras-ofertas-header">
-            <span class="outras-ofertas-titulo">Outras Ofertas</span>
-            <img src="../images/icone-flor.png" class="oferta-flor" alt="Flor" />
+            <span class="outras-ofertas-titulo">Explore Mais</span>
+            <img src="../images/icones/Flor.png" class="oferta-flor" alt="Flor" />
           </div>
           <div class="outras-ofertas-lista">
             <div class="outras-produto">
@@ -141,11 +128,11 @@
               <img src="../images/produtos/porta-retrato.png" alt="Porta-retratos" />
               <span>Porta-retratos</span>
             </div>
-            <div class="outras-produto">
+            <div class="outras-produto-panela">
               <img src="../images/produtos/panela-barro.png" alt="Panela de barro" />
               <span>Panela de barro</span>
             </div>
-            <div class="outras-produto">
+            <div class="outras-produto-colher">
               <img src="../images/produtos/colher-pau.png" alt="Colher de pau" />
               <span>Colher de pau</span>
             </div>
