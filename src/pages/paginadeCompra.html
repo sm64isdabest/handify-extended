@@ -20,6 +20,14 @@
                 <input type="text" placeholder="Buscar produtos..." />
                 <i class="bi bi-search"></i>
             </div>
+            <div class="menu_clc">
+                <button id="cart">
+                    <i class="bi bi-cart3"></i>
+                </button>
+                <button id="list">
+                    <i class="bi bi-list"></i>
+                </button>
+            </div>
             <nav>
                 <ul>
                     <li><a href="#">Produtos</a></li>
@@ -50,18 +58,18 @@
                 </div>
                 <div class="main-image">
                     <img src="../images/produtos/bolsa-palha.png" alt="Imagem principal do produto" />
-                    
+
                     <h2 class="text_tablet">Estoque disponível</h2>
                     <p class="sub_text_tablet">Quantidade: 1 (200 disponíveis)</p>
-                    </div>
-                
+                </div>
+
             </section>
 
             <section class="product-details">
                 <div class="avaliar">
-                    <button class="sair"><i class="bi bi-arrow-left"></i></button> 4.8<span><i class="bi bi-star-fill"></i><i
+                    <button class="sair"><i class="bi bi-arrow-left"></i></button> 4.8<span><i
                             class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                            class="bi bi-star-half"></i></span>
+                            class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
                 </div>
                 <h1>Bolsa de palha</h1>
                 <p class="price">
@@ -81,9 +89,13 @@
                         Material: <span class="material">Palha trançada sintética</span>
                     </p>
                 </div>
+                <div class="disponiveis_clc">
+                    <h3>Estoque disponível</h3>
+                    <p>Quantidade: 1 (200 Disponível)</p>
+                </div>
                 <div class="botoes_adc">
-                <button class="btn_1">Comprar Agora</button>
-                <button class="btn_2">Adicionar ao Carrinho</button>
+                    <button class="btn_1">Comprar Agora</button>
+                    <button class="btn_2">Adicionar ao Carrinho</button>
                 </div>
             </section>
 
@@ -213,9 +225,21 @@
         </section>
         <div class="Produtos-similares">
             <h1>Outros produtos similares</h1>
+            <div class="carrossel-container">
+                <button class="carrossel-arrow left">&#8592;</button>
+                <div class="carrossel-cards">
+                    <div class="card">
+                        <img src="../images/produtos/faqueiro.png" alt="Suporte de faqueiros" />
+                        <h5>Suporte de faqueiros</h5>
+                        <p class="card-text">R$ 87,90 OFF</p>
+                        <p class="sub-card-text">R$ 78,90</p>
+                    </div>
+                </div>
+                <button class="carrossel-arrow right">&#8594;</button>
+            </div>
             <section class="produtos">
                 <div class="card" style="width: 18rem">
-                   <img src="../images/produtos/bolsa-palha-clara.png" class="card-img-top" alt="..." />
+                    <img src="../images/produtos/bolsa-palha-clara.png" class="card-img-top" alt="..." />
                     <div class="card-body">
                         <h5>Bolsa De Palha Praia Feminina Bolsa Ombro Grande </h5>
                         <p class="sub-card-text">R$ 95,99</p>
