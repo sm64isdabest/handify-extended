@@ -33,8 +33,9 @@ header {
     padding: 8px 16px;
     border-radius: 20px;
     border: none;
-    background: #e7dfd1;
+    background: #3d2b23;
     font-size: 1rem;
+    color: #fff;
 }
 
 .nav-links {
@@ -94,6 +95,23 @@ header {
     align-items: center;
     width: 100%;
     margin: 0 auto;
+}
+
+.carousel,
+.slide {
+  background-image: url("../images/fundos/fundo_madeira.png");
+  border-bottom: solid 0.3rem #4a2c2a;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+
+.carousel-item img {
+    width: 100%;
+    max-height: 20rem;
+    object-fit: contain;
 }
 
 .menu-btn {
@@ -255,10 +273,6 @@ main {
     gap: 0.5rem;
 }
 
-.oferta-dia {
-    padding-bottom: 0;
-}
-
 .oferta-header {
     display: flex;
     justify-content: space-between;
@@ -281,7 +295,7 @@ main {
 }
 
 .oferta-descricao {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #3d2b23;
     margin-bottom: 0.5rem;
     margin-top: -0.5rem;
@@ -296,11 +310,12 @@ main {
 }
 
 .oferta-img {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     object-fit: contain;
     display: block;
 }
+
 
 .oferta-info {
     display: flex;
@@ -316,7 +331,7 @@ main {
     color: #fff;
     border-radius: 8px;
     padding: 6px 18px;
-    font-size: 2rem;
+    font-size: 1.2rem;
     font-weight: bold;
     display: inline-block;
     margin-bottom: 0.2rem;
@@ -332,7 +347,7 @@ main {
 
 .preco-antigo {
     color: #e53935;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     text-decoration: line-through;
     font-weight: bold;
     margin-left: 0.2rem;
@@ -340,7 +355,7 @@ main {
 
 .oferta-preco-novo {
     color: #3d2b23;
-    font-size: 1.1rem;
+    font-size: 1.7rem;
     font-weight: 500;
     margin-bottom: 0.2rem;
     display: block;
@@ -371,7 +386,7 @@ main {
 }
 
 .oferta-btn:hover {
-    background: #7ed957;
+    background: #ffe9ba;
     color: #3d2b23;
 }
 
@@ -385,8 +400,20 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 2px dotted #3d2b23;
     position: relative;
+    border: 2px solid #3d2b23   ;
+    font-family: 'Alexandria', sans-serif;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.outras-ofertas .oferta-flor {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 38px;
+    height: 38px;
+    margin: 0;
 }
 
 .outras-ofertas-titulo {
@@ -416,6 +443,12 @@ main {
     color: #3d2b23;
     margin-bottom: 8px;
     text-align: center;
+    
+}
+
+.produto-nome {
+    font-family: 'Alexandria', sans-serif;
+    font-weight: 500;
 }
 
 
@@ -453,10 +486,20 @@ main {
     border-radius: 15px;
 }
 
-
-
 section.produtos {
   border: 2px solid #3d2b2388;
+}
+
+section .oferta-semanal{
+    border: 2px solid #3d2b2388;
+}
+
+section .oferta-dia{
+    border: 2px solid #3d2b2388;
+}
+
+section .outras-ofertas{
+    border: 2px solid #3d2b2388;
 }
 
 .produto {
@@ -576,12 +619,14 @@ section.produtos {
     display: flex;
     gap: 18px;
     margin: 24px 24px 0 24px;
+    font-family: 'Work Sans', Arial, sans-serif;
 }
 
 .beneficio {
     flex: 1;
     text-align: center;
      border: 2px solid #39262179;
+     font-family: 'Work Sans', Arial, sans-serif;
 }
 
 .beneficio-card{
@@ -592,12 +637,14 @@ section.produtos {
     font-size: 2rem;
     color: #3d2b23;
     margin-bottom: 8px;
+  
 }
 
 .atendimento {
     display: flex;
     gap: 18px;
     margin: 24px 24px 0 24px;
+    
  
 }
 
@@ -608,12 +655,14 @@ section.produtos {
 }
 
 .atendimento-card span, .atendimento-card p {
+    font-family: 'Work Sans', sans-serif;
     display: block;
     margin-top: 4px;
     font-size: 1rem;
 }
 
 .atendimento-card span{
+    
     background: #3d2b23;
     color: #fff;
     padding: 14px;
@@ -639,11 +688,241 @@ footer {
 }
 
 .carousel-inner img {
-    width: 100rem;
-  
-    height: 18rem ;
-    
-    object-fit: contain;
-    margin: 0 auto;
     display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: auto;
+    max-width: 100%;
+    height: 18rem;
+    object-fit: contain;
 }
+
+@media screen and (max-width: 609px) {
+ body {
+        width: 100vw;
+        min-width: 0;
+        max-width: 100vw;
+        overflow-x: hidden;
+        background: #faebd0;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    header {
+        width: 100vw;
+        min-width: 0;
+        max-width: 100vw;
+        box-sizing: border-box;
+    }
+    .header-menu,.nav-links, .search-bar, .btn-entrar{
+        display: none;
+    }
+    .logo {
+        height: 34px;
+        max-width: 120px;
+    }
+   .cart-btn, .menu-mobile {
+        min-width: 34px;
+        min-height: 34px;
+        font-size: 1.4rem;
+    }
+    .carousel, .slide {
+        width: 100vw;
+        min-width: 0;
+        max-width: 100vw;
+        margin: 0 auto;
+    }
+    .carousel-inner img {
+        width: 100vw;
+        max-width: 340px;
+        margin: 0 auto;
+        display: block;
+        height: auto;
+        object-fit: contain;
+    }
+    main, .ofertas, .card, section {
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+        max-width: 98vw;
+    }
+    .ofertas, .card, section {
+        width: 96vw;
+        max-width: 98vw;
+        margin: 0 auto 18px auto;
+        border-radius: 16px;
+    }
+    .oferta-dia, .oferta-semanal, .outras-ofertas {
+        padding: 16px 8px 16px 8px;
+        border-radius: 16px;
+        margin-bottom: 12px;
+        min-width: 0;
+        max-width: 100vw;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .oferta-titulo, .outras-ofertas-titulo, .produtos-paraC, .produtos-decorativos, .moveis {
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+        text-align: left;
+    }
+    .oferta-flor {
+        width: 26px;
+        height: 26px;
+    }
+    .oferta-img {
+        width: 90px;
+        height: 90px;
+    }
+    .oferta-info {
+        min-width: 0;
+    }
+    .oferta-btn, .veja-mais-btn {
+        font-size: 1rem;
+        padding: 8px 24px;
+        border-radius: 8px;
+        margin: 0 auto;
+        margin-top: 8px;
+        width: 90%;
+        max-width: 200px;
+    }
+    .outras-ofertas-lista {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center;
+        gap: 18px !important;
+    }
+    .outras-ofertas-lista > *:nth-child(n+3) {
+        display: none !important;
+    }
+    .outras-ofertas-lista {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 8px;
+    }
+    .outras-ofertas-lista img {
+        width: 60px;
+        max-width: 80px;
+    }
+    .produtos-lista {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px 8px;
+        padding: 12px 4px 8px 4px;
+        border-radius: 12px;
+        background: #fff;
+    }
+    .produto {
+        width: 80px;
+        max-width: 90px;
+        min-height: 90px;
+        margin: 0;
+        padding: 0;
+    }
+    .produto img {
+        height: 44px;
+        max-width: 60px;
+        margin-bottom: 4px;
+    }
+    .produto-nome {
+        font-size: 0.85rem;
+        min-height: 16px;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 2px;
+    }
+    .produto-preco {
+        font-size: 0.95rem;
+    }
+    .produto-desconto {
+        font-size: 0.65rem;
+        min-width: 32px;
+        padding: 2px 4px;
+    }
+    .produto-preco-antigo, .produto-preco-anterior-label {
+        font-size: 0.65rem;
+    }
+    .beneficios, .atendimento {
+        flex-direction: column;
+        gap: 10px;
+        margin: 10px 0 0 0;
+        width: 98vw;
+        max-width: 98vw;
+    }
+    .beneficio, .atendimento-card {
+        font-size: 0.95rem;
+        padding: 10px 8px;
+        border-radius: 12px;
+    }
+    .pagamento.card {
+        width: 96vw;
+        max-width: 98vw;
+        padding: 14px 0 10px 0;
+        border-radius: 12px;
+    }
+    .pagamento-icones {
+        gap: 10px;
+        padding-top: 12px;
+        width: 100%;
+        border-top: 1.5px solid #3d2b23;
+    }
+    .pagamento-icones img {
+        height: 22px;
+    }
+    footer {
+        width: 100vw;
+        max-width: 100vw;
+        padding: 10px 0 6px 0;
+        font-size: 0.9rem;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .footer-icons {
+        gap: 10px;
+        font-size: 1.3rem;
+        margin-top: 4px;
+    }
+    .header-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0;
+        padding: 10px 10px 0 10px;
+        width: 100vw;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+    .header-icons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+    }
+    .cart-btn,
+    .bibi-list-btn,
+    .menu-mobile {
+        background: none;
+        border: none;
+        color: #3d2b23;
+        font-size: 1.5rem;
+        min-width: 36px;
+        min-height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        padding: 0;
+        margin: 0;
+    }
+
+    .produto-preco-desconto-container {
+    width: 9rem;
+    }
+
+    .bibi-list-btn {
+      
+    }
+}
+
