@@ -13,25 +13,30 @@
 </head>
 
 <body>
-    <header class="sobre-header">
-        <nav class="sobre-navbar">
-            <div class="sobre-navbar-container">
-                <div class="sobre-navbar-brand">
-                    <a href="#">
-                        <img src="../images/logo-handify.png" alt="Logo do Handify" height="45">
-                    </a>
-                </div>
-                <ul class="sobre-navbar-menu">
-                    <li><a href="#" class="sobre-navbar-link-contato">Contatos</a></li>
-                    <li><a href="#" class="sobre-navbar-link sobre-navbar-btn"> <i class="bi bi-archive"> </i>
-                            Produtos</a></li>
-                    <li><a href="#" class="sobre-navbar-link sobre-navbar-btn"> <i class="bi bi-person"></i> Login</a>
-                    </li>
-                    <li><a href="/src/pages/cadastro_user.html" class="sobre-navbar-link sobre-navbar-btn"> <i
-                                class="bi bi-person"></i> Cadastro</a></li>
-                </ul>
-            </div>
+    <header >
+        <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+        <nav>
+            <ul>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#" class="sobreNavbar"> <i class="bi bi-archive"> </i> Produtos </a></li>
+                <li><a href="#" class="sobreNavbar"><i class="bi bi-person"></i>Login</a></li>
+                <li>
+                    <a href="#" class="sobreNavbar"><i class="bi bi-person"></i>Cadastro</a>
+                </li>
+            </ul>
+            <!-- PARA DISPOSITIVOS MÓVEIS -->
+            <button id="list"><i class="bi bi-list"></i></button>
         </nav>
+        <div id="popup-menu">
+            <ul class="popup-list">
+                <li>
+                    <a href="#"><i class="bi bi-person"></i>Contato</a>
+                </li>
+                <li><a href="#"> <i class="bi bi-archive"> </i>Produtos</a></li>
+                <li><a href="#"><i class="bi bi-person"> </i>Login </a></li>
+                <li><a href="#">Cadastro</a></li>
+            </ul>
+        </div>
     </header>
     <main class="sobre-main">
         <section class="sobre-hero">
@@ -157,6 +162,8 @@
         </div>
     </footer>
 </body>
+
+ <script src="../js/mobilePop-upPagSobre.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
