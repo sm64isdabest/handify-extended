@@ -37,8 +37,6 @@ const setupImageUpload = (containerSelector, buttonSelector) => {
     }
 };
 
-
-
 // 2. Funcionalidade para o botão "Adicionar Imagem" na div .imagem-produto
 setupImageUpload('.imagem-produto', '.btn-add');
 
@@ -54,48 +52,6 @@ botoesDestaque.forEach(button => {
         console.log('Botão de destaque clicado.');
     });
 });
-
-// 5. Funcionalidade para os botões "Comprar Agora" e "Adicionar ao Carrinho"
-const comprarAgoraBtn = document.querySelector('.comprar-agora');
-const adicionarCarrinhoBtn = document.querySelector('.adicionar-carrinho');
-
-const validateInputs = () => {
-    const inputs = document.querySelectorAll('.info-produto input, .quantidade-produto input, .quadro-descricao input');
-    let allInputsFilled = true;
-    inputs.forEach(input => {
-        if (input.value.trim() === '') {
-            input.style.border = '2px solid red';
-            allInputsFilled = false;
-        } else {
-            input.style.border = '';
-        }
-    });
-    return allInputsFilled;
-};
-
-if (comprarAgoraBtn) {
-    comprarAgoraBtn.addEventListener('click', () => {
-        if (validateInputs()) {
-            alert('Produto comprado com sucesso! (Funcionalidade de checkout a ser implementada)');
-            console.log('Produto comprado.');
-        } else {
-            alert('Por favor, preencha todos os campos do produto antes de comprar.');
-            console.log('Tentativa de compra com campos vazios.');
-        }
-    });
-}
-
-if (adicionarCarrinhoBtn) {
-    adicionarCarrinhoBtn.addEventListener('click', () => {
-        if (validateInputs()) {
-            alert('Produto adicionado ao carrinho! (Funcionalidade de carrinho a ser implementada)');
-            console.log('Produto adicionado ao carrinho.');
-        } else {
-            alert('Por favor, preencha todos os campos do produto antes de adicionar ao carrinho.');
-            console.log('Tentativa de adicionar ao carrinho com campos vazios.');
-        }
-    });
-}
 
 // Opcional: Adicionar funcionalidade para o link de "Entrar" no header
 const entrarLink = document.querySelector('header nav ul li a.entrar');
