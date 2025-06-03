@@ -17,35 +17,51 @@
         <div class="header-container">
             <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
             <div class="search-bar">
-                <input type="text" placeholder="Buscar produtos..." />
-                <i class="bi bi-search"></i>
+                <input type="text" placeholder="Buscar produtos..." id="searchInput" />
+                <i class="bi bi-search" id="searchButton"></i>
             </div>
             <div class="menu_clc">
-                <button id="cart">
+                <button id="cartIconMobile">
                     <i class="bi bi-cart3"></i>
                 </button>
-                <button id="list">
+                <button id="listToggle">
                     <i class="bi bi-list"></i>
                 </button>
             </div>
-            <nav>
+            <nav id="mainNav">
                 <ul>
-                    <li><a href="#">Produtos</a></li>
-                    <li><a href="#">Contatos</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#" class="entrar">Entrar</a></li>
+                    <li><a href="#" class="nav-link" data-target="produtos">Produtos</a></li>
+                    <li><a href="#" class="nav-link" data-target="contatos">Contatos</a></li>
+                    <li><a href="#" class="nav-link" data-target="sobre">Sobre</a></li>
+                    <li><a href="#" class="entrar" data-target="entrar">Entrar</a></li>
                 </ul>
             </nav>
         </div>
         <div class="menu-bar">
             <div>
-                <button>Categorias</button>
-                <button>Ofertas</button>
-                <button>Vender</button>
-                <button>Histórico</button>
+                <button class="menu-bar-btn" id="categoriasBtn">Categorias</button>
+                <button class="menu-bar-btn" id="ofertasBtn">Ofertas</button>
+                <button class="menu-bar-btn" id="venderBtn">Vender</button>
+                <button class="menu-bar-btn" id="historicoBtn">Histórico</button>
             </div>
-            <button class="cart"><i class="bi bi-cart"></i></button>
+            <button class="cart-btn" id="cartIconDesktop"><i class="bi bi-cart"></i></button>
         </div>
+        <div id="popup-menu">
+        <ul class="popup-list">
+          <header class="pop_up">
+             <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" /> 
+             <i class="bi bi-cart3"></i> 
+             <p>Carrinho de compra</p>
+             <button class="sair_pop"><i class="bi bi-box-arrow-right"></i></button>
+          </header>
+          <div class="produto_pop" style="background-color: #5a3e36;">
+            <div class="cont_pop"> <img src="../images/produtos/bolsa-palha-maior.png" alt=""><h7>Suporte de faqueiro</h7>
+        </div>
+          </div>
+          <li><a href="#">Contato</a></li>
+          <li><a href="pesquisaProdutos.html">Produtos</a></li>
+        </ul>
+      </div>
     </header>
     <main>
         <div class="product-page">
@@ -68,8 +84,9 @@
             <section class="product-details">
                 <div class="avaliar">
                     <button class="sair"><i class="bi bi-arrow-left"></i></button> 4.8<span><i
-                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                            class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
+                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-half"></i></span>
                 </div>
                 <h1>Bolsa de palha</h1>
                 <p class="price">
@@ -95,7 +112,7 @@
                 </div>
                 <div class="botoes_adc">
                     <button class="btn_1">Comprar Agora</button>
-                    <button class="btn_2">Adicionar ao Carrinho</button>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
                 </div>
             </section>
 
@@ -132,38 +149,38 @@
                 <h2>Outras ofertas</h2>
                 <div class="offers-container">
                     <div class="offer-item">
-                        <div class="card" style="width: 18rem">
-                            <img src="../images/produtos/faqueiro.png" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Suporte de faqueiros</h5>
-                                <p class="card-text">R$ 89,70 OFF</p>
-                                <p class="sub-card-text">R$ 78,90</p>
+                            <div class="card">
+                                <img src="../images/produtos/faqueiro.png" class="card-img-top" alt="Suporte de faqueiros" />
+                                <div class="card-body">
+                                    <h5 class="card-title">Suporte de faqueiros</h5>
+                                    <p class="card-text">R$ 89,70 OFF</p>
+                                    <p class="sub-card-text">R$ 78,90</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card" style="width: 18rem">
-                            <img src="../images/produtos/Vaso.png" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Vasos pintados</h5>
-                                <p class="card-text">R$ 199,90 OFF</p>
-                                <p class="sub-card-text">R$ 99,99</p>
+                            <div class="card">
+                                <img src="../images/produtos/Vaso.png" class="card-img-top" alt="Vasos pintados" />
+                                <div class="card-body">
+                                    <h5 class="card-title">Vasos pintados</h5>
+                                    <p class="card-text">R$ 199,90 OFF</p>
+                                    <p class="sub-card-text">R$ 99,99</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card" style="width: 18rem">
-                            <img src="../images/produtos/Quadro.png" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Porta-retratos</h5>
-                                <p class="card-text">R$ 57,90 OFF</p>
-                                <p class="sub-card-text">R$ 29,90</p>
+                            <div class="card">
+                                <img src="../images/produtos/Quadro.png" class="card-img-top" alt="Porta-retratos" />
+                                <div class="card-body">
+                                    <h5 class="card-title">Porta-retratos</h5>
+                                    <p class="card-text">R$ 57,90 OFF</p>
+                                    <p class="sub-card-text">R$ 29,90</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card" style="width: 18rem">
-                            <img src="../images/produtos/Colher.png" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Colher de pau</h5>
-                                <p class="card-text">R$ 25,99 OFF</p>
-                                <p class="sub-card-text">R$ 15,99</p>
+                            <div class="card">
+                                <img src="../images/produtos/Colher.png" class="card-img-top" alt="Colher de pau" />
+                                <div class="card-body">
+                                    <h5 class="card-title">Colher de pau</h5>
+                                    <p class="card-text">R$ 25,99 OFF</p>
+                                    <p class="sub-card-text">R$ 15,99</p>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 </div>
             </section>
@@ -226,46 +243,47 @@
         <div class="Produtos-similares">
             <h1>Outros produtos similares</h1>
             <div class="carrossel-container">
-                <button class="carrossel-arrow left">&#8592;</button>
+                <button class="carrossel-arrow left">←</button>
                 <div class="carrossel-cards">
-                    <div class="card">
-                        <img src="../images/produtos/faqueiro.png" alt="Suporte de faqueiros" />
-                        <h5>Suporte de faqueiros</h5>
-                        <p class="card-text">R$ 87,90 OFF</p>
-                        <p class="sub-card-text">R$ 78,90</p>
-                    </div>
+                        <div class="card">
+                            <img src="../images/produtos/faqueiro.png" alt="Suporte de faqueiros" />
+                            <h5>Suporte de faqueiros</h5>
+                            <p class="card-text">R$ 87,90 OFF</p>
+                            <p class="sub-card-text">R$ 78,90</p>
+                        </div>
+                    </a>
                 </div>
-                <button class="carrossel-arrow right">&#8594;</button>
+                <button class="carrossel-arrow right">→</button>
             </div>
             <section class="produtos">
-                <div class="card" style="width: 18rem">
-                    <img src="../images/produtos/bolsa-palha-clara.png" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                        <h5>Bolsa De Palha Praia Feminina Bolsa Ombro Grande </h5>
-                        <p class="sub-card-text">R$ 95,99</p>
+                    <div class="card">
+                        <img src="../images/produtos/bolsa-palha-clara.png" class="card-img-top" alt="Bolsa De Palha Praia Feminina Bolsa Ombro Grande" />
+                        <div class="card-body">
+                            <h5>Bolsa De Palha Praia Feminina Bolsa Ombro Grande </h5>
+                            <p class="sub-card-text">R$ 95,99</p>
+                        </div>
                     </div>
-                </div>
-                <div class="card" style="width: 18rem">
-                    <img src="../images/produtos/bolsa.png" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                        <h5>Bolsa Praia Linda Palha Feminina Com Zíper + Pigente</h5>
-                        <p class="sub-card-text">R$ 42,99</p>
+                    <div class="card">
+                        <img src="../images/produtos/bolsa.png" class="card-img-top" alt="Bolsa Praia Linda Palha Feminina Com Zíper + Pigente" />
+                        <div class="card-body">
+                            <h5>Bolsa Praia Linda Palha Feminina Com Zíper + Pigente</h5>
+                            <p class="sub-card-text">R$ 42,99</p>
+                        </div>
                     </div>
-                </div>
-                <div class="card" style="width: 18rem">
-                    <img src="../images/produtos/bolsa-menor.png" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                        <h5>Bolsa De Palha Feminina Clutch </h5>
-                        <p class="sub-card-text">R$ 46,99</p>
+                    <div class="card3">
+                        <img src="../images/produtos/bolsa-menor.png" class="card-img-top" alt="Bolsa De Palha Feminina Clutch" />
+                        <div class="card-body">
+                            <h5>Bolsa De Palha Feminina Clutch </h5>
+                            <p class="sub-card-text">R$ 46,99</p>
+                        </div>
                     </div>
-                </div>
-                <div class="card" style="width: 18rem">
-                    <img src="../images/produtos/bolsa-maior.png" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                        <h5 class="card-title">Bolsa Feminina De Palha Meia Lua Grande</h5>
-                        <p class="sub-card-text">R$ 78,99</p>
+                    <div class="card4">
+                        <img src="../images/produtos/bolsa-maior.png" class="card-img-top" alt="Bolsa Feminina De Palha Meia Lua Grande" />
+                        <div class="card-body">
+                            <h5 class="card-title">Bolsa Feminina De Palha Meia Lua Grande</h5>
+                            <p class="sub-card-text">R$ 78,99</p>
+                        </div>
                     </div>
-                </div>
             </section>
         </div>
     </main>
@@ -279,7 +297,6 @@
         </div>
     </footer>
 
-    <!-- VLIBRAS -->
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
@@ -290,10 +307,12 @@
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
+    <script src="../js/paginadeCompra.js"></script>
+    <script src="../js/popup.js"></script>
 </body>
 
 </html>

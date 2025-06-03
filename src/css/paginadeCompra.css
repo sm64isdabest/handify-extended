@@ -157,6 +157,7 @@ nav ul li a.entrar {
     display: flex;
     flex-direction: row;
     align-items: center;
+
     justify-content: space-between;
     height: 65vh;
     background-color: white;
@@ -199,7 +200,6 @@ nav ul li a.entrar {
 .product-details {
     margin-bottom: 2rem;
     width: 20rem;
-    margin: auto;
 }
 
 .product-details h1 {
@@ -306,7 +306,7 @@ nav ul li a.entrar {
     border-radius: 1.1rem;
     padding: 0.3rem;
     width: auto;
-    margin-right: 0.3rem;
+    margin-right: 1rem;
 }
 
 .delivery-info,
@@ -508,6 +508,8 @@ span i {
     border-radius: 10px;
 }
 
+
+
 footer {
     font-family: "Work Sans", sans-serif;
     font-weight: 400;
@@ -548,6 +550,101 @@ footer .social-icons a i {
 }
 .carrossel-container{
     display: none;
+}
+#popup-menu {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  width: 430px;
+  height: 430px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  padding: 0.2rem 0.2rem;
+  z-index: 2000;
+  display: none;
+}
+.popup-list .pop_up{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    height: auto;
+    gap: 0.37rem;
+}
+.popup-list .pop_up img{
+    width: 7rem;
+    height: 3rem;
+}
+#popup-menu .popup-list {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+#popup-menu .popup-list a {
+  display: block;
+  margin: 0.7rem 0;
+  width: 9rem;
+  background-color: #5a3e36;
+  color: #fff;
+ 
+  border-radius: 16px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.sair_pop i{
+    margin-top: 0.2rem;
+    margin-left: 0.05rem;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+.pop_up .sair_pop{
+        background-color: #5a3e36;
+        border: none;
+        height: 1.95rem;
+        width: 1.75rem;
+        border-radius: 2rem;
+        display: flex;
+        margin-left: 2rem;
+    }
+.produto_pop{
+   
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    width: 85%;
+    height: 12vh;
+}
+
+.cont_pop{
+    background-color: white;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+    height: 10.2vh;
+}
+.cont_pop2{
+    background-color: white;
+    margin: 9rem;
+    border-radius: 0.5rem;
+    height: 10.2vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cont_pop img{
+    object-fit: contain;
+    width: 90px;
+    height: 90px;
+    aspect-ratio: 1 / 1;
+}
+
+.card-body h5 {
+    font-size: 1.2rem;
 }
 
 @media (max-width: 1309px) {
@@ -590,6 +687,7 @@ footer .social-icons a i {
     .sub_text_tablet {
         display: none;
     }
+
 }
 
 @media (max-width: 1018px) {
@@ -610,7 +708,15 @@ footer .social-icons a i {
     }
 
     .sub-card-text {
-        font-size: 2.3rem;
+        font-size: 1.5rem;
+    }
+
+    .card-title{
+        font-size: 1.0rem;
+    }
+
+    .card-text{
+        font-size: 0.9rem;
     }
 
     .other-offers h2 {
@@ -631,7 +737,8 @@ footer .social-icons a i {
     }
 
     .avaliações h2 {
-        font-size: 2.3rem;
+  
+       font-size: 2.3rem;
     }
 
     .avaliações p {
@@ -767,6 +874,8 @@ footer .social-icons a i {
         font-size: 2rem;
     }
 
+   
+
     .other-offers h2 {
         font-size: 2rem;
     }
@@ -813,12 +922,50 @@ footer .social-icons a i {
         display: none;
     }
 
-    .card-title {
-        font-size: 1rem;
+    .other-offers .card-title {
+        font-size: 1.0rem;
     }
 
-    .sub-card-text {
-        font-size: 1.8rem;
+    .other-offers .card-text {
+        font-size: 0.9rem;
+    }
+ 
+    .card-body h5{
+        font-size: 1.2rem;
+    }
+
+    .card h5{
+        font-size: 1.2rem;
+        text-align: flex-start;
+    }
+
+    .card p{
+        font-size: 1.6rem;
+    }
+    
+    .card3 p{
+        margin-top: 3.14rem;
+        font-size: 1.6rem;
+    }
+  
+    .card3 h5{
+        font-size: 1.2rem;
+        text-align: flex-start;
+    }
+  
+
+    /* .card4 img{
+        margin-bottom: 1.5rem;
+    } */
+
+     .card4 h5{
+        font-size: 1.2rem;
+        text-align: flex-start;
+    }
+    
+    .card4 p{
+        margin-top: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .product-info {
@@ -829,15 +976,28 @@ footer .social-icons a i {
         height: 80vh;
     }
 
+    .botoes_adc button {
+        background-color: #392621;
+        color: #fff;
+        width: 13rem;
+        height: 3.5rem;
+        border: none;
+        border-radius: 1rem;
+        font-size: 1rem;
+        margin-left: -19rem;
+    }
+
     .botoes_adc {
         display: flex;
         justify-content: space-between;
-        gap: 4rem;
+        gap: 3rem;
         align-items: center;
         width: auto;
         margin-top: 2.5rem;
     }
-
+    .add-to-cart {
+        margin-right: 3rem;
+    }
     .text_tablet {
         margin-top: 3rem;
         display: block;
@@ -850,18 +1010,6 @@ footer .social-icons a i {
 
     .product-details h1 {
         font-size: 2.7rem;
-    }
-
-    .botoes_adc button {
-        background-color: #392621;
-        color: #fff;
-        width: 15rem;
-        height: 3.7rem;
-        border: none;
-        border-radius: 1rem;
-        padding: 0.5rem;
-        font-size: 1rem;
-        margin-left: -18rem;
     }
 
     .product-gallery .main-image img {
@@ -882,7 +1030,7 @@ footer .social-icons a i {
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 732px) {
     .card-title {
         font-size: 0.9rem;
     }
@@ -895,7 +1043,7 @@ footer .social-icons a i {
         border: none;
         border-radius: 1rem;
         font-size: 1rem;
-        margin-left: -18rem;
+        margin-left: -15rem;
     }
 
     .botoes_adc {
@@ -914,6 +1062,9 @@ footer .social-icons a i {
 
     .sub-card-text {
         font-size: 1.6rem;
+    }
+    .card-title{
+        font-size: 0.7rem;
     }
 }
 
@@ -944,10 +1095,10 @@ footer .social-icons a i {
 
 
     .product-page {
-        height: 100vh;
+        height: 75vh;
     }
 
-    .btn_2 {
+    .add-to-cart{
         margin-right: 3rem;
     }
 }
@@ -957,7 +1108,6 @@ footer .social-icons a i {
         flex-direction: column;
         height: auto;
     }
-
     .product-details {
         text-align: left;
         align-items: flex-start;
@@ -993,7 +1143,7 @@ footer .social-icons a i {
         position: relative;
     }
 
-    .btn_2 {
+    .add-to-cart {
         margin-right: 0;
     }
 
@@ -1024,7 +1174,7 @@ footer .social-icons a i {
         object-fit: contain;
         border-radius: 10px;
     }
-
+    
     .search-bar {
         display: none;
     }
@@ -1168,6 +1318,7 @@ footer .social-icons a i {
         justify-content: space-between;
         display: block;
     }
+
     .product-gallery .thumbnails img {
         width: 71px;
         height: 71px;
@@ -1189,3 +1340,4 @@ footer .social-icons a i {
         font-size: 2rem;
     }
 }
+
