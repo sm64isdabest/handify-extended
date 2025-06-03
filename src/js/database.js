@@ -51,7 +51,7 @@ export const products = [
     {
         name: "Bolsa de Pérola Pequena",
         img: "../images/produtos/bolsa-clara.png",
-        price: "R$69,5",
+        price: "R$69,50",
         originalPrice: "R$139,00",
         discount: 50, // 50%
     }
