@@ -50,17 +50,32 @@ header nav ul li a.entrar i {
   margin-right: 0.3rem;
 }
 
-#list {
+header #cart {
+  display: none;
+}
+
+header #cart {
   width: 50px;
   height: 50px;
   display: none;
   background: none;
   border: none;
-}
-
-#list {
   border-radius: 100%;
   margin: -10px;
+}
+
+header #list {
+  width: 50px;
+  height: 50px;
+  display: none;
+  background: none;
+  border: none;
+  border-radius: 100%;
+  margin: -10px;
+}
+
+#cart i {
+  font-size: xx-large;
 }
 
 #list i {
@@ -128,6 +143,33 @@ input::placeholder {
   border: none;
   cursor: pointer;
   font-size: 16px;
+}
+
+.autocomplete-items {
+  position: absolute;
+  top: 95%;
+  background-color: #5a3e36;
+  color: white;
+  z-index: 99;
+  list-style: none;
+  width: 95%;
+  overflow: visible;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+}
+
+.autocomplete-items li {
+  font-size: 0.9rem;
+  padding-left: 0.5rem;
+  cursor: pointer;
+  white-space: normal;
+  background: none;
+  border: none;
+}
+
+.autocomplete-items li:hover {
+  background: #3c2923;
 }
 
 .menu-bar {
@@ -223,7 +265,6 @@ main {
   border-radius: 2rem;
   margin-left: 2rem;
   background-color: rgb(255, 255, 255);
-  /* width: 100%; */
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
@@ -233,21 +274,10 @@ main {
 }
 
 #cards-inside {
+  visibility: hidden;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-}
-
-@media (max-width: 1024px) {
-  #cards-inside {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  #cards-inside {
-    grid-template-columns: 1fr;
-  }
 }
 
 .fundo {
@@ -510,44 +540,62 @@ footer .social-icons a i {
   border-radius: 1rem;
 }
 
-@media (max-width: 1024px) {
-  header .search-bar {
-    width: 28rem;
-  }
+.pagamento.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px #0001;
+  width: 600px;
+  max-width: 98vw;
+  padding: 24px 0 18px 0;
+  margin: 36px auto 20px auto;
+  box-sizing: border-box;
+  border: 1px solid #3d2b23be;
+}
 
-  .caracteristicas .card {
-    width: 20rem;
-    height: 15rem;
-  }
 
-  .caracteristicas .card-body h5 {
-    font-size: 0.9rem;
-  }
+.pagamento h4 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #3d2b23;
+}
 
-  .caracteristicas .card-body p {
-    font-size: 0.7rem;
-  }
+.pagamento-icones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  margin-top: 0;
+  border-top: 2px solid #3d2b23;
+  width: 83%;
+  padding-top: 30px;
+}
 
-  .contatos .card {
-    width: 20rem;
-    height: 15rem; 
-  }
-
-  .contatos .card-body h5 {
-    font-size: 0.9rem;
-  }
-
-  .contatos .card-body p {
-    font-size: 0.8rem;
-  }
-
-  .contatos .card button {
-    width: 15rem;
-  }
+.pagamento-icones img {
+  height: 32px;
+  width: auto;
 }
 
 
 @media (max-width: 768px) {
+
+  header #cart {
+    display: none;
+  }
+
+  #cards-inside {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .produtos {
+    margin: 0 auto;
+  }
+
   header nav ul {
     flex-direction: row;
     align-items: center;
@@ -562,12 +610,12 @@ footer .social-icons a i {
     display: block;
   }
 
-  header .search-bar{
+  header .search-bar {
     width: 15rem;
     margin-left: 8.8rem;
   }
 
-  .caracteristicas .card{
+  .caracteristicas .card {
     width: 15rem;
     height: 11rem;
   }
@@ -593,50 +641,109 @@ footer .social-icons a i {
     font-size: 0.7rem;
   }
 
-  .contatos .card button{
+  .contatos .card button {
     width: 13rem;
+  }
+
+  .filtros {
+    display: none;
   }
 }
 
-  @media (max-width: 425px){
-    main{
-      flex-direction: column-reverse;
-    }
-
-    main .produtos {
-      width: 20rem;
-      margin-left: 0;
-      text-align: center;
-      flex-direction: column;
-    }
+@media (max-width: 425px) {
+  main {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1rem;
   }
 
-@media (max-width: 521px) {
-  #list {
+  header #cart {
+    display: block;
+    margin-right: 0.5rem;
+  }
+
+  header #list {
     display: block;
   }
 
-  header {
-    position: fixed;
-    width: 100%;
-    justify-content: space-between;
+  #cards-inside {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .logo {
+    margin-right: auto;
+  }
+
+  header nav {
+    justify-content: end;
   }
 
   header nav ul {
     display: none;
   }
 
-  #popup-menu ul {
-    list-style: none;
-    margin-left: -1.5rem;
-  }
-
-  header nav ul li a.entrar {
+  header .search-bar {
     display: none;
   }
 
-  .search-bar i {
-    color: rgb(255, 255, 255);
-    cursor: pointer;
+  header .menu-bar {
+    display: none;
+  }
+
+  .produtos {
+    width: 25rem;
+    margin-left: -0.5rem;
+  }
+
+  #cards-inside {
+    margin-left: 4rem;
+  }
+
+  .filtros {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .carousel-item img {
+    width: 100vw;
+    max-width: 100vw;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .caracteristicas {
+    display: none;
+  }
+
+  .contatos {
+    display: none;
+  }
+
+  .pagamento.card {
+    width: 96vw;
+    max-width: 98vw;
+    padding: 14px 0 10px 0;
+    border-radius: 12px;
+  }
+
+  .pagamento-icones {
+    gap: 10px;
+    padding-top: 12px;
+    width: 100%;
+    border-top: 1.5px solid #3d2b23;
+  }
+
+  .pagamento-icones img {
+    height: 22px;
+  }
+
+  footer{
+    font-size: 0.7rem;
+  }
+
+  footer .social-icons a i {
+    font-size: 0.7rem;
   }
 }
