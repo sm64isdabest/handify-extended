@@ -20,9 +20,6 @@
   <body style="background-color: #FAECCE;">
     <header>
       <div class="header-container">
-        <button class="bibi-list-btn" aria-label="Menu Lista">
-          <i class="bibi bibi-list"></i>
-        </button>
         <img src="../images/logo-handify.png" alt="Handify" class="logo" />
         <input
           type="text"
@@ -81,7 +78,7 @@
     <main>
       <section class="ofertas">
         <div style="display: flex; flex-direction: column; gap: 24px;">
-          <div class="rounded-4 oferta-dia card" style="height: 25rem;">
+          <div class="rounded-4 55 oferta-dia card">
             <div class="oferta-header">
               <span class="oferta-titulo">Oferta do dia</span>
               <img src="../images/icones/Flor.png" class="oferta-flor" alt="Flor" />
@@ -91,13 +88,20 @@
               <img src="../images/produtos/bolsa.png" alt="Bolsa de palha" class="oferta-img" />
               <div class="oferta-info">
                 <span class="oferta-desconto">50% OFF</span>
-                <span class="oferta-preco-antigo">de: <span class="preco-antigo">R$ 279,90</span></span>
-                <span class="oferta-preco-novo">por apenas:<br><b>R$ 139,95</b></span>
+                <span class="oferta-preco-antigo">de: 
+                  <span class="preco-antigo">R$ 279,90
+
+                </span>
+              </span>
+                <span class="oferta-preco-novo">por apenas:
+                  <br>
+                  <b>R$ 139,95</b>
+                </span>
                 <button class="oferta-btn">Comprar</button>
               </div>
             </div>
           </div>
-          <div class="rounded-4 oferta-semanal card" style="height: 25rem;">
+          <div class="rounded-4 oferta-semanal card">
             <div class="oferta-header">
               <span class="oferta-titulo">Oferta Semanal</span>
               <img src="../images/icones/Flor.png" class="oferta-flor" alt="Flor" />
@@ -120,32 +124,32 @@
             <img src="../images/icones/Flor.png" class="oferta-flor" alt="Flor" />
           </div>
           <div class="outras-ofertas-lista">
-            <div class="outras-produto">
+            <div class="outras-produto-vaso">
               <img src="../images/produtos/jarro-pintado.png" alt="Vasos pintados" />
-              <span>Vasos pintados</span>
+              <span class="spantext">Vasos pintados</span>
             </div>
-            <div class="outras-produto">
+            <div class="outras-produto-retrato">
               <img src="../images/produtos/porta-retrato.png" alt="Porta-retratos" />
-              <span>Porta-retratos</span>
+              <span class="spantext">Porta-retratos</span>
             </div>
             <div class="outras-produto-panela">
               <img src="../images/produtos/panela-barro.png" alt="Panela de barro" />
-              <span>Panela de barro</span>
+              <span class="spantext">Panela de barro</span>
             </div>
             <div class="outras-produto-colher">
               <img src="../images/produtos/colher-pau.png" alt="Colher de pau" />
-              <span>Colher de pau</span>
+              <span class="spantext">Colher de pau</span>
             </div>
           </div>
           <button class="oferta-btn">Veja mais</button>
         </div>
       </section>
 
-      <section class="rounded-4 produtos card Cozinha">
+      <section class="rounded-4 card produtos Cozinha">
         <h3 class="produtos-paraC">Produtos para cozinha</h3>
         <div class="produtos-lista">
           <div class="produto">
-            <img
+            <img  
               src="../images/produtos/utensilios-madeira.png"
               alt="Utensílios de cozinha bambu"
             />
@@ -200,18 +204,20 @@
               <span class="produto-preco">R$ 78,90</span>
             </div>
           </div>
-          <div class="produto">
-            <img
-              src="../images/produtos/panela-pedra.png"
-              alt="Panela de Pedra Sabão 25cm"
-            />
-            <span class="produto-nome">Panela de Pedra Sabão 25cm</span>
-            <div class="produto-preco-bloco">
-              <div class="produto-preco-desconto-container">
-                <span class="produto-preco-antigo">R$ 499,90</span>
-                <span class="produto-desconto">36% OFF</span>
+          <div class="panela">  
+            <div class="produto">
+              <img
+                src="../images/produtos/panela-pedra.png"
+                alt="Panela de Pedra Sabão 25cm"
+              />
+              <span class="produto-nome">Panela de Pedra Sabão 25cm</span>
+              <div class="produto-preco-bloco">
+                <div class="produto-preco-desconto-container">
+                  <span class="produto-preco-antigo">R$ 499,90</span>
+                  <span class="produto-desconto">36% OFF</span>
+                </div>
+                <span class="produto-preco">R$ 315,90</span>
               </div>
-              <span class="produto-preco">R$ 315,90</span>
             </div>
           </div>
         </div>
@@ -263,7 +269,7 @@
             </div>
           </div>
           <div class="produto">
-            <img
+             <img
               src="../images/produtos/Jarro-flor.png"
               alt="Jarro de Flor Palha de Milho"
             />
@@ -276,24 +282,26 @@
               <span class="produto-preco">R$ 365,90</span>
             </div>
           </div>
-          <div class="produto">
-            <img
-              src="../images/produtos/Pato-madeira.png"
-              alt="Escultura de pato de madeira"
-            />
-            <span class="produto-nome">Escultura de pato de madeira</span>
-            <div class="produto-preco-bloco">
-              <div class="produto-preco-desconto-container">
-                <span class="produto-preco-antigo">R$ 68,90</span>
-                <span class="produto-desconto">13% OFF</span>
+          <div class="pato">
+            <div class="produto">
+              <img 
+                src="../images/produtos/Pato-madeira.png"
+                alt="Escultura de pato de madeira"
+              />
+              <span class="produto-nome">Escultura de pato de madeira</span>
+              <div class="produto-preco-bloco">
+                <div class="produto-preco-desconto-container">
+                  <span class="produto-preco-antigo">R$ 68,90</span>
+                  <span class="produto-desconto">13% OFF</span>
+                </div>
+                <span class="produto-preco">R$ 59,90</span>
               </div>
-              <span class="produto-preco">R$ 59,90</span>
-            </div>
+          </div>
           </div>
         </div>
       </section>
 
-      <section class="rounded-4 produtos card Moveis">
+      <section class="rounded-4 card produtos Moveis">
         <h3 class="moveis">Móveis</h3>
         <div class="produtos-lista">
           <div class="produto">
@@ -311,7 +319,7 @@
             </div>
           </div>
           <div class="produto">
-            <img
+            <img class="img-produto"
               src="../images/produtos/Armario.png"
               alt="Armário de vime - portas de tecido"
             />
@@ -325,7 +333,7 @@
             </div>
           </div>
           <div class="produto">
-            <img
+            <img class="img-produto"
               src="../images/produtos/Mesa.png"
               alt="Mesa de centro - fibra natural"
             />
@@ -339,7 +347,7 @@
             </div>
           </div>
           <div class="produto">
-            <img
+            <img class="img-produto"
               src="../images/produtos/Poltrona-Positano.png"
               alt="Poltrona pedico - fibra natural"
             />
@@ -352,15 +360,17 @@
               <span class="produto-preco">R$ 1559,90</span>
             </div>
           </div>
+          <div class="banco">
           <div class="produto">
-            <img src="../images/produtos/Banqueta.png" alt="Banqueta de vime" />
-            <span class="produto-nome">Banqueta de vime</span>
-            <div class="produto-preco-bloco">
-              <div class="produto-preco-desconto-container">
-                <span class="produto-preco-antigo">R$ 445,90</span>
-                <span class="produto-desconto">10% OFF</span>
+              <img src="../images/produtos/Banqueta.png" alt="Banqueta de vime" />
+              <span class="produto-nome">Banqueta de vime</span>
+              <div class="produto-preco-bloco">
+                <div class="produto-preco-desconto-container">
+                  <span class="produto-preco-antigo">R$ 445,90</span>
+                  <span class="produto-desconto">10% OFF</span>
+                </div>
+                <span class="produto-preco">R$ 398,90</span>
               </div>
-              <span class="produto-preco">R$ 398,90</span>
             </div>
           </div>
         </div>
