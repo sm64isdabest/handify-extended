@@ -91,7 +91,7 @@ header {
     display: flex;
     gap: 18px;
     padding: 18px 24px 0 24px;
-    justify-content: center;  
+    justify-content: center;
     align-items: center;
     width: 100%;
     margin: 0 auto;
@@ -99,13 +99,13 @@ header {
 
 .carousel,
 .slide {
-  background-image: url("../images/fundos/fundo_madeira.png");
-  border-bottom: solid 0.3rem #4a2c2a;
+    background-image: url("../images/fundos/fundo_madeira.png");
+    border-bottom: solid 0.3rem #4a2c2a;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  filter: invert(1);
+    filter: invert(1);
 }
 
 .carousel-item img {
@@ -148,7 +148,7 @@ header {
     flex: 1;
     max-width: 600px;
     padding: 0 24px;
-    margin-left:440px;
+    margin-left: 440px;
     background: #ffffffe7;
     padding: 24px;
     border-radius: 16px;
@@ -168,9 +168,9 @@ header {
     font-weight: 500;
 }
 
-.banner-off b{
-    background:#3d2b23;
-    color:#fff;
+.banner-off b {
+    background: #3d2b23;
+    color: #fff;
     border-radius: 18px;
     padding: 8px 16px;
     font-size: 2rem;
@@ -181,11 +181,11 @@ header {
 
 .banner-off {
     font-size: 1.5rem;
-    background:#3d2b23;
-    color:#fff;
+    background: #3d2b23;
+    color: #fff;
     border-radius: 18px;
     padding: 8px 16px;
-    
+
 }
 
 .banner img {
@@ -202,7 +202,7 @@ main {
     border-radius: 14px;
     padding: 12px;
     margin: 1rem;
- }
+}
 
 .pagamento.card {
     display: flex;
@@ -257,7 +257,8 @@ main {
 }
 
 
-.oferta-dia, .oferta-semanal {
+.oferta-dia,
+.oferta-semanal {
     background: #fff;
     border-radius: 22px;
     border: 2.5px dotted #3d2b23;
@@ -401,7 +402,7 @@ main {
     flex-direction: column;
     align-items: center;
     position: relative;
-    border: 2px solid #3d2b23   ;
+    border: 2px solid #3d2b23;
     font-family: 'Alexandria', sans-serif;
     font-size: 1.3rem;
     font-weight: bold;
@@ -443,7 +444,7 @@ main {
     color: #3d2b23;
     margin-bottom: 8px;
     text-align: center;
-    
+
 }
 
 .produto-nome {
@@ -487,18 +488,18 @@ main {
 }
 
 section.produtos {
-  border: 2px solid #3d2b2388;
-}
-
-section .oferta-semanal{
     border: 2px solid #3d2b2388;
 }
 
-section .oferta-dia{
+section .oferta-semanal {
     border: 2px solid #3d2b2388;
 }
 
-section .outras-ofertas{
+section .oferta-dia {
+    border: 2px solid #3d2b2388;
+}
+
+section .outras-ofertas {
     border: 2px solid #3d2b2388;
 }
 
@@ -507,7 +508,7 @@ section .outras-ofertas{
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-   
+
     width: 140px;
     min-height: 170px;
     margin: 0;
@@ -516,14 +517,14 @@ section .outras-ofertas{
     position: relative;
     margin-top: 1rem;
     margin-bottom: 0.6rem;
-}   
+}
 
 .produto img {
     display: block;
     margin: 0 auto 6px auto;
-    height: 110px;        
+    height: 110px;
     width: auto;
-    max-width: 140px; 
+    max-width: 140px;
     object-fit: contain;
 }
 
@@ -537,8 +538,9 @@ section .outras-ofertas{
     line-height: 1.1;
     width: 10rem;
     display: block;
-    
+
 }
+
 .produto-preco-anterior-label {
     color: #e53935;
     font-size: 0.80rem;
@@ -600,17 +602,18 @@ section .outras-ofertas{
     display: inline-block;
     vertical-align: middle;
 }
-.produtos-decorativos{
+
+.produtos-decorativos {
     font-size: 1.5rem;
     margin-left: 0.6rem;
 }
 
 .produtos-paraC {
-   font-size: 1.5rem;
-   margin-left: 0.6rem;
+    font-size: 1.5rem;
+    margin-left: 0.6rem;
 }
 
-.moveis{
+.moveis {
     font-size: 1.7rem;
     margin-left: 0.6rem;
 }
@@ -625,11 +628,11 @@ section .outras-ofertas{
 .beneficio {
     flex: 1;
     text-align: center;
-     border: 2px solid #39262179;
-     font-family: 'Work Sans', Arial, sans-serif;
+    border: 2px solid #39262179;
+    font-family: 'Work Sans', Arial, sans-serif;
 }
 
-.beneficio-card{
+.beneficio-card {
     border-radius: 15px;
 }
 
@@ -637,15 +640,15 @@ section .outras-ofertas{
     font-size: 2rem;
     color: #3d2b23;
     margin-bottom: 8px;
-  
+
 }
 
 .atendimento {
     display: flex;
     gap: 18px;
     margin: 24px 24px 0 24px;
-    
- 
+
+
 }
 
 .atendimento-card {
@@ -654,20 +657,21 @@ section .outras-ofertas{
     border: 2px solid #39262179;
 }
 
-.atendimento-card span, .atendimento-card p {
+.atendimento-card span,
+.atendimento-card p {
     font-family: 'Work Sans', sans-serif;
     display: block;
     margin-top: 4px;
     font-size: 1rem;
 }
 
-.atendimento-card span{
-    
+.atendimento-card span {
+
     background: #3d2b23;
     color: #fff;
     padding: 14px;
     border-radius: 12px;
-    
+
 }
 
 footer {
@@ -699,42 +703,89 @@ footer {
     object-fit: contain;
 }
 
-@media screen and (max-width: 609px) {
- body {
+@media screen and (max-width: 510px) {
+
+    body {
         width: 100vw;
         min-width: 0;
         max-width: 100vw;
         overflow-x: hidden;
         background: #faebd0;
     }
+
     body {
+        max-width: 100vw;
         padding: 0;
         margin: 0;
     }
+
     header {
         width: 100vw;
         min-width: 0;
         max-width: 100vw;
         box-sizing: border-box;
     }
-    .header-menu,.nav-links, .search-bar, .btn-entrar{
+
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 16px;
+        background-color: white;
+        width: 100vw;
+    }
+
+    .logo {
+        margin-right: auto;
+        height: 40px;
+        object-fit: contain;
+    }
+
+    .header-icons {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-left: auto;
+    }
+
+    .header-icons {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .header-menu,
+    .nav-links,
+    .search-bar,
+    .btn-entrar .panela,
+    .pato,
+    .banco {
         display: none;
     }
+
     .logo {
-        height: 34px;
-        max-width: 120px;
+        height: 40px;
+        object-fit: contain;
     }
-   .cart-btn, .menu-mobile {
+
+
+
+
+    .cart-btn,
+    .menu-mobile {
         min-width: 34px;
         min-height: 34px;
         font-size: 1.4rem;
     }
-    .carousel, .slide {
+
+    .carousel,
+    .slide {
         width: 100vw;
         min-width: 0;
         max-width: 100vw;
         margin: 0 auto;
     }
+
     .carousel-inner img {
         width: 100vw;
         max-width: 340px;
@@ -743,19 +794,29 @@ footer {
         height: auto;
         object-fit: contain;
     }
-    main, .ofertas, .card, section {
+
+    main,
+    .ofertas,
+    .card,
+    section {
         margin: 0 auto;
         padding: 0;
         box-sizing: border-box;
         max-width: 98vw;
     }
-    .ofertas, .card, section {
+
+    .ofertas,
+    .card,
+    section {
         width: 96vw;
         max-width: 98vw;
         margin: 0 auto 18px auto;
         border-radius: 16px;
     }
-    .oferta-dia, .oferta-semanal, .outras-ofertas {
+
+    .oferta-dia,
+    .oferta-semanal,
+    .outras-ofertas {
         padding: 16px 8px 16px 8px;
         border-radius: 16px;
         margin-bottom: 12px;
@@ -763,24 +824,57 @@ footer {
         max-width: 100vw;
         width: 100%;
         box-sizing: border-box;
+        height: 130rem;
     }
-    .oferta-titulo, .outras-ofertas-titulo, .produtos-paraC, .produtos-decorativos, .moveis {
-        font-size: 1.2rem;
+
+    .oferta-dia,
+    .oferta-semanal {
+        width: 50vw;
+        height: 20rem;
+    }
+
+    .produto .produto-preco-bloco .produto-preco-desconto-container {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .panela {
+        display: none;
+    }
+
+    .oferta-titulo,
+    .outras-ofertas-titulo {
+        font-size: 1rem;
         margin-bottom: 6px;
-        text-align: left;
     }
+
+
+
+
+
+    .produtos-paraC,
+    .produtos-decorativos,
+    .moveis {
+        font-size: 1.3rem;
+        margin-top: 1.5rem;
+    }
+
     .oferta-flor {
         width: 26px;
         height: 26px;
     }
+
     .oferta-img {
         width: 90px;
         height: 90px;
     }
+
     .oferta-info {
         min-width: 0;
     }
-    .oferta-btn, .veja-mais-btn {
+
+    .oferta-btn,
+    .veja-mais-btn {
         font-size: 1rem;
         padding: 8px 24px;
         border-radius: 8px;
@@ -789,23 +883,54 @@ footer {
         width: 90%;
         max-width: 200px;
     }
+
+    .oferta-descricao {
+        font-size: 0.8rem;
+    }
+
+    .oferta-titulo {
+        font-size: 1rem;
+    }
+
+    .oferta-desconto {
+        font-size: 0.6rem;
+    }
+
+    .oferta-btn {
+        font-size: 0.5rem;
+        max-width: 20vw;
+    }
+
+    .oferta-preco-novo {
+        font-size: 0.7rem;
+    }
+
+    .oferta-preco-novo b {
+        font-size: 1.3rem;
+        width: 35vw;
+    }
+
+    .preco-antigo {
+        font-size: 0.8rem;
+    }
+
     .outras-ofertas-lista {
-        display: flex !important;
-        flex-direction: column !important;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 18px !important;
+        gap: 18px;
     }
-    .outras-ofertas-lista > *:nth-child(n+3) {
-        display: none !important;
-    }
+
     .outras-ofertas-lista {
         grid-template-columns: 1fr 1fr;
         gap: 10px 8px;
     }
+
     .outras-ofertas-lista img {
         width: 60px;
         max-width: 80px;
     }
+
     .produtos-lista {
         grid-template-columns: 1fr 1fr;
         gap: 14px 8px;
@@ -813,6 +938,7 @@ footer {
         border-radius: 12px;
         background: #fff;
     }
+
     .produto {
         width: 80px;
         max-width: 90px;
@@ -820,11 +946,13 @@ footer {
         margin: 0;
         padding: 0;
     }
+
     .produto img {
         height: 44px;
         max-width: 60px;
         margin-bottom: 4px;
     }
+
     .produto-nome {
         font-size: 0.85rem;
         min-height: 16px;
@@ -832,44 +960,77 @@ footer {
         text-align: center;
         margin-bottom: 2px;
     }
+
     .produto-preco {
         font-size: 0.95rem;
     }
+
     .produto-desconto {
         font-size: 0.65rem;
         min-width: 32px;
         padding: 2px 4px;
     }
-    .produto-preco-antigo, .produto-preco-anterior-label {
-        font-size: 0.65rem;
+
+    .produto-preco-antigo,
+    .produto-preco-anterior-label {
+        font-size: 0.80rem;
     }
-    .beneficios, .atendimento {
+
+    .ofertas {
+        margin-top: 3rem;
+    }
+
+
+    .beneficios,
+    .atendimento {
         flex-direction: column;
         gap: 10px;
         margin: 10px 0 0 0;
         width: 98vw;
         max-width: 98vw;
     }
-    .beneficio, .atendimento-card {
+
+    .beneficio,
+    .atendimento-card {
         font-size: 0.95rem;
         padding: 10px 8px;
         border-radius: 12px;
     }
+
     .pagamento.card {
         width: 96vw;
         max-width: 98vw;
         padding: 14px 0 10px 0;
         border-radius: 12px;
     }
+
     .pagamento-icones {
         gap: 10px;
         padding-top: 12px;
         width: 100%;
         border-top: 1.5px solid #3d2b23;
     }
+
     .pagamento-icones img {
         height: 22px;
     }
+
+    .produto-nome {
+        font-size: 0.7rem;
+    }
+
+    .produto-preco-antigo {
+        font-size: 0.6rem;
+    }
+
+    .produto-desconto {
+        font-size: 0.5rem;
+    }
+
+    .produto-preco {
+        font-size: 0.9rem;
+    }
+
     footer {
         width: 100vw;
         max-width: 100vw;
@@ -878,28 +1039,13 @@ footer {
         flex-direction: column;
         gap: 6px;
     }
+
     .footer-icons {
         gap: 10px;
         font-size: 1.3rem;
         margin-top: 4px;
     }
-    .header-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        gap: 0;
-        padding: 10px 10px 0 10px;
-        width: 100vw;
-        min-width: 0;
-        box-sizing: border-box;
-    }
-    .header-icons {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 8px;
-    }
+
     .cart-btn,
     .bibi-list-btn,
     .menu-mobile {
@@ -918,11 +1064,79 @@ footer {
     }
 
     .produto-preco-desconto-container {
-    width: 9rem;
+        width: 4rem;
     }
 
-    .bibi-list-btn {
-      
+    .outras-ofertas-lista {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        width: 100%;
+        justify-content: center;
     }
+
+    .outras-ofertas-lista img {
+        margin: 0 auto 4px auto;
+        width: 60px;
+        max-width: 80px;
+        height: auto;
+    }
+
+    .outras-ofertas-lista .produto-nome {
+        font-size: 0.7rem;
+        text-align: center;
+        margin-bottom: 2px;
+        width: 100%;
+    }
+
+    .produto-nome {
+        font-size: 0.7rem;
+        text-align: center;
+        margin-bottom: 2px;
+        width: 100%;
+    }
+
+    .spantext {
+        font-size: 1rem;
+        display: block;
+        width: 9rem;
+    }
+
+    .outras-ofertas-lista {
+        gap: 2rem;
+   
+    }
+
+     .outras-ofertas-titulo {
+        text-align: center;
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+     }
+
+    .outras-ofertas-header .oferta-flor {
+        display: none;
+    }
+
+    .outras-produto-vaso,
+    .outras-produto-retrato,
+    .outras-produto-panela,
+    .outras-produto-colher {
+        border: 2px solid #3d2b231a;
+        background-color: #faecce11;
+        border-radius: 15px;
+       text-align: center;
+        margin: auto;
+    }
+
+    .outras-ofertas .oferta-btn {
+        margin: 0;
+        width: 100rem;
+        height: 2rem;
+        padding: 0;
+        
+    }
+
 }
-
