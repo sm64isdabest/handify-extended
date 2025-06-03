@@ -1,32 +1,62 @@
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton'); // ícone da lupa
+
 import { products } from './database.js';
 
-const searchInput = document.getElementById('searchInput');
-const productsCards = document.getElementById('cards-inside');
-const cardTemplate = document.getElementById('cardTemplate').firstElementChild;
-
-function renderCards(filter = '') {
-    productsCards.innerHTML = '';
-    products
-        .filter(product => product.name.toLowerCase().includes(filter.toLowerCase()))
-        .forEach(product => {
-            const card = cardTemplate.cloneNode(true);
-            card.querySelector('.card-img-top').src = product.img;
-            card.querySelector('.card-img-top').alt = product.name;
-            card.querySelector('.card-title').textContent = product.name;
-            card.querySelector('.card-title').textContent = product.name;
-            //   card.querySelector('.card-text').textContent = product.description;
-            card.querySelector('.preco-original').textContent = product.originalPrice;
-            card.querySelector('.sub-card-text').textContent = product.price;
-            card.querySelector('#oferta').textContent = product.discount + '% OFF';
-            // card.querySelector('.card-link').href = `product.html?id=${product.id}`;
-            productsCards.appendChild(card);
-        });
+let autocompleteList = document.getElementById('autocomplete-list');
+if (!autocompleteList) {
+    autocompleteList = document.createElement('ul');
+    autocompleteList.id = 'autocomplete-list';
+    autocompleteList.className = 'autocomplete-items';
+    searchInput.parentNode.appendChild(autocompleteList);
 }
 
-// Initial render
-renderCards();
+function goToSearchPage() {
+    const query = encodeURIComponent(searchInput.value.trim());
+    if (query) {
+        window.location.href = `/src/pages/pesquisaProdutos.html?q=${query}`;
+    }
+}
 
-// Filter on input
 searchInput.addEventListener('input', function () {
-    renderCards(this.value);
+    const value = this.value.trim().toLowerCase();
+    autocompleteList.innerHTML = '';
+    if (!value) return;
+
+    autocompleteList.style.visibility = 'visible';
+
+    // Filtra produtos pelo nome
+    const suggestions = products
+        .filter(p => p.name.toLowerCase().includes(value))
+        .slice(0, 4); // Limite de sugestões
+
+    suggestions.forEach(product => {
+        const li = document.createElement('li');
+        li.textContent = product.name;
+        li.addEventListener('click', function () {
+            searchInput.value = product.name;
+            autocompleteList.innerHTML = '';
+            goToSearchPage();
+        });
+        autocompleteList.appendChild(li);
+    });
 });
+
+// Fecha sugestões ao clicar fora
+document.addEventListener('click', function (e) {
+    if (e.target !== searchInput) {
+        autocompleteList.innerHTML = '';
+        autocompleteList.style.visibility = 'hidden';
+    }
+});
+
+searchInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+        goToSearchPage();
+        autocompleteList.innerHTML = '';
+    }
+});
+
+if (searchButton) {
+    searchButton.addEventListener('click', goToSearchPage);
+}
