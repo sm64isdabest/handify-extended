@@ -1,1142 +1,1167 @@
-@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
-
 body {
-    font-family: 'Montserrat', Arial, sans-serif;
-    margin: 0;
-    color: #3d2b23;
+  font-family: "Montserrat", Arial, sans-serif;
+  margin: 0;
+  color: #3d2b23;
 }
 
 header {
-    background: #fff;
-    border-bottom: 3px solid #3d2b23;
-    padding-bottom: 0.5rem;
+  background: #fff;
+  border-bottom: 3px solid #3d2b23;
+  padding-bottom: 0.5rem;
 }
 
-
 .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 18px 24px 0 24px;
-    gap: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 24px 0 24px;
+  gap: 12px;
 }
 
 .logo {
-    height: 48px;
+  height: 48px;
 }
 
 .search-bar {
-    flex: 1;
-    margin: 0 18px;
-    padding: 8px 16px;
-    border-radius: 20px;
-    border: none;
-    background: #3d2b23;
-    font-size: 1rem;
-    color: #fff;
+  flex: 1;
+  margin: 0 18px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  background: #3d2b23;
+  font-size: 1rem;
+  color: #fff;
 }
 
 .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
 .nav-links a {
-    color: #3d2b23;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
+  color: #3d2b23;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .btn-entrar {
-    background: #3d2b23;
-    color: #fff;
-    border: none;
-    border-radius: 18px;
-    padding: 6px 18px;
-    font-size: 1rem;
-    margin-left: 12px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  background: #3d2b23;
+  color: #fff;
+  border: none;
+  border-radius: 18px;
+  padding: 6px 18px;
+  font-size: 1rem;
+  margin-left: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .cart-btn {
-    background: #3d2b23;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 38px;
-    height: 38px;
-    font-size: 1.3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 10px;
+  background: #3d2b23;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
 }
 
 .menu-mobile {
-    display: none;
-    border: none;
-    font-size: 2rem;
-    color: #3d2b23;
-    cursor: pointer;
+  display: none;
+  border: none;
+  font-size: 2rem;
+  color: #3d2b23;
+  cursor: pointer;
 }
 
 .header-menu {
-    display: flex;
-    gap: 18px;
-    padding: 18px 24px 0 24px;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 0 auto;
+  display: flex;
+  gap: 18px;
+  padding: 18px 24px 0 24px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .carousel,
 .slide {
-    background-image: url("../images/fundos/fundo_madeira.png");
-    border-bottom: solid 0.3rem #4a2c2a;
+  background-image: url("../images/fundos/fundo_madeira.png");
+  border-bottom: solid 0.3rem #4a2c2a;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    filter: invert(1);
+  filter: invert(1);
 }
 
 .carousel-item img {
-    width: 100%;
-    max-height: 20rem;
-    object-fit: contain;
+  width: 100%;
+  max-height: 20rem;
+  object-fit: contain;
 }
 
 .menu-btn {
-    background: #3d2b23;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    padding: 8px 18px;
-    font-size: 1rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  background: #3d2b23;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .banner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 0;
-    height: 11rem;
-    border-bottom: 3px solid #3d2b23;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  height: 11rem;
+  border-bottom: 3px solid #3d2b23;
 }
 
 .banner-arrow {
-    border: none;
-    font-size: 2rem;
-    color: #3d2b23;
-    cursor: pointer;
-    padding: 0 18px;
+  border: none;
+  font-size: 2rem;
+  color: #3d2b23;
+  cursor: pointer;
+  padding: 0 18px;
 }
 
 .banner-content {
-    flex: 1;
-    max-width: 600px;
-    padding: 0 24px;
-    margin-left: 440px;
-    background: #ffffffe7;
-    padding: 24px;
-    border-radius: 16px;
-    border-color: #3d2b23;
+  flex: 1;
+  max-width: 600px;
+  padding: 0 24px;
+  margin-left: 440px;
+  background: #ffffffe7;
+  padding: 24px;
+  border-radius: 16px;
+  border-color: #3d2b23;
 }
 
 .banner-content h2 {
-    font-size: 2rem;
-    margin: 0 0 8px 0;
-    font-weight: bold;
-    width: 25rem;
+  font-size: 2rem;
+  margin: 0 0 8px 0;
+  font-weight: bold;
+  width: 25rem;
 }
 
 .banner-content p {
-    font-size: 1.1rem;
-    font-family: "Alexandria", sans-serif;
-    font-weight: 500;
+  font-size: 1.1rem;
+  font-family: "Alexandria", sans-serif;
+  font-weight: 500;
 }
 
 .banner-off b {
-    background: #3d2b23;
-    color: #fff;
-    border-radius: 18px;
-    padding: 8px 16px;
-    font-size: 2rem;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 8px;
+  background: #3d2b23;
+  color: #fff;
+  border-radius: 18px;
+  padding: 8px 16px;
+  font-size: 2rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 8px;
 }
 
 .banner-off {
-    font-size: 1.5rem;
-    background: #3d2b23;
-    color: #fff;
-    border-radius: 18px;
-    padding: 8px 16px;
-
+  font-size: 1.5rem;
+  background: #3d2b23;
+  color: #fff;
+  border-radius: 18px;
+  padding: 8px 16px;
 }
 
 .banner img {
-    margin-right: 500px;
-    width: 256px
+  margin-right: 500px;
+  width: 256px;
 }
 
 main {
-    padding: 24px 0 0 0;
+  padding: 24px 0 0 0;
 }
 
 .card {
-    background: #fff;
-    border-radius: 14px;
-    padding: 12px;
-    margin: 1rem;
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px;
+  margin: 1rem;
 }
 
 .pagamento.card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px #0001;
-    width: 600px;
-    max-width: 98vw;
-    padding: 24px 0 18px 0;
-    margin: 36px auto 20px auto;
-    box-sizing: border-box;
-    border: 1px solid #3d2b23be;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px #0001;
+  width: 600px;
+  max-width: 98vw;
+  padding: 24px 0 18px 0;
+  margin: 36px auto 20px auto;
+  box-sizing: border-box;
+  border: 1px solid #3d2b23be;
 }
 
-
 .pagamento h4 {
-    text-align: center;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 25px;
-    color: #3d2b23;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #3d2b23;
 }
 
 .pagamento-icones {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
-    width: 100%;
-    margin-top: 0;
-    border-top: 2px solid #3d2b23;
-    width: 83%;
-    padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  margin-top: 0;
+  border-top: 2px solid #3d2b23;
+  width: 83%;
+  padding-top: 30px;
 }
 
 .pagamento-icones img {
-    height: 32px;
-    width: auto;
+  height: 32px;
+  width: auto;
 }
-
 
 .ofertas {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 32px;
-    margin: 0 0 32px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 32px;
+  margin: 0 0 32px 0;
 }
-
 
 .oferta-dia,
 .oferta-semanal {
-    background: #fff;
-    border-radius: 22px;
-    border: 2.5px dotted #3d2b23;
-    box-shadow: 0 2px 8px #0001;
-    padding: 28px 32px 24px 32px;
-    min-width: 370px;
-    max-width: 420px;
-    position: relative;
-    margin-bottom: 18px;
-    font-family: 'Montserrat', Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  background: #fff;
+  border-radius: 22px;
+  border: 2.5px dotted #3d2b23;
+  box-shadow: 0 2px 8px #0001;
+  padding: 28px 32px 24px 32px;
+  min-width: 370px;
+  max-width: 420px;
+  position: relative;
+  margin-bottom: 18px;
+  font-family: "Montserrat", Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .oferta-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .oferta-titulo {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #3d2b23;
-    margin-bottom: 0;
-    margin-top: 0;
-    display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #3d2b23;
+  margin-bottom: 0;
+  margin-top: 0;
+  display: block;
 }
 
 .oferta-flor {
-    width: 38px;
-    height: 38px;
-    margin-left: 8px;
+  width: 38px;
+  height: 38px;
+  margin-left: 8px;
 }
 
 .oferta-descricao {
-    font-size: 1.2rem;
-    color: #3d2b23;
-    margin-bottom: 0.5rem;
-    margin-top: -0.5rem;
-    display: block;
+  font-size: 1.2rem;
+  color: #3d2b23;
+  margin-bottom: 0.5rem;
+  margin-top: -0.5rem;
+  display: block;
 }
 
 .oferta-conteudo {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 18px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 18px;
 }
 
 .oferta-img {
-    width: 150px;
-    height: 150px;
-    object-fit: contain;
-    display: block;
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  display: block;
 }
 
-
 .oferta-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    align-items: flex-start;
-    justify-content: center;
-    min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 180px;
 }
 
 .oferta-desconto {
-    background: #7ed957;
-    color: #fff;
-    border-radius: 8px;
-    padding: 6px 18px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    display: inline-block;
-    margin-bottom: 0.2rem;
-    letter-spacing: 1px;
+  background: #7ed957;
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 18px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 0.2rem;
+  letter-spacing: 1px;
 }
 
 .oferta-preco-antigo {
-    color: #3d2b23;
-    font-size: 1.1rem;
-    margin-bottom: 0.1rem;
-    display: block;
+  color: #3d2b23;
+  font-size: 1.1rem;
+  margin-bottom: 0.1rem;
+  display: block;
 }
 
 .preco-antigo {
-    color: #e53935;
-    font-size: 1.1rem;
-    text-decoration: line-through;
-    font-weight: bold;
-    margin-left: 0.2rem;
+  color: #e53935;
+  font-size: 1.1rem;
+  text-decoration: line-through;
+  font-weight: bold;
+  margin-left: 0.2rem;
 }
 
 .oferta-preco-novo {
-    color: #3d2b23;
-    font-size: 1.7rem;
-    font-weight: 500;
-    margin-bottom: 0.2rem;
-    display: block;
+  color: #3d2b23;
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+  display: block;
 }
 
 .oferta-preco-novo b {
-    font-size: 2.2rem;
-    color: #3d2b23;
-    font-weight: bold;
-    display: block;
-    margin-top: 0.1rem;
+  font-size: 2.2rem;
+  color: #3d2b23;
+  font-weight: bold;
+  display: block;
+  margin-top: 0.1rem;
 }
 
 .oferta-btn {
-    background: #3d2b23;
-    color: #fff;
-    border: none;
-    border-radius: 16px;
-    padding: 12px 36px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 12px;
-    margin-left: 0;
-    display: block;
-    box-shadow: 0 2px 8px #0001;
-    transition: background 0.2s;
+  background: #3d2b23;
+  color: #fff;
+  border: none;
+  border-radius: 16px;
+  padding: 12px 36px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 12px;
+  margin-left: 0;
+  display: block;
+  box-shadow: 0 2px 8px #0001;
+  transition: background 0.2s;
 }
 
 .oferta-btn:hover {
-    background: #ffe9ba;
-    color: #3d2b23;
+  background: #ffe9ba;
+  color: #3d2b23;
 }
 
 .outras-ofertas {
-    flex: 1;
-    background: #fff;
-    border-radius: 18px;
-    padding: 22px 22px 18px 22px;
-    box-shadow: 0 2px 8px #0001;
-    margin-left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    border: 2px solid #3d2b23;
-    font-family: 'Alexandria', sans-serif;
-    font-size: 1.3rem;
-    font-weight: bold;
+  flex: 1;
+  background: #fff;
+  border-radius: 18px;
+  padding: 22px 22px 18px 22px;
+  box-shadow: 0 2px 8px #0001;
+  margin-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border: 2px solid #3d2b23;
+  font-family: "Alexandria", sans-serif;
+  font-size: 1.3rem;
+  font-weight: bold;
 }
 
 .outras-ofertas .oferta-flor {
-    position: absolute;
-    top: 18px;
-    right: 18px;
-    width: 38px;
-    height: 38px;
-    margin: 0;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  margin: 0;
 }
 
 .outras-ofertas-titulo {
-    font-weight: bold;
-    font-size: 2rem;
-    margin-bottom: 12px;
-    text-align: center;
-    color: #3d2b23;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 12px;
+  text-align: center;
+  color: #3d2b23;
 }
 
 .outras-ofertas-lista {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 32px 32px;
-    justify-items: center;
-    align-items: center;
-    width: 100%;
-    margin-top: 8px;
-    margin-bottom: 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 32px 32px;
+  justify-items: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 18px;
 }
 
-
 .outras-ofertas-lista .produto-nome {
-    font-size: 1rem;
-    font-weight: 500;
-    color: #3d2b23;
-    margin-bottom: 8px;
-    text-align: center;
-
+  font-size: 1rem;
+  font-weight: 500;
+  color: #3d2b23;
+  margin-bottom: 8px;
+  text-align: center;
 }
 
 .produto-nome {
-    font-family: 'Alexandria', sans-serif;
-    font-weight: 500;
+  font-family: "Alexandria", sans-serif;
+  font-weight: 500;
 }
-
 
 .outras-ofertas-lista img {
-    width: 300px;
-    height: auto;
-    margin-bottom: 0;
-    display: block;
+  width: 300px;
+  height: auto;
+  margin-bottom: 0;
+  display: block;
 }
-
 
 .outras-ofertas .veja-mais-btn {
-    background: #3d2b23;
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    padding: 12px 36px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    cursor: pointer;
-    margin: 0 auto;
-    display: block;
+  background: #3d2b23;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 36px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
 }
 
-
 .produtos-lista {
-    display: flex;
-    justify-content: space-around;
-    align-items: space-between;
-    gap: 11rem;
-    padding-left: 1.5rem;
-    margin-top: 18px;
-    padding-bottom: 8px;
-    padding-right: 2rem;
-    border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
+  align-items: space-between;
+  gap: 11rem;
+  padding-left: 1.5rem;
+  margin-top: 18px;
+  padding-bottom: 8px;
+  padding-right: 2rem;
+  border-radius: 15px;
 }
 
 section.produtos {
-    border: 2px solid #3d2b2388;
+  border: 2px solid #3d2b2388;
 }
 
 section .oferta-semanal {
-    border: 2px solid #3d2b2388;
+  border: 2px solid #3d2b2388;
 }
 
 section .oferta-dia {
-    border: 2px solid #3d2b2388;
+  border: 2px solid #3d2b2388;
 }
 
 section .outras-ofertas {
-    border: 2px solid #3d2b2388;
+  border: 2px solid #3d2b2388;
 }
 
 .produto {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
 
-    width: 140px;
-    min-height: 170px;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    position: relative;
-    margin-top: 1rem;
-    margin-bottom: 0.6rem;
+  width: 140px;
+  min-height: 170px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  margin-top: 1rem;
+  margin-bottom: 0.6rem;
 }
 
 .produto img {
-    display: block;
-    margin: 0 auto 6px auto;
-    height: 110px;
-    width: auto;
-    max-width: 140px;
-    object-fit: contain;
+  display: block;
+  margin: 0 auto 6px auto;
+  height: 110px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
 }
 
 .produto-nome {
-    font-size: 1.1rem;
-    margin-bottom: 2px;
-    color: #3d2b23;
-    text-align: center;
-    font-weight: 500;
-    min-height: 28px;
-    line-height: 1.1;
-    width: 10rem;
-    display: block;
-
+  font-size: 1.1rem;
+  margin-bottom: 2px;
+  color: #3d2b23;
+  text-align: center;
+  font-weight: 500;
+  min-height: 28px;
+  line-height: 1.1;
+  width: 10rem;
+  display: block;
 }
 
 .produto-preco-anterior-label {
-    color: #e53935;
-    font-size: 0.80rem;
-    font-weight: bold;
-    margin-bottom: 0;
-    display: block;
-    text-align: center;
-    letter-spacing: 0.5px;
-    margin-top: 2px;
-    line-height: 1;
+  color: #e53935;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 0;
+  display: block;
+  text-align: center;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+  line-height: 1;
 }
 
 .produto-preco-bloco {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 4px;
-    font-size: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4px;
+  font-size: 2rem;
 }
 
 .produto-preco-antigo {
-    color: #e53935;
-    font-size: 0.8rem;
-    text-decoration: line-through;
-    font-weight: bold;
-    margin-bottom: 2px;
-    text-align: center;
-    display: block;
+  color: #e53935;
+  font-size: 0.8rem;
+  text-decoration: line-through;
+  font-weight: bold;
+  margin-bottom: 2px;
+  text-align: center;
+  display: block;
 }
 
 .produto-preco-desconto-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    justify-content: center;
-    width: 13rem;
-    margin-top: 0.7rem;
-    margin-bottom: 0.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  width: 13rem;
+  margin-top: 0.7rem;
+  margin-bottom: 0.1rem;
 }
 
 .produto-preco {
-    font-size: 1.5rem;
-    color: #3d2b23;
-    font-weight: bold;
-    text-align: center;
+  font-size: 1.5rem;
+  color: #3d2b23;
+  font-weight: bold;
+  text-align: center;
 }
 
 .produto-desconto {
-    background: #4caf50;
-    color: #fff;
-    border-radius: 8px;
-    padding: 2px 10px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    min-width: 56px;
-    text-align: center;
-    margin-left: 0;
-    display: inline-block;
-    vertical-align: middle;
+  background: #4caf50;
+  color: #fff;
+  border-radius: 8px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  min-width: 56px;
+  text-align: center;
+  margin-left: 0;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .produtos-decorativos {
-    font-size: 1.5rem;
-    margin-left: 0.6rem;
+  font-size: 1.5rem;
+  margin-left: 0.6rem;
 }
 
 .produtos-paraC {
-    font-size: 1.5rem;
-    margin-left: 0.6rem;
+  font-size: 1.5rem;
+  margin-left: 0.6rem;
 }
 
 .moveis {
-    font-size: 1.7rem;
-    margin-left: 0.6rem;
+  font-size: 1.7rem;
+  margin-left: 0.6rem;
 }
 
 .beneficios {
-    display: flex;
-    gap: 18px;
-    margin: 24px 24px 0 24px;
-    font-family: 'Work Sans', Arial, sans-serif;
+  display: flex;
+  gap: 18px;
+  margin: 24px 24px 0 24px;
+  font-family: "Work Sans", Arial, sans-serif;
 }
 
 .beneficio {
-    flex: 1;
-    text-align: center;
-    border: 2px solid #39262179;
-    font-family: 'Work Sans', Arial, sans-serif;
+  flex: 1;
+  text-align: center;
+  border: 2px solid #39262179;
+  font-family: "Work Sans", Arial, sans-serif;
 }
 
 .beneficio-card {
-    border-radius: 15px;
+  border-radius: 15px;
 }
 
 .beneficio i {
-    font-size: 2rem;
-    color: #3d2b23;
-    margin-bottom: 8px;
-
+  font-size: 2rem;
+  color: #3d2b23;
+  margin-bottom: 8px;
 }
 
 .atendimento {
-    display: flex;
-    gap: 18px;
-    margin: 24px 24px 0 24px;
-
-
+  display: flex;
+  gap: 18px;
+  margin: 24px 24px 0 24px;
 }
 
 .atendimento-card {
-    flex: 1;
-    text-align: center;
-    border: 2px solid #39262179;
+  flex: 1;
+  text-align: center;
+  border: 2px solid #39262179;
 }
 
 .atendimento-card span,
 .atendimento-card p {
-    font-family: 'Work Sans', sans-serif;
-    display: block;
-    margin-top: 4px;
-    font-size: 1rem;
+  font-family: "Work Sans", sans-serif;
+  display: block;
+  margin-top: 4px;
+  font-size: 1rem;
 }
 
 .atendimento-card span {
-
-    background: #3d2b23;
-    color: #fff;
-    padding: 14px;
-    border-radius: 12px;
-
+  background: #3d2b23;
+  color: #fff;
+  padding: 14px;
+  border-radius: 12px;
 }
 
 footer {
-    background: #fff;
-    border-top: 1px solid #e7dfd1;
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.95rem;
-    color: #3d2b23;
+  background: #fff;
+  border-top: 1px solid #e7dfd1;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  color: #3d2b23;
 }
 
 .footer-icons {
-    display: flex;
-    gap: 12px;
-    font-size: 1.3rem;
+  display: flex;
+  gap: 12px;
+  font-size: 1.3rem;
 }
 
 .carousel-inner img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: auto;
+  max-width: 100%;
+  height: 18rem;
+  object-fit: contain;
+}
+
+@media screen and (max-width: 1448px) and (min-width: 981px) {
+  .outras-ofertas .outras-produto-retrato,
+  .outras-ofertas,
+  .outras-ofertas .outras-produto-panela {
+    display: none;
+  }
+
+  .outras-ofertas-lista,
+  .spantext {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  main .outras-ofertas-lista {
+    display: flex;
+    flex-direction: column;
+  }
+
+  main .produtos-lista {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 0rem;
+    padding-right: 0rem;
+    gap: 3rem;
+  }
+
+  .banner-content {
+    margin-left: 0;
+    max-width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .banner-content h2 {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+
+  .banner-content p {
+    font-size: 1rem;
+  }
+
+  .banner img {
+    margin: 16px auto 0 auto;
+    width: 180px;
+  }
+
+  .oferta-dia,
+  .oferta-semanal {
+    max-width: none;
+  }
+
+  .outras-ofertas {
+    flex: 1 1 35%;
+    margin-left: 0;
+  }
+
+  .outras-ofertas-lista .spantext {
+    font-size: 1rem;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 12px;
+    font-size: 1rem;
+    padding: 12px 24px;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  body {
+    width: 100vw;
+    min-width: 0;
+    max-width: 100vw;
+    overflow-x: hidden;
+    background: #faebd0;
+  }
+
+  body {
+    max-width: 100vw;
+    padding: 0;
+    margin: 0;
+  }
+
+  header {
+    width: 100vw;
+    min-width: 0;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background-color: white;
+    width: 100vw;
+  }
+
+  .logo {
+    margin-right: auto;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto;
+  }
+
+  .header-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .header-menu,
+  .nav-links,
+  .search-bar,
+  .btn-entrar .panela,
+  .pato,
+  .banco {
+    display: none;
+  }
+
+  .logo {
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .cart-btn,
+  .menu-mobile {
+    min-width: 34px;
+    min-height: 34px;
+    font-size: 1.4rem;
+  }
+
+  .carousel,
+  .slide {
+    width: 100vw;
+    min-width: 0;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+
+  .carousel-inner img {
+    width: 100vw;
+    max-width: 340px;
+    margin: 0 auto;
+    display: block;
+    height: auto;
+    object-fit: contain;
+  }
+
+  main,
+  .ofertas,
+  .card,
+  section {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    max-width: 98vw;
+  }
+
+  .ofertas,
+  .card,
+  section {
+    width: 96vw;
+    max-width: 98vw;
+    margin: 0 auto 18px auto;
+    border-radius: 16px;
+  }
+
+  .oferta-dia,
+  .oferta-semanal,
+  .outras-ofertas {
+    padding: 16px 8px 16px 8px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    min-width: 0;
+    max-width: 100vw;
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+  }
+
+  .oferta-dia,
+  .oferta-semanal {
+    width: 100%;
+    height: auto;
+  }
+
+  .produto .produto-preco-bloco .produto-preco-desconto-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .panela {
+    display: none;
+  }
+
+  .oferta-titulo,
+  .outras-ofertas-titulo {
+    font-size: 1rem;
+    margin-bottom: 6px;
+  }
+
+  .produtos-paraC,
+  .produtos-decorativos,
+  .moveis {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+  }
+
+  .oferta-flor {
+    width: 26px;
+    height: 26px;
+  }
+
+  .oferta-img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .oferta-info {
+    min-width: 0;
+  }
+
+  .oferta-btn,
+  .veja-mais-btn {
+    font-size: 1rem;
+    padding: 8px 24px;
+    border-radius: 8px;
+    margin: 0 auto;
+    margin-top: 8px;
+    width: 90%;
+    max-width: 200px;
+  }
+
+  .oferta-descricao {
+    font-size: 0.8rem;
+  }
+
+  .oferta-titulo {
+    font-size: 1rem;
+  }
+
+  .oferta-desconto {
+    font-size: 0.6rem;
+  }
+
+  .oferta-btn {
+    font-size: 0.5rem;
+    max-width: 20vw;
+  }
+
+  .oferta-preco-novo {
+    font-size: 0.7rem;
+  }
+
+  .oferta-preco-novo b {
+    font-size: 1.3rem;
+    width: 35vw;
+  }
+
+  .preco-antigo {
+    font-size: 0.8rem;
+  }
+
+  .outras-ofertas-lista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .outras-ofertas-lista {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 8px;
+  }
+
+  .outras-ofertas-lista img {
+    width: 60px;
+    max-width: 80px;
+  }
+
+  .produtos-lista {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 8px;
+    padding: 12px 4px 8px 4px;
+    border-radius: 12px;
+    background: #fff;
+  }
+
+  .produto {
+    width: 80px;
+    max-width: 90px;
+    min-height: 90px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .produto img {
+    height: 44px;
+    max-width: 60px;
+    margin-bottom: 4px;
+  }
+
+  .produto-nome {
+    font-size: 0.85rem;
+    min-height: 16px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2px;
+  }
+
+  .produto-preco {
+    font-size: 0.95rem;
+  }
+
+  .produto-desconto {
+    font-size: 0.65rem;
+    min-width: 32px;
+    padding: 2px 4px;
+  }
+
+  .produto-preco-antigo,
+  .produto-preco-anterior-label {
+    font-size: 0.8rem;
+  }
+
+  .ofertas {
+    margin-top: 3rem;
+  }
+
+  .beneficios,
+  .atendimento {
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 0 0 0;
+    width: 98vw;
+    max-width: 98vw;
+  }
+
+  .beneficio,
+  .atendimento-card {
+    font-size: 0.95rem;
+    padding: 10px 8px;
+    border-radius: 12px;
+  }
+
+  .pagamento.card {
+    width: 96vw;
+    max-width: 98vw;
+    padding: 14px 0 10px 0;
+    border-radius: 12px;
+  }
+
+  .pagamento-icones {
+    gap: 10px;
+    padding-top: 12px;
+    width: 100%;
+    border-top: 1.5px solid #3d2b23;
+  }
+
+  .pagamento-icones img {
+    height: 22px;
+  }
+
+  .produto-nome {
+    font-size: 0.7rem;
+  }
+
+  .produto-preco-antigo {
+    font-size: 0.6rem;
+  }
+
+  .produto-desconto {
+    font-size: 0.5rem;
+  }
+
+  footer {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 10px 0 6px 0;
+    font-size: 0.9rem;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .footer-icons {
+    gap: 10px;
+    font-size: 1.3rem;
+    margin-top: 4px;
+  }
+
+  .cart-btn,
+  .bibi-list-btn,
+  .menu-mobile {
+    background: none;
+    border: none;
+    color: #3d2b23;
+    font-size: 1.5rem;
+    min-width: 36px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .produto-preco-desconto-container {
+    width: 4rem;
+  }
+
+  .outras-ofertas-lista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .outras-ofertas-lista img {
+    margin: 0 auto 4px auto;
+    width: 60px;
+    max-width: 80px;
+    height: auto;
+  }
+
+  .outras-ofertas-lista .produto-nome {
+    font-size: 0.7rem;
+    text-align: center;
+    margin-bottom: 2px;
+    width: 100%;
+  }
+
+  .produto-nome {
+    font-size: 0.7rem;
+    text-align: center;
+    margin-bottom: 2px;
+    width: 100%;
+  }
+
+  .spantext {
+    font-size: 0.6rem;
+  }
+
+  .outras-ofertas-lista {
+    gap: 2rem;
+  }
+
+  .outras-ofertas-titulo {
+    text-align: center;
+    width: 100%;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 0;
-    margin-bottom: 0;
-    width: auto;
-    max-width: 100%;
-    height: 18rem;
-    object-fit: contain;
-}
-
-@media screen and (max-width: 510px) {
-
-    body {
-        width: 100vw;
-        min-width: 0;
-        max-width: 100vw;
-        overflow-x: hidden;
-        background: #faebd0;
-    }
-
-    body {
-        max-width: 100vw;
-        padding: 0;
-        margin: 0;
-    }
-
-    header {
-        width: 100vw;
-        min-width: 0;
-        max-width: 100vw;
-        box-sizing: border-box;
-    }
-
-    .header-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px 16px;
-        background-color: white;
-        width: 100vw;
-    }
-
-    .logo {
-        margin-right: auto;
-        height: 40px;
-        object-fit: contain;
-    }
-
-    .header-icons {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        margin-left: auto;
-    }
-
-    .header-icons {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-    }
-
-    .header-menu,
-    .nav-links,
-    .search-bar,
-    .btn-entrar .panela,
-    .pato,
-    .banco {
-        display: none;
-    }
-
-    .logo {
-        height: 40px;
-        object-fit: contain;
-    }
-
-
-
-
-    .cart-btn,
-    .menu-mobile {
-        min-width: 34px;
-        min-height: 34px;
-        font-size: 1.4rem;
-    }
-
-    .carousel,
-    .slide {
-        width: 100vw;
-        min-width: 0;
-        max-width: 100vw;
-        margin: 0 auto;
-    }
-
-    .carousel-inner img {
-        width: 100vw;
-        max-width: 340px;
-        margin: 0 auto;
-        display: block;
-        height: auto;
-        object-fit: contain;
-    }
-
-    main,
-    .ofertas,
-    .card,
-    section {
-        margin: 0 auto;
-        padding: 0;
-        box-sizing: border-box;
-        max-width: 98vw;
-    }
-
-    .ofertas,
-    .card,
-    section {
-        width: 96vw;
-        max-width: 98vw;
-        margin: 0 auto 18px auto;
-        border-radius: 16px;
-    }
-
-    .oferta-dia,
-    .oferta-semanal,
-    .outras-ofertas {
-        padding: 16px 8px 16px 8px;
-        border-radius: 16px;
-        margin-bottom: 12px;
-        min-width: 0;
-        max-width: 100vw;
-        width: 100%;
-        box-sizing: border-box;
-        height: 130rem;
-    }
-
-    .oferta-dia,
-    .oferta-semanal {
-        width: 50vw;
-        height: 20rem;
-    }
-
-    .produto .produto-preco-bloco .produto-preco-desconto-container {
-        display: flex;
-        flex-direction: column-reverse;
-    }
-
-    .panela {
-        display: none;
-    }
-
-    .oferta-titulo,
-    .outras-ofertas-titulo {
-        font-size: 1rem;
-        margin-bottom: 6px;
-    }
-
-
-
-
-
-    .produtos-paraC,
-    .produtos-decorativos,
-    .moveis {
-        font-size: 1.3rem;
-        margin-top: 1.5rem;
-    }
-
-    .oferta-flor {
-        width: 26px;
-        height: 26px;
-    }
-
-    .oferta-img {
-        width: 90px;
-        height: 90px;
-    }
-
-    .oferta-info {
-        min-width: 0;
-    }
-
-    .oferta-btn,
-    .veja-mais-btn {
-        font-size: 1rem;
-        padding: 8px 24px;
-        border-radius: 8px;
-        margin: 0 auto;
-        margin-top: 8px;
-        width: 90%;
-        max-width: 200px;
-    }
-
-    .oferta-descricao {
-        font-size: 0.8rem;
-    }
-
-    .oferta-titulo {
-        font-size: 1rem;
-    }
-
-    .oferta-desconto {
-        font-size: 0.6rem;
-    }
-
-    .oferta-btn {
-        font-size: 0.5rem;
-        max-width: 20vw;
-    }
-
-    .oferta-preco-novo {
-        font-size: 0.7rem;
-    }
-
-    .oferta-preco-novo b {
-        font-size: 1.3rem;
-        width: 35vw;
-    }
-
-    .preco-antigo {
-        font-size: 0.8rem;
-    }
-
-    .outras-ofertas-lista {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 18px;
-    }
-
-    .outras-ofertas-lista {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px 8px;
-    }
-
-    .outras-ofertas-lista img {
-        width: 60px;
-        max-width: 80px;
-    }
-
-    .produtos-lista {
-        grid-template-columns: 1fr 1fr;
-        gap: 14px 8px;
-        padding: 12px 4px 8px 4px;
-        border-radius: 12px;
-        background: #fff;
-    }
-
-    .produto {
-        width: 80px;
-        max-width: 90px;
-        min-height: 90px;
-        margin: 0;
-        padding: 0;
-    }
-
-    .produto img {
-        height: 44px;
-        max-width: 60px;
-        margin-bottom: 4px;
-    }
-
-    .produto-nome {
-        font-size: 0.85rem;
-        min-height: 16px;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 2px;
-    }
-
-    .produto-preco {
-        font-size: 0.95rem;
-    }
-
-    .produto-desconto {
-        font-size: 0.65rem;
-        min-width: 32px;
-        padding: 2px 4px;
-    }
-
-    .produto-preco-antigo,
-    .produto-preco-anterior-label {
-        font-size: 0.80rem;
-    }
-
-    .ofertas {
-        margin-top: 3rem;
-    }
-
-
-    .beneficios,
-    .atendimento {
-        flex-direction: column;
-        gap: 10px;
-        margin: 10px 0 0 0;
-        width: 98vw;
-        max-width: 98vw;
-    }
-
-    .beneficio,
-    .atendimento-card {
-        font-size: 0.95rem;
-        padding: 10px 8px;
-        border-radius: 12px;
-    }
-
-    .pagamento.card {
-        width: 96vw;
-        max-width: 98vw;
-        padding: 14px 0 10px 0;
-        border-radius: 12px;
-    }
-
-    .pagamento-icones {
-        gap: 10px;
-        padding-top: 12px;
-        width: 100%;
-        border-top: 1.5px solid #3d2b23;
-    }
-
-    .pagamento-icones img {
-        height: 22px;
-    }
-
-    .produto-nome {
-        font-size: 0.7rem;
-    }
-
-    .produto-preco-antigo {
-        font-size: 0.6rem;
-    }
-
-    .produto-desconto {
-        font-size: 0.5rem;
-    }
-
-    .produto-preco {
-        font-size: 0.9rem;
-    }
-
-    footer {
-        width: 100vw;
-        max-width: 100vw;
-        padding: 10px 0 6px 0;
-        font-size: 0.9rem;
-        flex-direction: column;
-        gap: 6px;
-    }
-
-    .footer-icons {
-        gap: 10px;
-        font-size: 1.3rem;
-        margin-top: 4px;
-    }
-
-    .cart-btn,
-    .bibi-list-btn,
-    .menu-mobile {
-        background: none;
-        border: none;
-        color: #3d2b23;
-        font-size: 1.5rem;
-        min-width: 36px;
-        min-height: 36px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        padding: 0;
-        margin: 0;
-    }
-
-    .produto-preco-desconto-container {
-        width: 4rem;
-    }
-
-    .outras-ofertas-lista {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .outras-ofertas-lista img {
-        margin: 0 auto 4px auto;
-        width: 60px;
-        max-width: 80px;
-        height: auto;
-    }
-
-    .outras-ofertas-lista .produto-nome {
-        font-size: 0.7rem;
-        text-align: center;
-        margin-bottom: 2px;
-        width: 100%;
-    }
-
-    .produto-nome {
-        font-size: 0.7rem;
-        text-align: center;
-        margin-bottom: 2px;
-        width: 100%;
-    }
-
-    .spantext {
-        font-size: 1rem;
-        display: block;
-        width: 9rem;
-    }
-
-    .outras-ofertas-lista {
-        gap: 2rem;
-   
-    }
-
-     .outras-ofertas-titulo {
-        text-align: center;
-        width: 100%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-     }
-
-    .outras-ofertas-header .oferta-flor {
-        display: none;
-    }
-
-    .outras-produto-vaso,
-    .outras-produto-retrato,
-    .outras-produto-panela,
-    .outras-produto-colher {
-        border: 2px solid #3d2b231a;
-        background-color: #faecce11;
-        border-radius: 15px;
-       text-align: center;
-        margin: auto;
-    }
-
-    .outras-ofertas .oferta-btn {
-        margin: 0;
-        width: 100rem;
-        height: 2rem;
-        padding: 0;
-        
-    }
-
+  }
+
+  .outras-ofertas-header .oferta-flor {
+    display: none;
+  }
+
+
+  .outras-ofertas .oferta-btn {
+    margin: 0;
+    width: 100rem;
+    height: 2rem;
+    padding: 0;
+  }
 }
