@@ -12,12 +12,12 @@
     integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous" />
 </head>
 
-<body style="background-color: #faecce;">
+<body style="background-color: #faecce">
   <header>
     <nav>
       <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
       <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Buscar produtos..." />
+        <input type="text" id="searchInput" autocomplete="off" placeholder="Buscar produtos..." />
         <i id="searchButton" class="bi bi-search"></i>
         <ul id="autocomplete-list" class="autocomplete-items"></ul>
       </div>
@@ -57,15 +57,14 @@
 
   <div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
+
       <div class="carousel-item active">
         <img src="../images/fundos/ofertabannernobkg1.png" class="d-block mx-auto" alt="" />
       </div>
-      <!-- <div class="carousel-item">
-          <img src="" class="d-block w-100" alt="" />
-        </div>
-        <div class="carousel-item">
-          <img src="" class="d-block w-100" alt="" />
-        </div> -->
+     <!-- <div class="carousel-item item2">
+        <img src="../images/fundos/fretegratisbannernobkg2.png" class="d-block mx-auto" alt="" />
+      </div> -->
+
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -119,7 +118,6 @@
     <section class="produtos">
       <h2 id="texto-produtos">Produtos encontrados</h2>
       <div id="cards-inside">
-
         <!-- CARD TEMPLATE -->
         <div id="cardTemplate" class="fundo">
           <div class="card" style="
@@ -132,9 +130,7 @@
               <img src="" class="card-img-top" alt="..." />
             </picture>
             <div class="card-body" style="padding: 0.1rem">
-              <h5 class="card-title">
-                Placeholder
-              </h5>
+              <h5 class="card-title">Placeholder</h5>
               <h5 class="avaliacoes">
                 4.6
                 <i class="bi bi-star-fill"></i>
@@ -239,7 +235,7 @@
       <div class="card-body">
         <h5 class="card-title">Atendimento ao cliente</h5>
         <p class="card-text">
-          Das 08h às 19h de<br>segunda a sábado, exceto feriados.
+          Das 08h às 19h de<br />segunda a sábado, exceto feriados.
         </p>
       </div>
       <button>handifycontato@gmail.com</button>
@@ -288,7 +284,7 @@
   </div>
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
   <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
+    new window.VLibras.Widget("https://vlibras.gov.br/app");
   </script>
 
   <script type="module" src="../js/database.js"></script>
