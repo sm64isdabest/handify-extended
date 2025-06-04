@@ -704,6 +704,22 @@ footer .social-icons a i {
     font-size: 0.9rem;
     margin-right: 0.5rem;
 }
+.pag_pop {
+    background-color: #5a3e36;
+    width: 98%;
+    height: 95px;
+    border-radius: 1rem;
+    border: 2px solid #5a3e36;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(90,62,54,0.08);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 15px;
+}
 
 .popup-remove-btn {
     background: #5a3e36;
@@ -720,6 +736,100 @@ footer .social-icons a i {
 .popup-remove-btn:hover {
     background: #392621;
     color: #fff;
+}
+
+/* Popup Produto (Carrinho) */
+.produto_pop {
+  background-color: #5a3e36;
+  position: relative;
+}
+.cont_pop {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding-right: 2.5rem;
+}
+#popup-produto-img {
+  margin-right: 0.5rem;
+}
+.cont_pop_info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+#popup-produto-nome {
+  font-size: 1.05rem;
+  margin: 0;
+  text-align: left;
+}
+.cont_pop_precos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 0.3rem;
+}
+.preco-destaque {
+  color: #000;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: left;
+}
+.preco-riscado {
+  text-decoration: line-through;
+  color: #ff0000;
+  font-size: 1.0rem;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 8px;
+}
+.popup-remove-btn {
+  margin: 0;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.8rem;
+  border-radius: 0.7rem;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 11;
+  background: #fff;
+  color: #5a3e36;
+  border: 1px solid #5a3e36;
+}
+.popup-indicador-qtd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -38px;
+  width: max-content;
+  background: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 2px 12px;
+  z-index: 12;
+}
+.popup-qty-btn {
+  padding: 0 7px;
+  font-size: 1rem;
+  border-radius: 50%;
+  background: #fff;
+  color: #5a3e36;
+  border: 1px solid #5a3e36;
+}
+.popup-qty-value {
+  min-width: 1.5rem;
+  text-align: center;
+  color: #5a3e36;
+  font-weight: bold;
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 2px 8px;
 }
 
 @media (max-width: 1309px) {
