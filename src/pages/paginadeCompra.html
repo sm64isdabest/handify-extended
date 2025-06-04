@@ -47,6 +47,7 @@
             <button class="cart-btn" id="cartIconDesktop"><i class="bi bi-cart"></i></button>
         </div>
         <div id="popup-menu">
+            
             <ul class="popup-list">
                 <header class="pop_up">
                     <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
@@ -58,10 +59,12 @@
                     <div class="cont_pop">
                         <img id="popup-produto-img" src="" alt="">
                         <h5 id="popup-produto-nome"></h5>
-                        <button id="popup-remove-btn" class="popup-remove-btn" title="Remover do carrinho">Remover  </button>
+                        <button id="popup-remove-btn" class="popup-remove-btn" title="Remover do carrinho">Remover</button>
                     </div>
                 </div>
+                <!-- Os produtos do carrinho serão inseridos aqui via JS -->
             </ul>
+            <div class="pag_pop"></div>
         </div>
     </header>
     <main>
@@ -317,7 +320,8 @@
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
     <script src="../js/paginadeCompra.js"></script>
-    <script src="../js/popup.js" type="module"></script>
+    <script type="module" src="../js/popup.js"></script>
+    <script type="module" src="../js/popupIcone.js"></script>
 </body>
 
 </html>
