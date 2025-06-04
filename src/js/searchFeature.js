@@ -21,14 +21,22 @@ function goToSearchPage() {
 searchInput.addEventListener('input', function () {
     const value = this.value.trim().toLowerCase();
     autocompleteList.innerHTML = '';
-    if (!value) return;
-
-    autocompleteList.style.visibility = 'visible';
+    if (!value) {
+        autocompleteList.style.visibility = 'hidden'; // Esconde se não houver valor
+        return;
+    }
 
     // Filtra produtos pelo nome
     const suggestions = products
         .filter(p => p.name.toLowerCase().includes(value))
         .slice(0, 4); // Limite de sugestões
+
+    if (suggestions.length === 0) {
+        autocompleteList.style.visibility = 'hidden'; // Esconde se não houver sugestões
+        return;
+    }
+
+    autocompleteList.style.visibility = 'visible';
 
     suggestions.forEach(product => {
         const li = document.createElement('li');
@@ -36,6 +44,7 @@ searchInput.addEventListener('input', function () {
         li.addEventListener('click', function () {
             searchInput.value = product.name;
             autocompleteList.innerHTML = '';
+            autocompleteList.style.visibility = 'hidden'; // Esconde ao selecionar
             goToSearchPage();
         });
         autocompleteList.appendChild(li);

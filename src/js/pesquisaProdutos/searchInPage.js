@@ -28,9 +28,27 @@ function renderCards(filter = '') {
         card.querySelector('.card-img-top').src = product.img;
         card.querySelector('.card-img-top').alt = product.name;
         card.querySelector('.card-title').textContent = product.name;
-        card.querySelector('.preco-original').textContent = product.originalPrice;
         card.querySelector('.sub-card-text').textContent = product.price;
-        card.querySelector('#oferta').textContent = product.discount + '% OFF';
+        const precoOriginal = card.querySelector('.preco-original');
+        precoOriginal.textContent = product.originalPrice;
+        const oferta = card.querySelector('#oferta');
+        oferta.textContent = product.discount + '% OFF';
+        if (product.discount === 0) {
+            oferta.style.visibility = 'hidden';
+            precoOriginal.style.visibility = 'hidden';
+        } else {
+            oferta.style.visibility = 'visible';
+            precoOriginal.style.visibility = 'visible';
+        }
+
+        // Avaliações
+        const nota = product.nota
+        const avaliacoes = product.avaliacoes;
+        const avaliacoesEl = card.querySelector('.avaliacoes');
+        if (avaliacoesEl) {
+            avaliacoesEl.innerHTML = `${nota} <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> (${avaliacoes})`;
+        }
+
         productsCards.appendChild(card);
     });
 
