@@ -47,21 +47,22 @@
             <button class="cart-btn" id="cartIconDesktop"><i class="bi bi-cart"></i></button>
         </div>
         <div id="popup-menu">
-        <ul class="popup-list">
-          <header class="pop_up">
-             <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" /> 
-             <i class="bi bi-cart3"></i> 
-             <p>Carrinho de compra</p>
-             <button class="sair_pop"><i class="bi bi-box-arrow-right"></i></button>
-          </header>
-          <div class="produto_pop" style="background-color: #5a3e36;">
-            <div class="cont_pop"> <img src="../images/produtos/bolsa-palha-maior.png" alt=""><h7>Suporte de faqueiro</h7>
+            <ul class="popup-list">
+                <header class="pop_up">
+                    <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+                    <i class="bi bi-cart3"></i>
+                    <p>Carrinho de compra</p>
+                    <button class="sair_pop"><i class="bi bi-box-arrow-right"></i></button>
+                </header>
+                <div class="produto_pop" style="background-color: #5a3e36;">
+                    <div class="cont_pop">
+                        <img id="popup-produto-img" src="" alt="">
+                        <h5 id="popup-produto-nome"></h5>
+                        <button id="popup-remove-btn" class="popup-remove-btn" title="Remover do carrinho">Remover  </button>
+                    </div>
+                </div>
+            </ul>
         </div>
-          </div>
-          <li><a href="#">Contato</a></li>
-          <li><a href="pesquisaProdutos.html">Produtos</a></li>
-        </ul>
-      </div>
     </header>
     <main>
         <div class="product-page">
@@ -84,9 +85,8 @@
             <section class="product-details">
                 <div class="avaliar">
                     <button class="sair"><i class="bi bi-arrow-left"></i></button> 4.8<span><i
-                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                            class="bi bi-star-half"></i></span>
+                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                            class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
                 </div>
                 <h1>Bolsa de palha</h1>
                 <p class="price">
@@ -112,7 +112,7 @@
                 </div>
                 <div class="botoes_adc">
                     <button class="btn_1">Comprar Agora</button>
-                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                    <button class="add-to-cart" data-index="1">Adicionar ao Carrinho</button>
                 </div>
             </section>
 
@@ -139,7 +139,7 @@
 
                 <div class="purchase-buttons">
                     <button class="buy-now">Comprar Agora</button>
-                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                    <button class="add-to-cart" data-index="1">Adicionar ao Carrinho</button>
                 </div>
             </section>
         </div>
@@ -149,38 +149,39 @@
                 <h2>Outras ofertas</h2>
                 <div class="offers-container">
                     <div class="offer-item">
-                            <div class="card">
-                                <img src="../images/produtos/faqueiro.png" class="card-img-top" alt="Suporte de faqueiros" />
-                                <div class="card-body">
-                                    <h5 class="card-title">Suporte de faqueiros</h5>
-                                    <p class="card-text">R$ 89,70 OFF</p>
-                                    <p class="sub-card-text">R$ 78,90</p>
-                                </div>
+                        <div class="card">
+                            <img src="../images/produtos/faqueiro.png" class="card-img-top"
+                                alt="Suporte de faqueiros" />
+                            <div class="card-body">
+                                <h5 class="card-title">Suporte de faqueiros</h5>
+                                <p class="card-text">R$ 89,70 OFF</p>
+                                <p class="sub-card-text">R$ 78,90</p>
                             </div>
-                            <div class="card">
-                                <img src="../images/produtos/Vaso.png" class="card-img-top" alt="Vasos pintados" />
-                                <div class="card-body">
-                                    <h5 class="card-title">Vasos pintados</h5>
-                                    <p class="card-text">R$ 199,90 OFF</p>
-                                    <p class="sub-card-text">R$ 99,99</p>
-                                </div>
+                        </div>
+                        <div class="card">
+                            <img src="../images/produtos/Vaso.png" class="card-img-top" alt="Vasos pintados" />
+                            <div class="card-body">
+                                <h5 class="card-title">Vasos pintados</h5>
+                                <p class="card-text">R$ 199,90 OFF</p>
+                                <p class="sub-card-text">R$ 99,99</p>
                             </div>
-                            <div class="card">
-                                <img src="../images/produtos/Quadro.png" class="card-img-top" alt="Porta-retratos" />
-                                <div class="card-body">
-                                    <h5 class="card-title">Porta-retratos</h5>
-                                    <p class="card-text">R$ 57,90 OFF</p>
-                                    <p class="sub-card-text">R$ 29,90</p>
-                                </div>
+                        </div>
+                        <div class="card">
+                            <img src="../images/produtos/Quadro.png" class="card-img-top" alt="Porta-retratos" />
+                            <div class="card-body">
+                                <h5 class="card-title">Porta-retratos</h5>
+                                <p class="card-text">R$ 57,90 OFF</p>
+                                <p class="sub-card-text">R$ 29,90</p>
                             </div>
-                            <div class="card">
-                                <img src="../images/produtos/Colher.png" class="card-img-top" alt="Colher de pau" />
-                                <div class="card-body">
-                                    <h5 class="card-title">Colher de pau</h5>
-                                    <p class="card-text">R$ 25,99 OFF</p>
-                                    <p class="sub-card-text">R$ 15,99</p>
-                                </div>
+                        </div>
+                        <div class="card">
+                            <img src="../images/produtos/Colher.png" class="card-img-top" alt="Colher de pau" />
+                            <div class="card-body">
+                                <h5 class="card-title">Colher de pau</h5>
+                                <p class="card-text">R$ 25,99 OFF</p>
+                                <p class="sub-card-text">R$ 15,99</p>
                             </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -245,45 +246,49 @@
             <div class="carrossel-container">
                 <button class="carrossel-arrow left">←</button>
                 <div class="carrossel-cards">
-                        <div class="card">
-                            <img src="../images/produtos/faqueiro.png" alt="Suporte de faqueiros" />
-                            <h5>Suporte de faqueiros</h5>
-                            <p class="card-text">R$ 87,90 OFF</p>
-                            <p class="sub-card-text">R$ 78,90</p>
-                        </div>
+                    <div class="card">
+                        <img src="../images/produtos/faqueiro.png" alt="Suporte de faqueiros" />
+                        <h5>Suporte de faqueiros</h5>
+                        <p class="card-text">R$ 87,90 OFF</p>
+                        <p class="sub-card-text">R$ 78,90</p>
+                    </div>
                     </a>
                 </div>
                 <button class="carrossel-arrow right">→</button>
             </div>
             <section class="produtos">
-                    <div class="card">
-                        <img src="../images/produtos/bolsa-palha-clara.png" class="card-img-top" alt="Bolsa De Palha Praia Feminina Bolsa Ombro Grande" />
-                        <div class="card-body">
-                            <h5>Bolsa De Palha Praia Feminina Bolsa Ombro Grande </h5>
-                            <p class="sub-card-text">R$ 95,99</p>
-                        </div>
+                <div class="card">
+                    <img src="../images/produtos/bolsa-palha-clara.png" class="card-img-top"
+                        alt="Bolsa De Palha Praia Feminina Bolsa Ombro Grande" />
+                    <div class="card-body">
+                        <h5>Bolsa De Palha Praia Feminina Bolsa Ombro Grande </h5>
+                        <p class="sub-card-text">R$ 95,99</p>
                     </div>
-                    <div class="card">
-                        <img src="../images/produtos/bolsa.png" class="card-img-top" alt="Bolsa Praia Linda Palha Feminina Com Zíper + Pigente" />
-                        <div class="card-body">
-                            <h5>Bolsa Praia Linda Palha Feminina Com Zíper + Pigente</h5>
-                            <p class="sub-card-text">R$ 42,99</p>
-                        </div>
+                </div>
+                <div class="card">
+                    <img src="../images/produtos/bolsa.png" class="card-img-top"
+                        alt="Bolsa Praia Linda Palha Feminina Com Zíper + Pigente" />
+                    <div class="card-body">
+                        <h5>Bolsa Praia Linda Palha Feminina Com Zíper + Pigente</h5>
+                        <p class="sub-card-text">R$ 42,99</p>
                     </div>
-                    <div class="card3">
-                        <img src="../images/produtos/bolsa-menor.png" class="card-img-top" alt="Bolsa De Palha Feminina Clutch" />
-                        <div class="card-body">
-                            <h5>Bolsa De Palha Feminina Clutch </h5>
-                            <p class="sub-card-text">R$ 46,99</p>
-                        </div>
+                </div>
+                <div class="card">
+                    <img src="../images/produtos/bolsa-menor.png" class="card-img-top"
+                        alt="Bolsa De Palha Feminina Clutch" />
+                    <div class="card-body">
+                        <h5>Bolsa De Palha Feminina Clutch </h5>
+                        <p class="sub-card-text">R$ 46,99</p>
                     </div>
-                    <div class="card4">
-                        <img src="../images/produtos/bolsa-maior.png" class="card-img-top" alt="Bolsa Feminina De Palha Meia Lua Grande" />
-                        <div class="card-body">
-                            <h5 class="card-title">Bolsa Feminina De Palha Meia Lua Grande</h5>
-                            <p class="sub-card-text">R$ 78,99</p>
-                        </div>
+                </div>
+                <div class="card">
+                    <img src="../images/produtos/bolsa-maior.png" class="card-img-top"
+                        alt="Bolsa Feminina De Palha Meia Lua Grande" />
+                    <div class="card-body">
+                        <h5 class="card-title">Bolsa Feminina De Palha Meia Lua Grande</h5>
+                        <p class="sub-card-text">R$ 78,99</p>
                     </div>
+                </div>
             </section>
         </div>
     </main>
@@ -312,7 +317,7 @@
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
     <script src="../js/paginadeCompra.js"></script>
-    <script src="../js/popup.js"></script>
+    <script src="../js/popup.js" type="module"></script>
 </body>
 
 </html>
