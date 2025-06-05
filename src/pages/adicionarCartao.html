@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adicionar Cartão - Handify</title>
+    <link rel="stylesheet" href="../css/adicionarCartao.css" />
+    <link rel="icon" href="../images/favicon.ico" />
+</head>
+<body>
+    <header class="header">
+        <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+        <hr class="header-separator" />
+    </header>
+
+    <main class="container-principal">
+        <div class="cartao-formulario-container">
+            <button class="botao-voltar" aria-label="Voltar">&#8592;</button>
+            <h1 class="titulo">Adicionar Cartão</h1>
+            <div class="formulario-e-preview">
+                <form class="formulario-cartao" autocomplete="off" novalidate>
+                    <label for="numeroCartao" class="rotulo">Número do Cartão</label>
+                    <input type="text" id="numeroCartao" name="numeroCartao" maxlength="19" placeholder="____ ____ ____ ____" required />
+
+                    <label for="nomeCartao" class="rotulo">Nome do titular</label>
+                    <input type="text" id="nomeCartao" name="nomeCartao" maxlength="30" placeholder="Seu nome aqui" required />
+
+                    <div class="linha-formulario">
+                        <div class="grupo-formulario pequeno">
+                            <label for="validade" class="rotulo">Validade</label>
+                            <input type="text" id="validade" name="validade" maxlength="5" placeholder="MM/AA" required />
+                        </div>
+                        <div class="grupo-formulario pequeno">
+                            <label for="cvv" class="rotulo">CVV</label>
+                            <input type="password" id="cvv" name="cvv" maxlength="4" placeholder="•••" pattern="[0-9]{3,4}" required />
+                        </div>
+                    </div>
+                </form>
+
+                <div class="container-preview-cartao">
+                    <div class="preview-cartao">
+                        <div class="logos-cartao">
+                            <img src="../images/icones/Mastercard.png" alt="Logo Mastercard" class="logo-mastercard" />
+                        </div>
+                        <div class="numero-cartao-display" id="numeroCartaoDisplay">4725  8768  04  ••  ••••</div>
+                        <div class="nome-cartao-display" id="nomeCartaoDisplay">Seu nome aqui</div>
+                        <div class="validade-cartao-display">•• / ••</div>
+                        <div class="icone-contactless-cartao">📶</div>
+                    </div>
+                    <div class="dados-seguros">
+                        <svg class="icone-escudo" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4CAF50" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zM10 14l-3-3 1.41-1.41L10 11.17l5.59-5.59L17 7l-7 7z"/></svg>
+                        <span>Seus dados estão seguros</span>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="botao-adicionar">Adicionar</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <hr class="footer-separator" />
+        <div class="footer-content">
+            <span>© 2025 HANDIFY. Todos os direitos reservados.</span>
+            <div class="social-icons">
+                <a href="#" aria-label="WhatsApp"><img src="../images/icones/logo-whatsapp.png" alt="WhatsApp" /></a>
+                <a href="#" aria-label="YouTube"><img src="../images/icones/logo-youtube.png" alt="YouTube" /></a>
+                <a href="#" aria-label="Twitter"><img src="../images/icones/logo-twitter.png" alt="Twitter" /></a>
+                <a href="#" aria-label="Instagram"><img src="../images/icones/logo-instagram.png" alt="Instagram" /></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
