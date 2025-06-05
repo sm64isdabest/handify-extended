@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <div style='display:flex; justify-content:space-between;'><span>Desconto:</span><span style='color:#6fffa0;'>-R$ ${(Object.keys(produtosAgrupados).length ? Math.abs(valorDesconto) : 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></div>
           <div style='border-top:1.5px solid #bdbdbd; margin:2px 0 0 0;'></div>
           <div style='display:flex; justify-content:space-between; font-size:1.15rem; font-weight:bold;'><span>Total:</span><span>R$ ${(Object.keys(produtosAgrupados).length ? totalComDesconto : 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></div>
+          <a href=""<button style="align-self: flex-end; text-decoration: none; amargin-top: 10px; background-color: #5a3e36; border: solid; border-radius: 0.8rem;font-size:1.1rem; font-weight:bold; color: #fff "><span>Finalizar</span></button></a>
         </div>
       `;
         quadradoFinal.style.display = 'flex'; // Exibe o valkor, mesmo se estiver vazio
