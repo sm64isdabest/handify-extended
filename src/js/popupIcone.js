@@ -35,8 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
         quadradoFinal.style.display = 'flex'; // Exibe o valkor, mesmo se estiver vazio
     }
     // Exibe o popup do carrinho (icone)
-    const cartIconDesktop = document.getElementById('cartIconDesktop');
-    cartIconDesktop.addEventListener('click', function (e) {
+    function abrirPopupCarrinho(e) {
         e.stopPropagation();
         const popupMenu = document.getElementById('popup-menu');
         const popupList = document.querySelector('#popup-menu .popup-list');
@@ -119,7 +118,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         popupMenu.style.display = 'block';
         atualizarQuadradoFinal();
-    });
+    }
+    // Adiciona listeners para desktop e mobile
+    const cartIconDesktop = document.getElementById('cartIconDesktop');
+    if (cartIconDesktop) {
+        cartIconDesktop.addEventListener('click', abrirPopupCarrinho);
+    }
+    const cartIconMobile = document.getElementById('cartIconMobile');
+    if (cartIconMobile) {
+        cartIconMobile.addEventListener('click', abrirPopupCarrinho);
+    }
     const sairPop = document.querySelector('.sair_pop');
     if (sairPop) {
         sairPop.addEventListener('click', function () {

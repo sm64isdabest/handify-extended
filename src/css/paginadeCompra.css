@@ -1241,7 +1241,7 @@ footer .social-icons a i {
     }
 
     .product-page {
-        height: 95vh;
+        height: 80vh;
     }
 
     .botoes_adc button {
@@ -1605,7 +1605,7 @@ footer .social-icons a i {
 
 @media (max-width: 465px) {
     .menu_clc {
-        margin-right: -13rem;
+        margin-right: -9rem;
         justify-content: space-between;
         display: block;
     }
