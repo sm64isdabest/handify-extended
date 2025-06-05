@@ -6,6 +6,8 @@
     <title>Adicionar Cartão - Handify</title>
     <link rel="stylesheet" href="../css/adicionarCartao.css" />
     <link rel="icon" href="../images/favicon.ico" />
+    <!-- Bootstrap Icons CDN for shield icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 </head>
 <body>
     <header class="header">
@@ -15,12 +17,12 @@
 
     <main class="container-principal">
         <div class="cartao-formulario-container">
-            <button class="botao-voltar" aria-label="Voltar">&#8592;</button>
+            <button class="botao-voltar" aria-label="Voltar"><i class="bi bi-arrow-return-left"></i></button>
             <h1 class="titulo">Adicionar Cartão</h1>
             <div class="formulario-e-preview">
                 <form class="formulario-cartao" autocomplete="off" novalidate>
                     <label for="numeroCartao" class="rotulo">Número do Cartão</label>
-                    <input type="text" id="numeroCartao" name="numeroCartao" maxlength="19" placeholder="____ ____ ____ ____" required />
+                    <input type="text" id="numeroCartao" name="numeroCartao" maxlength="19" placeholder="____-____-__-__" required />
 
                     <label for="nomeCartao" class="rotulo">Nome do titular</label>
                     <input type="text" id="nomeCartao" name="nomeCartao" maxlength="30" placeholder="Seu nome aqui" required />
@@ -40,15 +42,15 @@
                 <div class="container-preview-cartao">
                     <div class="preview-cartao">
                         <div class="logos-cartao">
-                            <img src="../images/icones/Mastercard.png" alt="Logo Mastercard" class="logo-mastercard" />
+                            <img id="iconeInputCartao" src="../images/icones/Mastercard.png" alt="Ícone do Cartão" class="logo-mastercard" style="margin-left: 10px;" />
                         </div>
-                        <div class="numero-cartao-display" id="numeroCartaoDisplay">4725  8768  04  ••  ••••</div>
+                        <div class="numero-cartao-display" id="numeroCartaoDisplay">1234-5678-90-••</div>
                         <div class="nome-cartao-display" id="nomeCartaoDisplay">Seu nome aqui</div>
-                        <div class="validade-cartao-display">•• / ••</div>
-                        <div class="icone-contactless-cartao">📶</div>
+                        <div class="validade-cartao-display" id="validadeCartaoDisplay">•• / ••</div>
+                        <div class="icone-contactless-cartao"><i class="bi bi-rss"></i></div>
                     </div>
                     <div class="dados-seguros">
-                        <svg class="icone-escudo" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#4CAF50" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zM10 14l-3-3 1.41-1.41L10 11.17l5.59-5.59L17 7l-7 7z"/></svg>
+                        <i class="bi bi-shield-fill-check" style="color: #4CAF50; font-size: 16px;"></i>
                         <span>Seus dados estão seguros</span>
                     </div>
                 </div>
@@ -69,5 +71,6 @@
             </div>
         </div>
     </footer>
+    <script src="../js/adicionarCartao/script.js"></script>
 </body>
 </html>

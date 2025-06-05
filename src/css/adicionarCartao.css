@@ -67,12 +67,11 @@ body {
     border-radius: 50%;
     width: 32px;
     height: 32px;
-    font-size: 20px;
+    font-size: 15px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
     align-self: flex-start;
 }
 
@@ -317,10 +316,10 @@ input[type="password"]:focus {
 .search-bar,
 .menu-mobile,
 .cart-btn {
-    display: none !important;
+    display: none
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     .cartao-formulario-container {
         width: 90%;
@@ -336,52 +335,19 @@ input[type="password"]:focus {
         gap: 10px;
     }
     .footer {
-        padding: 8px 8px 4px 8px; /* ADICIONADO: padding menor em telas pequenas */
+        padding: 8px 8px 4px 8px; 
     }
 }
 
-/* Tablet styles */
-@media (min-width: 601px) and (max-width: 1024px) {
+@media (max-width: 400px) {
     .cartao-formulario-container {
         width: 90%;
-        max-width: 700px;
-        padding: 30px 30px 40px 30px;
-        padding-right: 5rem;
-    }
-    .formulario-e-preview {
-        flex-direction: row;
-        gap: 20px;
-    }
-    .container-preview-cartao {
-        width: 40%;
-        align-items: center;
-    }
-    .preview-cartao {
-        width: 100%;
-        height: 160px;
-        margin-left: 0;
-    }
-    .titulo {
-        font-size: 22px;
-        margin-left: 0;
-    }
-    .botao-adicionar {
-        width: 180px;
-        margin-left: 0;
-        align-self: center;
-    }
-}
-
-/* Mobile styles */
-@media (max-width: 600px) {
-    .cartao-formulario-container {
-        width: 90%;
-        padding: 20px;
+        padding: 15px;
         padding-right: 1rem;
     }
     .formulario-e-preview {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
     }
     .container-preview-cartao {
         width: 100%;
@@ -391,6 +357,46 @@ input[type="password"]:focus {
     .preview-cartao {
         width: 100%;
         height: auto;
+        padding: 12px;
+        margin-left: 0;
+    }
+    .titulo {
+        font-size: 18px;
+        margin-left: 0;
+    }
+    .botao-adicionar {
+        width: 100%;
+        margin-left: 0;
+        padding: 10px 0;
+        font-size: 14px;
+    }
+    .linha-formulario {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+
+@media (min-width: 401px) and (max-width: 1024px) {
+    .cartao-formulario-container {
+        width: 90%;
+        max-width: 700px;
+        padding: 20px;
+        padding-right: 1rem;
+    }
+    .formulario-e-preview {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .container-preview-cartao {
+        width: 280px;
+        align-items: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .preview-cartao {
+        width: 280px;
+        height: 160px;
         padding: 15px;
         margin-left: 0;
     }
