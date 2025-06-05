@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Ocultar o popup ao iniciar a página
+    const popupMenu = document.getElementById('popup-menu');
+    if (popupMenu) popupMenu.style.display = 'none';
     // Função para calcular e atualizar o total do carrinho
     function atualizarQuadradoFinal() {
         const quadradoFinal = document.querySelector('.pag_pop');
