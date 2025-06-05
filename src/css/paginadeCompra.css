@@ -1610,6 +1610,10 @@ footer .social-icons a i {
         display: block;
     }
 
+    .menu_clc button{
+        color: #392621;
+    }
+
     .product-gallery .thumbnails img {
         width: 71px;
         height: 71px;
@@ -1619,8 +1623,17 @@ footer .social-icons a i {
         border-radius: 5px;
     }
 
+    .Produtos-similares h1{
+        font-size: 1.7rem;
+    }
+
     footer p {
         font-size: 0.6rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .social-icons{
+        font-size: 0.5rem;
     }
 
     .card h5 {
@@ -1629,6 +1642,10 @@ footer .social-icons a i {
 
     .card-text {
         font-size: 1.1rem;
+    }
+
+    .carrossel-container{
+        width: 99%;
     }
 
     .sub-card-text {
