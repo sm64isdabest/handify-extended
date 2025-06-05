@@ -294,7 +294,7 @@ main {
   height: 90%;
   border: none;
   background: transparent;
-  padding-bottom: 500px;
+  padding-bottom: 550px;
   font-size: 1.5rem;
   font-weight: 500;
 }
@@ -323,12 +323,150 @@ footer .social-icons a i {
 }
 
 
+
+/* Responsividade para Telas de 992px a 1440px (Desktops Médios) */
+@media (min-width: 992px) and (max-width: 1440px) {
+  
+  .container-produto {
+    flex-direction: row; /* Mantém em linha para desktops */
+    width: 90%; /* Ocupa uma largura maior */
+    max-width: 1300px; /* Limita a largura máxima para não esticar demais */
+    margin: 40px auto; /* Centraliza o container */
+    padding: 3rem; /* Ajusta o padding interno */
+    gap: 60px; /* Aumenta o espaço entre os blocos principais */
+  }
+
+  .sidebar {
+    flex-direction: column; /* Botões da sidebar voltam a ficar em coluna */
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    align-items: flex-start; /* Alinha os itens à esquerda */
+  }
+
+  .sidebar .btn-add,
+  .sidebar .btn-back {
+    width: 60px;
+    height: 60px;
+    font-size: 2.2rem;
+    margin-bottom: 15px; /* Aumenta o espaço entre os botões */
+    margin-left: -40px;
+
+  }
+
+  .sidebar .btn-back {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+  }
+
+  .imagem-produto {
+    width: 450px; /* Ajusta a largura da imagem do produto */
+    height: 430px; /* Ajusta a altura da imagem do produto */
+    margin-right: 30px; /* Adiciona margem à direita para separar dos detalhes */
+    margin-left: 0;
+    margin-left: -55px;
+
+  }
+
+  .imagem-produto .btn-add {
+    display: flex; /* Garante que o botão de adição dentro da imagem seja visível */
+  }
+
+  .mobile.btn-add {
+    display: none; /* Oculta o botão mobile nesta resolução */
+  }
+
+  .info-produto {
+    width: 30px; /* Ajusta a largura do bloco de informações */
+    height: 30px;
+    gap: 10px; /* Aumenta o espaço entre os campos de informação */
+  }
+
+  .info-produto > div {
+    font-size: 1.4rem;
+    padding: 15px 20px;
+    min-width: 280px; /* Ajusta a largura mínima do bloco de destaque */
+    min-height: 60px;
+    margin-left: -80px;
+  }
+
+  .nome-produto input,
+  .valor-produto input,
+  .parcelas-produto input,
+  .descricao-produto input,
+  .quantidade-produto input {
+    font-size: 1.6rem; /* Aumenta o tamanho da fonte dos inputs */
+  }
+
+  .destaque-produto {
+    min-width: 80px; /* Ajusta a largura mínima do bloco de destaque */
+    padding: 20px;
+    margin-left: 0; /* Remove margem extra */
+    margin-right: 0;
+    margin-left: 120px;
+    margin-right: -40px;
+  }
+
+  .titulo-destaque {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  .botoes-destaque button {
+    height: 40px;
+    font-size: 1.3rem;
+  }
+
+  .quantidade-produto {
+    padding: 10px 15px;
+  }
+
+  .comprar-agora,
+  .adicionar-carrinho {
+    font-size: 1.1rem;
+    padding: 12px 0;
+  }
+
+  .quadro-descricao {
+    width: 90%; /* Ocupa uma largura maior */
+    max-width: 1300px; /* Limita a largura máxima */
+    height: 70vh; /* Ajusta a altura */
+    margin: 30px auto;
+  }
+
+  .quadro-descricao input {
+    width: 95%;
+    height: 95%;
+    padding-bottom: 0; /* Remove padding desnecessário */
+    padding-bottom: 310px;
+    font-size: 1.4rem;
+  }
+
+  footer {
+    padding: 1.8rem 4rem; /* Ajusta o padding do rodapé */
+    font-size: 0.9rem;
+  }
+
+  footer .social-icons a i {
+    font-size: 1.4rem !important; /* Ícones maiores */
+    margin-top: 10000px;
+  }
+}
+
+
+
 /* Estilos para Tablets (Media Query) */
 @media (min-width: 602px) and (max-width: 992px) {
 
     /* HEADER */
     header {
         padding: 1.5rem 2rem; /* Aumenta um pouco o padding */
+    }
+
+    .quadro-descricao{
+      width: 90%;
+      height: 90%;
     }
 
     header .logo {
