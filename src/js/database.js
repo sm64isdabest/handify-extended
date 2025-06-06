@@ -2,15 +2,15 @@ export const products = [
     {
         name: "Bolsa de Palha Natural Quadrada Artesanal Modelo Grande",
         img: "../images/produtos/bolsa-palha-flor.png",
-        price: "R$280,15",
         originalPrice: "R$294,90",
+        price: "R$280,15",
         discount: 5,
     },
     {
         name: "Bolsa de Palha",
         img: "../images/produtos/bolsa-palha-maior.png",
-        price: "R$279,90",
-        originalPrice: "R$139,95",
+        originalPrice: "R$279,90",
+        price: "R$139,95",
         discount: 50,
     },
     {
@@ -30,15 +30,15 @@ export const products = [
     {
         name: "Bolsa Artesanal Madeira Envernizada Colorida Alça Carteira",
         img: "../images/produtos/bolsa-colorida.png",
-        price: "R$67,49",
-        originalPrice: "R$74,99",
+        originalPrice: "R$67,49",
+        price: "R$74,99",
         discount: 10,
     },
     {
         name: "Bolsa Praia Feminina Tiracolo Estilo Clutch Alça Promocional Cor Palha - Bege Escuro",
         img: "../images/produtos/bolsa-praia.png",
-        price: "R$56,35",
-        originalPrice: "R$59,95",
+        originalPrice: "R$56,35",
+        price: "R$59,95",
         discount: 50,
     },
     {
