@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
         adicionarCarrinho[i].addEventListener('click', adicionarProduto)
     }
     // Sair do popup
+    const sairPop = document.querySelector('.sair_pop');
+    const popupMenu = document.getElementById('popup-menu');
     if (sairPop) {
         sairPop.addEventListener('click', function () {
             popupMenu.style.display = 'none';
