@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Sobre - Handify</title>
-    <link rel="stylesheet" href="../css/paginaSobre.css">
+    <title>Sobre - Handify</title>
+    <link rel="stylesheet" href="../css/sobre.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
@@ -17,11 +17,11 @@
         <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
         <nav>
             <ul>
+                <li><a href="#">Produtos</a></li>
                 <li><a href="#">Contato</a></li>
-                <li><a href="#" class="sobreNavbar"> <i class="bi bi-archive"> </i> Produtos </a></li>
-                <li><a href="#" class="sobreNavbar"><i class="bi bi-person"></i>Login</a></li>
+                <li><a href="paginaSobre.html">Sobre</a></li>
                 <li>
-                    <a href="#" class="sobreNavbar"><i class="bi bi-person"></i>Cadastro</a>
+                    <a href="#" class="entrar"><i class="bi bi-person"></i>Entrar</a>
                 </li>
             </ul>
             <!-- PARA DISPOSITIVOS MÓVEIS -->
@@ -30,14 +30,15 @@
         <div id="popup-menu">
             <ul class="popup-list">
                 <li>
-                    <a href="#"><i class="bi bi-person"></i>Contato</a>
+                    <a href="loginUser.html"><i class="bi bi-person"></i>Entrar</a>
                 </li>
-                <li><a href="#"> <i class="bi bi-archive"> </i>Produtos</a></li>
-                <li><a href="#"><i class="bi bi-person"> </i>Login </a></li>
-                <li><a href="#">Cadastro</a></li>
+                <li><a href="paginaSobre.html">Sobre</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="pesquisaProdutos.html">Produtos</a></li>
             </ul>
         </div>
     </header>
+
     <main class="sobre-main">
         <section class="sobre-hero">
             <div class="sobre-hero-content">
@@ -120,41 +121,45 @@
                 </div>
             </div>
         </section>
-        <section id="contato" class="sobre-contato">
-            <h3>Contatos</h3>
-            <div class="sobre-contato-cards">
-                <div class="sobre-contato-card1">
-                    <h5>Compre pelo telefone</h5>
-                    <small>Atendimento das 8h às 19h de segunda a sexta. 8h às 14h aos sábados.</small>
-                    <button>
-                        <p>0800-020-5243</p>
-                    </button>
-                </div>
-                <div class="sobre-contato-card2">
-                    <h5>Atendimento ao cliente</h5>
-                    <small>Das 08h às 19h de segunda a sábado, exceto feriados.</small>
-                    <button>
-                        <p>handifycontato@gmail.com</p>
-                    </button>
-                    <button>
-                        <p>0800-020-6639</p>
-                    </button>
-                </div>
-                <div class="sobre-contato-card3">
-                    <h5>Compre pelo WhatsApp</h5>
-                    <small>Para todo o território nacional. Horário de atendimento sujeito à região.</small>
-                    <button type="button"
-                        onclick="window.location.href='https://api.whatsapp.com/send?phone=557199857897'">
-                        <p class="card3"> <i class="bi bi-whatsapp"> </i>(71)
-                            9999-9999</p>
-                    </button>
-                </div>
-            </div>
-        </section>
     </main>
+
+    <div class="contatos">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Compre pelo telefone</h5>
+                <p class="card-text">
+                    Atendimento das 8h às 19h de segunda a sexta. 8h às 14h aos sábados.
+                </p>
+            </div>
+            <button>(71) 97534-4397</button>
+            <button>0800-020-5243</button>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Atendimento ao cliente</h5>
+                <p class="card-text">
+                    Das 08h às 19h de<br />segunda a sábado, exceto feriados.
+                </p>
+            </div>
+            <button>handifycontato@gmail.com</button>
+            <button>0800-020-6639</button>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Compre pelo Whatsapp</h5>
+                <p class="card-text">
+                    Para todo o território nacional. Horário de atendimento sujeito à
+                    região.
+                </p>
+            </div>
+            <button><i class="bi bi-whatsapp"></i> (71) 9985-7897</button>
+            <button>(71) 9535-6332</button>
+        </div>
+    </div>
+
     <footer>
         <p>© 2025 HANDIFY. Todos os direitos reservados.</p>
-        <div class="redes_sociais">
+        <div class="social-icons">
             <a href="https://web.whatsapp.com/" target="_blank"><i class="bi bi-whatsapp"></i></a>
             <a href="https://www.youtube.com/" target="_blank"><i class="bi bi-youtube"></i></a>
             <a href="https://x.com/" target="_blank"><i class="bi bi-twitter-x"></i></a>
@@ -175,7 +180,7 @@
     new window.VLibras.Widget('https://vlibras.gov.br/app');
 </script>
 
-<script src="../js/mobilePop-upPagSobre.js"></script>
+<script src="../js/mobilePop-up.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
