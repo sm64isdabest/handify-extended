@@ -1,4 +1,4 @@
-console.log("mobilePop-upPagSobre.js loaded");
+console.log("mobilePop-up.js loaded");
 
 const menuIcon = document.getElementById("list");
 const popupMenu = document.getElementById("popup-menu");
