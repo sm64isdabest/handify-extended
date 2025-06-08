@@ -50,12 +50,56 @@ header nav ul li a.entrar i {
   margin-right: 0.3rem;
 }
 
+.user-logged {
+  color: #484848;
+  font-style: italic;
+}
+
+.user-logged i {
+  background-color: #5b5b5bbb;
+  padding: 0.5rem;
+  border-radius: 15rem;
+  color: rgb(230, 230, 230);
+  border: 2px solid #484848;
+}
+
 #list {
   width: 50px;
   height: 50px;
   display: none;
   background: none;
+  border-radius: 100%;
+  margin: -10px;
   border: none;
+}
+
+#list i {
+  font-size: xx-large;
+}
+
+#popup-menu {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  padding: 1.2rem 1.2rem;
+  z-index: 2000;
+  display: none;
+}
+
+#popup-menu .popup-list a {
+  display: block;
+  margin: 0.7rem 0;
+  background: #5a3e36;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 16px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
 }
 
 .cadastro-container {
@@ -177,39 +221,6 @@ footer .social-icons a i {
   padding: 0.19rem;
 }
 
-#list {
-  border-radius: 100%;
-  margin: -10px;
-}
-
-#list i {
-  font-size: xx-large;
-}
-
-#popup-menu {
-  position: absolute;
-  top: 70px;
-  right: 20px;
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  padding: 1.2rem 1.2rem;
-  z-index: 2000;
-  display: none;
-}
-
-#popup-menu .popup-list a {
-  display: block;
-  margin: 0.7rem 0;
-  background: #5a3e36;
-  color: #fff;
-  padding: 0.7rem 1.2rem;
-  border-radius: 16px;
-  text-align: center;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1.1rem;
-}
 
 @media (max-width: 768px) {
   .form-container {
