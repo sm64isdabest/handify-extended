@@ -432,7 +432,7 @@ footer .social-icons a i {
     padding: 0.19rem;
 }
 
-@media (max-width: 952px) {
+@media (max-width: 768px) {
 
     html,
     body {
@@ -510,9 +510,9 @@ footer .social-icons a i {
         align-items: center;
     }
 
-    .sobre-hero-img {
+    /* .sobre-hero-img {
         margin-right: 3%;
-    }
+    } */
 
     .sobre-hero-text h1 {
         font-size: 2.0rem;
@@ -574,11 +574,17 @@ footer .social-icons a i {
         padding: 1.9rem 0.7rem;
     }
 
+    .contatos .card button {
+        width: 13.7rem;
+        font-size: 0.84rem;
+    }
+
     .footer {
         padding-left: 15%;
         padding-right: 15%;
     }
 }
+
 
 @media (max-width: 615px) {
 
@@ -736,7 +742,8 @@ footer .social-icons a i {
     }
 
     .contatos .card button {
-        width: 13rem;
+        width: 10.9rem;
+        font-size: 0.8rem;
     }
 
     footer {
@@ -744,5 +751,64 @@ footer .social-icons a i {
         font-size: 0.8rem;
         padding: 1rem 0 0.5rem 0;
         gap: 0.5rem;
+    }
+}
+
+@media (min-width:715){
+    .contatos .card button{
+        width: 10rem;
+        font-size: 0.8rem;
+    }
+
+}
+
+@media (max-width: 600px){
+    .contatos .card button {
+        width: 9.5rem;
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 470px){
+
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000; 
+    }
+
+    .sobre-hero-text{
+        width: 50%;
+        margin: 1rem;
+        /* margin-right: 2rem; */
+    }
+
+    .sobre-hero-text p{
+        font-size: 1.2rem;
+    }
+
+    .sobre-hero-text h1{
+        font-size: 1.6rem;
+    }
+
+    .sobre-btn{
+        width: 60%;
+    }
+
+    .contatos{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .contatos .card button {
+        width: 14rem;
+    }
+
+    .card-title{
+        font-size: 70rem;
     }
 }
