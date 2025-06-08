@@ -4,21 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Adicionar Cartão - Handify</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/adicionarCartao.css" />
     <link rel="icon" href="../images/favicon.ico" />
-    <!-- Bootstrap Icons CDN for shield icon -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 </head>
 <body>
-    <header class="header">
-        <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
-        <hr class="header-separator" />
+    <header>
+        <div class="conteudo-cabecalho">
+            <div class="area-logo">
+                <img src="../images/logo-handify.png" alt="Handify Logo" />
+                <div class="linha-logo"></div>
+                <span class="titulo-cabecalho">Adicionar Cartão</span>
+            </div>
+            <nav class="links-cabecalho">
+                <a href="#">Contato</a>
+                <a href="#">Sobre</a>
+            </nav>
+        </div>
     </header>
 
-    <main class="container-principal">
-        <div class="cartao-formulario-container">
-            <button class="botao-voltar" aria-label="Voltar"><i class="bi bi-arrow-return-left"></i></button>
-            <h1 class="titulo">Adicionar Cartão</h1>
+    <main>
+        <div class="container-pagamento">
+            <button class="botao-voltar" aria-label="Voltar">
+                <i class="bi bi-arrow-left"></i>
+            </button>
+            <h2 class="titulo-pagamento">Adicionar Cartão</h2>
             <div class="formulario-e-preview">
                 <form class="formulario-cartao" autocomplete="off" novalidate>
                     <label for="numeroCartao" class="rotulo">Número do Cartão</label>
@@ -42,7 +53,7 @@
                 <div class="container-preview-cartao">
                     <div class="preview-cartao">
                         <div class="logos-cartao">
-                            <img id="iconeInputCartao" src="../images/icones/Mastercard.png" alt="Ícone do Cartão" class="logo-mastercard" style="margin-left: 10px;" />
+<img id="iconeInputCartao" src="../images/icones/Mastercard.png" alt="Ícone do Cartão" class="logo-mastercard" />
                         </div>
                         <div class="numero-cartao-display" id="numeroCartaoDisplay">1234-5678-90-••</div>
                         <div class="nome-cartao-display" id="nomeCartaoDisplay">Seu nome aqui</div>
@@ -50,7 +61,7 @@
                         <div class="icone-contactless-cartao"><i class="bi bi-rss"></i></div>
                     </div>
                     <div class="dados-seguros">
-                        <i class="bi bi-shield-fill-check" style="color: #4CAF50; font-size: 16px;"></i>
+<i class="bi bi-shield-fill-check"></i>
                         <span>Seus dados estão seguros</span>
                     </div>
                 </div>
@@ -59,18 +70,18 @@
         </div>
     </main>
 
-    <footer class="footer">
-        <hr class="footer-separator" />
-        <div class="footer-content">
-            <span>© 2025 HANDIFY. Todos os direitos reservados.</span>
-            <div class="social-icons">
-                <a href="#" aria-label="WhatsApp"><img src="../images/icones/logo-whatsapp.png" alt="WhatsApp" /></a>
-                <a href="#" aria-label="YouTube"><img src="../images/icones/logo-youtube.png" alt="YouTube" /></a>
-                <a href="#" aria-label="Twitter"><img src="../images/icones/logo-twitter.png" alt="Twitter" /></a>
-                <a href="#" aria-label="Instagram"><img src="../images/icones/logo-instagram.png" alt="Instagram" /></a>
-            </div>
+    <footer>
+        <div class="conteudo-rodape">
+            <span>© 2025 Handify. Todos os direitos reservados.</span>
+            <span class="icones-rodape">
+                <a href="#" title="WhatsApp" target="_blank"><i class="bi bi-whatsapp"></i></a>
+                <a href="#" title="YouTube" target="_blank"><i class="bi bi-youtube"></i></a>
+                <a href="#" title="X (Twitter)" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" title="Instagram" target="_blank"><i class="bi bi-instagram"></i></a>
+            </span>
         </div>
     </footer>
-    <script src="../js/adicionarCartao/script.js"></script>
+
+    <script src="../js/adicionarCartao/adicionarCartao.js"></script>
 </body>
 </html>

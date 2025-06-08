@@ -135,6 +135,10 @@ main {
     align-items: center;
     justify-content: center;
 }
+
+.opcao-pagamento .bi-credit-card {
+    font-size: 40px;
+}
 .icone-pagamento img {
     max-width: 80px;
     max-height: 40px;
@@ -195,7 +199,7 @@ footer {
     vertical-align: middle;
 }
 
-.icones-rodape a:hover i { /* Cor Ao Passar o Mouse */
+.icones-rodape a:hover i { 
     color: #3d2b23;            
     opacity: 1;
 }
@@ -398,6 +402,7 @@ footer {
     align-items: center;
     justify-content: center;
 }
+
 
 /* Ocultar "Sobre" e "Contatos" */
 @media (max-width: 720px) {
