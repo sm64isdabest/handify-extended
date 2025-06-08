@@ -594,6 +594,11 @@ footer .social-icons a i {
     padding: 0.2rem 0.2rem;
 
 }
+.popup-list {
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+}
 
 .popup-list .pop_up {
     display: flex;
@@ -658,8 +663,6 @@ footer .social-icons a i {
 }
 
 .produto_pop {
-
-    margin-top: 0.5rem;
     border-radius: 0.5rem;
     width: 80%;
     height: 12vh;
@@ -827,6 +830,7 @@ footer .social-icons a i {
     z-index: 12;
 }
 
+
 .popup-qty-btn {
     padding: 0 7px;
     font-size: 1rem;
@@ -845,6 +849,7 @@ footer .social-icons a i {
     border-radius: 0.5rem;
     padding: 2px 8px;
 }
+
 
 @media (max-width: 1309px) {
     .header-container {
@@ -1262,7 +1267,7 @@ footer .social-icons a i {
         gap: 3rem;
         align-items: center;
         width: auto;
-        margin-top: 2.5rem;
+        margin-top: 9rem;
     }
 
     .add-to-cart {
@@ -1323,7 +1328,7 @@ footer .social-icons a i {
         gap: 3rem;
         align-items: center;
         width: auto;
-        margin-top: 2.5rem;
+        margin-top: 9rem;
     }
 
     .offer-item img {

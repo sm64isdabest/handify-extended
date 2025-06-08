@@ -1,58 +1,74 @@
-export const products = [
+export const products = [   
     {
-        name: "Bolsa de Palha Natural Quadrada Artesanal Modelo Grande",
-        img: "../images/produtos/bolsa-palha-flor.png",
-        originalPrice: "R$294,90",
-        price: "R$280,15",
-        discount: 5,
-    },
-    {
-        name: "Bolsa de Palha",
-        img: "../images/produtos/bolsa-palha-maior.png",
+        name: "Bolsa de palha",
+        slug: "bolsa-de-palha", // Normalizado
+        img: "../images/produtos/bolsa-palha.png",
         originalPrice: "R$279,90",
         price: "R$139,95",
         discount: 50,
     },
     {
-        name: "Bolsa de Rattan Redonda Couro Artesanal Praia Mar Verão Vime",
-        img: "../images/produtos/bolsa-redonda.png",
-        price: "R$123,90",
-        originalPrice: "R$123,90",
+        name: "Bolsa De Palha Praia Feminina",
+        slug: "bolsa-de-palha-praia-feminina", // Normalizado
+        img: "../images/produtos/bolsa-palha-clara.png",
+        originalPrice: "R$95,99",
+        price: "R$95,99", 
         discount: 0,
     },
     {
-        name: "Bolsa Transversal Loba Urbana Bag Caracol Terracota",
-        img: "../images/produtos/bolsa-vermelha.png",
-        price: "R$240,00",
-        originalPrice: "R$240,00",
+        name: "Bolsa Praia Linda Palha Feminina Com Ziper + Pigente",
+        slug: "bolsa-praia-linda-palha-feminina-com-zi-per-pigente", // Normalizado
+        img: "../images/produtos/bolsa.png",
+        price: "R$42,99",
+        originalPrice: "R$42,99",
         discount: 0,
     },
     {
-        name: "Bolsa Artesanal Madeira Envernizada Colorida Alça Carteira",
-        img: "../images/produtos/bolsa-colorida.png",
-        originalPrice: "R$67,49",
-        price: "R$74,99",
-        discount: 10,
+        name: "Bolsa De Palha Feminina Clutch",
+        slug: "bolsa-de-palha-feminina-clutch", // Normalizado
+        img: "../images/produtos/bolsa-menor.png",
+        price: "R$46,99",
+        originalPrice: "R$46,99",
+        discount: 0,
     },
     {
-        name: "Bolsa Praia Feminina Tiracolo Estilo Clutch Alça Promocional Cor Palha - Bege Escuro",
-        img: "../images/produtos/bolsa-praia.png",
-        originalPrice: "R$56,35",
-        price: "R$59,95",
+        name: "Bolsa Feminina De Palha Meia Lua Grande",
+        slug: "bolsa-feminina-de-palha-meia-lua-grande", // Normalizado
+        img: "../images/produtos/bolsa-maior.png",
+        price: "R$78,99",
+        originalPrice: "R$78,99",
+        discount: 0,
+    },
+    {
+        name: "Suporte de faqueiros",
+        slug: "suporte-de-faqueiros", // Normalizado
+        img: "../images/produtos/faqueiro.png",
+        originalPrice: "R$89,70",
+        price: "R$78,90",
+        discount: 12,
+    },
+    {
+        name: "Vasos Pintados",
+        slug: "vasos-pintados", // Normalizado
+        img: "../images/produtos/Vaso.png",
+        originalPrice: "R$199,90",
+        price: "R$99,99",
         discount: 50,
     },
     {
-        name: "Bolsa de Praia Feminina Grande - Modelo Artesanal- Luxo",
-        img: "../images/produtos/bolsa-praia-clara.png",
-        price: "R$118,15",
-        originalPrice: "R$139,00",
-        discount: 15,
+        name: "Porta-Retratos",
+        slug: "porta-retratos", // Normalizado
+        img: "../images/produtos/Quadro.png",
+        price: "R$57,90",
+        originalPrice: "R$29,90",
+        discount: 48,
     },
     {
-        name: "Bolsa de Pérola Pequena",
-        img: "../images/produtos/bolsa-clara.png",
-        price: "R$69,50",
-        originalPrice: "R$139,00",
-        discount: 50,
-    }
+        name: "Colher de Pau",
+        slug: "colher-de-pau", // Normalizado
+        img: "../images/produtos/Colher.png",
+        price: "R$25,99",
+        originalPrice: "R$15,99",
+        discount: 38,
+    },
 ];

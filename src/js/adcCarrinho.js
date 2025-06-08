@@ -27,22 +27,72 @@ document.addEventListener('DOMContentLoaded', function () {
         produtoPop.querySelector('.popup-qty-value').textContent = novaQtd;
     }
 
+    // Função para normalizar strings (remove acentos, transforma em minúsculas e substitui espaços por hífens)
+    function normalizeString(str) {
+        console.log('Original string:', str); // Log para depuração
+        return str
+            .toLowerCase()
+            .normalize('NFD') // Decompõe caracteres acentuados
+            .replace(/[\u0300-\u036f]/g, '') // Remove marcas de acentuação
+            .replace(/[^a-z0-9\s-]/g, '') // Remove caracteres especiais, exceto espaços e hífens
+            .replace(/\+/g, '-') // Substitui '+' por hífen
+            .replace(/\s+/g, '-') // Substitui espaços por hífens
+            .trim(); // Remove espaços extras no início e no fim
+    }
+
     function adicionarProduto(event) {
         event.stopPropagation();
         const btn = event.currentTarget;
-        // Busca o índice do produto no botão, se existir
-        const index = btn.dataset.index ? parseInt(btn.dataset.index) : 0;
-        const produto = products[index];
+
+        // Verifica o parâmetro da URL para identificar o produto
+        const urlParams = new URLSearchParams(window.location.search);
+        const produtoNomeNaUrl = urlParams.get('produto'); // Exemplo: ?produto=bolsa-praia-linda-palha-feminina-com-zi-per-pigente
+        let produto;
+
+        if (produtoNomeNaUrl) {
+            console.log('Parâmetro da URL (original):', produtoNomeNaUrl);
+            const normalizedProdutoNomeNaUrl = normalizeString(produtoNomeNaUrl); // Normaliza o parâmetro da URL
+            console.log('Parâmetro da URL (normalizado):', normalizedProdutoNomeNaUrl);
+            produto = products.find(p => p.slug === normalizedProdutoNomeNaUrl); // Comparação direta com o slug
+        }
+
+        // Fallback: Se o parâmetro da URL não existir ou o produto não for encontrado, use o índice do botão
+        if (!produto) {
+            const index = btn.dataset.index ? parseInt(btn.dataset.index) : -1;
+            console.log('Fallback para índice do botão:', index);
+            if (index >= 0 && index < products.length) {
+                produto = products[index];
+            } else {
+                console.warn('Índice do botão inválido ou não configurado!');
+            }
+        }
+
+        // Fallback adicional: Produto padrão para a página principal
+        if (!produto) {
+            console.warn('Produto não encontrado via índice ou URL. Usando produto padrão.');
+            produto = products.find(p => p.slug === "");
+        }
+
+        if (!produto) {
+            console.error('Produto não encontrado!');
+            return;
+        }
+
+        console.log('Produto encontrado:', produto);
+
         // Salva o produto no carrinho (adiciona o nome ao localStorage)
         let carrinho = (localStorage.getItem('carrinho') || '').split(',').filter(Boolean);
         carrinho.push(produto.name);
         localStorage.setItem('carrinho', carrinho.join(','));
+
         // Evita existir um produto no carrinho antes de adicionar um produto
         document.querySelectorAll('.produto_pop').forEach(el => el.remove());
-        // Cria conteuddo do produto
+
+        // Cria conteúdo do produto
         const popupList = document.querySelector('#popup-menu .popup-list');
         const produtoPop = document.createElement('div');
         produtoPop.className = 'produto_pop';
+
         // Preços para exibição
         const temDesconto = !!produto.originalPrice;
         const precoOriginal = temDesconto ? produto.originalPrice : produto.price;
@@ -55,8 +105,9 @@ document.addEventListener('DOMContentLoaded', function () {
               ${temDesconto ? `<span class='preco-riscado'>${precoOriginal}</span><span class='preco-destaque'>${precoDesconto}</span>` : `<span class='preco-destaque'>${precoOriginal}</span>`}
             </div>
           </div>
-          <button class="popup-remove-btn" title="Remover do carrinho" data-index="${index}">Remover</button>
+          <button class="popup-remove-btn" title="Remover do carrinho" data-index="${products.indexOf(produto)}">Remover</button>
         </div>`;
+
         // Indicador de quantidade e botões de + e -
         const indicadorQtd = document.createElement('div');
         indicadorQtd.className = 'popup-indicador-qtd';
