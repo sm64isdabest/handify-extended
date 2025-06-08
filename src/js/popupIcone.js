@@ -81,12 +81,17 @@ document.addEventListener('DOMContentLoaded', function () {
             // Indicador de quantidade e botões de + e -
             const indicadorQtd = document.createElement('div');
             indicadorQtd.className = 'popup-indicador-qtd';
+            indicadorQtd.style.position = 'absolute';
+            indicadorQtd.style.bottom = '-38px';
+            indicadorQtd.style.left = '50%';
+            indicadorQtd.style.transform = 'translateX(-50%)';
             indicadorQtd.innerHTML = `
             <button class="popup-qty-btn popup-qty-minus">-</button>
             <span class="popup-qty-value">${produto.quantidade}</span>
             <button class="popup-qty-btn popup-qty-plus">+</button>
           `;
             produtoPop.appendChild(indicadorQtd);
+            produtoPop.style.position = 'relative'; // Adiciona posição relativa ao produto
             // Atualiza a quantidade
             function atualizarQuantidade(novaQtd) {
                 let carrinhoQtd = (localStorage.getItem('carrinho') || '').split(',').filter(Boolean);
@@ -128,6 +133,18 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             if (popupList) popupList.appendChild(produtoPop);
         });
+
+        // Adiciona scroll ao popup se houver mais de 2 itens distintos
+        if (Object.keys(produtosAgrupados).length > 2) {
+            popupList.style.maxHeight = '300px'; // Define uma altura máxima
+            popupList.style.overflowY = 'auto'; // Habilita o scroll vertical
+            popupList.style.paddingRight = '10px'; // Adiciona espaço para o scroll
+        } else {
+            popupList.style.maxHeight = ''; // Remove a altura máxima
+            popupList.style.overflowY = ''; // Remove o scroll
+            popupList.style.paddingRight = ''; // Remove o espaço adicional
+        }
+
         popupMenu.style.display = 'block';
         atualizarQuadradoFinal();
     }
