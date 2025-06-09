@@ -1,7 +1,11 @@
 export const products = [
+    // BOLSAS
+
     {
         name: "Bolsa de Palha Natural Quadrada Artesanal Modelo Grande",
-        img: "../images/produtos/bolsa-flor.png",
+        category: "Bolsa",
+        slug: "bolsa-de-palha-natural-quadrada",
+        img: "../images/produtos/bolsas/bolsa-flor.png",
         price: "R$280,15",
         originalPrice: "R$294,90",
         discount: 5, // 5%
@@ -10,7 +14,9 @@ export const products = [
     },
     {
         name: "Bolsa de Palha",
-        img: "../images/produtos/bolsa-palha.png",
+        category: "Bolsa",
+        slug: "bolsa-de-palha",
+        img: "../images/produtos/bolsas/bolsa-palha.png",
         price: "R$279,90",
         originalPrice: "R$139,95",
         discount: 50, // 50%
@@ -19,7 +25,9 @@ export const products = [
     },
     {
         name: "Bolsa de Rattan Redonda Couro Artesanal Praia Mar Verão Vime",
-        img: "../images/produtos/bolsa-redonda.png",
+        category: "Bolsa",
+        slug: "bolsa-rattan-redonda",
+        img: "../images/produtos/bolsas/bolsa-redonda.png",
         price: "R$123,90",
         originalPrice: "R$123,90",
         discount: 0, // Sem desconto
@@ -28,7 +36,9 @@ export const products = [
     },
     {
         name: "Bolsa Transversal Loba Urbana Bag Caracol Terracota",
-        img: "../images/produtos/bolsa-vermelha.png",
+        category: "Bolsa",
+        slug: "bolsa-transversal-loba-urbana",
+        img: "../images/produtos/bolsas/bolsa-vermelha.png",
         price: "R$240,00",
         originalPrice: "R$240,00",
         discount: 0, // Sem desconto
@@ -37,7 +47,9 @@ export const products = [
     },
     {
         name: "Bolsa Artesanal Madeira Envernizada Colorida Alça Carteira",
-        img: "../images/produtos/bolsa-colorida.png",
+        category: "Bolsa",
+        slug: "bolsa-artesanal-madeira-colorida",
+        img: "../images/produtos/bolsas/bolsa-colorida.png",
         price: "R$67,49",
         originalPrice: "R$74,99",
         discount: 10, // 10%
@@ -46,7 +58,9 @@ export const products = [
     },
     {
         name: "Bolsa Praia Feminina Tiracolo Estilo Clutch Alça Promocional Cor Palha - Bege Escuro",
-        img: "../images/produtos/bolsa-praia.png",
+        category: "Bolsa",
+        slug: "bolsa-praia-feminina-tiracolo",
+        img: "../images/produtos/bolsas/bolsa-praia.png",
         price: "R$56,35",
         originalPrice: "R$59,95",
         discount: 50, // 50%
@@ -55,7 +69,9 @@ export const products = [
     },
     {
         name: "Bolsa de Praia Feminina Grande - Modelo Artesanal- Luxo",
-        img: "../images/produtos/bolsa-praia-clara.png",
+        category: "Bolsa",
+        slug: "bolsa-de-praia-feminina-grande",
+        img: "../images/produtos/bolsas/bolsa-praia-clara.png",
         price: "R$118,15",
         originalPrice: "R$139,00",
         discount: 15, // 15%
@@ -64,22 +80,176 @@ export const products = [
     },
     {
         name: "Bolsa de Pérola Pequena",
-        img: "../images/produtos/bolsa-clara.png",
+        category: "Bolsa",
+        slug: "bolsa-de-perola-pequena",
+        img: "../images/produtos/bolsas/bolsa-clara.png",
         price: "R$69,50",
         originalPrice: "R$139,00",
         discount: 50, // 50%
         nota: 4.7,
         avaliacoes: 29,
+    },
+
+    // DECORAÇÕES
+
+    {
+        name: "Vasos Pintados",
+        category: "Decoracao",
+        slug: "vasos-pintados",
+        img: "../images/produtos/decoracoes/Vaso.png",
+        originalPrice: "R$199,90",
+        price: "R$99,99",
+        discount: 50,
+        nota: 4.7,
+        avaliacoes: 29,
+    },
+    {
+        name: "Porta-Retratos",
+        category: "Decoracao",
+        slug: "porta-retratos",
+        img: "../images/produtos/decoracoes/Quadro.png",
+        price: "R$57,90",
+        originalPrice: "R$29,90",
+        discount: 48,
+        nota: 4.5,
+        avaliacoes: 15,
+    },
+
+    // UTENSÍLIOS DOMÉSTICOS
+
+    {
+        name: "Colher de Pau",
+        category: "Utensilios",
+        slug: "colher-de-pau",
+        img: "../images/produtos/utensilios/Colher.png",
+        price: "R$25,99",
+        originalPrice: "R$15,99",
+        discount: 38,
+        nota: 4.8,
+        avaliacoes: 39,
+    },
+    {
+        name: "Vassoura de Palha",
+        category: "Utensilios",
+        slug: "vassoura-de-palha",
+        img: "../images/produtos/utensilios/vassoura-de-palha.png",
+        originalPrice: "R$182,90",
+        price: "R$36,58",
+        discount: 80,
+        nota: 4.6,
+        avaliacoes: 65,
+    },
+    {
+        name: "Utensílios de cozinha bambu 6 peças",
+        category: "Utensilios",
+        slug: "utensilios-de-cozinha-bambu-6-pecas",
+        img: "../images/produtos/utensilios/suporte-bambu-6pc.png",
+        originalPrice: "R$260,00",
+        price: "R$189,90",
+        discount: 26,
+        nota: 4.9,
+        avaliacoes: 102,
+    },
+    {
+        name: "Descanço de Panela",
+        category: "Utensilios",
+        slug: "descanco-de-panela",
+        img: "../images/produtos/utensilios/descanco-de-panela.png",
+        originalPrice: "R$68,90",
+        price: "R$45,90",
+        discount: 33,
+        nota: 4.4,
+        avaliacoes: 54,
+    },
+    {
+        name: "Suporte de faqueiros",
+        category: "Utensilios",
+        slug: "suporte-de-faqueiros",
+        img: "../images/produtos/utensilios/faqueiro.png",
+        originalPrice: "R$89,70",
+        price: "R$78,90",
+        discount: 12,
+        nota: 4.3,
+        avaliacoes: 78,
+    },
+    {
+        name: "Panela de Pedra Sabão 25cm",
+        category: "Utensilios",
+        slug: "panela-de-pedra-sabao-25cm",
+        img: "../images/produtos/utensilios/panela-de-pedra-sabao.png",
+        originalPrice: "R$499,90",
+        price: "R$315,90",
+        discount: 36,
+        nota: 4.5,
+        avaliacoes: 60,
+    },
+    {
+        name: "Panela de Barro",
+        category: "Utensilios",
+        slug: "panela-de-barro",
+        img: "../images/produtos/utensilios/panela-de-barro.png",
+        originalPrice: "R$249,90",
+        price: "R$249,90",
+        discount: 0,
+        nota: 4.4,
+        avaliacoes: 45,
+    },
+
+    // MÓVEIS
+
+    {
+        name: "Poltrona - fibra natural",
+        category: "Moveis",
+        slug: "poltrona-fibra-natural",
+        img: "../images/produtos/moveis/poltrona-fibra-natural.png",
+        originalPrice: "R$1.890,90",
+        price: "R$1.489,90",
+        discount: 21,
+        nota: 4.5,
+        avaliacoes: 30,
+    },
+    {
+        name: "Armário de vime - portas de tecido",
+        category: "Moveis",
+        slug: "armario-de-vime-portas-de-tecido",
+        img: "../images/produtos/moveis/armario-vime-portas-tecido.png",
+        originalPrice: "R$1.290,90",
+        price: "R$1.029,90",
+        discount: 20,
+        nota: 4.6,
+        avaliacoes: 25,
+    },
+    {
+        name: "Mesa de centro - fibra natural",
+        category: "Moveis",
+        slug: "mesa-de-centro-fibra-natural",
+        img: "../images/produtos/moveis/mesa-centro-fibra-natural.png",
+        originalPrice: "R$1.220,90",
+        price: "R$979,90",
+        discount: 19,
+        nota: 4.5,
+        avaliacoes: 30,
+    },
+    {
+        name: "Poltrona positano - fibra natural",
+        category: "Moveis",
+        slug: "poltrona-positano-fibra-natural",
+        img: "../images/produtos/moveis/poltrona-positano-fibra-natural.png",
+        originalPrice: "R$2.120,90",
+        price: "R$1.559,90",
+        discount: 26,
+        nota: 4.6,
+        avaliacoes: 25,
+    },
+    {
+        name: "Banqueta de vime",
+        category: "Moveis",
+        slug: "banqueta-de-vime",
+        img: "../images/produtos/moveis/banqueta-vime.png",
+        originalPrice: "R$445,90",
+        price: "R$398,90",
+        discount: 10,
+        nota: 4.5,
+        avaliacoes: 30,
     }
 ];
-
-// const categorias = [
-//     {
-//         name: "Roupas",
-//         produtos: ["Camiseta", "Calça Jeans"]
-//     },
-//     {
-//         name: "Calçados",
-//         produtos: ["Tênis"]
-//     }
-// ];
