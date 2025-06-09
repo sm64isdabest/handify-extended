@@ -61,7 +61,7 @@
       <div class="carousel-item active">
         <img src="../images/fundos/ofertabannernobkg1.png" class="d-block mx-auto" alt="" />
       </div>
-     <!-- <div class="carousel-item item2">
+      <!-- <div class="carousel-item item2">
         <img src="../images/fundos/fretegratisbannernobkg2.png" class="d-block mx-auto" alt="" />
       </div> -->
 
@@ -80,38 +80,24 @@
     <section class="filtros">
       <ul class="categorias">
         <h2>Categorias</h2>
-        <li><a href="#">Kit de Bolsas</a></li>
-        <li><a href="#">Bolsas</a></li>
-        <li><a href="#">Mochilas</a></li>
-        <li><a href="#">Bijuterias</a></li>
-        <li><a href="#">Acessórios</a></li>
-        <li><a href="#">Necessaires</a></li>
-        <li><a href="#">Pochetes</a></li>
-        <li><a href="#">Lancheiras</a></li>
-        <li><a href="#">Pastas Executivas</a></li>
-      </ul>
+        <li><button class="categoria-btn categoria-todas" data-category="">Todas</button></li>
+        <li><button class="categoria-btn" data-category="Bolsa">Bolsas</button></li>
+        <li><button class="categoria-btn" data-category="Decoracao">Decorações</button></li>
+        <li><button class="categoria-btn" data-category="Utensilios">Utensílios Domésticos</button></li>
+        <li><button class="categoria-btn" data-category="Moveis">Móveis</button></li>
 
-      <ul class="marcas">
-        <h2>Marcas</h2>
-        <li><a href="#">Farm</a></li>
-        <li><a href="#">Selten</a></li>
-        <li><a href="#">Chenson</a></li>
-        <li><a href="#">Moupad</a></li>
-        <li><a href="#">HWJ</a></li>
-        <li><a href="#">Denlex</a></li>
-        <li><a href="#">M3M</a></li>
-        <li><a href="#">Mariart</a></li>
-        <li><a href="#">Daniella Marques</a></li>
       </ul>
 
       <ul class="preco">
         <h2>Preço</h2>
-        <label><input type="radio" name="price" value="60" /> Até R$60</label>
+        <label><input type="radio" name="price" checked value="none" /> Todos</label>
         <br />
-        <label><input type="radio" name="price" value="100" /> R$60 a R$100</label>
+        <label><input type="radio" name="price" value="80" /> Até R$80</label>
         <br />
-        <label><input type="radio" name="price" value="100+" /> Mais de
-          R$100</label>
+        <label><input type="radio" name="price" value="150" /> R$80 a R$150</label>
+        <br />
+        <label><input type="radio" name="price" value="150+" /> Mais de
+          R$150</label>
       </ul>
     </section>
 
@@ -151,39 +137,7 @@
         </div>
         <!-- CARD TEMPLATE -->
 
-        <div class="fundo">
-          <div class="card" style="
-                background-color: #4b3a35;
-                width: 15rem;
-                border-radius: 1.5rem;
-                border: #3c2924 solid;
-              ">
-            <picture>
-              <img src="../images/produtos/bolsa-flor.png" class="card-img-top" alt="..." />
-            </picture>
-            <div class="card-body" style="padding: 0.1rem">
-              <h5 class="card-title">
-                Bolsa De Palha Natural Quadrada Artesanal Modelo Grande
-              </h5>
-              <h5 class="avaliacoes">
-                4.6
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-                (81)
-              </h5>
-              <p class="card-text preco-original">R$ 294,90</p>
-              <div class="precos">
-                <p class="sub-card-text">R$ 280,15</p>
-                <p id="oferta">5% OFF</p>
-              </div>
-              <button>Ver mais</button>
-            </div>
-          </div>
-        </div>
-        <!-- Repetir estrutura para outros produtos -->
+        <!-- Estrutura se repete aqui -->
       </div>
     </section>
   </main>

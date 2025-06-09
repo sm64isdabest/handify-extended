@@ -180,13 +180,14 @@ input::placeholder {
 }
 
 .autocomplete-items li:active {
-    transform: translateY(2px) scale(0.98);
-    box-shadow: 0 1px 2px #0005 inset;
-    transition: transform 0.1s, box-shadow 0.1s;
+  transform: translateY(2px) scale(0.98);
+  box-shadow: 0 1px 2px #0005 inset;
+  transition: transform 0.1s, box-shadow 0.1s;
 }
 
 .menu-bar {
   display: flex;
+  background-color: white;
   justify-content: center;
 }
 
@@ -229,7 +230,8 @@ input::placeholder {
   border-bottom: 2px solid #593d36;
 }
 
-.carousel-item, .active {
+.carousel-item,
+.active {
   background-image: url("../images/fundos/fundo_palha.png");
 }
 
@@ -257,8 +259,14 @@ main {
 
 .filtros {
   padding: 15px;
+  height: fit-content;
   background-color: #fff;
   border-radius: 1rem;
+}
+
+.categoria-btn.selected {
+  color: #4b3a35;
+  font-weight: bold;
 }
 
 .filtros h2 {
@@ -326,6 +334,11 @@ picture img {
   border-radius: 1rem;
   width: 15rem;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+}
+
+.categorias li button {
+  background: none;
+  border: none;
 }
 
 .marcas {
@@ -426,7 +439,8 @@ picture img {
 }
 
 .preco-original {
-  width: 4rem;
+  width: fit-content;
+  text-align: center;
   font-weight: bold;
 }
 
@@ -602,15 +616,28 @@ footer .social-icons a i {
   width: auto;
 }
 
+@media (max-width: 1355px) {
+  #cards-inside {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
-@media (max-width: 768px) {
+@media (max-width: 1091px) {
+  #cards-inside {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 829px) {
 
   header #cart {
     display: none;
   }
 
-  #cards-inside {
-    grid-template-columns: repeat(3, 1fr);
+  .menu-bar button {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .produtos {
@@ -671,7 +698,7 @@ footer .social-icons a i {
   }
 }
 
-@media (max-width: 425px) {
+@media (max-width: 600px) {
   main {
     flex-direction: column-reverse;
     align-items: center;
@@ -713,7 +740,6 @@ footer .social-icons a i {
 
   .produtos {
     width: 25rem;
-    margin-left: -0.5rem;
   }
 
   #cards-inside {
@@ -760,7 +786,7 @@ footer .social-icons a i {
     height: 22px;
   }
 
-  footer{
+  footer {
     font-size: 0.7rem;
   }
 
