@@ -1,9 +1,10 @@
 import { products } from '../database.js';
 
-// const searchInput = document.getElementById('searchInput');
+const searchInput = document.getElementById('searchInput');
 const productsCards = document.getElementById('cards-inside');
 const cardTemplate = document.getElementById('cardTemplate').firstElementChild;
 const productsText = document.getElementById('texto-produtos');
+const priceInputs = document.querySelectorAll('input[name="price"]');
 
 // Função para pegar o parâmetro da URL
 function getQueryParam(param) {
@@ -11,10 +12,36 @@ function getQueryParam(param) {
     return urlParams.get(param) || '';
 }
 
-function renderCards(filter = '') {
+function filterByPrice(product, priceFilter) {
+    const price = parseFloat(product.price.replace(/[^\d,]/g, '').replace(',', '.'));
+    if (!priceFilter || priceFilter === '') return true;
+    if (priceFilter === '80') return price <= 80;
+    if (priceFilter === '150') return price > 80 && price <= 150;
+    if (priceFilter === '150+') return price > 150;
+    return true;
+}
+
+let currentCategory = ''; // variável para categoria
+
+function filterByCategory(product, category) {
+    if (!category || category === '') return true;
+    // Suporte para campo category (string) ou tags (array)
+    if (product.category) {
+        return product.category.toLowerCase() === category.toLowerCase();
+    }
+    if (product.tags && Array.isArray(product.tags)) {
+        return product.tags.map(t => t.toLowerCase()).includes(category.toLowerCase());
+    }
+    return false;
+}
+
+// Modifique renderCards para usar categoria
+function renderCards(filter = '', priceFilter = '', category = '') {
     productsCards.innerHTML = '';
     const filteredProducts = products.filter(product =>
-        product.name.toLowerCase().includes(filter.toLowerCase())
+        product.name.toLowerCase().includes(filter.toLowerCase()) &&
+        filterByPrice(product, priceFilter) &&
+        filterByCategory(product, category)
     );
 
     if (filteredProducts.length === 0) {
@@ -56,12 +83,36 @@ function renderCards(filter = '') {
     productsCards.style.visibility = 'visible';
 }
 
-// Ao carregar a página, já filtra pelo termo da URL
-const initialQuery = getQueryParam('q');
-searchInput.value = initialQuery;
-renderCards(initialQuery);
+// Estado atual do filtro
+let currentPriceFilter = '';
+let currentSearch = getQueryParam('q');
+searchInput.value = currentSearch;
+renderCards(currentSearch, currentPriceFilter, currentCategory);
 
 // Atualiza ao digitar
 searchInput.addEventListener('input', function () {
-    renderCards(this.value);
+    currentSearch = this.value;
+    renderCards(currentSearch, currentPriceFilter, currentCategory);
 });
+
+// Atualiza ao trocar o filtro de preço
+priceInputs.forEach(input => {
+    input.addEventListener('change', function () {
+        currentPriceFilter = this.value;
+        renderCards(currentSearch, currentPriceFilter, currentCategory);
+    });
+});
+
+const categoriaBtns = document.querySelectorAll('.categoria-btn');
+categoriaBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+        categoriaBtns.forEach(b => b.classList.remove('selected'));
+        this.classList.add('selected'); // Destaca o clicado
+
+        currentCategory = this.getAttribute('data-category') || '';
+        renderCards(currentSearch, currentPriceFilter, currentCategory);
+    });
+});
+
+// já deixa "Todas" selecionado ao carregar
+document.querySelector('.categoria-todas')?.classList.add('selected');
