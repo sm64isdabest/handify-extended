@@ -1,7 +1,8 @@
-console.log("updateText.js loaded");
+console.log("responsiveText.js loaded");
 
 function updateText() {
   const textToChange = document.getElementById('responsive-text');
+
   if (window.matchMedia("(max-width: 768px)").matches) {
     textToChange.textContent = "Consumidores";
     return;
