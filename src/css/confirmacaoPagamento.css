@@ -1,0 +1,86 @@
+.confirmacao-container {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px #0002;
+    padding: 48px 36px;
+    max-width: 600px;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    color: #3d2b23;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.resumo-cobranca {
+    font-size: 1.2rem;
+    margin: 24px 0;
+}
+
+.resumo-cobranca ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.resumo-cobranca li {
+    margin-bottom: 12px;
+}
+
+.botoes-confirmacao {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+    align-items: center;
+}
+
+.icone-confirmado {
+    display: block;
+    margin: 24px auto;
+    max-width: 150px;
+    height: auto;
+}
+
+.mensagem-agradecimento {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-top: 16px;
+}
+
+.botoes-confirmacao button {
+    width: 200px;
+    padding: 12px 0;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'Montserrat', Arial, sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.botao-confirmar {
+    background-color: #3d2b23;
+    color: #fff;
+}
+
+.botao-confirmar:hover {
+    background-color: #b88c4a;
+}
+
+.botao-cancelar {
+    background-color: #5a3e36;
+    color: #fff;
+}
+
+.botao-cancelar:hover {
+    background-color: #b88c4a;
+}
+
+
+button a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
