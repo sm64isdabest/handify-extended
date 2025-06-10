@@ -18,26 +18,30 @@
     <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
     <nav>
       <ul>
-        <li><a href="#">Produtos</a></li>
+        <li><a href="home.html">Produtos</a></li>
         <li><a href="#">Contato</a></li>
-        <li><a href="páginaSobre.html">Sobre</a></li>
-        <li>
-          <a href="#" class="cadastrarse"><i class="bi bi-person me-2"></i>Cadastrar-se</a>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li style="display: none;">
+          <a href="cadastroUser.html" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+        </li>
+        <li class="user-logged" style="display: none;">
+          <i class="bi bi-person"></i> placeholder
         </li>
       </ul>
-      <button id="list">
-        <i class="bi bi-list"></i>
-      </button>
+      <!-- PARA DISPOSITIVOS MÓVEIS -->
+      <button id="list"><i class="bi bi-list"></i></button>
     </nav>
     <div id="popup-menu">
       <ul class="popup-list">
-        <li>
-        <li>
-          <a href="loginUser.html">Entrar</a>
+        <li style="display: none;">
+          <a href="cadastroUser.html" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
         </li>
-        <li><a href="paginaSobre.html">Sobre</a></li>
+        <li class="user-logged-mobile" style="display: none;">
+          <i class="bi bi-person"></i> placeholder
+        </li>
+        <li><a href="sobre.html">Sobre</a></li>
         <li><a href="#">Contato</a></li>
-        <li><a href="pesquisaProdutos.html">Produtos</a></li>
+        <li><a href="home.html">Produtos</a></li>
       </ul>
     </div>
   </header>
@@ -52,18 +56,22 @@
           Seja bem-vindo! Logue sua conta e comece a mostrar, divulgar e vender seu artesanato com a gente.
         </h3>
         <form>
-          <label for="userName">
-            <i class="bi bi-envelope"></i>
-            <input type="text" placeholder="E-mail" />
+          <label id="labelUserName" for="userName">
+            <i class="bi bi-person"></i>
+            <input type="text" id="userName" autocomplete="username" placeholder="Usuário" />
           </label>
 
-          <label for="userPass">
-            <i class="bi bi-lock"></i>
-            <input type="password" placeholder="Insira sua senha" />
+          <label id="labelUserPass" for="userPass">
+            <i class="bi bi-key"></i>
+            <input type="password" id="userPass" placeholder="Insira sua senha" />
           </label>
+
+          <span>Por favor, preencha todos os campos!</span>
+
           <div class="buttons">
             <button type="button" class="active">Entrar</button>
           </div>
+
           <div class="linkCadastro">
             <h5>Não tem conta? <a href="cadastroUser.html" class="link-primary">Cadastrar-se</a> </h5>
           </div>
@@ -73,32 +81,31 @@
     </section>
   </main>
   <footer>
-    <div class="conteudo-rodape">
-      <span>© 2025 Handify. Todos os direitos reservados.</span>
-      <span class="icones-rodape">
-        <a href="#" title="WhatsApp" target="_blank"><i class="bi bi-whatsapp"></i></a>
-        <a href="#" title="YouTube" target="_blank"><i class="bi bi-youtube"></i></a>
-        <a href="#" title="X (Twitter)" target="_blank"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" title="Instagram" target="_blank"><i class="bi bi-instagram"></i></a>
-      </span>
+    <p>© 2025 HANDIFY. Todos os direitos reservados.</p>
+    <div class="social-icons">
+      <a href="https://web.whatsapp.com/" target="_blank"><i class="bi bi-whatsapp"></i></a>
+      <a href="https://www.youtube.com/" target="_blank"><i class="bi bi-youtube"></i></a>
+      <a href="https://x.com/" target="_blank"><i class="bi bi-twitter-x"></i></a>
+      <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram"></i></a>
     </div>
   </footer>
 
   <!-- VLIBRAS -->
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
     </div>
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
 
-  <script src="../js/loginUser/mobilePop-up.js"></script>
+  <script src="../js/mobilePop-up.js"></script>
   <script src="../js/loginUser/inputSpanShow.js"></script>
-  <script src="../js/loginUser/updateText.js"></script>
+  <script src="../js/loggedIn.js"></script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
     crossorigin="anonymous"></script>
