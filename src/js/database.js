@@ -6,6 +6,8 @@ export const products = [
         originalPrice: "R$279,90",
         price: "R$139,95",
         discount: 50,
+        nota: 4.1,
+
     },
     {
         name: "Bolsa De Palha Praia Feminina",
@@ -14,6 +16,7 @@ export const products = [
         originalPrice: "R$95,99",
         price: "R$95,99", 
         discount: 0,
+        nota: 4.6,
     },
     {
         name: "Bolsa Praia Linda Palha Feminina Com Ziper + Pigente",
@@ -59,16 +62,16 @@ export const products = [
         name: "Porta-Retratos",
         slug: "porta-retratos", // Normalizado
         img: "../images/produtos/Quadro.png",
-        price: "R$57,90",
-        originalPrice: "R$29,90",
+        originalPrice: "R$57,90",
+        price: "R$29,90",
         discount: 48,
     },
     {
         name: "Colher de Pau",
         slug: "colher-de-pau", // Normalizado
         img: "../images/produtos/Colher.png",
-        price: "R$25,99",
-        originalPrice: "R$15,99",
+        price: "R$15,99",
+        originalPrice: "R$25,99",
         discount: 38,
     },
 ];
