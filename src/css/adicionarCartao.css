@@ -13,10 +13,12 @@ body {
 
 header {
     background: #fff;
-    border-bottom: none;
-    padding: 0;
-    position: relative; 
-    top: 0;
+    border-bottom: 2px solid #593d36;
+}
+
+header .area-logo {
+  height: 50px;
+  margin-top: -1rem;
 }
 
 .conteudo-cabecalho {
@@ -251,8 +253,10 @@ input[type="password"]:focus {
     max-width: 400px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin: 40px auto 0 auto; /* Increased top margin for more spacing */
+    margin: 40px auto 0 auto; 
     display: block;
+    text-decoration: none;
+    text-align: center;
 }
 
 .botao-adicionar:hover {

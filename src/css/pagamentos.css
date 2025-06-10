@@ -10,13 +10,26 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 header {
     background: #fff;
-    border-bottom: none;
-    padding: 0;
-    position: relative; 
-    top: 0;
+    border-bottom: 2px solid #593d36;
 }
+
+header .area-logo {
+  height: 50px;
+  margin-top: -1rem;
+}
+
+nav {
+  display: flex;
+  font-weight: 600;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+}
+
 .conteudo-cabecalho {
     display: flex;
     align-items: center;
