@@ -2,81 +2,93 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>Confirmação de pagamento | Handify</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/pagamentos.css" />
-    <link rel="stylesheet" href="../css/confirmacaoPagamento.css" />
+  <meta charset="UTF-8" />
+  <title>Confirmação de pagamento | Handify</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/confirmacaoPagamento.css" />
 </head>
 
 <body>
-    <header>
-        <div class="conteudo-cabecalho">
-            <div class="area-logo">
-                <img src="../images/logo-handify.png" alt="Handify Logo" />
-                <div class="linha-logo"></div>
-                <span class="titulo-cabecalho">Confirmação de pagamento</span>
-            </div>
-            <nav class="links-cabecalho">
-                <a href="#">Contato</a>
-                <a href="#">Sobre</a>
-            </nav>
-            <button class="menu-mobile" aria-label="Menu">
-                <i class="bi bi-list"></i>
-            </button>
-        </div>
-    </header>
-
-    <main>
-        <div class="container-pagamento confirmacao-container">
-            <button class="botao-voltar" onclick="history.back()">
-                <i class="bi bi-arrow-left"></i>
-            </button>
-            <h2 class="titulo-pagamento">Confirmação de pagamento</h2>
-            <p>Você está prestes a realizar um pagamento com cartão de crédito.</p>
-            <div class="resumo-cobranca">
-                <p><strong>Resumo da cobrança:</strong></p>
-                <ul>
-                    <li>Valor total: R$ <span id="valor">[valor]</span></li>
-                    <li>Descrição: <span id="descricao">[nome do produto/serviço ou número do pedido]</span></li>
-                    <li>Forma de pagamento: <span id="formaPagamento">[Cartão Crédito/Débito]</span></li>
-                </ul>
-            </div>
-            <div class="botoes-confirmacao">
-                <button class="botao-confirmar"><a href="confirmado.html">Comprar</a></button>
-                <button class="botao-cancelar" onclick="history.back()"><a href="#">Cancelar</a></button>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <div class="conteudo-rodape">
-            <span>© 2025 HANDIFY. Todos os direitos reservados.</span>
-            <span class="icones-rodape">
-                <a href="#" title="WhatsApp" target="_blank"><i class="bi bi-whatsapp"></i></a>
-                <a href="#" title="YouTube" target="_blank"><i class="bi bi-youtube"></i></a>
-                <a href="#" title="X (Twitter)" target="_blank"><i class="bi bi-twitter-x"></i></a>
-                <a href="#" title="Instagram" target="_blank"><i class="bi bi-instagram"></i></a>
-            </span>
-        </div>
-    </footer>
-
-    <!-- VLIBRAS -->
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper">
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
+  <header>
+    <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="#">Contato</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li style="display: none;">
+          <a href="cadastroUser.html" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+        </li>
+        <li class="user-logged" style="display: none;">
+          <i class="bi bi-person"></i> placeholder
+        </li>
+      </ul>
+      <!-- PARA DISPOSITIVOS MÓVEIS -->
+      <button id="list"><i class="bi bi-list"></i></button>
+    </nav>
+    <div id="popup-menu">
+      <ul class="popup-list">
+        <li style="display: none;">
+          <a href="cadastroUser.html" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+        </li>
+        <li class="user-logged-mobile" style="display: none;">
+          <i class="bi bi-person"></i> placeholder
+        </li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="#">Contato</a></li>
+        <li><a href="home.html">Produtos</a></li>
+      </ul>
     </div>
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
-    <script>
-        // Removed redundant JS redirect since href is used on the anchor tag
-    </script>
-    </body>
+  </header>
+
+  <main>
+    <div class="confirmacao-container">
+      <button class="botao-voltar" onclick="history.back()">
+        <i class="bi bi-arrow-left"></i>
+      </button>
+      <h2 class="titulo-pagamento">Confirmação de pagamento</h2>
+      <p>Você está prestes a realizar um pagamento com cartão de crédito.</p>
+      <div class="resumo-cobranca">
+        <p><strong>Resumo da cobrança:</strong></p>
+        <ul>
+          <li>Valor total: R$ <span id="valor">[valor]</span></li>
+          <li>Descrição: <span id="descricao">[nome do produto/serviço ou número do pedido]</span></li>
+          <li>Forma de pagamento: <span id="formaPagamento">[Cartão Crédito/Débito]</span></li>
+        </ul>
+      </div>
+      <div class="botoes-confirmacao">
+        <button class="botao-confirmar"><a href="confirmado.html">Comprar</a></button>
+        <button class="botao-cancelar" onclick="history.back()"><a href="#">Cancelar</a></button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 HANDIFY. Todos os direitos reservados.</p>
+    <div class="social-icons">
+      <a href="https://web.whatsapp.com/" target="_blank"><i class="bi bi-whatsapp"></i></a>
+      <a href="https://www.youtube.com/" target="_blank"><i class="bi bi-youtube"></i></a>
+      <a href="https://x.com/" target="_blank"><i class="bi bi-twitter-x"></i></a>
+      <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram"></i></a>
+    </div>
+  </footer>
+
+  <!-- VLIBRAS -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper">
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  <script>
+    // Removed redundant JS redirect since href is used on the anchor tag
+  </script>
+</body>
 
 </html>
