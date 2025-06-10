@@ -170,24 +170,6 @@ nav ul li a.entrar {
     margin-bottom: 2rem;
 }
 
-.product-gallery .thumbnails {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.product-gallery .thumbnails img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    cursor: pointer;
-    border: 2px solid transparent;
-    border-radius: 5px;
-}
-
-.product-gallery .thumbnails img:hover {
-    border-color: #5a3e36;
-}
 
 .product-gallery .main-image img {
     width: 320px;
@@ -775,6 +757,9 @@ footer .social-icons a i {
     margin: 0;
     text-align: left;
 }
+#popup-lista-mob{
+    display: none;
+}
 
 .cont_pop_precos {
     display: flex;
@@ -849,6 +834,30 @@ footer .social-icons a i {
     background: #fff;
     border-radius: 0.5rem;
     padding: 2px 8px;
+}
+#popup-menu-list {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  padding: 1.2rem 1.2rem;
+  z-index: 2000;
+  display: none;
+}
+
+#popup-menu-list .popup-list-mob a {
+  display: block;
+  margin: 0.7rem 0;
+  background: #5a3e36;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 16px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
 }
 
 
@@ -1452,7 +1461,10 @@ footer .social-icons a i {
         border: none;
         background: none;
     }
-    
+    #popup-lista-mob{
+    display: block;
+}
+
 
     .product-details {
         text-align: left;
@@ -1476,6 +1488,10 @@ footer .social-icons a i {
         border-radius: 1rem;
         font-size: 0.85rem;
         margin-left: 0;
+    }
+    .pop_up p{
+        font-size: 0.7rem;
+        margin: 0;
     }
 
     .botoes_adc {
@@ -1535,13 +1551,6 @@ footer .social-icons a i {
         margin-top: 2rem;
     }
 
-    .product-gallery .thumbnails {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-
-    }
-
     .product-gallery .main-image img {
         width: 210px;
         height: 210px;
@@ -1560,15 +1569,6 @@ footer .social-icons a i {
 
     .sair {
         display: none;
-    }
-
-    .product-gallery .thumbnails img {
-        width: 78px;
-        height: 78px;
-        object-fit: cover;
-        cursor: pointer;
-        border: 2px solid transparent;
-        border-radius: 5px;
     }
 
     .product-page h1 {
@@ -1735,18 +1735,14 @@ footer .social-icons a i {
         justify-content: space-between;
         display: block;
     }
+    .pop_up p{
+        font-size: 0.63rem;
+        margin: 0;
+    }
+
 
     .menu_clc button{
         color: #392621;
-    }
-
-    .product-gallery .thumbnails img {
-        width: 71px;
-        height: 71px;
-        object-fit: cover;
-        cursor: pointer;
-        border: 2px solid transparent;
-        border-radius: 5px;
     }
 
     .Produtos-similares h1{
@@ -1793,9 +1789,7 @@ footer .social-icons a i {
         font-size: 0.6rem;
         margin-right: 0.5rem;
     }
-    .pop_up p{
-        font-size: 0.65rem;
-    }
+
     .popup-remove-btn {
         font-size: 0.7rem;
         padding: 0.2rem 0.5rem;
