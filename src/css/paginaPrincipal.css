@@ -103,7 +103,7 @@ header #list {
 .menu-bar {
   background-color: white;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   padding-right: 1rem;
   gap: 1rem;
   align-items: center;
