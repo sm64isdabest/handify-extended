@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
         nomeProduto.textContent = product.name;
         descricaoProduto.textContent = product.description;
         numeroPedido.textContent = product.trackingCode;
-        console.log('Produto exibido:', product.name);
     }
 
     function showNextProduct() {
@@ -58,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 copyMessage.style.display = 'none';
             }, 2000);
         }).catch(err => {
-            console.error('Erro ao copiar para a área de transferência:', err);
         });
     }
 

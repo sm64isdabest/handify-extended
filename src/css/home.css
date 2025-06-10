@@ -7,7 +7,6 @@ body {
   color: #3d2b23;
 }
 
-/* Estilo para o link que funciona como botão "Ofertas" */
 a.btn {
   background-color: #5a3e36; /* mesma cor de fundo dos botões originais */
   color: #fff;
@@ -101,19 +100,16 @@ header #list {
 }
 
 .menu-bar {
-  background-color: white;
   display: flex;
+  background-color: white;
   justify-content: center;
-  padding-right: 1rem;
-  gap: 1rem;
-  align-items: center;
 }
 
 .menu-bar div {
   display: flex;
   gap: 1rem;
-  margin: 0;
-  justify-content: flex-end;
+  margin: 0 auto;
+  justify-content: end;
   text-align: center;
 }
 
@@ -183,10 +179,8 @@ header #list {
   border-radius: 20px;
   padding: 5px 10px;
   width: 30rem;
-  margin-left: 1rem;
-  position: relative;
-  flex-grow: 1;
-  max-width: 500px;
+  margin-left: 10rem;
+  position: absolute;
 }
 
 .search-bar i {
@@ -202,6 +196,17 @@ header #list {
   width: 100%;
   background: none;
   color: white;
+}
+
+input::placeholder {
+  color: white;
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .nav-links {
