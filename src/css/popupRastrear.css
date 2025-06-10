@@ -1,12 +1,3 @@
-/* Reset some default styles */
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f9f1e7; /* Cream/beige background */
-    color: #3e2f2f; /* Dark brown text */
-}
-
 #rastrear-popup {
     display: none;
     position: fixed;
@@ -18,11 +9,11 @@ body, html {
     z-index: 4000;
     justify-content: center;
     align-items: center;
-    display: flex;
+    display: flex; 
 }
 
-.container-principal {
-    max-width: 480px;
+#rastrear-popup .container-principal {
+    max-width: 520px;
     margin: 20px auto;
     background-color: #fff;
     border-radius: 20px;
@@ -31,21 +22,22 @@ body, html {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-header {
+#rastrear-popup header {
     align-items: center;
-
     height: 13vw;
     width: 100%;
     max-height: 100px;
     gap: 10px;
+    display: flex;
+    flex-direction: row;
 }
 
-header button{
+#rastrear-popup header button{
     margin-left: auto; 
     border-radius: 39rem;   
 }
 
-.linha-vertical {
+#rastrear-popup .linha-vertical {
     width: 2px;
     height: 60%;
     background-color: #3e2f2f;
@@ -53,19 +45,19 @@ header button{
     margin: 0 10px;
 }
 
-.logo {
+#rastrear-popup .logo {
     height: 40px;
     width: auto;
 }
 
-.cabecalho h2 {
+#rastrear-popup .cabecalho h2 {
     font-weight: 600;
     font-size: 1.5rem;
     color: #3e2f2f;
     margin: 0;
 }
 
-.info-produto {
+#rastrear-popup .info-produto {
     display: flex;
     gap: 15px;
     background-color: #fff;
@@ -75,33 +67,33 @@ header button{
     margin-bottom: 25px;
 }
 
-.imagem-produto {
+#rastrear-popup .imagem-produto {
     width: 100px;
     height: 100px;
     object-fit: contain;
     border-radius: 15px;
 }
 
-.detalhes-produto {
+#rastrear-popup .detalhes-produto {
     flex: 1;
 }
 
-.detalhes-produto h3 {
+#rastrear-popup .detalhes-produto h3 {
     margin: 0 0 8px 0;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: #3e2f2f;
 }
 
-.descricao {
-    font-size: 0.9rem;
+#rastrear-popup .descricao {
+    font-size: 0.8rem;
     line-height: 1.3;
     color: #5a4a4a;
     margin-top: 0;
     margin-bottom: 10px;
 }
 
-.numeroDoPedido {
+#rastrear-popup .numeroDoPedido {
     background-color: #3e2f2f; 
     border-radius: 20px;
     padding: 20px 25px;
@@ -109,7 +101,7 @@ header button{
     box-sizing: border-box;
 }
 
-.cabecalho-rastreio {
+#rastrear-popup .cabecalho-rastreio {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -122,7 +114,7 @@ header button{
     border-radius: 1rem;
 }
 
-.rotulo-numero-pedido {
+#rastrear-popup .rotulo-numero-pedido {
     background-color: #5a4a4a;
     padding: 5px 10px;
     border-radius: 10px;
@@ -130,7 +122,7 @@ header button{
     color: #f9f1e7;
 }
 
-.numeroPedido {
+#rastrear-popup .numeroPedido {
     flex-grow: 1;
     font-family: monospace;
     font-size: 1rem;
@@ -139,7 +131,7 @@ header button{
     color: #fff;        
 }
 
-.botao-copiar {
+#rastrear-popup .botao-copiar {
     background-color: #f9f1e7;
     color: #3e2f2f;
     border: none;
@@ -149,11 +141,11 @@ header button{
     cursor: pointer;
 }
 
-.botao-copiar:hover {
+#rastrear-popup .botao-copiar:hover {
     background-color: #d9cbbf;
 }
 
-.retorn{
+#rastrear-popup .retorn{
     border: none;
     padding: 10px 15px;
     background: #3e2f2f ;
@@ -162,33 +154,54 @@ header button{
 
 
 @media (max-width: 500px) {
-    .container-principal {
+    #rastrear-popup .container-principal {
         margin: 10px;
         padding: 15px 20px 30px 20px;
     }
 
-    .info-produto {
+    #rastrear-popup .info-produto {
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
 
-    .imagem-produto {
+    #rastrear-popup .imagem-produto {
         width: 120px;
         height: 120px;
     }
 
-    .detalhes-produto {
+    #rastrear-popup .detalhes-produto {
         margin-top: 15px;
     }
 
-    .cabecalho-rastreio {
+    #rastrear-popup .cabecalho-rastreio {
         flex-direction: column;
         align-items: flex-start;
         gap: 5px;
     }
 
-    .numero-pedido {
+    #rastrear-popup .numero-pedido {
         font-size: 0.95rem;
     }
+}
+
+#rastrear-popup .nav-arrow {
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: #3e2f2f;
+    cursor: pointer;
+    user-select: none;
+    padding: 0 10px;
+    transition: color 0.3s ease;
+}
+
+#rastrear-popup .nav-arrow:hover {
+    color: #5a4a4a;
+}
+
+#rastrear-popup .info-produto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -67,7 +67,9 @@
       </header>
       <main>
         <section class="info-produto">
+          <button id="prev-product" class="nav-arrow"><i class="bi bi-arrow-left-circle"></i></button>
           <img id="imagem-produto" class="imagem-produto" src="" alt="Imagem do produto" />
+          <button id="next-product" class="nav-arrow"><i class="bi bi-arrow-right-circle"></i></button>
           <div class="detalhes-produto">
             <h3 id="nome-produto">Nome do Produto</h3>
             <p id="descricao-produto" class="descricao"></p>
@@ -75,7 +77,7 @@
         </section>
       </main>
       <div class="cabecalho-rastreio">
-        <span class="rotulo-numero-pedido">Número do Pedido:</span>
+        <span class="rotulo-numero-pedido">Código de rastreio:</span>
         <span id="numeroPedido" class="numeroPedido"></span>
         <button class="botao-copiar" onclick="copyOrderNumber()">Copiar</button>
       </div>
@@ -459,5 +461,6 @@
   <script type="module" src="../js/paginaPrincipal/seachFeature.js"></script>
   <script type="module" src="../js/paginaPrincipal/database.js"></script>
   <script type="module" src="../js/paginaPrincipal/loggindln.js"></script> 
+  <script type="module" src="../js/paginaPrincipal/mobilePopUp.js"></script>
   </body>
 </html>
