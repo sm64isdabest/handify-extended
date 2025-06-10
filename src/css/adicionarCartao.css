@@ -1,85 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
 body {
-    background-color: #fbe9c6;
-    font-family: 'Montserrat', Arial, sans-serif;
-    color: #3d2b23;
+    font-family: Arial, sans-serif;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: url("../images/fundos/fundo_madeira.png");
-    background-size: cover;
-    background-repeat: no-repeat;
+    padding: 0;
+    background-color: #f5f5f5;
 }
 
 header {
-    background: #fff;
+    font-family: "Alexandria", sans-serif;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: white;
     border-bottom: 2px solid #593d36;
 }
 
-header .area-logo {
-  height: 50px;
-  margin-top: -1rem;
+header .logo {
+    height: 50px;
+    margin-top: -1rem;
 }
 
-.conteudo-cabecalho {
+header nav ul {
+    list-style: none;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 100%;
-    padding: 0.5rem 2.5rem 0.5rem 1.5rem;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
 }
 
-.area-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.area-logo img {
-    height: 48px;
-}
-
-.titulo-cabecalho {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-left: 8px;
-    letter-spacing: 1px;
-}
-
-.links-cabecalho {
-    display: flex;
-    gap: 24px;
-}
-
-.links-cabecalho a {
-    color: #3d2b23;
+header nav ul li a {
     text-decoration: none;
-    font-weight: 700;
-    font-size: 0.98rem;
-    transition: color 0.2s;
+    color: #333;
+    font-weight: bold;
 }
 
-.links-cabecalho a:hover {
-    color: #b88c4a;
+header nav ul li a.entrar {
+    background-color: #593d36;
+    color: white;
+    padding: 0.9rem;
+    border-radius: 15px;
+}
+
+header nav ul li a.entrar i {
+    margin-right: 0.3rem;
+}
+
+.user-logged,
+.user-logged-mobile {
+    color: #484848;
+    font-style: italic;
+}
+
+.user-logged i,
+.user-logged-mobile i {
+    background-color: #5b5b5bbb;
+    padding: 0.5rem;
+    border-radius: 15rem;
+    color: rgb(230, 230, 230);
+    border: 2px solid #484848;
+}
+
+#list {
+    width: 50px;
+    height: 50px;
+    display: none;
+    background: none;
+    border-radius: 100%;
+    margin: -10px;
+    border: none;
+}
+
+#list i {
+    font-size: xx-large;
+}
+
+#popup-menu {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    padding: 1.2rem 1.2rem;
+    z-index: 2000;
+    display: none;
+}
+
+#popup-menu .popup-list a {
+    display: block;
+    margin: 0.7rem 0;
+    background: #5a3e36;
+    color: white;
+    padding: 0.7rem 1.2rem;
+    border-radius: 16px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
 }
 
 main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 40px 0 0 0;
-    margin-bottom: 40px;
+    background: url("../images/fundos/fundo_madeira.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: calc(100vh - 162px);
+    align-content: center;
 }
 
 .container-pagamento {
-    background: #fff;
+    background: white;
     border-radius: 16px;
     box-shadow: 0 4px 12px #0002;
     padding: 36px 0 36px 0;
     max-width: 1100px;
-    width: 96%;
     margin: 0 auto;
     position: relative;
     border: none;
@@ -132,19 +170,19 @@ main {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    margin-left: 60px; 
+    margin-left: 60px;
 }
 
 .linha-formulario {
     display: flex;
     gap: 40px;
-    margin-bottom: 80px; 
+    margin-bottom: 80px;
 }
 
 .grupo-formulario.pequeno {
     display: flex;
     flex-direction: column;
-    min-width: 160px; 
+    min-width: 160px;
 }
 
 .formulario-cartao {
@@ -173,11 +211,6 @@ input[type="password"] {
 input[type="text"]:focus,
 input[type="password"]:focus {
     border-color: #5a3e36;
-}
-
-.linha-formulario {
-    display: flex;
-    gap: 40px;
 }
 
 .grupo-formulario.pequeno {
@@ -253,7 +286,7 @@ input[type="password"]:focus {
     max-width: 400px;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin: 40px auto 0 auto; 
+    margin: 40px auto 0 auto;
     display: block;
     text-decoration: none;
     text-align: center;
@@ -264,203 +297,119 @@ input[type="password"]:focus {
 }
 
 footer {
-    border-top: 1px solid #3d2b23;
-    background: #fff;
-    padding: 10px 0 6px 0;
-    font-size: 0.93rem;
-    color: #3d2b23;
+    position: relative;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
     display: flex;
+    font-size: 0.8rem;
+    text-align: center;
+    background-color: white;
+    border-top: 2px solid #593d36;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    min-height: 40px;
-    width: 100%;
+    padding: 1.6rem;
 }
 
-.conteudo-rodape {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 1.5rem;
-}
-
-.icones-rodape {
-    display: flex;
-    gap: 8px;
-    margin-right: 1rem;
-}
-
-.icones-rodape img {
-    width: 16px;
-    height: 16px;
-    opacity: 0.7;
-    transition: opacity 0.2s;
-}
-
-.icones-rodape img:hover {
-    opacity: 1;
-}
-
-.icones-rodape a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 8px;
-    margin-right: 0;
-    text-decoration: none;
-}
-
-.icones-rodape i {
-    font-size: 1.2rem;
-    color: #3d2b23;
-    opacity: 0.75;
-    transition: color 0.2s, opacity 0.2s;
-    vertical-align: middle;
-}
-
-.icones-rodape a:hover i {
-    color: #3d2b23;
-    opacity: 1;
-}
-
-.linha-logo {
-    width: 0.2rem;
-    height: 3rem;
-    background: #000000;
-    margin: 0 12px;
-    border-radius: 2px;
-    display: inline-block;
-    vertical-align: middle;
+footer .social-icons a i {
+    color: #5a3e36;
+    font-size: 1.15rem;
+    padding: 0.19rem;
 }
 
 @media (max-width: 900px) {
-    .conteudo-cabecalho {
-        padding: 0.5rem 1.2rem;
-    }
-    .area-logo {
-        height: 40px;
-    }
-    .linha-logo {
-        height: 28px;
-        width: 2px;
-        margin: 0 10px;
-    }
-    .titulo-cabecalho {
-        font-size: 1.3rem;
-    }
-    .links-cabecalho {
-        gap: 16px;
-        font-size: 1.05rem;
-    }
-    main {
-        padding: 24px 0 0 0;
-        margin-bottom: 24px;
-    }
     .container-pagamento {
-        padding: 24px 0 24px 0;
-        max-width: 98vw;
-        width: 98%;
-        border-radius: 14px;
+        padding: 1rem;
+        width: fit-content;
     }
+
     .titulo-pagamento {
         font-size: 2rem;
         margin-bottom: 32px;
     }
+
     .formulario-e-preview {
         flex-direction: column;
         gap: 24px;
         align-items: center;
     }
+
     .container-preview-cartao {
         margin-left: 0;
-        max-width: 100%;
     }
+
     .formulario-cartao {
         max-width: 100%;
     }
+
     .botao-adicionar {
         max-width: 100%;
     }
 }
 
-@media (max-width: 720px) {
-    .conteudo-cabecalho {
-        padding: 0.5rem 0.5rem;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-    .area-logo {
-        flex-direction: row;
-        align-items: center;
-        gap: 6px;
-    }
-    .area-logo img {
-        height: 28px;
-    }
-    .linha-logo {
-        height: 18px;
-        width: 2px;
-        margin: 0 5px;
-    }
-    .titulo-cabecalho {
-        font-size: 1.05rem;
-        margin-left: 0;
-        margin-right: 8px;
-    }
-    .botao-voltar {
-        position: static;
-        margin-right: 8px;
-        margin-left: 0;
-        width: 32px;
-        height: 32px;
-        font-size: 1.2rem;
-        order: -1;
-    }
-    .links-cabecalho {
-        gap: 8px;
-        font-size: 0.95rem;
-    }
-    main {
-        padding: 10px 0 0 0;
-        margin-bottom: 10px;
-    }
-    .formulario-e-preview {
+@media (max-width: 550px) {
+    .linha-formulario {
         flex-direction: column;
-        gap: 16px;
-        align-items: center;
     }
-    .container-preview-cartao {
-        margin-left: 0;
-        max-width: 100%;
-    }
-    .formulario-cartao {
-        max-width: 100%;
-    }
-    .botao-adicionar {
-        max-width: 100%;
-    }
-}
 
-/* Additional media query for very small screens (375px width) */
-@media (max-width: 375px) {
+    .preview-cartao {
+        width: auto;
+    }
+
     .container-pagamento {
         padding: 20px 10px;
-        width: 100%;
+        width: 80%;
         border-radius: 10px;
     }
+
     .botao-adicionar {
-        max-width: 100%;
         font-size: 1rem;
         padding: 12px 0;
     }
+
     .formulario-cartao input[type="text"],
     .formulario-cartao input[type="password"] {
         font-size: 0.9rem;
         padding: 8px 10px;
     }
+
     .titulo-pagamento {
         font-size: 1.5rem;
         margin-bottom: 24px;
+    }
+}
+
+@media (max-width: 455px) {
+    .botao-voltar {
+        position: static;
+        width: 32px;
+        height: 32px;
+        font-size: 1.2rem;
+    }
+
+    #list {
+        display: block;
+    }
+
+    header {
+        justify-content: space-between;
+    }
+
+    header nav ul {
+        display: none;
+    }
+
+    #popup-menu ul {
+        list-style: none;
+        margin-left: -1.5rem;
+    }
+
+    header nav ul li a.entrar {
+        display: none;
+    }
+
+    footer {
+        justify-content: center;
+        flex-direction: column-reverse;
+        font-size: 0.7rem;
     }
 }
