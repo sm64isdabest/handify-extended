@@ -21,7 +21,7 @@
                 <li><a href="#">Contato</a></li>
                 <li><a href="sobre.html">Sobre</a></li>
                 <li style="display: none;">
-                    <a href="#" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+                    <a href="cadastroUser.html" class="entrar"><i class="bi bi-person"></i>Entrar</a>
                 </li>
                 <li class="user-logged" style="display: none;">
                     <i class="bi bi-person"></i> placeholder
@@ -32,8 +32,11 @@
         </nav>
         <div id="popup-menu">
             <ul class="popup-list">
-                <li>
-                    <a href="loginUser.html"><i class="bi bi-person"></i>Entrar</a>
+                <li style="display: none;">
+                    <a href="cadastroUser.html" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+                </li>
+                <li class="user-logged-mobile" style="display: none;">
+                    <i class="bi bi-person"></i> placeholder
                 </li>
                 <li><a href="paginaSobre.html">Sobre</a></li>
                 <li><a href="#">Contato</a></li>
@@ -111,7 +114,13 @@
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
 
-    <script src="../js/venderProdutos.js"></script>
+    <script src="../js/vender/sellProduct.js"></script>
+    <script src="../js/mobilePop-up.js"></script>
+    <script src="../js/loggedIn.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

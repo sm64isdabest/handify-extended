@@ -49,12 +49,14 @@ header nav ul li a.entrar i {
   margin-right: 0.3rem;
 }
 
-.user-logged {
+.user-logged,
+.user-logged-mobile {
   color: #484848;
   font-style: italic;
 }
 
-.user-logged i {
+.user-logged i,
+.user-logged-mobile i {
   background-color: #5b5b5bbb;
   padding: 0.5rem;
   border-radius: 15rem;
@@ -162,7 +164,6 @@ main {
   justify-content: center;
   margin-right: 24px;
   margin-left: 8px;
-  position: relative;
 }
 
 .imagem-produto .plus {
