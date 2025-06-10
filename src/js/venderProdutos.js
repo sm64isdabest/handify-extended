@@ -1,4 +1,3 @@
-// Função genérica para adicionar funcionalidade de upload de imagem
 const setupImageUpload = (containerSelector, buttonSelector) => {
     const container = document.querySelector(containerSelector);
     const addButton = container ? container.querySelector(buttonSelector) : null;
