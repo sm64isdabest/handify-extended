@@ -89,6 +89,21 @@ header nav ul li a.entrar i {
     font-size: 1.1rem;
 }
 
+.user-logged,
+.user-logged-mobile {
+  color: #484848;
+  font-style: italic;
+}
+
+.user-logged i,
+.user-logged-mobile i {
+  background-color: #5b5b5bbb;
+  padding: 0.5rem;
+  border-radius: 15rem;
+  color: rgb(230, 230, 230);
+  border: 2px solid #484848;
+}
+
 .sobre-search-form {
     display: none;
 }
