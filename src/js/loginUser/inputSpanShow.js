@@ -1,6 +1,7 @@
 console.log("inputSpanShow.js loaded");
 
 const cadastroBtn = document.querySelector(".buttons");
+const usuarioBtn = document.querySelector(".active");
 const inputs = document.querySelectorAll("input");
 const form = document.querySelector(".form-container form");
 
@@ -11,24 +12,25 @@ inputs.forEach((input) => {
   });
 });
 
-cadastroBtn.addEventListener("click", function (e) {
-  // console.log("hi");
-  e.preventDefault();
+function inputSpanShow() {
   let userName = form.querySelector("#userName").value.trim();
-  let userEmail = form.querySelector("#userEmail").value.trim();
   let userPass = form.querySelector("#userPass").value.trim();
-  let userPassConfirm = form.querySelector("#userPassConfirm").value.trim();
   if (
     userName === "" ||
-    userEmail === "" ||
-    userPass === "" ||
-    userPassConfirm === ""
+    userPass === ""
   ) {
-    // console.log("habla");
     let errorMsg = document.querySelector("span");
     errorMsg.style.display = "block";
-    return;
-  }
-  // alert('Cadastro realizado com sucesso!')
-  // form.reset();
-});
+    return true;
+  };
+  return false;
+};
+
+usuarioBtn.addEventListener("click", function () {
+  inputSpanShow();
+  if (!inputSpanShow()) {
+    let userName = form.querySelector("#userName").value.trim();
+    document.cookie = "userName=" + encodeURIComponent(userName) + "; path=/";
+    window.location.href = "home.html";
+  };
+}); 
