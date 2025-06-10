@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
         Object.values(produtosAgrupados).forEach((produto, idx) => {
             const produtoPop = document.createElement('div');
             produtoPop.className = 'produto_pop';
+            const produtoName = produto.name.slice(0, 15) + (produto.name.length > 15 ? '...' : ''); // Limita o nome a 30 caracteres'
             // Preços para exibição
             const temDesconto = !!produto.originalPrice && produto.originalPrice !== produto.price;
             const precoOriginal = temDesconto ? produto.originalPrice : produto.price;
@@ -71,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
             produtoPop.innerHTML = `<div class="cont_pop">
             <img id="popup-produto-img" src="${produto.img}" alt="">
             <div class="cont_pop_info">
-              <h5 id="popup-produto-nome">${produto.name}</h5>
+              <h5 id="popup-produto-nome">${produtoName}</h5>
               <div class="cont_pop_precos">
                 ${temDesconto ? `<span class='preco-riscado'>${precoOriginal}</span><span class='preco-destaque'>${precoDesconto}</span>` : `<span class='preco-destaque'>${precoOriginal}</span>`}
               </div>
@@ -135,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // Adiciona scroll ao popup se houver mais de 2 itens distintos
-        if (Object.keys(produtosAgrupados).length > 2) {
+        if (Object.keys(produtosAgrupados).length > 1) {
             popupList.style.maxHeight = '300px'; // Define uma altura máxima
             popupList.style.overflowY = 'auto'; // Habilita o scroll vertical
             popupList.style.paddingRight = '10px'; // Adiciona espaço para o scroll

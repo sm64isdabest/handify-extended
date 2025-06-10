@@ -95,12 +95,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Preços para exibição
         const temDesconto = !!produto.originalPrice;
+        const produtoName = produto.name.slice(0, 15) + (produto.name.length > 15 ? '...' : ''); // Limita o nome a 30 caracteres'
         const precoOriginal = temDesconto ? produto.originalPrice : produto.price;
         const precoDesconto = temDesconto ? produto.price : '';
         produtoPop.innerHTML = `<div class="cont_pop">
           <img id="popup-produto-img" src="${produto.img}" alt="">
           <div class="cont_pop_info">
-            <h5 id="popup-produto-nome">${produto.name}</h5>
+            <h5 id="popup-produto-nome">${produtoName}</h5>
             <div class="cont_pop_precos">
               ${temDesconto ? `<span class='preco-riscado'>${precoOriginal}</span><span class='preco-destaque'>${precoDesconto}</span>` : `<span class='preco-destaque'>${precoOriginal}</span>`}
             </div>
