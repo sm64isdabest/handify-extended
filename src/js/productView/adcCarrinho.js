@@ -1,4 +1,4 @@
-import { products } from './database.js';
+import { products } from '../database.js';
 window.products = products;// Para acesso global sem n funciona
 document.addEventListener('DOMContentLoaded', function () {
     // Adicionar produto ao carrinho
