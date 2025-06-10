@@ -1,3 +1,5 @@
+console.log("database.js loaded");
+
 export const products = [
     // BOLSAS
 

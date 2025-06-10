@@ -1,5 +1,8 @@
 import { products } from '../database.js';
 
+console.log("searchInPage.js loaded");
+
+
 const searchInput = document.getElementById('searchInput');
 const productsCards = document.getElementById('cards-inside');
 const cardTemplate = document.getElementById('cardTemplate').firstElementChild;
