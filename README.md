@@ -1,1 +1,0 @@
-# Handify - Projeto SENAI
