@@ -15,6 +15,8 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  background-color: white;
+  border-bottom: 2px solid #593d36;
 }
 
 header .logo {
@@ -37,18 +39,66 @@ header nav ul li a {
 }
 
 header nav ul li a.entrar {
-  background-color: #5a3e36;
+  background-color: #593d36;
   color: white;
   padding: 0.9rem;
-  border-radius: 250px;
+  border-radius: 15px;
 }
 
 header nav ul li a.entrar i {
   margin-right: 0.3rem;
 }
 
-body {
-  font-family: 'Montserrat', Arial, sans-serif;
+.user-logged {
+  color: #484848;
+  font-style: italic;
+}
+
+.user-logged i {
+  background-color: #5b5b5bbb;
+  padding: 0.5rem;
+  border-radius: 15rem;
+  color: rgb(230, 230, 230);
+  border: 2px solid #484848;
+}
+
+#list {
+  width: 50px;
+  height: 50px;
+  display: none;
+  background: none;
+  border-radius: 100%;
+  margin: -10px;
+  border: none;
+}
+
+#list i {
+  font-size: xx-large;
+}
+
+#popup-menu {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  padding: 1.2rem 1.2rem;
+  z-index: 2000;
+  display: none;
+}
+
+#popup-menu .popup-list a {
+  display: block;
+  margin: 0.7rem 0;
+  background: #5a3e36;
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 16px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.1rem;
 }
 
 main {
@@ -57,6 +107,7 @@ main {
   background-position: center;
   padding-top: 2rem;
   padding-bottom: 3rem;
+  min-height: calc(100vh - 150px);
 }
 
 .venda-container {
@@ -65,9 +116,7 @@ main {
   align-items: flex-start;
   gap: 24px;
   margin: 32px 16px;
-
 }
-
 
 .sidebar {
   display: flex;
@@ -231,7 +280,7 @@ main {
 }
 
 .mobile {
- display: none;
+  display: none;
 }
 
 .quadro-descricao {
@@ -301,47 +350,43 @@ main {
 
 
 footer {
+  position: relative;
+  height: 80px;
   font-family: "Work Sans", sans-serif;
   font-weight: 400;
   display: flex;
   font-size: 0.8rem;
   text-align: center;
-  background-color: #fff;
-  border-top: 1px solid #ddd;
+  background-color: white;
+  border-top: 2px solid #593d36;
   flex-direction: row;
   justify-content: space-between;
   padding: 1.6rem;
-  padding-bottom: 0;
-  margin-top: -20px;
-  border-top: 3px solid #000000;
 }
 
 footer .social-icons a i {
   color: #5a3e36;
-  font-size: 1.15rem !important;
+  font-size: 1.15rem;
   padding: 0.19rem;
 }
 
-
-
-/* Responsividade para Telas de 992px a 1440px (Desktops Médios) */
 @media (min-width: 992px) and (max-width: 1440px) {
-  
+
   .container-produto {
     flex-direction: row;
-    width: 90%; 
-    max-width: 1300px; 
-    margin: 40px auto; 
-    padding: 3rem; 
-    gap: 60px; 
+    width: 90%;
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 3rem;
+    gap: 60px;
   }
 
   .sidebar {
-    flex-direction: column; 
+    flex-direction: column;
     margin-top: 0;
     margin-left: 0;
     margin-right: 0;
-    align-items: flex-start; 
+    align-items: flex-start;
   }
 
   .sidebar .btn-add,
@@ -349,7 +394,7 @@ footer .social-icons a i {
     width: 60px;
     height: 60px;
     font-size: 2.2rem;
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
     margin-left: -40px;
 
   }
@@ -361,32 +406,32 @@ footer .social-icons a i {
   }
 
   .imagem-produto {
-    width: 450px; 
-    height: 430px; 
-    margin-right: 30px; 
+    width: 450px;
+    height: 430px;
+    margin-right: 30px;
     margin-left: 0;
     margin-left: -55px;
 
   }
 
   .imagem-produto .btn-add {
-    display: flex; 
+    display: flex;
   }
 
   .mobile.btn-add {
-    display: none; 
+    display: none;
   }
 
   .info-produto {
-    width: 30px; 
+    width: 30px;
     height: 30px;
-    gap: 10px; 
+    gap: 10px;
   }
 
-  .info-produto > div {
+  .info-produto>div {
     font-size: 1.4rem;
     padding: 15px 20px;
-    min-width: 280px; 
+    min-width: 280px;
     min-height: 60px;
     margin-left: -80px;
   }
@@ -396,13 +441,13 @@ footer .social-icons a i {
   .parcelas-produto input,
   .descricao-produto input,
   .quantidade-produto input {
-    font-size: 1.6rem; 
+    font-size: 1.6rem;
   }
 
   .destaque-produto {
-    min-width: 80px; 
+    min-width: 80px;
     padding: 20px;
-    margin-left: 0; 
+    margin-left: 0;
     margin-right: 0;
     margin-left: 120px;
     margin-right: -40px;
@@ -429,22 +474,22 @@ footer .social-icons a i {
   }
 
   .quadro-descricao {
-    width: 90%; 
-    max-width: 1300px; 
-    height: 70vh; 
+    width: 90%;
+    max-width: 1300px;
+    height: 70vh;
     margin: 30px auto;
   }
 
   .quadro-descricao input {
     width: 95%;
     height: 95%;
-    padding-bottom: 0; 
+    padding-bottom: 0;
     padding-bottom: 310px;
     font-size: 1.4rem;
   }
 
   footer {
-    padding: 1.8rem 4rem; 
+    padding: 1.8rem 4rem;
     font-size: 0.9rem;
   }
 
@@ -454,96 +499,68 @@ footer .social-icons a i {
   }
 }
 
-
-/* Estilos para Tablets (Media Query) */
 @media (min-width: 602px) and (max-width: 992px) {
+  .quadro-descricao {
+    width: 90%;
+    height: 90%;
+  }
 
-    /* HEADER */
-    header {
-        padding: 1.5rem 2rem; 
-    }
+  main {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
 
-    .quadro-descricao{
-      width: 90%;
-      height: 90%;
-    }
+  .container-produto {
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: 30px auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    gap: 30px;
+  }
 
-    header .logo {
-        height: 45px; 
-        margin-top: 0; 
-    }
+  .sidebar {
+    flex-direction: row;
+    width: 100%;
+    margin: 20;
+    padding-bottom: 1rem;
+  }
 
-    header nav ul {
-        gap: 15px; 
-    }
+  .sidebar .btn-add,
+  .sidebar .btn-back {
+    width: 50px;
+    height: 50px;
+    font-size: 1.8rem;
+    margin: 0 10px;
+  }
 
-    header nav ul li a {
-        font-size: 0.95rem;
-    }
-
-    header nav ul li a.entrar {
-        width: 35px;
-        height: 35px;
-        font-size: 1rem;
-        margin-left: 0;
-    }
-
-    main {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-    }
-
-    .container-produto {
-        flex-direction: column; 
-        align-items: center; 
-        width: 90%; 
-        margin: 30px auto;
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-        gap: 30px; 
-    }
-
-    .sidebar {
-        flex-direction: row; 
-        width: 100%; 
-        margin: 20; 
-        padding-bottom: 1rem; 
-    }
-
-    .sidebar .btn-add,
-    .sidebar .btn-back {
-        width: 50px;
-        height: 50px;
-        font-size: 1.8rem;
-        margin: 0 10px; 
-    }
-
-    .btn-add {
+  .btn-add {
     width: 45px;
     height: 45px;
     font-size: 1.5rem;
   }
 
-    .btn-back { 
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
-    }
+  .btn-back {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
 
-    .imagem-produto {
-        width: 80%; 
-        height: 400px; 
-        margin: 0; 
-    }
+  .imagem-produto {
+    width: 80%;
+    height: 400px;
+    margin: 0;
+  }
 
-    .imagem-produto .btn-add { 
-        display: block;
-    }
+  .imagem-produto .btn-add {
+    display: block;
+  }
 
-    .sidebar .btn-add {
+  .sidebar .btn-add {
     display: none;
   }
-  
+
   .sidebar {
     width: 100%;
     padding-left: 10px;
@@ -554,85 +571,84 @@ footer .social-icons a i {
     display: block;
   }
 
-    .info-produto {
-        width: 80%; 
-        margin-top: 0; 
-        align-items: stretch; 
-    }
+  .info-produto {
+    width: 80%;
+    margin-top: 0;
+    align-items: stretch;
+  }
 
-    .info-produto > div {
-        min-width: unset; 
-        width: 100%; 
-        font-size: 1.2rem;
-    }
+  .info-produto>div {
+    min-width: unset;
+    width: 100%;
+    font-size: 1.2rem;
+  }
 
-    .nome-produto input,
-    .valor-produto input,
-    .parcelas-produto input,
-    .descricao-produto input,
-    .quantidade-produto input {
-        font-size: 1.4rem; 
-    }
+  .nome-produto input,
+  .valor-produto input,
+  .parcelas-produto input,
+  .descricao-produto input,
+  .quantidade-produto input {
+    font-size: 1.4rem;
+  }
 
-    .destaque-produto {
-        min-width: unset; 
-        width: 80%; 
-        margin: 0; 
-    }
+  .destaque-produto {
+    min-width: unset;
+    width: 80%;
+    margin: 0;
+  }
 
-    .titulo-destaque {
-        font-size: 1.1rem;
-    }
+  .titulo-destaque {
+    font-size: 1.1rem;
+  }
 
-    .botoes-destaque button {
-        height: 35px;
-        font-size: 1.15rem;
-    }
+  .botoes-destaque button {
+    height: 35px;
+    font-size: 1.15rem;
+  }
 
-    .comprar-agora,
-    .adicionar-carrinho {
-        font-size: 1rem;
-        padding: 10px 0;
-    }
+  .comprar-agora,
+  .adicionar-carrinho {
+    font-size: 1rem;
+    padding: 10px 0;
+  }
 
-    .quadro-descricao {
-        width: 90%; 
-        height: 70vh; 
-        margin: 30px auto;
-    }
+  .quadro-descricao {
+    width: 90%;
+    height: 70vh;
+    margin: 30px auto;
+  }
 
-    .quadro-descricao input {
-        width: 95%; 
-        height: 95%; 
-        padding-bottom: 0; 
-        font-size: 1.3rem; 
-        padding-bottom: 320px;
-    }
-
-    /* FOOTER */
-    footer {
-        flex-direction: row;
-        justify-content: space-between; 
-        padding: 1.2rem 2rem;
-        font-size: 0.9rem;
-    }
-
-    footer .social-icons {
-        margin-top: 0; 
-    }
-
-    footer .social-icons a i {
-        font-size: 1.3rem !important;
-    }
+  .quadro-descricao input {
+    width: 95%;
+    height: 95%;
+    padding-bottom: 0;
+    font-size: 1.3rem;
+    padding-bottom: 320px;
+  }
 }
 
-
-/* Estilos para Telas Pequenas (Mobile) */
 @media (max-width: 601px) {
-  header {
-    flex-direction: row;
-    padding: 0.8rem;
+  #list {
+    display: block;
+  }
 
+  header {
+    position: fixed;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  header nav ul {
+    display: none;
+  }
+
+  #popup-menu ul {
+    list-style: none;
+    margin-left: -1.5rem;
+  }
+
+  header nav ul li a.entrar {
+    display: none;
   }
 
   header nav ul li a.entrar {
@@ -668,7 +684,6 @@ footer .social-icons a i {
     margin-left: 0;
   }
 
-
   .info-produto {
     width: 90%;
     margin-top: 20px;
@@ -695,7 +710,6 @@ footer .social-icons a i {
     width: 90%;
     margin-left: 00;
     margin-right: 0;
-
   }
 
   .titulo-destaque {
@@ -725,7 +739,7 @@ footer .social-icons a i {
   .sidebar .btn-add {
     display: none;
   }
-  
+
   .sidebar {
     width: 100%;
     padding-left: 10px;
@@ -756,13 +770,8 @@ footer .social-icons a i {
   }
 
   footer {
-    flex-direction: row;
-    padding: 1rem;
-    font-size: 0.8rem;
-    gap: 10px;
-  }
-
-  footer .social-icons {
-    margin-top: -0.2rem;
+    justify-content: center;
+    flex-direction: column-reverse;
+    font-size: 0.7rem;
   }
 }
