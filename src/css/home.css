@@ -573,6 +573,11 @@ main {
   transition: background 0.2s;
 }
 
+.oferta-btn a {
+  text-decoration: none;
+  color: white;
+}
+
 .oferta-btn:hover {
   background: #ffe9ba;
   color: #3d2b23;
