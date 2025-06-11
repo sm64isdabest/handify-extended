@@ -1,0 +1,415 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    font-family: "Alexandria", sans-serif;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: white;
+    border-bottom: 2px solid #593d36;
+}
+
+header .logo {
+    height: 50px;
+    margin-top: -1rem;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+header nav ul li a.entrar {
+    background-color: #593d36;
+    color: white;
+    padding: 0.9rem;
+    border-radius: 15px;
+}
+
+header nav ul li a.entrar i {
+    margin-right: 0.3rem;
+}
+
+.user-logged,
+.user-logged-mobile {
+    color: #484848;
+    font-style: italic;
+}
+
+.user-logged i,
+.user-logged-mobile i {
+    background-color: #5b5b5bbb;
+    padding: 0.5rem;
+    border-radius: 15rem;
+    color: rgb(230, 230, 230);
+    border: 2px solid #484848;
+}
+
+#list {
+    width: 50px;
+    height: 50px;
+    display: none;
+    background: none;
+    border-radius: 100%;
+    margin: -10px;
+    border: none;
+}
+
+#list i {
+    font-size: xx-large;
+}
+
+#popup-menu {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    padding: 1.2rem 1.2rem;
+    z-index: 2000;
+    display: none;
+}
+
+#popup-menu .popup-list a {
+    display: block;
+    margin: 0.7rem 0;
+    background: #5a3e36;
+    color: white;
+    padding: 0.7rem 1.2rem;
+    border-radius: 16px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+main {
+    background: url("../images/fundos/fundo_madeira.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: calc(100vh - 162px);
+    align-content: center;
+}
+
+.container-pagamento {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px #0002;
+    padding: 36px 0 36px 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    border: none;
+}
+
+.botao-voltar {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background: #5a3e36;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.6rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.botao-voltar:hover {
+    background: #b88c4a;
+}
+
+.titulo-pagamento {
+    text-align: center;
+    font-size: 2.1rem;
+    font-weight: 700;
+    margin-bottom: 48px;
+    margin-top: 0;
+    letter-spacing: 1px;
+    color: #3d2b23;
+}
+
+.formulario-e-preview {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.container-preview-cartao {
+    flex: 1 1 320px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-left: 60px;
+}
+
+.linha-formulario {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.grupo-formulario.pequeno {
+    display: flex;
+    flex-direction: column;
+    min-width: 160px;
+}
+
+.formulario-cartao {
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.rotulo {
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #3d2b23;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px 14px;
+    font-size: 1rem;
+    border: 1px solid #b88c4a;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #5a3e36;
+}
+
+.grupo-formulario.pequeno {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.preview-cartao {
+    background: linear-gradient(135deg, #b88c4a, #5a3e36);
+    border-radius: 16px;
+    width: 100%;
+    height: 220px;
+    color: #fff;
+    padding: 24px 32px;
+    box-shadow: 0 4px 12px #0006;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logos-cartao {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logos-cartao img {
+    height: 40px;
+    width: auto;
+}
+
+.numero-cartao-display {
+    font-size: 1.4rem;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.nome-cartao-display,
+.validade-cartao-display {
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.icone-contactless-cartao {
+    position: absolute;
+    top: 24px;
+    left: 32px;
+    font-size: 1.8rem;
+    opacity: 0.8;
+}
+
+.dados-seguros {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    color: #4CAF50;
+    font-size: 1rem;
+}
+
+.botao-adicionar {
+    background-color: #5a3e36;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    width: 100%;
+    max-width: 400px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 40px auto 0 auto;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.botao-adicionar:hover {
+    background-color: #b88c4a;
+}
+
+footer {
+    position: relative;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    display: flex;
+    font-size: 0.8rem;
+    text-align: center;
+    background-color: white;
+    border-top: 2px solid #593d36;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.6rem;
+}
+
+footer .social-icons a i {
+    color: #5a3e36;
+    font-size: 1.15rem;
+    padding: 0.19rem;
+}
+
+@media (max-width: 900px) {
+    .container-pagamento {
+        padding: 1rem;
+        width: fit-content;
+    }
+
+    .titulo-pagamento {
+        font-size: 2rem;
+        margin-bottom: 32px;
+    }
+
+    .formulario-e-preview {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+    }
+
+    .container-preview-cartao {
+        margin-left: 0;
+    }
+
+    .formulario-cartao {
+        max-width: 100%;
+    }
+
+    .botao-adicionar {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    .linha-formulario {
+        flex-direction: column;
+    }
+
+    .preview-cartao {
+        width: auto;
+    }
+
+    .container-pagamento {
+        padding: 20px 10px;
+        width: 80%;
+        border-radius: 10px;
+    }
+
+    .botao-adicionar {
+        font-size: 1rem;
+        padding: 12px 0;
+    }
+
+    .formulario-cartao input[type="text"],
+    .formulario-cartao input[type="password"] {
+        font-size: 0.9rem;
+        padding: 8px 10px;
+    }
+
+    .titulo-pagamento {
+        font-size: 1.5rem;
+        margin-bottom: 24px;
+    }
+}
+
+@media (max-width: 455px) {
+    .botao-voltar {
+        position: static;
+        width: 32px;
+        height: 32px;
+        font-size: 1.2rem;
+    }
+
+    #list {
+        display: block;
+    }
+
+    header {
+        justify-content: space-between;
+    }
+
+    header nav ul {
+        display: none;
+    }
+
+    #popup-menu ul {
+        list-style: none;
+        margin-left: -1.5rem;
+    }
+
+    header nav ul li a.entrar {
+        display: none;
+    }
+
+    footer {
+        justify-content: center;
+        flex-direction: column-reverse;
+        font-size: 0.7rem;
+    }
+}
