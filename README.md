@@ -16,46 +16,13 @@
 
 O Handify é um projeto voltado para a divulgação e venda de produtos artesanais, com foco em facilitar o contato entre artesãos e clientes.
 
-## 💻 Estrutura do Projeto:
-
-```
-src/
-  css/
-    cadastroUser.css
-    loginUser.css
-    home.css
-    vender.css
-    pesquisaProdutos.css
-    sobre.css
-  images/
-    favicon.ico
-    logo-handify.png
-    fundos/
-      fundo_madeira.png
-      objetos_artesanais.png
-    icones/
-      logo-instagram.png
-      logo-twitter.png
-      logo-whatsapp.png
-      logo-youtube.png
-    produtos/
-      moveis/
-      utensilios/
-      bolsas/
-      decoracoes/
-  js/
-  pages/
-    cadastroUser.html
-    loginUser.html
-    home.html
-    vender.html
-    pesquisaProdutos.html
-    sobre.html
-```
-
 ## 💻 Projeto:
 
-(link do projeto)
+Para testar o projeto localmente, basta clonar este repositório e abrir o arquivo `src/pages/home.html` no seu navegador.
+
+```bash
+git clone https://github.com/Spaceza/HandIfy.git
+```
 
 ## 🚀 Tecnologias:
 
