@@ -131,6 +131,11 @@ nav ul li a.entrar {
     justify-content: end;
 }
 
+.menu-bar div button {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+
 .menu-bar button {
     background-color: #5a3e36;
     color: #fff;
@@ -151,7 +156,61 @@ nav ul li a.entrar {
     background-color: #000000;
 }
 
-/* CSS para a página de compra de produtos */
+.autocomplete-items {
+    position: absolute;
+    visibility: hidden;
+    top: 95%;
+    background-color: #5a3e36;
+    color: white;
+    z-index: 99;
+    list-style: none;
+    width: 95%;
+    overflow: visible;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+}
+
+.autocomplete-items li {
+    font-size: 0.9rem;
+    padding-left: 0.5rem;
+    cursor: pointer;
+    white-space: normal;
+    background: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    border-bottom: 2px solid hwb(29 0% 74%);
+    transition: background 0.9s;
+}
+
+.autocomplete-items li:hover {
+    background: #3c2923;
+}
+
+.autocomplete-items li:active {
+    transform: translateY(2px) scale(0.98);
+    box-shadow: 0 1px 2px #0005 inset;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.user-logged,
+.user-logged-mobile {
+    color: #484848;
+    font-style: italic;
+}
+
+.user-logged i,
+.user-logged-mobile i {
+    background-color: #5b5b5bbb;
+    padding: 0.5rem;
+    border-radius: 15rem;
+    color: rgb(230, 230, 230);
+    border: 2px solid #484848;
+}
+
 .product-page {
     display: flex;
     flex-direction: row;
@@ -575,8 +634,8 @@ footer .social-icons a i {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     padding: 0.2rem 0.2rem;
     z-index: 9999
-
 }
+
 .popup-list {
     flex-direction: column;
     gap: 2.5rem;
@@ -757,7 +816,8 @@ footer .social-icons a i {
     margin: 0;
     text-align: left;
 }
-#popup-lista-mob{
+
+#popup-lista-mob {
     display: none;
 }
 
@@ -835,29 +895,30 @@ footer .social-icons a i {
     border-radius: 0.5rem;
     padding: 2px 8px;
 }
+
 #popup-menu-list {
-  position: absolute;
-  top: 70px;
-  right: 20px;
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  padding: 1.2rem 1.2rem;
-  z-index: 2000;
-  display: none;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    padding: 1.2rem 1.2rem;
+    z-index: 2000;
+    display: none;
 }
 
 #popup-menu-list .popup-list-mob a {
-  display: block;
-  margin: 0.7rem 0;
-  background: #5a3e36;
-  color: #fff;
-  padding: 0.7rem 1.2rem;
-  border-radius: 16px;
-  text-align: center;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 1.1rem;
+    display: block;
+    margin: 0.7rem 0;
+    background: #5a3e36;
+    color: #fff;
+    padding: 0.7rem 1.2rem;
+    border-radius: 16px;
+    text-align: center;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
 }
 
 
@@ -869,6 +930,7 @@ footer .social-icons a i {
         flex-wrap: nowrap;
         width: 100%;
     }
+
     #popup-produto-img {
         width: 60px;
         height: 60px;
@@ -883,7 +945,7 @@ footer .social-icons a i {
         gap: 0.05rem;
     }
 
-   
+
     .cont_pop_precos {
         display: flex;
         flex-direction: column;
@@ -952,14 +1014,16 @@ footer .social-icons a i {
     .sub_text_tablet {
         display: none;
     }
+
     .preco-riscado {
         font-size: 0.8rem;
         margin-left: 0;
     }
-    #popup-produto-nome{
+
+    #popup-produto-nome {
         font-size: 0.75rem;
         margin-right: 0.5rem;
-    } 
+    }
 
 }
 
@@ -1099,11 +1163,12 @@ footer .social-icons a i {
     .sub_text_tablet {
         display: none;
     }
-    #popup-produto-nome{
+
+    #popup-produto-nome {
         font-size: 0.7rem;
         margin-right: 0.5rem;
-    } 
-    
+    }
+
 }
 
 @media (max-width: 934px) {
@@ -1119,18 +1184,19 @@ footer .social-icons a i {
     .sub-card-text {
         font-size: 1.6rem;
     }
-    #popup-menu {
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    width: 380px;
-    height: 490px;
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    padding: 0.2rem 0.2rem;
 
-}
+    #popup-menu {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 380px;
+        height: 490px;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        padding: 0.2rem 0.2rem;
+
+    }
 
     .Produtos-similares img {
         width: 150px;
@@ -1156,14 +1222,16 @@ footer .social-icons a i {
     .sub_text_tablet {
         display: none;
     }
+
     .preco-riscado {
         font-size: 0.8rem;
         margin-left: 0;
     }
-    #popup-produto-nome{
+
+    #popup-produto-nome {
         font-size: 0.68rem;
         margin-right: 0.5rem;
-    } 
+    }
 }
 
 @media (max-width: 832px) {
@@ -1214,7 +1282,7 @@ footer .social-icons a i {
         object-fit: contain;
         border-radius: 10px;
     }
-      
+
 
     .botoes_adc {
         display: none;
@@ -1227,6 +1295,7 @@ footer .social-icons a i {
     .sub_text_tablet {
         display: none;
     }
+
     .preco-riscado {
         font-size: 0.8rem;
         margin-left: 0;
@@ -1241,10 +1310,12 @@ footer .social-icons a i {
     .other-offers .card-title {
         font-size: 1.0rem;
     }
-    #popup-produto-nome{
+
+    #popup-produto-nome {
         font-size: 0.57rem;
         margin-right: 0.5rem;
     }
+
     .preco-riscado {
         font-size: 0.8rem;
         margin-left: 0;
@@ -1283,18 +1354,19 @@ footer .social-icons a i {
     .Produtos-similares h5 {
         font-size: 1.2rem;
     }
-    #popup-menu {
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    width: 350px;
-    height: 490px;
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    padding: 0.2rem 0.2rem;
 
-}
+    #popup-menu {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 350px;
+        height: 490px;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        padding: 0.2rem 0.2rem;
+
+    }
 
     .Produtos-similares img {
         width: 100px;
@@ -1461,9 +1533,10 @@ footer .social-icons a i {
         border: none;
         background: none;
     }
-    #popup-lista-mob{
-    display: block;
-}
+
+    #popup-lista-mob {
+        display: block;
+    }
 
 
     .product-details {
@@ -1489,7 +1562,8 @@ footer .social-icons a i {
         font-size: 0.85rem;
         margin-left: 0;
     }
-    .pop_up p{
+
+    .pop_up p {
         font-size: 0.7rem;
         margin: 0;
     }
@@ -1504,29 +1578,33 @@ footer .social-icons a i {
         margin: 0;
         position: relative;
     }
-     #popup-menu {
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    width: 315px;
-    height: 490px;
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    padding: 0.2rem 0.2rem;
 
-}
-.popup-remove-btn{
-    font-size: 0.59rem;
-    margin-right: -0.5rem;
-    padding: 0.2rem 0.4rem;
-    border-radius: 1.2rem;
-}
-#popup-produto-nome{
+    #popup-menu {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 315px;
+        height: 490px;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        padding: 0.2rem 0.2rem;
+
+    }
+
+    .popup-remove-btn {
+        font-size: 0.59rem;
+        margin-right: -0.5rem;
+        padding: 0.2rem 0.4rem;
+        border-radius: 1.2rem;
+    }
+
+    #popup-produto-nome {
         font-size: 0.63rem;
         margin-right: 0.5rem;
     }
-.cont_pop_info {
+
+    .cont_pop_info {
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -1534,6 +1612,7 @@ footer .social-icons a i {
         margin-left: -1.5rem;
         gap: 0.05rem;
     }
+
     .add-to-cart {
         margin-right: 0;
     }
@@ -1652,7 +1731,7 @@ footer .social-icons a i {
         justify-content: center;
         gap: 0;
         position: relative;
-        width:100%;
+        width: 100%;
         max-width: 100vw;
         margin: 0 auto 2rem auto;
         overflow-x: hidden;
@@ -1717,12 +1796,14 @@ footer .social-icons a i {
         background: #fff;
         border: 3px solid #5a3e36;
         color: #5a3e36;
-        box-shadow: 0 2px 8px rgba(90,62,54,0.08);
+        box-shadow: 0 2px 8px rgba(90, 62, 54, 0.08);
         transition: background 0.2s, color 0.2s;
         margin: 0 8px;
         cursor: pointer;
     }
-    .carrossel-arrow:active, .carrossel-arrow:focus {
+
+    .carrossel-arrow:active,
+    .carrossel-arrow:focus {
         background: #5a3e36;
         color: #fff;
         outline: none;
@@ -1735,17 +1816,18 @@ footer .social-icons a i {
         justify-content: space-between;
         display: block;
     }
-    .pop_up p{
+
+    .pop_up p {
         font-size: 0.63rem;
         margin: 0;
     }
 
 
-    .menu_clc button{
+    .menu_clc button {
         color: #392621;
     }
 
-    .Produtos-similares h1{
+    .Produtos-similares h1 {
         font-size: 1.7rem;
     }
 
@@ -1754,7 +1836,7 @@ footer .social-icons a i {
         margin-bottom: 0.5rem;
     }
 
-    .social-icons{
+    .social-icons {
         font-size: 0.5rem;
     }
 
@@ -1766,26 +1848,28 @@ footer .social-icons a i {
         font-size: 1.1rem;
     }
 
-    .carrossel-container{
+    .carrossel-container {
         width: 99%;
     }
 
     .sub-card-text {
         font-size: 2rem;
     }
-     #popup-menu {
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    width: 285px;
-    height: 490px;
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    padding: 0.2rem 0.2rem;
 
-}
-#popup-produto-nome{
+    #popup-menu {
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 285px;
+        height: 490px;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        padding: 0.2rem 0.2rem;
+
+    }
+
+    #popup-produto-nome {
         font-size: 0.6rem;
         margin-right: 0.5rem;
     }

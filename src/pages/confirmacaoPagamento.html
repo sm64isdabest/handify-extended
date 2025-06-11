@@ -50,14 +50,6 @@
       </button>
       <h2 class="titulo-pagamento">Confirmação de pagamento</h2>
       <p>Você está prestes a realizar um pagamento com cartão de crédito.</p>
-      <div class="resumo-cobranca">
-        <p><strong>Resumo da cobrança:</strong></p>
-        <ul>
-          <li>Valor total: R$ <span id="valor">[valor]</span></li>
-          <li>Descrição: <span id="descricao">[nome do produto/serviço ou número do pedido]</span></li>
-          <li>Forma de pagamento: <span id="formaPagamento">[Cartão Crédito/Débito]</span></li>
-        </ul>
-      </div>
       <div class="botoes-confirmacao">
         <button class="botao-confirmar"><a href="confirmado.html">Comprar</a></button>
         <button class="botao-cancelar" onclick="history.back()"><a href="#">Cancelar</a></button>
@@ -86,9 +78,8 @@
   <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
-  <script>
-    // Removed redundant JS redirect since href is used on the anchor tag
-  </script>
+
+  <script type="module" src="../js/loggedIn.js"></script>
 </body>
 
 </html>
