@@ -1,4 +1,4 @@
-import { products } from './database.js';
+import { products } from '../database.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('mobilePopUp.js loaded');
@@ -25,10 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
     copyMessage.style.display = 'none';
     copyButton.parentNode.insertBefore(copyMessage, copyButton.nextSibling);
 
+    const trackingCodes = [
+        'PX184239765BR',
+        'RQ982173645BR',
+        'M763928104BR',
+        'FC029384761BR',
+        'VX183765290BR'
+    ];
+
     function updateProductDisplay(index) {
         const product = products[index];
         if (!product) {
-            console.error('Produto não encontrado no índice:', index);
             return;
         }
 
@@ -36,7 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
         imagemProduto.alt = product.name;
         nomeProduto.textContent = product.name;
         descricaoProduto.textContent = product.description;
-        numeroPedido.textContent = product.trackingCode;
+
+        // Seleciona um código aleatório do array
+        const randomCode = trackingCodes[Math.floor(Math.random() * trackingCodes.length)];
+        numeroPedido.textContent = randomCode;
     }
 
     function showNextProduct() {

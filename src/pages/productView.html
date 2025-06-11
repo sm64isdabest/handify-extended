@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Handify</title>
+    <title>Produto - Handify</title>
     <link rel="stylesheet" href="../css/productView.css" />
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
@@ -17,8 +17,9 @@
         <div class="header-container">
             <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
             <div class="search-bar">
-                <input type="text" placeholder="Buscar produtos..." id="searchInput" />
+                <input type="text" autocomplete="off" placeholder="Buscar produtos..." id="searchInput" />
                 <i class="bi bi-search" id="searchButton"></i>
+                <ul id="autocomplete-list" class="autocomplete-items"></ul>
             </div>
             <div class="menu_clc">
                 <button id="cartIconMobile">
@@ -30,10 +31,14 @@
             </div>
             <nav id="mainNav">
                 <ul>
-                    <li><a href="#" class="nav-link" data-target="produtos">Produtos</a></li>
-                    <li><a href="#" class="nav-link" data-target="contatos">Contatos</a></li>
-                    <li><a href="#" class="nav-link" data-target="sobre">Sobre</a></li>
-                    <li><a href="#" class="entrar" data-target="entrar">Entrar</a></li>
+                    <li><a href="home.html" class="nav-link" data-target="produtos">Home</a></li>
+                    <li><a href="sobre.html#footer" class="nav-link" data-target="contatos">Contatos</a></li>
+                    <li><a href="sobre.html" class="nav-link" data-target="sobre">Sobre</a></li>
+                    <li><a href="loginUser.html" class="entrar" data-target="entrar"><i
+                                class="bi bi-person"></i>Entrar</a></li>
+                    <li class="user-logged" style="display: none;">
+                        <i class="bi bi-person"></i> placeholder
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -41,7 +46,7 @@
             <div>
                 <button class="menu-bar-btn" id="categoriasBtn">Categorias</button>
                 <button class="menu-bar-btn" id="ofertasBtn">Ofertas</button>
-                <button class="menu-bar-btn" id="venderBtn">Vender</button>
+                <button class="menu-bar-btn" id="vender-btn">Vender</button>
                 <button class="menu-bar-btn" id="historicoBtn">Histórico</button>
             </div>
             <button class="cart-btn" id="cartIconDesktop"><i class="bi bi-cart"></i></button>
@@ -60,11 +65,14 @@
         <div id="popup-menu-list">
             <ul class="popup-list-mob">
                 <li>
-                    <a href="loginUser.html"><i class="bi bi-person"></i>Entrar</a>
+                    <a href="loginUser.html" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
                 </li>
-                <li><a href="paginaSobre.html">Sobre</a></li>
-                <li><a href="#">Contato</a></li>
-                <li><a href="pesquisaProdutos.html">Produtos</a></li>
+                <li class="user-logged-mobile" style="display: none;">
+                    <i class="bi bi-person"></i> placeholder
+                </li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="sobre.html#footer">Contato</a></li>
+                <li><a href="home.html">Home</a></li>
             </ul>
         </div>
     </header>
@@ -72,7 +80,7 @@
         <div class="product-page">
             <section class="product-gallery">
                 <div class="main-image">
-                    <img src="../images/produtos/bolsa-palha.png" alt="Imagem principal do produto" />
+                    <img src="../images/produtos/bolsas/bolsa-palha.png" alt="Imagem principal do produto" />
 
                     <h2 class="text_tablet">Estoque disponível</h2>
                     <p class="sub_text_tablet">Quantidade: 1 (200 disponíveis)</p>
@@ -109,7 +117,7 @@
                     <p>Quantidade: 1 (200 Disponível)</p>
                 </div>
                 <div class="botoes_adc">
-                    <button class="btn_1">Comprar Agora</button>
+                    <button class="btn_1" id="btn_1">Comprar Agora</button>
                     <button class="add-to-cart">Adicionar ao Carrinho</button>
                 </div>
             </section>
@@ -136,7 +144,7 @@
                 </div>
 
                 <div class="purchase-buttons">
-                    <button class="buy-now">Comprar Agora</button>
+                    <button class="buy-now" id="buy-now">Comprar Agora</button>
                     <button class="add-to-cart" data-index="1">Adicionar ao Carrinho</button>
                 </div>
             </section>
@@ -148,7 +156,7 @@
                 <div class="offers-container">
                     <div class="offer-item">
                         <div class="card">
-                            <img src="../images/produtos/faqueiro.png" class="card-img-top"
+                            <img src="../images/produtos/utensilios/faqueiro.png" class="card-img-top"
                                 alt="Suporte de faqueiros" />
                             <div class="card-body">
                                 <h5 class="card-title">Suporte de faqueiros</h5>
@@ -157,7 +165,8 @@
                             </div>
                         </div>
                         <div class="card">
-                            <img src="../images/produtos/Vaso.png" class="card-img-top" alt="Vasos pintados" />
+                            <img src="../images/produtos/decoracoes/Vaso.png" class="card-img-top"
+                                alt="Vasos pintados" />
                             <div class="card-body">
                                 <h5 class="card-title">Vasos pintados</h5>
                                 <p class="card-text">R$ 199,90 OFF</p>
@@ -165,7 +174,8 @@
                             </div>
                         </div>
                         <div class="card">
-                            <img src="../images/produtos/Quadro.png" class="card-img-top" alt="Porta-retratos" />
+                            <img src="../images/produtos/decoracoes/Quadro.png" class="card-img-top"
+                                alt="Porta-retratos" />
                             <div class="card-body">
                                 <h5 class="card-title">Porta-retratos</h5>
                                 <p class="card-text">R$ 57,90 OFF</p>
@@ -173,7 +183,8 @@
                             </div>
                         </div>
                         <div class="card">
-                            <img src="../images/produtos/Colher.png" class="card-img-top" alt="Colher de pau" />
+                            <img src="../images/produtos/utensilios/Colher.png" class="card-img-top"
+                                alt="Colher de pau" />
                             <div class="card-body">
                                 <h5 class="card-title">Colher de pau</h5>
                                 <p class="card-text">R$ 25,99 OFF</p>
@@ -257,7 +268,7 @@
                         <p class="sub-card-text">R$ 99,99</p>
                     </div>
                     <div class="card">
-                        <img src="../images/produtos/Quadro.png" alt="Porta-retratos" />
+                        <img src="../images/produtos/decoracoes/Quadro.png" alt="Porta-retratos" />
                         <h5>Porta-retratos</h5>
                         <p class="card-text">R$ 57,90 OFF</p>
                         <p class="sub-card-text">R$ 29,90</p>
@@ -336,6 +347,10 @@
     <script type="module" src="../js/productView/popupLinha.js"></script>
     <script type="module" src="../js/productView/adcCarrinho.js"></script>
     <script type="module" src="../js/productView/mudarProduto.js"></script>
+    <script src="../js/productView/pagamentosButton.js"></script>
+    <script src="../js/venderButton.js"></script>
+    <script type="module" src="../js/searchFeature.js"></script>
+    <script src="../js/loggedIn.js"></script>
 </body>
 
 </html>

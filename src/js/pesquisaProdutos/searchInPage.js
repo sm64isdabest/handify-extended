@@ -79,6 +79,14 @@ function renderCards(filter = '', priceFilter = '', category = '') {
             avaliacoesEl.innerHTML = `${nota} <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> (${avaliacoes})`;
         }
 
+        // Adiciona evento ao botão "Ver mais"
+        const verMaisBtn = card.querySelector('button');
+        if (verMaisBtn) {
+            verMaisBtn.addEventListener('click', function () {
+                window.location.href = `productView.html?produto=${encodeURIComponent(product.slug)}`;
+            });
+        }
+
         productsCards.appendChild(card);
     });
 

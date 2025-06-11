@@ -429,8 +429,8 @@ header nav ul li a.entrar i {
 footer {
     position: relative;
     height: 80px;
-    font-family: "Work Sans", sans-serif;
     font-weight: 400;
+    font-family: "Work Sans", sans-serif;
     display: flex;
     font-size: 0.8rem;
     text-align: center;

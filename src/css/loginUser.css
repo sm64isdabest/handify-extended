@@ -311,6 +311,7 @@ footer .social-icons a i {
 
   .image-container img {
     content: url("../images/fundos/produtos_artesanais3.png");
+    margin-top: -5rem;
     width: 100vw;
     max-width: 100vw;
     height: auto;
@@ -327,21 +328,10 @@ footer .social-icons a i {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-
     margin-bottom: 40px;
     background-size: cover;
     background-repeat: no-repeat;
     margin-bottom: 0rem;
-  }
-
-  header {
-    font-family: "Alexandria", sans-serif;
-    font-weight: 600;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    justify-content: space-between;
-    margin: 0rem;
-
   }
 
   header nav ul {
@@ -378,13 +368,9 @@ footer .social-icons a i {
     font-size: 0.8rem;
   }
 
-  .conteudo-rodape {
-    font-size: 0.5rem;
+  footer {
+    justify-content: center;
+    flex-direction: column-reverse;
+    font-size: 0.7rem;
   }
-
-  .icones-rodape i {
-    font-size: 0.6rem;
-
-  }
-
 }
