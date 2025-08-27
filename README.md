@@ -4,12 +4,7 @@
   <a href="#❔-sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#💻-estrutura-do-projeto">Estrutura do Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#🚀-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#👤-autores">Autores</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#licença">Licença</a>
-</p>
-
-<p align="center">
-  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=49AA26&labelColor=000000">
+  <a href="#👤-autores">Autores</a>
 </p>
 
 ## ❔ Sobre:
@@ -29,24 +24,15 @@ git clone https://github.com/Spaceza/HandIfy.git
 - HTML5
 - CSS3
 - JavaScript
-- Cypress
-- Cucumber
-- Figma
-- Jira
-- Canva
-- Photopea
+- [Cypress](https://www.cypress.io/)
+- [Cucumber](https://cucumber.io/)
+- [Figma](https://www.figma.com/)
+- [Jira](https://www.atlassian.com/software/jira)
+- [Canva](https://www.canva.com/)
+- [Photopea](https://www.photopea.com/)
 
 ## 👤 Autores:
 
-- [Spaceza](https://github.com/Spaceza)
-- [LuanCostt](https://github.com/LuanCostt)
-- [sm64isdabest](https://github.com/sm64isdabest)
-- [JuanArthur22](https://github.com/JuanArthur22)
-- [Chaves777](https://github.com/Chaves777)
-- [Pedro-Henrique443](https://github.com/Pedro-Henrique443)
-- [ReynanSantts](https://github.com/ReynanSantts)
-
-## Licença:
-
-Este projeto está licenciado sob a licença MIT.
->>>>>>> 9305086950f98ba2df9a0b6ddc1351ce531ac502
+<a href="https://github.com/spaceza/handify/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=spaceza/handify" />
+</a>
