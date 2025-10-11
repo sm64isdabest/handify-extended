@@ -1,6 +1,6 @@
 describe('Adicionar produto', () => {
   it('Usuário adicionar produto no carrinho', () => {
-    cy.visit('src/pages/productView.html');
+    cy.visit('src/pages/product.html');
     cy.get('.purchase-info .add-to-cart').click();
     cy.get('#popup-produto-img').should('have.attr', 'src', '../images/produtos/bolsas/bolsa-palha.png');
     cy.get('#popup-produto-nome').should('contain', 'Bolsa de Palha');

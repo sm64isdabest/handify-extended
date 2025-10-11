@@ -1,6 +1,6 @@
 describe('Funcionalidades de Cadastro', () => {
   beforeEach(() => {
-    cy.visit('src/pages/cadastroUser.html');
+    cy.visit('src/pages/sign-up.html');
   })
 
   it('Testanto o metodo de cadastro Consumidores', () => {

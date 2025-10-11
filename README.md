@@ -13,7 +13,7 @@ O Handify é um projeto voltado para a divulgação e venda de produtos artesana
 
 ## Projeto:
 
-Para testar o projeto localmente, basta clonar este repositório e abrir o arquivo `src/pages/home.html` no seu navegador.
+Para testar o projeto localmente, basta clonar este repositório e abrir o arquivo `index.html` no seu navegador.
 
 ```bash
 git clone https://github.com/Spaceza/HandIfy.git
