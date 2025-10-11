@@ -1,6 +1,6 @@
 describe('Acessar carrinho', () => {
   it('Usuário acessa carrinho', () => {
-    cy.visit('src/pages/productView.html');
+    cy.visit('src/pages/product.html');
     cy.get('.purchase-info .add-to-cart').click();
     cy.get('.sair_pop').click();
     cy.get('.cart-btn').click();

@@ -19,8 +19,8 @@ export const products = [
         category: "Bolsa",
         slug: "bolsa-de-palha",
         img: "../images/produtos/bolsas/bolsa-palha.png",
-        price: "R$279,90",
-        originalPrice: "R$139,95",
+        price: "R$139,95",
+        originalPrice: "R$279,90",
         discount: 50, // 50%
         nota: 4.1,
         avaliacoes: 97,
