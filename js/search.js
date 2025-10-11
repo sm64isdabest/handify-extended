@@ -16,7 +16,7 @@ if (!autocompleteList) {
 function goToSearchPage() {
     const query = encodeURIComponent(searchInput.value.trim());
     if (query) {
-        window.location.href = `/src/pages/search.html?q=${query}`;
+        window.location.href = `/View/search.php?q=${query}`;
     }
 }
 

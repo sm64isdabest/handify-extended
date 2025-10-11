@@ -1,18 +1,18 @@
 describe('Funcionalidades do Header e footer', () => {
   beforeEach(() => {
-    cy.visit('src/pages/sign-up.html')
+  cy.visit('View/sign-up.php')
   })
 
   it('Testando botões do header', () => {
     cy.get("nav").contains('Produtos').click()
     cy.url().should('include', 'index.html')
-    cy.visit('src/pages/sign-up.html')
+  cy.visit('View/sign-up.php')
      cy.get("nav").contains('Contato').click()
      cy.url().should('include', 'about.html')
-     cy.visit('src/pages/sign-up.html')
+  cy.visit('View/sign-up.php')
     cy.get("nav").contains('Sobre').click()
     cy.url().should('include', 'about.html')
-    cy.visit('src/pages/sign-up.html')
+  cy.visit('View/sign-up.php')
     cy.get("nav").contains('Entrar').click()
      cy.url().should('include', 'sign-up.html')
   })
