@@ -31,10 +31,10 @@
             </div>
             <nav id="mainNav">
                 <ul>
-                    <li><a href="../../index.html" class="nav-link" data-target="produtos">Home</a></li>
-                    <li><a href="about.html#footer" class="nav-link" data-target="contatos">Contato</a></li>
-                    <li><a href="about.html" class="nav-link" data-target="sobre">Sobre</a></li>
-                    <li><a href="login.html" class="entrar" data-target="entrar"><i class="bi bi-person"></i>Entrar</a>
+                    <li><a href="../../index.php" class="nav-link" data-target="produtos">Home</a></li>
+                    <li><a href="about.php#footer" class="nav-link" data-target="contatos">Contato</a></li>
+                    <li><a href="about.php" class="nav-link" data-target="sobre">Sobre</a></li>
+                    <li><a href="login.php" class="entrar" data-target="entrar"><i class="bi bi-person"></i>Entrar</a>
                     </li>
                     <li class="user-logged" style="display: none;">
                         <i class="bi bi-person"></i> placeholder
@@ -47,7 +47,7 @@
                 <button class="menu-bar-btn" id="categoriasBtn">Categorias</button>
                 <button class="menu-bar-btn" id="ofertasBtn">Ofertas</button>
                 <button class="menu-bar-btn" id="vender-btn"
-                    onclick="window.location.href = './sell.html'">Vender</button>
+                    onclick="window.location.href = './sell.php'">Vender</button>
                 <button class="menu-bar-btn" id="historicoBtn">Histórico</button>
             </div>
             <button class="cart-btn" id="cartIconDesktop"><i class="bi bi-cart"></i></button>
@@ -66,14 +66,14 @@
         <div id="popup-menu-list">
             <ul class="popup-list-mob">
                 <li>
-                    <a href="login.html" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+                    <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
                 </li>
                 <li class="user-logged-mobile" style="display: none;">
                     <i class="bi bi-person"></i> placeholder
                 </li>
-                <li><a href="about.html">Sobre</a></li>
-                <li><a href="about.html#footer">Contato</a></li>
-                <li><a href="../../index.html">Home</a></li>
+                <li><a href="about.php">Sobre</a></li>
+                <li><a href="about.php#footer">Contato</a></li>
+                <li><a href="../../index.php">Home</a></li>
             </ul>
         </div>
     </header>
@@ -118,7 +118,7 @@
                     <p>Quantidade: 1 (200 Disponível)</p>
                 </div>
                 <div class="botoes_adc">
-                    <button class="btn_1" id="btn_1" onclick="window.location.href = 'payment-methods.html'">Comprar Agora</button>
+                    <button class="btn_1" id="btn_1" onclick="window.location.href = 'payment-methods.php'">Comprar Agora</button>
                     <button class="add-to-cart">Adicionar ao Carrinho</button>
                 </div>
             </section>
@@ -145,7 +145,7 @@
                 </div>
 
                 <div class="purchase-buttons">
-                    <button class="buy-now" id="buy-now" onclick="window.location.href = 'payment-methods.html'">Comprar Agora</button>
+                    <button class="buy-now" id="buy-now" onclick="window.location.href = 'payment-methods.php'">Comprar Agora</button>
                     <button class="add-to-cart" data-index="1">Adicionar ao Carrinho</button>
                 </div>
             </section>
