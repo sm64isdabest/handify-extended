@@ -22,11 +22,11 @@
         <ul id="autocomplete-list" class="autocomplete-items"></ul>
       </div>
       <ul>
-        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../index.php">Home</a></li>
         <li><a href="#footer">Contato</a></li>
-        <li><a href="about.html">Sobre</a></li>
+        <li><a href="about.php">Sobre</a></li>
         <li style="display: none;">
-          <a href="sign-up.html" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+          <a href="sign-up.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <li class="user-logged" style="display: none;">
             <i class="bi bi-person"></i> placeholder
@@ -38,14 +38,14 @@
       <div id="popup-menu">
         <ul class="popup-list">
           <li style="display: none;">
-            <a href="sign-up.html" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+            <a href="sign-up.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
           </li>
           <li class="user-logged-mobile" style="display: none;">
             <i class="bi bi-person"></i> placeholder
           </li>
-          <li><a href="about.html">Sobre</a></li>
+          <li><a href="about.php">Sobre</a></li>
           <li><a href="#footer">Contato</a></li>
-          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../index.php">Home</a></li>
         </ul>
       </div>
     </nav>
@@ -54,7 +54,7 @@
       <div>
         <button>Categorias</button>
         <button>Ofertas</button>
-        <button id="vender-btn" onclick="window.location.href = './sell.html'">Vender</button>
+        <button id="vender-btn" onclick="window.location.href = './sell.php'">Vender</button>
         <button>Histórico</button>
       </div>
       <button class="cart"><i class="bi bi-cart"></i></button>

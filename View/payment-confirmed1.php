@@ -15,11 +15,11 @@
     <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
     <nav>
       <ul>
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="about.html#footer">Contato</a></li>
-        <li><a href="about.html">Sobre</a></li>
+        <li><a href="../../index.php">Home</a></li>
+        <li><a href="about.php#footer">Contato</a></li>
+        <li><a href="about.php">Sobre</a></li>
         <li style="display: none;">
-          <a href="sign-up.html" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+          <a href="sign-up.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <li class="user-logged" style="display: none;">
           <i class="bi bi-person"></i> placeholder
@@ -31,14 +31,14 @@
     <div id="popup-menu">
       <ul class="popup-list">
         <li style="display: none;">
-          <a href="sign-up.html" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+          <a href="sign-up.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <li class="user-logged-mobile" style="display: none;">
           <i class="bi bi-person"></i> placeholder
         </li>
-        <li><a href="about.html">Sobre</a></li>
-        <li><a href="about.html#footer">Contato</a></li>
-        <li><a href="../../index.html">Produtos</a></li>
+        <li><a href="about.php">Sobre</a></li>
+        <li><a href="about.php#footer">Contato</a></li>
+        <li><a href="../../index.php">Produtos</a></li>
       </ul>
     </div>
   </header>
@@ -51,7 +51,7 @@
       <h2 class="titulo-pagamento">Confirmação de pagamento</h2>
       <p>Você está prestes a realizar um pagamento com cartão de crédito.</p>
       <div class="botoes-confirmacao">
-        <button class="botao-confirmar"><a href="payment-confirmed2.html">Comprar</a></button>
+        <button class="botao-confirmar"><a href="payment-confirmed2.php">Comprar</a></button>
         <button class="botao-cancelar" onclick="history.back()"><a href="#">Cancelar</a></button>
       </div>
     </div>

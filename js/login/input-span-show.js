@@ -31,6 +31,6 @@ usuarioBtn.addEventListener("click", function () {
   if (!inputSpanShow()) {
     let userName = form.querySelector("#userName").value.trim();
     document.cookie = "userName=" + encodeURIComponent(userName) + "; path=/";
-    window.location.href = "../../index.html";
+    window.location.href = "../../index.php";
   };
 }); 

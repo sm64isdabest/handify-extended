@@ -15,11 +15,11 @@
     <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
     <nav>
       <ul>
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="about.html#footer">Contato</a></li>
-        <li><a href="about.html">Sobre</a></li>
+        <li><a href="../../index.php">Home</a></li>
+        <li><a href="about.php#footer">Contato</a></li>
+        <li><a href="about.php">Sobre</a></li>
         <li style="display: none;">
-          <a href="sign-up.html" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+          <a href="sign-up.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <li class="user-logged" style="display: none;">
           <i class="bi bi-person"></i> placeholder
@@ -31,38 +31,38 @@
     <div id="popup-menu">
       <ul class="popup-list">
         <li style="display: none;">
-          <a href="sign-up.html" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+          <a href="sign-up.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <li class="user-logged-mobile" style="display: none;">
           <i class="bi bi-person"></i> placeholder
         </li>
-        <li><a href="about.html">Sobre</a></li>
-        <li><a href="about.html#footer">Contato</a></li>
-        <li><a href="../../index.html">Home</a></li>
+        <li><a href="about.php">Sobre</a></li>
+        <li><a href="about.php#footer">Contato</a></li>
+        <li><a href="../../index.php">Home</a></li>
       </ul>
     </div>
   </header>
 
   <main>
     <div class="container-pagamento">
-      <a href="../../index.html" class="botao-voltar">
+      <a href="../../index.php" class="botao-voltar">
         <i class="bi bi-arrow-left"></i>
       </a>
       <h2 class="titulo-pagamento">Formas de pagamento</h2>
       <div class="meios-pagamento">
-        <a href="payment-bank-slip.html" class="opcao-pagamento" style="text-decoration: none; color: inherit">
+        <a href="payment-bank-slip.php" class="opcao-pagamento" style="text-decoration: none; color: inherit">
           <span class="icone-pagamento">
             <img src="../images/icones/Logo-BOLETO.png" alt="Boleto Bancário" />
           </span>
           <span class="rotulo-pagamento">Boleto bancário</span>
         </a>
-        <a href="payment-pix.html" class="opcao-pagamento" style="text-decoration: none; color: inherit">
+        <a href="payment-pix.php" class="opcao-pagamento" style="text-decoration: none; color: inherit">
           <span class="icone-pagamento">
             <img src="../images/icones/Logo-PIX.png" alt="Pix" />
           </span>
           <span class="rotulo-pagamento">Pix</span>
         </a>
-        <a href="payment-card.html" class="opcao-pagamento" style="text-decoration: none; color: inherit">
+        <a href="payment-card.php" class="opcao-pagamento" style="text-decoration: none; color: inherit">
           <span class="icone-pagamento">
             <i class="bi bi-credit-card"></i>
           </span>

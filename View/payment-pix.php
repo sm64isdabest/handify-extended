@@ -15,11 +15,11 @@
         <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
         <nav>
             <ul>
-                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../index.php">Home</a></li>
                 <li><a href="#">Contato</a></li>
-                <li><a href="about.html">Sobre</a></li>
+                <li><a href="about.php">Sobre</a></li>
                 <li style="display: none;">
-                    <a href="sign-up.html" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+                    <a href="sign-up.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
                 </li>
                 <li class="user-logged" style="display: none;">
                     <i class="bi bi-person"></i> placeholder
@@ -31,21 +31,21 @@
         <div id="popup-menu">
             <ul class="popup-list">
                 <li style="display: none;">
-                    <a href="sign-up.html" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+                    <a href="sign-up.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
                 </li>
                 <li class="user-logged-mobile" style="display: none;">
                     <i class="bi bi-person"></i> placeholder
                 </li>
-                <li><a href="about.html">Sobre</a></li>
+                <li><a href="about.php">Sobre</a></li>
                 <li><a href="#">Contato</a></li>
-                <li><a href="../../index.html">Produtos</a></li>
+                <li><a href="../../index.php">Produtos</a></li>
             </ul>
         </div>
     </header>
 
     <main>
         <div class="container-pagamento">
-            <a href="payment-methods.html" class="botao-voltar">
+            <a href="payment-methods.php" class="botao-voltar">
                 <i class="bi bi-arrow-left"></i>
             </a>
             <h2 class="titulo-pagamento">Pagamento via Pix</h2>
