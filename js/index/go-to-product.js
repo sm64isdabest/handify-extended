@@ -15,7 +15,7 @@ document.addEventListener('click', function (e) {
         const nome = produtoDiv.querySelector('.produto-nome').textContent;
         const slug = getSlugByName(nome);
         if (slug) {
-            window.location.href = `src/pages/product.html?produto=${encodeURIComponent(slug)}`;
+            window.location.href = `View/product.php?produto=${encodeURIComponent(slug)}`;
         }
     }
 
@@ -27,7 +27,7 @@ document.addEventListener('click', function (e) {
             const nome = oferta.parentElement.querySelector('.oferta-descricao').textContent;
             const slug = getSlugByName(nome);
             if (slug) {
-                window.location.href = `src/pages/product.html?produto=${encodeURIComponent(slug)}`;
+                window.location.href = `View/product.php?produto=${encodeURIComponent(slug)}`;
             }
         }
     }

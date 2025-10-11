@@ -1,7 +1,7 @@
 describe('Página de Vender Produtos', () => {
   beforeEach(() => {
-    // Altere o caminho conforme seu ambiente local ou hospedado
-    cy.visit('../src/pages/venderProdutos.html');
+  // Altere o caminho conforme seu ambiente local ou hospedado
+  cy.visit('View/sell.php');
   });
 
   it('Deve carregar o logo e os links de navegação', () => {

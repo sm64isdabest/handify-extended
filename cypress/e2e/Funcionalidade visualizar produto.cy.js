@@ -1,6 +1,6 @@
 describe('Visualização do produto', () => {
   it('deve exibir os detalhes da Bolsa de palha', () => {
-    cy.visit('src/pages/product.html');
+  cy.visit('View/product.php');
     cy.get('h1').contains('Bolsa de palha');
     cy.get('.old-price').contains('R$ 279,90 OFF');
     cy.get('.current-price').contains('R$ 139,95');
