@@ -17,11 +17,11 @@
         <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
         <nav>
             <ul>
-                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../index.php">Home</a></li>
                 <li><a href="#footer">Contato</a></li>
-                <li><a href="about.html">Sobre</a></li>
+                <li><a href="about.php">Sobre</a></li>
                 <li style="display: none;">
-                    <a href="login.html" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+                    <a href="login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
                 </li>
                 <li class="user-logged" style="display: none;">
                     <i class="bi bi-person"></i> placeholder
@@ -33,14 +33,14 @@
         <div id="popup-menu">
             <ul class="popup-list">
                 <li style="display: none;">
-                    <a href="login.html" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+                    <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
                 </li>
                 <li class="user-logged-mobile" style="display: none;">
                     <i class="bi bi-person"></i> placeholder
                 </li>
-                <li><a href="about.html">Sobre</a></li>
+                <li><a href="about.php">Sobre</a></li>
                 <li><a href="#footer">Contato</a></li>
-                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../../index.php">Home</a></li>
             </ul>
         </div>
     </header>
@@ -51,7 +51,7 @@
                 <div class="sobre-hero-text">
                     <h1>Handify – onde o feito à mão ganha espaço e valor</h1>
                     <p>Conectamos artesãos apaixonados a quem valoriza o singular, o criativo e o autêntico.</p>
-                    <a href="sign-up.html" class="sobre-btn"><i class="bi bi-rocket-takeoff"></i>Começar</a>
+                    <a href="sign-up.php" class="sobre-btn"><i class="bi bi-rocket-takeoff"></i>Começar</a>
                 </div>
                 <div class="sobre-hero-img">
                     <img src="../images/fundos/Fundo-pagSobre1.png" alt="Artesanato">
