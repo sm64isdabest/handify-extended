@@ -13,24 +13,26 @@
 </head>
 
 <body>
-    <header>
-        <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
-        <nav>
-            <ul>
-                <li><a href="../../index.php">Home</a></li>
-                <li><a href="#footer">Contato</a></li>
-                <li><a href="about.php">Sobre</a></li>
-                <li style="display: none;">
-                    <a href="login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
-                </li>
-                <li class="user-logged" style="display: none;">
-                    <i class="bi bi-person"></i> placeholder
-                </li>
-            </ul>
-            <!-- PARA DISPOSITIVOS MÓVEIS -->
-            <button id="list"><i class="bi bi-list"></i></button>
-        </nav>
-        <div id="popup-menu">
+    <main class="sobre-main">
+        <section class="about_header">
+            <!-- <header> -->
+            <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+            <nav>
+                <ul>
+                    <li><a href="../../index.php">Home</a></li>
+                    <li><a href="#footer">Contato</a></li>
+                    <li><a href="about.php">Sobre</a></li>
+                    <li style="display: none;">
+                        <a href="login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+                    </li>
+                    <li class="user-logged" style="display: none;">
+                        <i class="bi bi-person"></i> placeholder
+                    </li>
+                </ul>
+                <!-- PARA DISPOSITIVOS MÓVEIS -->
+                <button id="list"><i class="bi bi-list"></i></button>
+            </nav>
+            <div id="popup-menu">
             <ul class="popup-list">
                 <li style="display: none;">
                     <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
@@ -42,88 +44,41 @@
                 <li><a href="#footer">Contato</a></li>
                 <li><a href="../../index.php">Home</a></li>
             </ul>
-        </div>
-    </header>
-
-    <main class="sobre-main">
+            </div>
+                <!-- </header> -->
+        </section>
         <section class="sobre-hero">
             <div class="sobre-hero-content">
-                <div class="sobre-hero-text">
-                    <h1>Handify – onde o feito à mão ganha espaço e valor</h1>
-                    <p>Conectamos artesãos apaixonados a quem valoriza o singular, o criativo e o autêntico.</p>
-                    <a href="sign-up.php" class="sobre-btn"><i class="bi bi-rocket-takeoff"></i>Começar</a>
-                </div>
-                <div class="sobre-hero-img">
-                    <img src="../images/fundos/Fundo-pagSobre1.png" alt="Artesanato">
+                <h1>Handify – onde o feito à mão ganha espaço e valor</h1>
+                <p>Conectamos artesãos apaixonados a quem valoriza o singular, o criativo e o autêntico.</p>
+                <a href="sign-up.php" class="sobre-btn"><i class="bi bi-rocket-takeoff"></i>Começar</a>
+            </div>
+            </div>
+        </section>
+        <section class="sobre-info">
+            <div class="sobre-info-top">
+                <div class="sobre-info-text-box" style="background-color: #faecce; padding: 1rem; border-radius: 8px; border-radius: 2rem;">
+                    <h2 class="sobre-info-title">Artesanato</h2>
+                    <p class="sobre-info-desc">
+                        O artesanato é uma forma de criar com as próprias mãos, usando matérias-primas naturais
+                        para dar vida a objetos únicos. Muitas vezes, esse trabalho é feito por famílias em casa
+                        ou em pequenas oficinas, com muito cuidado e tradição. Essa prática é antiga vem lá do
+                        período Neolítico quando nossos ancestrais já poliam pedras para fazer armas, criavam cerâmicas
+                        para guardar alimentos e usavam a tecelagem para produzir redes, roupas e colchas.
+                    </p>
                 </div>
             </div>
         </section>
         <section class="sobre-info">
             <div class="sobre-info-top">
-                <div class="sobre-info-text-box">
+                <div class="sobre-info-text-box" style="background-color: #faecce; padding: 1rem; border-radius: 8px; border-radius: 2rem;">
                     <h2 class="sobre-info-title">Sobre o Handify</h2>
-                    <p class="sobre-info-desc">
+                    <p class="sobre-info-desc" >
                         A Handify é um marketplace que valoriza o trabalho artesanal, conectando criadores independentes
                         com pessoas que buscam produtos únicos e feitos com cuidado. Além de vender, a plataforma
                         promove a sustentabilidade, a originalidade e a história por trás de cada peça, criando uma
                         comunidade em torno do feito à mão.
                     </p>
-                </div>
-                <div class="sobre-info-img-box1">
-                    <img src="../images/fundos/Fundo-pagSobre2.png" alt="Produtos artesanais">
-                </div>
-            </div>
-            <div class="sobre-info-cards">
-                <div class="card mb-4 border-0 sombra ps-2" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 my-auto" class="sobre-info-img-box1">
-                            <img src="../images/fundos/Fundo-pagSobre3.png" class="img-fluid float-end"
-                                alt="cestos_de_palha">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <p class="card-text1">Os cestos de palha existem desde as civilizações antigas, feitos à
-                                    mão com fibras naturais. Eram usados para guardar e carregar alimentos, e até hoje
-                                    simbolizam tradição, praticidade e conexão com a natureza.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card mb-3 border-0 sombra ps-2" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 my-auto" class="sobre-info-card">
-                            <img src="../images/fundos/Fundo-pagSobre4.png" class="img-fluid rounded-start"
-                                alt="Panelas_de_barro">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <p class="card-text2">As panelas de barro são usadas desde tempos antigos por diferentes
-                                    culturas. Feitas à mão com argila, elas mantêm o sabor dos alimentos e cozinham de
-                                    forma lenta e natural, sendo símbolo de tradição e culinária artesanal.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="sobre-info-bottom">
-                <div class="card mb-3 border-0 sombra ps-2" style="width: 855px;">
-                    <div class="row g-0">
-                        <div class="col-md-4 my-auto">
-                            <img src="../images/fundos/Fundo-pagSobre5.png" class="img-fluid rounded"
-                                alt="produtos_artesanais">
-                        </div>
-                        <div class="col-md-8" class="sobre-info-img-box2">
-                            <div class="card-body">
-                                <p class="card-text3">O artesanato é uma forma de criar com as próprias mãos, usando
-                                    matérias-primas naturais para dar vida a objetos únicos. Muitas vezes, esse trabalho
-                                    é feito por famílias em casa ou em pequenas oficinas, com muito cuidado e tradição.
-                                    Essa prática é antiga vem lá do período Neolítico quando nossos ancestrais já poliam
-                                    pedras para fazer armas, criavam cerâmicas para guardar alimentos e usavam a
-                                    tecelagem para produzir redes, roupas e colchas.</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
