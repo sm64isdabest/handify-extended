@@ -9,31 +9,36 @@ $controller = new UserController();
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_fullname = $_POST['userName'] ?? '';
-    $email = $_POST['userEmail'] ?? '';
+  $user_fullname = trim(strip_tags($_POST['userName'] ?? ''));
+  $email = trim(strip_tags($_POST['userEmail'] ?? ''));
     $password = $_POST['userPass'] ?? '';
     $passwordConfirm = $_POST['userPassConfirm'] ?? '';
 
     if ($password !== $passwordConfirm) {
         $message = "As senhas não conferem.";
+  } else {
+    if (!empty($_POST['cnpj'])) {
+      $cnpj = $_POST['cnpj'] ?? '';
+      $store_name = $_POST['storeName'] ?? '';
+      $address = $_POST['address'] ?? '';
+      $phone = $_POST['phone'] ?? '';
+
+      $result = $controller->registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone);
     } else {
-        if (!empty($_POST['cnpj'])) {
-            $cnpj = $_POST['cnpj'] ?? '';
-            $store_name = $_POST['storeName'] ?? '';
-            $address = $_POST['address'] ?? '';
-            $phone = $_POST['phone'] ?? '';
-
-            $result = $controller->registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone);
-        } else {
-            $result = $controller->registerUser($user_fullname, $email, $password);
-        }
-
-        if ($result) {
-            $message = "Cadastro realizado com sucesso!";
-        } else {
-            $message = "Erro ao realizar cadastro.";
-        }
+      $result = $controller->registerCustomerUser($user_fullname, $email, $password);
     }
+
+    if (is_array($result) && !empty($result['success'])) {
+      header('Location: ../../index.php');
+      exit;
+    } else {
+      if (is_array($result) && !empty($result['message'])) {
+        $message = $result['message'];
+      } else {
+        $message = 'Erro ao realizar cadastro.';
+      }
+    }
+  }
 }
 ?>
 
