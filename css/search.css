@@ -9,6 +9,7 @@ body {
 header {
   font-family: "Alexandria", sans-serif;
   border-bottom: 2px solid #593d36;
+  background-color: #faecce;
 }
 
 nav {
@@ -17,7 +18,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: white;
+  background-color: #faecce;
 }
 
 header .logo {
@@ -202,7 +203,7 @@ input::placeholder {
 
 .menu-bar {
   display: flex;
-  background-color: white;
+  background-color: #faecce;
   justify-content: center;
 }
 
