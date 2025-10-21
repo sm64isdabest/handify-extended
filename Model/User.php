@@ -4,6 +4,7 @@ namespace Model;
 
 use PDO;
 use PDOException;
+require_once __DIR__ . '/Connection.php';
 use Model\Connection;
 
 class User {
@@ -16,20 +17,45 @@ class User {
     // REGISTRO DE USUÁRIO
     public function registerUser($user_fullname, $email, $password) {
         try {
-            $sql = 'INSERT INTO app_user (user_fullname, email, password, created_at) 
-                    VALUES (:user_fullname, :email, :password, NOW())';
+            // detect if app_user has a fullname-like column and include it in insert
+            $colStmt = $this->db->prepare("SHOW COLUMNS FROM `app_user`");
+            $colStmt->execute();
+            $cols = $colStmt->fetchAll(PDO::FETCH_COLUMN, 0);
+
+            $fullnameCandidates = ['user_fullname', 'full_name', 'name', 'username', 'userName'];
+            $hasFullname = false;
+            $fullnameCol = null;
+            foreach ($fullnameCandidates as $c) {
+                if (in_array($c, $cols)) {
+                    $hasFullname = true;
+                    $fullnameCol = $c;
+                    break;
+                }
+            }
+
+            if ($hasFullname) {
+                $sql = "INSERT INTO app_user (email, password, `$fullnameCol`, created_at) VALUES (:email, :password, :user_fullname, NOW())";
+            } else {
+                $sql = "INSERT INTO app_user (email, password, created_at) VALUES (:email, :password, NOW())";
+            }
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $this->db->prepare($sql);
 
-            $stmt->bindParam(":user_fullname", $user_fullname, PDO::PARAM_STR);
             $stmt->bindParam(":email", $email, PDO::PARAM_STR);
             $stmt->bindParam(":password", $hashedPassword, PDO::PARAM_STR);
+            if ($hasFullname) {
+                $stmt->bindParam(":user_fullname", $user_fullname, PDO::PARAM_STR);
+            }
 
-            return $stmt->execute();
+            $ok = $stmt->execute();
+            if ($ok) {
+                return (int) $this->db->lastInsertId();
+            }
+            return false;
 
         } catch (PDOException $error) {
-            echo "Erro ao executar o comando: " . $error->getMessage();
+            error_log("Model\User::registerUser error: " . $error->getMessage());
             return false;
         }
     }

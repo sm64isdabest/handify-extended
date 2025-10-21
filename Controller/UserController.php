@@ -2,32 +2,43 @@
 
 namespace Controller;
 
+require_once __DIR__ . '/../Model/User.php';
+require_once __DIR__ . '/../Model/Store.php';
+require_once __DIR__ . '/../Model/Customer.php';
+
 use Model\User;
 use Model\Store;
+use Model\Customer;
 use Exception;
 
 class UserController
 {
     private $userModel;
     private $storeModel;
+    private $customerModel;
 
     public function __construct()
     {
         $this->userModel = new User();
         $this->storeModel = new Store();
+        $this->customerModel = new Customer();
     }
 
     public function registerUser($user_fullname, $email, $password)
     {
         try {
             if (empty($user_fullname) || empty($email) || empty($password)) {
-                return false;
+                return ['success' => false, 'message' => 'Preencha todos os campos obrigatórios.'];
             }
 
-            return $this->userModel->registerUser($user_fullname, $email, $password);
+            $userId = $this->userModel->registerUser($user_fullname, $email, $password);
+            if ($userId && is_int($userId) && $userId > 0) {
+                return ['success' => true, 'id_user' => $userId];
+            }
+
+            return ['success' => false, 'message' => 'Erro ao inserir usuário no banco de dados.'];
         } catch (Exception $error) {
-            echo "Erro ao cadastrar usuário: " . $error->getMessage();
-            return false;
+            return ['success' => false, 'message' => 'Erro ao cadastrar usuário: ' . $error->getMessage()];
         }
     }
 
@@ -38,27 +49,54 @@ class UserController
                 empty($user_fullname) || empty($email) || empty($password) ||
                 empty($cnpj) || empty($store_name) || empty($address) || empty($phone)
             ) {
-                return false;
+                return ['success' => false, 'message' => 'Preencha todos os campos obrigatórios.'];
             }
 
-            $userCreated = $this->userModel->registerUser($user_fullname, $email, $password);
-
-            if ($userCreated) {
-                $user = $this->userModel->getUserByEmail($email);
-
-                if (!$user || !isset($user['id_user'])) {
-                    throw new Exception("Erro ao recuperar ID do usuário");
-                }
-
-                $id_user = $user['id_user'];
-
-                return $this->storeModel->registerStore($id_user, $cnpj, $store_name, $address, $phone);
+            $userId = $this->userModel->registerUser($user_fullname, $email, $password);
+            if (!$userId || !is_int($userId)) {
+                return ['success' => false, 'message' => 'Erro ao criar usuário.'];
             }
 
-            return false;
+            $id_user = $userId;
+
+            $storeOk = $this->storeModel->registerStore($id_user, $store_name, $cnpj, $phone, $address);
+            if ($storeOk) {
+                return ['success' => true];
+            }
+            return ['success' => false, 'message' => 'Erro ao inserir loja no banco de dados.'];
         } catch (Exception $error) {
-            echo "Erro ao cadastrar usuário e loja: " . $error->getMessage();
-            return false;
+            return ['success' => false, 'message' => 'Erro ao cadastrar usuário e loja: ' . $error->getMessage()];
+        }
+    }
+
+    public function registerCustomerUser($user_fullname, $email, $password)
+    {
+        try {
+            if (empty($user_fullname) && !empty($email)) {
+                $user_fullname = $email;
+            }
+
+            if (empty($user_fullname) || empty($email) || empty($password)) {
+                return ['success' => false, 'message' => 'Preencha todos os campos obrigatórios.'];
+            }
+
+            $userId = $this->userModel->registerUser($user_fullname, $email, $password);
+            if (!$userId || !is_int($userId)) {
+                return ['success' => false, 'message' => 'Erro ao criar usuário.'];
+            }
+
+            $existing = $this->customerModel->getByUserId($userId);
+            if ($existing) {
+                return ['success' => true];
+            }
+
+            $reg = $this->customerModel->registerCustomer($userId, $user_fullname);
+            if ($reg) {
+                return ['success' => true];
+            }
+            return ['success' => false, 'message' => 'Erro ao inserir customer no banco de dados.'];
+        } catch (Exception $error) {
+            return ['success' => false, 'message' => 'Erro ao cadastrar usuário e customer: ' . $error->getMessage()];
         }
     }
 
@@ -73,7 +111,7 @@ class UserController
 
         if ($user && password_verify($password, $user['password'])) {
             $_SESSION['id'] = $user['id_user'];
-            $_SESSION['user_fullname'] = $user['user_fullname'];
+            $_SESSION['user_fullname'] = $user['user_fullname'] ?? null;
             $_SESSION['email'] = $user['email'];
             return true;
         }
@@ -90,5 +128,3 @@ class UserController
         return $this->userModel->getUserInfo($id, $user_fullname, $email);
     }
 }
-
-?>

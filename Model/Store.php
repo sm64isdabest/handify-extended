@@ -2,6 +2,7 @@
 
 namespace Model;
 
+require_once __DIR__ . '/Connection.php';
 use Model\Connection;
 
 use PDO;
@@ -14,15 +15,14 @@ class Store {
         $this->db = Connection::getInstance();
     }
 
-    public function registerStore($user_id, $store_name, $brand_name = null, $cnpj = null, $phone = null, $address = null) {
+    public function registerStore($id_user, $store_name, $cnpj = null, $phone = null, $address = null) {
         try {
-            $sql = 'INSERT INTO stores (user_id, name, brand_name, cnpj, phone, address, created_at) VALUES (:user_id, :name, :brand_name, :cnpj, :phone, :address, NOW())';
+            $sql = 'INSERT INTO store (id_user, name, cnpj, phone, address, created_at) VALUES (:id_user, :name, :cnpj, :phone, :address, NOW())';
 
             $stmt = $this->db->prepare($sql);
 
-            $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+            $stmt->bindParam(":id_user", $id_user, PDO::PARAM_INT);
             $stmt->bindParam(":name", $store_name, PDO::PARAM_STR);
-            $stmt->bindParam(":brand_name", $brand_name, PDO::PARAM_STR);
             $stmt->bindParam(":cnpj", $cnpj, PDO::PARAM_STR);
             $stmt->bindParam(":phone", $phone, PDO::PARAM_STR);
             $stmt->bindParam(":address", $address, PDO::PARAM_STR);
@@ -35,12 +35,12 @@ class Store {
         }
     }
 
-    public function getStoreByUserId($user_id) {
+    public function getStoreByUserId($id_user) {
         try {
-            $sql = "SELECT * FROM stores WHERE user_id = :user_id LIMIT 1";
+            $sql = "SELECT * FROM store WHERE id_user = :id_user LIMIT 1";
 
             $stmt = $this->db->prepare($sql);
-            $stmt->bindParam(":user_id", $user_id, PDO::PARAM_INT);
+            $stmt->bindParam(":id_user", $id_user, PDO::PARAM_INT);
 
             $stmt->execute();
 
