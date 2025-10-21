@@ -17,7 +17,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: white;
+  background-color: #FAECCE;
 }
 
 header .logo {
@@ -202,7 +202,7 @@ input::placeholder {
 
 .menu-bar {
   display: flex;
-  background-color: white;
+  background-color: #FAECCE;
   justify-content: center;
 }
 
@@ -468,7 +468,7 @@ footer {
   display: flex;
   font-size: 0.8rem;
   text-align: center;
-  background-color: white;
+  background-color: #ffffff;
   border-top: 2px solid #593d36;
   flex-direction: row;
   justify-content: space-between;
@@ -523,8 +523,8 @@ footer {
   display: flex;
   font-size: 0.8rem;
   text-align: center;
-  background-color: white;
-  border-top: 2px solid #593d36;
+  background-color: #FAECCE;
+  border-top: 2px solid #FAECCE;
   flex-direction: row;
   justify-content: space-between;
   padding: 1.6rem;
