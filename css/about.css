@@ -176,7 +176,6 @@ header nav ul li a.entrar i {
   background-attachment: fixed;
     border-top: 0.2rem solid #39312b;
     border-bottom: 0.2rem solid #39312b;
-
 }
 
 .sobre-hero-content {
@@ -509,37 +508,12 @@ footer .social-icons a i {
 
 @media (max-width: 768px) {
 
-    html,
-    body {
-        width: 100vw;
-        min-height: 100vh;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        overflow-x: hidden;
-    }
-
     .sobre-info-top,
     .sobre-info-cards,
     .sobre-cards {
         flex-direction: column;
         align-items: center;
         gap: 1.2rem;
-    }
-
-    header nav ul {
-        flex-direction: row;
-        align-items: center;
-    }
-
-    header nav ul li a.sobreNavbar {
-        width: 100%;
-        text-align: center;
-    }
-
-    header>i.bi {
-        display: block;
     }
 
     .sobre-info-text-box,
@@ -553,10 +527,6 @@ footer .social-icons a i {
     .sobre-info {
         gap: 1.3rem;
     }
-
-    /* .sobre-info-img-box1 {
-        display: none;
-    } */
 
     .sobre-info-cards {
         display: none;
@@ -586,7 +556,14 @@ footer .social-icons a i {
         gap: 0.9rem;
         margin-left: 1rem;
         margin-right: 1rem;
+        flex-direction: row;
+        align-items: center;
+        font-size: 10px;
     }
+
+    /* .sobre-hero-content h1 {
+        font-size: 100px;
+    } */
 
     .sobre-hero-text {
         flex: 1; 
@@ -608,20 +585,6 @@ footer .social-icons a i {
         border-radius: 12px; 
     }
 
-    /* .sobre-hero {
-        padding: 4rem 0 5rem 0;
-    }
-
-    .sobre-hero-text {
-        margin-left: 3%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .sobre-hero-img {
-        margin-right: 3%;
-    } */
 
     .sobre-hero-text h1 {
         font-size: 2.0rem;
@@ -674,7 +637,6 @@ footer .social-icons a i {
     .sobre-hero-content {
         flex-direction: row;
     }
-
 
     .sobre-hero-text {
         width: 100%; 
@@ -887,6 +849,7 @@ footer .social-icons a i {
     .contatos .card {
         width: 15rem;
         height: 15rem;
+        gap: 3px;
     }
 
     .contatos .card-body h5 {
@@ -943,11 +906,12 @@ footer .social-icons a i {
 @media (max-width: 470px){
 
     header {
-        position: fixed;
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         z-index: 1000; 
+
     }
 
     .sobre-hero-text {

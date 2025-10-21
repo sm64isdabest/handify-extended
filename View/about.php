@@ -71,7 +71,8 @@
         </section>
         <section class="sobre-info">
             <div class="sobre-info-top">
-                <div class="sobre-info-text-box" style="background-color: #faecce; padding: 1rem; border-radius: 8px; border-radius: 2rem;">
+                <div class="sobre-info-text-box" style="background-color: #faecce; padding: 1rem; border-radius: 8px; border-radius: 2rem;ggggggg
+                ">
                     <h2 class="sobre-info-title">Sobre o Handify</h2>
                     <p class="sobre-info-desc" >
                         A Handify é um marketplace que valoriza o trabalho artesanal, conectando criadores independentes
