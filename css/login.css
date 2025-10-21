@@ -5,16 +5,20 @@
 
 
 body {
-  background-color: #fbe9c6;
+  background-color: #FAECCE;
   font-family: 'Montserrat', Arial, sans-serif;
   color: #3d2b23;
   margin: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: url("../images/fundos/fundo_madeira.png");
+  background: 
+    linear-gradient(rgba(245, 236, 218, 0.7), rgba(245, 236, 218, 0.7)), 
+    url("../images/fundos/background_login.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 header {
@@ -24,7 +28,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: white;
+  background-color: #FAECCE;
   border-bottom: 2px solid #593d36;
 }
 
@@ -49,7 +53,7 @@ header nav ul li a {
 
 header nav ul li a.entrar {
   background-color: #593d36;
-  color: white;
+  color: #FAECCE;
   padding: 0.9rem;
   border-radius: 15px;
 }
@@ -128,6 +132,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 45px;
   padding: 50px;
   min-height: calc(100vh - 150px);
   background-size: cover;
@@ -227,7 +232,7 @@ footer {
   display: flex;
   font-size: 0.8rem;
   text-align: center;
-  background-color: white;
+  background-color: #FAECCE;
   border-top: 2px solid #593d36;
   flex-direction: row;
   justify-content: space-between;
