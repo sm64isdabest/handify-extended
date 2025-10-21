@@ -1,3 +1,43 @@
+<?php
+
+session_start();
+
+require_once '../controller/UserController.php';
+use Controller\UserController;
+
+$controller = new UserController();
+$message = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $user_fullname = $_POST['userName'] ?? '';
+    $email = $_POST['userEmail'] ?? '';
+    $password = $_POST['userPass'] ?? '';
+    $passwordConfirm = $_POST['userPassConfirm'] ?? '';
+
+    if ($password !== $passwordConfirm) {
+        $message = "As senhas não conferem.";
+    } else {
+        if (!empty($_POST['cnpj'])) {
+            $cnpj = $_POST['cnpj'] ?? '';
+            $store_name = $_POST['storeName'] ?? '';
+            $address = $_POST['address'] ?? '';
+            $phone = $_POST['phone'] ?? '';
+
+            $result = $controller->registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone);
+        } else {
+            $result = $controller->registerUser($user_fullname, $email, $password);
+        }
+
+        if ($result) {
+            $message = "Cadastro realizado com sucesso!";
+        } else {
+            $message = "Erro ao realizar cadastro.";
+        }
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -55,32 +95,32 @@
           Seja bem-vindo! Cadastre-se e comece a mostrar, divulgar e vender
           seu artesanato com a gente.
         </h3>
-        <form>
+        <form method="POST" action="">
           <label id="labelUserName" for="userName">
             <i class="bi bi-person"></i>
-            <input type="text" id="userName" autocomplete="username" placeholder="Usuário" />
+            <input type="text" id="userName" name="userName" autocomplete="username" placeholder="Usuário" required />
           </label>
 
           <label id="labelUserEmail" for="userEmail">
             <i class="bi bi-envelope"></i>
-            <input type="email" id="userEmail" autocomplete="email" placeholder="E-mail" />
+            <input type="email" id="userEmail" name="userEmail" autocomplete="email" placeholder="E-mail" required />
           </label>
 
           <label id="labelUserPass" for="userPass">
             <i class="bi bi-key"></i>
-            <input type="password" id="userPass" placeholder="Insira sua senha" />
+            <input type="password" id="userPass" name="userPass" placeholder="Insira sua senha" required />
           </label>
 
           <label id="labelUserPassConfirm" for="userPassConfirm">
             <i class="bi bi-lock"></i>
-            <input type="password" id="userPassConfirm" placeholder="Confirme sua senha" />
+            <input type="password" id="userPassConfirm" name="userPassConfirm" placeholder="Confirme sua senha" required />
           </label>
 
           <span>Por favor, preencha todos os campos!</span>
 
           <div class="buttons">
             <button type="button" class="active1">Para Lojas</button>
-            <button type="button" class="active" id="responsive-text">
+            <button type="submit" class="active" id="responsive-text">
               Para Consumidores
             </button>
           </div>

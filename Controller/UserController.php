@@ -17,11 +17,10 @@ class UserController
         $this->storeModel = new Store();
     }
 
-    // REGISTRO DE USUÁRIO
     public function registerUser($user_fullname, $email, $password)
     {
         try {
-            if (empty($user_fullname) or empty($email) or empty($password)) {
+            if (empty($user_fullname) || empty($email) || empty($password)) {
                 return false;
             }
 
@@ -31,48 +30,49 @@ class UserController
             return false;
         }
     }
+
+    public function registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone)
+    {
+        try {
+            if (
+                empty($user_fullname) || empty($email) || empty($password) ||
+                empty($cnpj) || empty($store_name) || empty($address) || empty($phone)
+            ) {
+                return false;
+            }
+
+            $userCreated = $this->userModel->registerUser($user_fullname, $email, $password);
+
+            if ($userCreated) {
+                $user = $this->userModel->getUserByEmail($email);
+
+                if (!$user || !isset($user['id_user'])) {
+                    throw new Exception("Erro ao recuperar ID do usuário");
+                }
+
+                $id_user = $user['id_user'];
+
+                return $this->storeModel->registerStore($id_user, $cnpj, $store_name, $address, $phone);
+            }
+
+            return false;
+        } catch (Exception $error) {
+            echo "Erro ao cadastrar usuário e loja: " . $error->getMessage();
+            return false;
+        }
+    }
+
     public function checkUserByEmail($email)
     {
         return $this->userModel->getUserByEmail($email);
     }
 
-    // REGISTRO DE LOJA (cria usuário se necessário, depois cria loja)
-    public function registerStore($user_fullname, $email, $password, $brand_name = null, $cnpj = null, $phone = null, $address = null)
-    {
-        try {
-            if (empty($user_fullname) or empty($email) or empty($password)) {
-                return false;
-            }
-
-            // reuse existing user or create
-            $existing = $this->userModel->getUserByEmail($email);
-            if ($existing && isset($existing['id'])) {
-                $userId = (int)$existing['id'];
-            } else {
-                $created = $this->userModel->registerUser($user_fullname, $email, $password);
-                if (!$created) {
-                    return false;
-                }
-                $userId = (int)$this->userModel->getUserByEmail($email)['id'];
-            }
-
-            // determine store name
-            $storeName = !empty($brand_name) ? $brand_name : ($user_fullname . "'s loja");
-
-            return $this->storeModel->registerStore($userId, $storeName, $brand_name, $cnpj, $phone, $address);
-        } catch (Exception $error) {
-            echo "Erro ao cadastrar loja: " . $error->getMessage();
-            return false;
-        }
-    }
-
-    // LOGIN DE USUÁRIO
     public function login($email, $password)
     {
         $user = $this->userModel->getUserByEmail($email);
 
         if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['id'] = $user['id'];
+            $_SESSION['id'] = $user['id_user'];
             $_SESSION['user_fullname'] = $user['user_fullname'];
             $_SESSION['email'] = $user['email'];
             return true;
@@ -80,15 +80,13 @@ class UserController
         return false;
     }
 
-    public function isLoggerdIn()
+    public function isLoggedIn()
     {
         return isset($_SESSION['id']);
     }
 
-    // RESGATAR DADOS DO USUÁRIO
     public function getUserData($id, $user_fullname, $email)
     {
-
         return $this->userModel->getUserInfo($id, $user_fullname, $email);
     }
 }
