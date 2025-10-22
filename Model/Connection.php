@@ -32,6 +32,10 @@ class Connection
         }
         return self::$stmt;
     }
+    public static function getDbInstance()
+    {
+        return self::getInstance();
+    }
 }
 
 ?>

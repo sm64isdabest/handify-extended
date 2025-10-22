@@ -17,7 +17,6 @@ class User {
     // REGISTRO DE USUÁRIO
     public function registerUser($user_fullname, $email, $password) {
         try {
-            // detect if app_user has a fullname-like column and include it in insert
             $colStmt = $this->db->prepare("SHOW COLUMNS FROM `app_user`");
             $colStmt->execute();
             $cols = $colStmt->fetchAll(PDO::FETCH_COLUMN, 0);
@@ -34,9 +33,9 @@ class User {
             }
 
             if ($hasFullname) {
-                $sql = "INSERT INTO app_user (email, password, `$fullnameCol`, created_at) VALUES (:email, :password, :user_fullname, NOW())";
+                $sql = "INSERT INTO app_user (email, password, `$fullnameCol`) VALUES (:email, :password, :user_fullname, NOW())";
             } else {
-                $sql = "INSERT INTO app_user (email, password, created_at) VALUES (:email, :password, NOW())";
+                $sql = "INSERT INTO app_user (email, password) VALUES (:email, :password, NOW())";
             }
 
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
