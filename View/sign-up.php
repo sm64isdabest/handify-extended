@@ -9,36 +9,36 @@ $controller = new UserController();
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $user_fullname = trim(strip_tags($_POST['userName'] ?? ''));
-  $email = trim(strip_tags($_POST['userEmail'] ?? ''));
+    $user_fullname = trim(strip_tags($_POST['userName'] ?? ''));
+    $email = trim(strip_tags($_POST['userEmail'] ?? ''));
     $password = $_POST['userPass'] ?? '';
     $passwordConfirm = $_POST['userPassConfirm'] ?? '';
 
     if ($password !== $passwordConfirm) {
         $message = "As senhas não conferem.";
-  } else {
-    if (!empty($_POST['cnpj'])) {
-      $cnpj = $_POST['cnpj'] ?? '';
-      $store_name = $_POST['storeName'] ?? '';
-      $address = $_POST['address'] ?? '';
-      $phone = $_POST['phone'] ?? '';
-
-      $result = $controller->registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone);
     } else {
-      $result = $controller->registerCustomerUser($user_fullname, $email, $password);
-    }
+        if (!empty($_POST['cnpj'])) {
+            $cnpj = trim(strip_tags($_POST['cnpj'] ?? ''));
+            $store_name = trim(strip_tags($_POST['storeName'] ?? ''));
+            $address = trim(strip_tags($_POST['address'] ?? ''));
+            $phone = trim(strip_tags($_POST['phone'] ?? ''));
 
-    if (is_array($result) && !empty($result['success'])){
-      header('location:../index.php');
-      exit;
-    } else {
-      if (is_array($result) && !empty($result['message'])) {
-        $message = $result['message'];
-      } else {
-        $message = 'Erro ao realizar cadastro.';
-      }
+            $result = $controller->registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone);
+        } else {
+            $result = $controller->registerCustomerUser($user_fullname, $email, $password);
+        }
+
+        if (is_array($result) && !empty($result['success'])) {
+            header('Location: ../index.php');
+            exit;
+        } else {
+            if (is_array($result) && !empty($result['message'])) {
+                $message = $result['message'];
+            } else {
+                $message = 'Erro ao realizar cadastro.';
+            }
+        }
     }
-  }
 }
 ?>
 
