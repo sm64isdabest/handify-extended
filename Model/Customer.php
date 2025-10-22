@@ -16,12 +16,10 @@ class Customer {
 
     public function getByUserId($id_user) {
         try {
-            // basic table existence check
+            // existencia da tabela
             $candidates = ['customer'];
             $table = null;
             foreach ($candidates as $t) {
-                // PDO and MariaDB may not accept placeholders in SHOW statements reliably.
-                // Use quote() and direct query to avoid syntax errors like "near '?'".
                 $q = $this->db->quote($t);
                 $resStmt = $this->db->query("SHOW TABLES LIKE " . $q);
                 $res = $resStmt ? $resStmt->fetch(PDO::FETCH_NUM) : false;
@@ -67,7 +65,7 @@ class Customer {
                 throw new \Exception('customer table not found');
             }
 
-            // inspect columns to find a fullname-like column
+            // INSPECIONAR COLUNAS
             $colStmt = $this->db->prepare("SHOW COLUMNS FROM `$table`");
             $colStmt->execute();
             $cols = $colStmt->fetchAll(PDO::FETCH_COLUMN, 0);
@@ -83,7 +81,7 @@ class Customer {
 
             if ($targetCol === null) {
                 error_log('Customer::registerCustomer - no fullname-like column found in ' . $table . ' (columns: ' . implode(',', $cols) . ')');
-                // try inserting only id_user if possible
+                // TENTAR INSERIR APENAS ID_USER
                 if (in_array('id_user', $cols) && count($cols) === 1) {
                     $sql = "INSERT INTO `$table` (id_user) VALUES (:id_user)";
                     $stmt = $this->db->prepare($sql);
