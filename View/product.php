@@ -15,7 +15,7 @@
 <body>
     <header>
         <div class="header-container">
-            <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+            <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" 
             <div class="search-bar">
                 <input type="text" autocomplete="off" placeholder="Buscar produtos..." id="searchInput" />
                 <i class="bi bi-search" id="searchButton"></i>
