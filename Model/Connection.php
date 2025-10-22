@@ -6,9 +6,6 @@ namespace Model;
 
 use PDO;
 use PDOException;
-
-// include configuration constants (DB_NAME, DB_HOST, DB_USER, DB_PASSWORD, DB_PORT)
-// use correct relative path to Config/Configuration.php
 require_once __DIR__ . '/../Config/Configuration.php';
 
 class Connection

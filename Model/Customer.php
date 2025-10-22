@@ -9,35 +9,36 @@ use Model\Connection;
 
 class Customer {
     private $db;
+    private $table = 'customer';
 
     public function __construct() {
         $this->db = Connection::getInstance();
     }
 
+    private function tableExists() {
+        $quoted = $this->db->quote($this->table);
+        $stmt = $this->db->query("SHOW TABLES LIKE $quoted");
+        return $stmt && $stmt->fetch(PDO::FETCH_NUM);
+    }
+
+    private function getTableColumns() {
+        $stmt = $this->db->prepare("SHOW COLUMNS FROM `$this->table`");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+    }
+
     public function getByUserId($id_user) {
         try {
-            // existencia da tabela
-            $candidates = ['customer'];
-            $table = null;
-            foreach ($candidates as $t) {
-                $q = $this->db->quote($t);
-                $resStmt = $this->db->query("SHOW TABLES LIKE " . $q);
-                $res = $resStmt ? $resStmt->fetch(PDO::FETCH_NUM) : false;
-                if ($res) {
-                    $table = $t;
-                    break;
-                }
-            }
-
-            if ($table === null) {
-                error_log('Customer::getByUserId - table "customer" not found');
+            if (!$this->tableExists()) {
+                error_log('Customer::getByUserId - Tabela "customer" não encontrada');
                 return false;
             }
 
-            $sql = "SELECT * FROM `$table` WHERE id_user = :id_user LIMIT 1";
+            $sql = "SELECT * FROM `$this->table` WHERE id_user = :id_user LIMIT 1";
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
             $stmt->execute();
+
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             error_log('Customer::getByUserId error: ' . $e->getMessage());
@@ -47,54 +48,34 @@ class Customer {
 
     public function registerCustomer($id_user, $user_fullname) {
         try {
+            if (!$this->tableExists()) {
+                throw new \Exception('Tabela "customer" não encontrada');
+            }
 
-            $candidates = ['customer'];
-            $table = null;
-            foreach ($candidates as $t) {
-                $q = $this->db->quote($t);
-                $resStmt = $this->db->query("SHOW TABLES LIKE " . $q);
-                $res = $resStmt ? $resStmt->fetch(PDO::FETCH_NUM) : false;
-                if ($res) {
-                    $table = $t;
+            $columns = $this->getTableColumns();
+            $fullnameCols = ['user_fullname', 'name', 'username', 'userName'];
+            $nameCol = null;
+
+            foreach ($fullnameCols as $col) {
+                if (in_array($col, $columns)) {
+                    $nameCol = $col;
                     break;
                 }
             }
 
-            if ($table === null) {
-                error_log('Customer::registerCustomer - table "customer" not found');
-                throw new \Exception('customer table not found');
+            if ($nameCol) {
+                $sql = "INSERT INTO `$this->table` (id_user, `$nameCol`) VALUES (:id_user, :user_fullname)";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+                $stmt->bindParam(':user_fullname', $user_fullname, PDO::PARAM_STR);
+            } elseif (in_array('id_user', $columns) && count($columns) === 1) {
+                $sql = "INSERT INTO `$this->table` (id_user) VALUES (:id_user)";
+                $stmt = $this->db->prepare($sql);
+                $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+            } else {
+                throw new \Exception('Nenhuma coluna de nome encontrada na tabela.');
             }
 
-            // INSPECIONAR COLUNAS
-            $colStmt = $this->db->prepare("SHOW COLUMNS FROM `$table`");
-            $colStmt->execute();
-            $cols = $colStmt->fetchAll(PDO::FETCH_COLUMN, 0);
-
-            $fullnameCandidates = ['user_fullname', 'full_name', 'name', 'username', 'userName'];
-            $targetCol = null;
-            foreach ($fullnameCandidates as $c) {
-                if (in_array($c, $cols)) {
-                    $targetCol = $c;
-                    break;
-                }
-            }
-
-            if ($targetCol === null) {
-                error_log('Customer::registerCustomer - no fullname-like column found in ' . $table . ' (columns: ' . implode(',', $cols) . ')');
-                // TENTAR INSERIR APENAS ID_USER
-                if (in_array('id_user', $cols) && count($cols) === 1) {
-                    $sql = "INSERT INTO `$table` (id_user) VALUES (:id_user)";
-                    $stmt = $this->db->prepare($sql);
-                    $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
-                    return $stmt->execute();
-                }
-                throw new \Exception('no fullname-like column in customer table');
-            }
-
-            $sql = "INSERT INTO `$table` (id_user, `$targetCol`) VALUES (:id_user, :user_fullname)";
-            $stmt = $this->db->prepare($sql);
-            $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
-            $stmt->bindParam(':user_fullname', $user_fullname, PDO::PARAM_STR);
             return $stmt->execute();
 
         } catch (PDOException $e) {
@@ -103,5 +84,3 @@ class Customer {
         }
     }
 }
-
-?>
