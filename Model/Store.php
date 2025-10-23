@@ -17,7 +17,7 @@ class Store {
 
     public function registerStore($id_user, $store_name, $cnpj = null, $phone = null, $address = null) {
         try {
-            $sql = 'INSERT INTO store (id_user, name, cnpj, phone, address, created_at) VALUES (:id_user, :name, :cnpj, :phone, :address, NOW())';
+            $sql = 'INSERT INTO store (id_user, name, cnpj, phone, address) VALUES (:id_user, :name, :cnpj, :phone, :address)';
 
             $stmt = $this->db->prepare($sql);
 

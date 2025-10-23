@@ -126,9 +126,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="active" id="responsive-text">
               Cadastre-se
             </button>
+            <button type="button" class="active1" onclick="window.location.href='sign-up-store.php'" id="btn_store">Para Lojas</button>
           </div>
         </form>
-        <button type="button" class="active1" onclick="window.location.href='sign-up-store.php'">Para Lojas</button>
       </div>
     </section>
   </main>

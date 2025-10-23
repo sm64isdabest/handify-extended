@@ -7,16 +7,19 @@ use PDOException;
 require_once __DIR__ . '/Connection.php';
 use Model\Connection;
 
-class User {
+class User
+{
     private $db;
     private $fullnameCol;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = Connection::getInstance();
         $this->fullnameCol = $this->detectFullnameColumn();
     }
 
-    private function detectFullnameColumn() {
+    private function detectFullnameColumn()
+    {
         $fullnameCandidates = ['user_fullname', 'name', 'username', 'userName'];
         try {
             $colStmt = $this->db->prepare("SHOW COLUMNS FROM `app_user`");
@@ -33,7 +36,8 @@ class User {
         return null;
     }
 
-    public function registerUser($user_fullname, $email, $password) {
+    public function registerUser($user_fullname, $email, $password)
+    {
         try {
             if ($this->fullnameCol) {
                 $sql = "INSERT INTO app_user (email, password, `{$this->fullnameCol}`, created_at) VALUES (:email, :password, :user_fullname, NOW())";
@@ -58,7 +62,8 @@ class User {
         }
     }
 
-    public function getUserByEmail($email) {
+    public function getUserByEmail($email)
+    {
         try {
             $sql = "SELECT * FROM app_user WHERE email = :email LIMIT 1";
             $stmt = $this->db->prepare($sql);
@@ -71,9 +76,11 @@ class User {
         }
     }
 
-    public function getUserInfo($id, $user_fullname, $email) {
+    public function getUserInfo($id, $user_fullname, $email)
+    {
         try {
-            if (!$this->fullnameCol) return false;
+            if (!$this->fullnameCol)
+                return false;
 
             $sql = "SELECT `{$this->fullnameCol}`, email FROM app_user WHERE id_user = :id AND `{$this->fullnameCol}` = :user_fullname AND email = :email";
             $stmt = $this->db->prepare($sql);
