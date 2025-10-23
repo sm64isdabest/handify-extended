@@ -402,8 +402,8 @@ footer .social-icons a i {
     }
 
     .preview-cartao{
-        height: 180px;
-        width: 270px;
+        height: 140px;
+        /* width: 200px; */
     }
 
     #list {
