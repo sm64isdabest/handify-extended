@@ -9,36 +9,36 @@ $controller = new UserController();
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_fullname = trim(strip_tags($_POST['userName'] ?? ''));
-    $email = trim(strip_tags($_POST['userEmail'] ?? ''));
-    $password = $_POST['userPass'] ?? '';
-    $passwordConfirm = $_POST['userPassConfirm'] ?? '';
+  $user_fullname = trim(strip_tags($_POST['userName'] ?? ''));
+  $email = trim(strip_tags($_POST['userEmail'] ?? ''));
+  $password = $_POST['userPass'] ?? '';
+  $passwordConfirm = $_POST['userPassConfirm'] ?? '';
 
-    if ($password !== $passwordConfirm) {
-        $message = "As senhas não conferem.";
+  if ($password !== $passwordConfirm) {
+    $message = "As senhas não conferem.";
+  } else {
+    if (!empty($_POST['cnpj'])) {
+      $cnpj = trim(strip_tags($_POST['cnpj'] ?? ''));
+      $store_name = trim(strip_tags($_POST['storeName'] ?? ''));
+      $address = trim(strip_tags($_POST['address'] ?? ''));
+      $phone = trim(strip_tags($_POST['phone'] ?? ''));
+
+      $result = $controller->registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone);
     } else {
-        if (!empty($_POST['cnpj'])) {
-            $cnpj = trim(strip_tags($_POST['cnpj'] ?? ''));
-            $store_name = trim(strip_tags($_POST['storeName'] ?? ''));
-            $address = trim(strip_tags($_POST['address'] ?? ''));
-            $phone = trim(strip_tags($_POST['phone'] ?? ''));
-
-            $result = $controller->registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone);
-        } else {
-            $result = $controller->registerCustomerUser($user_fullname, $email, $password);
-        }
-
-        if (is_array($result) && !empty($result['success'])) {
-            header('Location: ../index.php');
-            exit;
-        } else {
-            if (is_array($result) && !empty($result['message'])) {
-                $message = $result['message'];
-            } else {
-                $message = 'Erro ao realizar cadastro.';
-            }
-        }
+      $result = $controller->registerCustomerUser($user_fullname, $email, $password);
     }
+
+    if (is_array($result) && !empty($result['success'])) {
+      header('Location: ../index.php');
+      exit;
+    } else {
+      if (is_array($result) && !empty($result['message'])) {
+        $message = $result['message'];
+      } else {
+        $message = 'Erro ao realizar cadastro.';
+      }
+    }
+  }
 }
 ?>
 
@@ -97,7 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="form-container">
         <h1>Cadastrar-se</h1>
         <h3>
-          Bem-vindo! Cadastre-se e descubra o melhor do artesanato, conectando-se com talentos únicos e produtos feitos à mão.
+          Bem-vindo! Cadastre-se e descubra o melhor do artesanato, conectando-se com talentos únicos e produtos feitos
+          à mão.
         </h3>
         <form method="POST" action="">
           <label id="labelUserName" for="userName">
@@ -117,7 +118,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
           <label id="labelUserPassConfirm" for="userPassConfirm">
             <i class="bi bi-lock"></i>
-            <input type="password" id="userPassConfirm" name="userPassConfirm" placeholder="Confirme sua senha" required />
+            <input type="password" id="userPassConfirm" name="userPassConfirm" placeholder="Confirme sua senha"
+              required />
           </label>
 
           <span>Por favor, preencha todos os campos!</span>
@@ -126,7 +128,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="active" id="responsive-text">
               Cadastre-se
             </button>
-            <button type="button" class="active1" onclick="window.location.href='sign-up-store.php'" id="btn_store">Para Lojas</button>
+            <button type="button" class="active1" onclick="window.location.href='sign-up-store.php'" id="btn_store">Para
+              Lojas</button>
           </div>
         </form>
       </div>

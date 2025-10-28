@@ -45,9 +45,15 @@ class Customer {
             throw new \Exception($e->getMessage());
         }
     }
-
+    
     public function registerCustomer($id_user, $user_fullname) {
         try {
+            $existingCustomer = $this->getByUserId($id_user);
+            if ($existingCustomer) {
+                echo "Usuário já cadastrado.";
+                return false;
+            }
+            
             if (!$this->tableExists()) {
                 throw new \Exception('Tabela "customer" não encontrada');
             }

@@ -17,6 +17,19 @@ class Store {
 
     public function registerStore($id_user, $store_name, $cnpj = null, $phone = null, $address = null) {
         try {
+            $existingStore = $this->getStoreByUserId($id_user);
+            if ($existingStore) {
+                echo "Este usuário já possui uma loja cadastrada.";
+                return false;
+            }
+
+            if (!empty($cnpj)) {
+                $checkCnpj = $this->getStoreByCnpj($cnpj);
+                if ($checkCnpj) {
+                    echo "Já existe uma loja cadastrada com este CNPJ.";
+                    return false;
+                }
+            }
             $sql = 'INSERT INTO store (id_user, name, cnpj, phone, address) VALUES (:id_user, :name, :cnpj, :phone, :address)';
 
             $stmt = $this->db->prepare($sql);
@@ -47,6 +60,19 @@ class Store {
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $error) {
             echo "Erro ao buscar loja: " . $error->getMessage();
+            return false;
+        }
+        
+    }
+    public function getStoreByCnpj($cnpj) {
+        try {
+            $sql = "SELECT * FROM store WHERE cnpj = :cnpj LIMIT 1";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(":cnpj", $cnpj, PDO::PARAM_STR);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $error) {
+            echo "Erro ao buscar loja por CNPJ: " . $error->getMessage();
             return false;
         }
     }
