@@ -41,7 +41,7 @@ header nav ul li a {
 
 header nav ul li a.entrar {
     background-color: #5a3e36;
-    color: #FAECCE;
+    color: white;
     padding: 0.9rem;
     border-radius: 15px;
 }
@@ -84,11 +84,11 @@ header nav ul li a.entrar i {
     font-size: 14px;
     width: 100%;
     background: none;
-    color: #FAECCE;
+    color: white;
 }
 
 input::placeholder {
-    color: #FAECCE;
+    color: white;
 }
 
 .search-bar button {
@@ -114,7 +114,7 @@ nav ul li a {
 
 nav ul li a.entrar {
     background-color: #5a3e36;
-    color: #FAECCE;
+    color: white;
     padding: 5px 10px;
     border-radius: 5px;
 }
@@ -141,7 +141,7 @@ nav ul li a.entrar {
 
 .menu-bar button {
     background-color: #5a3e36;
-    color: #FAECCE;
+    color: white;
     border: none;
     border-radius: 0.6rem 0.6rem 0 0;
     font-size: 14px;
@@ -164,7 +164,7 @@ nav ul li a.entrar {
     visibility: hidden;
     top: 95%;
     background-color: #5a3e36;
-    color: #FAECCE;
+    color: white;
     z-index: 99;
     list-style: none;
     width: 95%;
@@ -210,7 +210,7 @@ nav ul li a.entrar {
     background-color: #5b5b5bbb;
     padding: 0.5rem;
     border-radius: 15rem;
-    color: #FAECCE;
+    color: white;
     border: 2px solid #484848;
 }
 
@@ -569,7 +569,6 @@ main div button {
 main div button:hover,
 main div button:focus {
     background-color: #80574c;
-    /* cor ao passar o mouse */
     cursor: pointer;
 }
 

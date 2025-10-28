@@ -11,7 +11,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
-</head> 
+</head>
 
 <body style="background-color: #FAECCE;">
   <header>
@@ -23,7 +23,7 @@
         <ul id="autocomplete-list" class="autocomplete-items"></ul>
       </div>
       <ul>
-        <li><a href="index.php" class="scroll-link">Home</a></li>
+        <li><a href="index.php" class="scroll-link">Produtos</a></li>
         <li><a href="#footer">Contato</a></li>
         <li><a href="View/about.php">Sobre</a></li>
         <li>
@@ -34,8 +34,10 @@
         </li>
       </ul>
 
-      <button id="cart"><i class="bi bi-cart"></i></button>
-      <button id="list"><i class="bi bi-list"></i></button>
+      <div class="mobile-buttons">
+        <button id="cart"><i class="bi bi-cart"></i></button>
+        <button id="list"><i class="bi bi-list"></i></button>
+      </div>
       <div id="popup-menu">
         <ul class="popup-list">
           <li>
@@ -46,7 +48,7 @@
           </li>
           <li><a href="pages/about.php">Sobre</a></li>
           <li><a href="#footer">Contato</a></li>
-          <li><a href="index.php" class="scroll-link">Home</a></li>
+          <li><a href="index.php" class="scroll-link">Produtos</a></li>
         </ul>
       </div>
     </nav>
@@ -57,8 +59,7 @@
           <a href="View/login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <a href="View/search.php" class="btn">Categorias</a>
-        <a href="#main" class="scroll-link btn">Ofertas</a>
-  <a href="View/sell.php" class="btn">Vender</a>
+        <a href="View/sell.php" class="btn">Vender</a>
         <button id="rastrear-btn">Rastrear</button>
       </div>
       <button class="cart"><i class="bi bi-cart"></i></button>
@@ -69,7 +70,7 @@
   <div id="rastrear-popup" style="display: none;">
     <div class="container-principal">
       <header class="cabecalho">
-  <img src="images/logo-handify.png" alt="Logo Handify" class="logo" />
+        <img src="images/logo-handify.png" alt="Logo Handify" class="logo" />
         <div class="linha-vertical"></div>
         <h2>Rastrear</h2>
         <button class="retorn" id="close-rastrear"><i class="bi bi-x"></i></button>
@@ -108,7 +109,7 @@
   <div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
       <div class="carousel-item active">
-  <img src="images/fundos/ofertabannernobkg1.png" class="d-block mx-auto" alt="" />
+        <img src="images/fundos/ofertabannernobkg1.png" class="d-block mx-auto" alt="" />
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -128,7 +129,7 @@
           <div class="oferta-header">
             <span class="oferta-titulo">Oferta do dia</span>
           </div>
-            <span class="oferta-descricao"></span>
+          <span class="oferta-descricao"></span>
           <div class="oferta-conteudo">
             <div class="oferta-info">
               <span class="oferta-desconto"></span>
@@ -142,7 +143,7 @@
           <div class="oferta-header">
             <span class="oferta-titulo">Oferta Semanal</span>
           </div>
-            <span class="oferta-descricao"></span>
+          <span class="oferta-descricao"></span>
           <div class="oferta-conteudo">
             <div class="oferta-info">
               <span class="oferta-desconto"></span>
@@ -171,7 +172,7 @@
             <span class="spantext"></span>
           </div>
         </div>
-  <button class="oferta-btn"><a href="View/search.php">Veja mais</a></button>
+        <button class="oferta-btn"><a href="View/search.php">Veja mais</a></button>
       </div>
     </section>
 
@@ -179,7 +180,7 @@
       <h3 class="produtos-paraC">Produtos para cozinha</h3>
       <div class="produtos-lista">
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -190,7 +191,7 @@
           </div>
         </div>
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -201,7 +202,7 @@
           </div>
         </div>
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -212,7 +213,7 @@
           </div>
         </div>
         <div class="produto faqueiro">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -223,7 +224,7 @@
           </div>
         </div>
         <div class="produto panela">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -240,7 +241,7 @@
       <h3 class="produtos-decorativos">Produtos decorativos</h3>
       <div class="produtos-lista">
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -251,7 +252,7 @@
           </div>
         </div>
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -262,7 +263,7 @@
           </div>
         </div>
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -273,7 +274,7 @@
           </div>
         </div>
         <div class="produto jarro-flor">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -284,7 +285,7 @@
           </div>
         </div>
         <div class="produto pato">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -301,7 +302,7 @@
       <h3 class="moveis">Móveis</h3>
       <div class="produtos-lista">
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -312,7 +313,7 @@
           </div>
         </div>
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -323,7 +324,7 @@
           </div>
         </div>
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -334,7 +335,7 @@
           </div>
         </div>
         <div class="produto poltrona-positano">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -345,7 +346,7 @@
           </div>
         </div>
         <div class="produto banco banqueta-vime">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -357,71 +358,71 @@
         </div>
       </div>
     </section>
-
-    <!-- Benefícios -->
-    <section class="beneficios">
-      <div class="rounded-4 beneficio card">
-        <i class="bi bi-shield-check"></i>
-        <h4>Segurança</h4>
-        <p>
-          Este site utiliza protocolos de segurança avançados para garantir a
-          proteção de seus dados durante a navegação.
-        </p>
-      </div>
-      <div class="rounded-4 beneficio card">
-        <i class="bi bi-patch-check"></i>
-        <h4>Confiável</h4>
-        <p>
-          Pode confiar: aqui tudo é feito com cuidado, segurança e respeito
-          por você.
-        </p>
-      </div>
-      <div class="rounded-4 beneficio card rounded">
-        <i class="bi bi-truck"></i>
-        <h4>Frete grátis</h4>
-        <p>
-          Do carrinho até a sua casa, com segurança, carinho e frete grátis.
-        </p>
-      </div>
-    </section>
-
-    <!-- Atendimento -->
-    <section class="atendimento">
-      <div class="rounded-4 atendimento-card card">
-        <h4>Compre pelo telefone</h4>
-        <p>
-          Atendimento das 8h às 19h de <b>segunda a sexta</b>. 8h às 14h aos
-          <b>sábados</b>.
-        </p>
-        <span>(71) 97534-4397</span>
-        <span>0800-020-5243</span>
-      </div>
-      <div class="rounded-4 atendimento-card card">
-        <h4>Atendimento ao cliente</h4>
-        <p>Das 08h às 19h de segunda a sábado, exceto feriados.</p>
-        <span>handifycontato@gmail.com</span>
-        <span>0800-020-6639</span>
-      </div>
-      <div class="rounded-4 atendimento-card card">
-        <h4>Compre pelo Whatsapp</h4>
-        <p>
-          Para todo o território nacional. Horário de atendimento sujeito à
-          região.
-        </p>
-        <span><i class="bi bi-whatsapp"></i> (71) 9985-7897</span>
-        <span><i class="bi bi-whatsapp"></i> (71) 9535-6332</span>
-      </div>
-    </section>
   </main>
 
+  <!-- Benefícios -->
+  <section class="beneficios">
+    <div class="rounded-4 beneficio card">
+      <i class="bi bi-shield-check"></i>
+      <h4>Segurança</h4>
+      <p>
+        Este site utiliza protocolos de segurança avançados para garantir a
+        proteção de seus dados durante a navegação.
+      </p>
+    </div>
+    <div class="rounded-4 beneficio card">
+      <i class="bi bi-patch-check"></i>
+      <h4>Confiável</h4>
+      <p>
+        Pode confiar: aqui tudo é feito com cuidado, segurança e respeito
+        por você.
+      </p>
+    </div>
+    <div class="rounded-4 beneficio card rounded">
+      <i class="bi bi-truck"></i>
+      <h4>Frete grátis</h4>
+      <p>
+        Do carrinho até a sua casa, com segurança, carinho e frete grátis.
+      </p>
+    </div>
+  </section>
+
+  <!-- Atendimento -->
+  <section class="atendimento">
+    <div class="rounded-4 atendimento-card card">
+      <h4>Compre pelo telefone</h4>
+      <p>
+        Atendimento das 8h às 19h de segunda a sexta. 8h às 14h aos sábados.
+      </p>
+      <button>(71) 97534-4397</button>
+      <button>0800-020-5243</button>
+    </div>
+    <div class="rounded-4 atendimento-card card">
+      <h4>Atendimento ao cliente</h4>
+      <p>Das 08h às 19h de segunda a sábado, exceto feriados.</p>
+      <button>handifycontato@gmail.com</button>
+      <button>0800-020-6639</button>
+    </div>
+    <div class="rounded-4 atendimento-card card">
+      <h4>Compre pelo Whatsapp</h4>
+      <p>
+        Para todo o território nacional. Horário de atendimento sujeito à
+        região.
+      </p>
+      <button><i class="bi bi-whatsapp"></i> (71) 9985-7897</button>
+      <button><i class="bi bi-whatsapp"></i> (71) 9535-6332</button>
+    </div>
+  </section>
+
+  <!-- Formas de pagamento -->
   <section class="pagamento card">
     <h4>Formas de pagamento</h4>
     <div class="pagamento-icones">
-  <img src="images/icones/visa-logo.png" alt="Visa" />
-  <img src="images/icones/Mastercard.png" alt="Mastercard" />
-  <img src="images/icones/Logo-ELO.png" alt="Elo" />
-  <img src="images/icones/Logo-BOLETO.png" alt="Boleto" />
-  <img src="images/icones/Logo-PIX.png" alt="Pix" />
+      <img src="images/icones/visa-logo.png" alt="Visa" />
+      <img src="images/icones/Mastercard.png" alt="Mastercard" />
+      <img src="images/icones/Logo-ELO.png" alt="Elo" />
+      <img src="images/icones/Logo-BOLETO.png" alt="Boleto" />
+      <img src="images/icones/Logo-PIX.png" alt="Pix" />
     </div>
   </section>
 
