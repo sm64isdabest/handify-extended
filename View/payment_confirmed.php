@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/payment-confirmed1.css" />
+  <link rel="stylesheet" href="../css/payment_confirmed.css" />
 </head>
 
 <body>
@@ -25,7 +25,6 @@
           <i class="bi bi-person"></i> placeholder
         </li>
       </ul>
-      <!-- PARA DISPOSITIVOS MÓVEIS -->
       <button id="list"><i class="bi bi-list"></i></button>
     </nav>
     <div id="popup-menu">
@@ -44,15 +43,29 @@
   </header>
 
   <main>
-    <div class="confirmacao-container">
+    <!-- Seção 1: Tela de confirmação antes da compra -->
+    <div class="confirmacao-container" id="tela-confirmar" style="display: block">
       <button class="botao-voltar" onclick="history.back()">
         <i class="bi bi-arrow-left"></i>
       </button>
       <h2 class="titulo-pagamento">Confirmação de pagamento</h2>
       <p>Você está prestes a realizar um pagamento com cartão de crédito.</p>
       <div class="botoes-confirmacao">
-        <button class="botao-confirmar"><a href="payment-confirmed2.php">Comprar</a></button>
-        <button class="botao-cancelar" onclick="history.back()"><a href="#">Cancelar</a></button>
+        <button class="botao-confirmar" id="botao-comprar">Comprar</button>
+        <button class="botao-cancelar" onclick="history.back()">Cancelar</button>
+      </div>
+    </div>
+
+    <!-- Seção 2: Tela de pagamento confirmado (inicialmente oculta) -->
+    <div class="confirmacao-container" id="tela-confirmado" style="display: none">
+      <button class="botao-voltar" id="voltar-confirmacao">
+        <i class="bi bi-arrow-left"></i>
+      </button>
+      <h2 class="titulo-pagamento">Pagamento confirmado</h2>
+      <img src="../images/icones/logo-confirmado.png" alt="Pagamento confirmado" class="icone-confirmado" />
+      <p class="mensagem-agradecimento">Obrigado por confiar na gente! <span>😉</span></p>
+      <div class="botoes-confirmacao">
+        <button class="botao-confirmar" onclick="window.location.href='../index.php'">Ir para o Início</button>
       </div>
     </div>
   </main>
@@ -80,6 +93,7 @@
   </script>
 
   <script type="module" src="../js/logged-in.js"></script>
+  <script src="../js/payment-confirmed/payment-confirmed.js"></script>
 </body>
 
 </html>

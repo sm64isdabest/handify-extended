@@ -91,7 +91,7 @@
                     </div>
                 </div>
             </div>
-            <a href="payment-confirmed1.php" class="botao-adicionar">Adicionar</a>
+            <a href="payment_confirmed.php" class="botao-adicionar">Adicionar</a>
         </div>
     </main>
 
