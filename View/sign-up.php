@@ -100,6 +100,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           Bem-vindo! Cadastre-se e descubra o melhor do artesanato, conectando-se com talentos únicos e produtos feitos
           à mão.
         </h3>
+        <?php if (!empty($message)): ?>
+          <div class="alert alert-danger">
+            <?= htmlspecialchars($message) ?>
+          </div>
+        <?php endif; ?>
         <form method="POST" action="">
           <label id="labelUserName" for="userName">
             <i class="bi bi-person"></i>

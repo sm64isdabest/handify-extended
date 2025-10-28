@@ -8,35 +8,35 @@ $controller = new UserController();
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $user_fullname = trim(strip_tags($_POST['userName'] ?? ''));
-    $email = trim(strip_tags($_POST['userEmail'] ?? ''));
-    $password = $_POST['userPass'] ?? '';
-    $passwordConfirm = $_POST['userPassConfirm'] ?? '';
-  
-    $cnpj = trim(strip_tags($_POST['cnpj'] ?? ''));
-    $store_name = trim(strip_tags($_POST['storeName'] ?? ''));
-    $address = trim(strip_tags($_POST['address'] ?? ''));
-    $phone = trim(strip_tags($_POST['phone'] ?? ''));
-    if ($password !== $passwordConfirm) {
-        $message = "As senhas não conferem.";
-    } else {
-        $result = $controller->registerStoreUser(
-            $user_fullname,
-            $email,
-            $password,
-            $cnpj,
-            $store_name,
-            $address,
-            $phone
-        );
+  $user_fullname = trim(strip_tags($_POST['userName'] ?? ''));
+  $email = trim(strip_tags($_POST['userEmail'] ?? ''));
+  $password = $_POST['userPass'] ?? '';
+  $passwordConfirm = $_POST['userPassConfirm'] ?? '';
 
-        if (is_array($result) && !empty($result['success'])) {
-            header('Location: ../index.php');
-            exit;
-        } else {
-            $message = $result['message'] ?? 'Erro ao realizar cadastro da loja.';
-        }
+  $cnpj = trim(strip_tags($_POST['cnpj'] ?? ''));
+  $store_name = trim(strip_tags($_POST['storeName'] ?? ''));
+  $address = trim(strip_tags($_POST['address'] ?? ''));
+  $phone = trim(strip_tags($_POST['phone'] ?? ''));
+  if ($password !== $passwordConfirm) {
+    $message = "As senhas não conferem.";
+  } else {
+    $result = $controller->registerStoreUser(
+      $user_fullname,
+      $email,
+      $password,
+      $cnpj,
+      $store_name,
+      $address,
+      $phone
+    );
+
+    if (is_array($result) && !empty($result['success'])) {
+      header('Location: ../index.php');
+      exit;
+    } else {
+      $message = $result['message'] ?? 'Erro ao realizar cadastro da loja.';
     }
+  }
 }
 ?>
 
@@ -94,7 +94,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="form-container">
         <h1>Cadastre sua Loja!</h1>
         <h3>Seja bem-vindo! Cadastre sua loja e comece a divulgar e vender seus produtos artesanais.</h3>
-
+        <?php if (!empty($message)): ?>
+          <div class="alert alert-danger">
+            <?= htmlspecialchars($message) ?>
+          </div>
+        <?php endif; ?>
         <form method="POST" action="">
           <label for="userName">
             <i class="bi bi-person"></i>
@@ -138,7 +142,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </label>
 
           <div class="buttons">
-            <button type="submit" class="active1" >Cadastrar Loja</button>
+            <button type="submit" class="active1">Cadastrar Loja</button>
             <button type="button" onclick="window.location.href='sign-up.php'">Para Consumidores</button>
           </div>
         </form>
