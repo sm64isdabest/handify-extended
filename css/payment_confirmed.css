@@ -1,13 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Montserrat", Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f5f5f5;
 }
+
 
 header {
     font-family: "Alexandria", sans-serif;
@@ -50,6 +52,7 @@ header nav ul li a.entrar i {
     margin-right: 0.3rem;
 }
 
+
 .user-logged,
 .user-logged-mobile {
     color: #484848;
@@ -83,10 +86,10 @@ header nav ul li a.entrar i {
     position: absolute;
     top: 70px;
     right: 20px;
-    background: white;
+    background: #ffffff;
     border-radius: 20px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    padding: 1.2rem 1.2rem;
+    padding: 1.2rem;
     z-index: 2000;
     display: none;
 }
@@ -95,7 +98,7 @@ header nav ul li a.entrar i {
     display: block;
     margin: 0.7rem 0;
     background: #5a3e36;
-    color: white;
+    color: #fff;
     padding: 0.7rem 1.2rem;
     border-radius: 16px;
     text-align: center;
@@ -104,17 +107,35 @@ header nav ul li a.entrar i {
     font-size: 1.1rem;
 }
 
+
 main {
     background: url("../images/fundos/fundo_madeira.png");
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: calc(100vh - 162px);
+    min-height: calc(100vh - 150px);
     align-content: center;
 }
 
+.confirmacao-container {
+    justify-self: center;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px #0002;
+    padding: 3rem;
+    max-width: 600px;
+    width: 90%;
+    margin: 1rem auto;
+    position: relative;
+    color: #3d2b23;
+    font-family: "Montserrat", Arial, sans-serif;
+}
+
 .botao-voltar {
+    position: absolute;
+    top: 24px;
+    left: 24px;
     background: #5a3e36;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 50%;
     width: 40px;
@@ -141,37 +162,6 @@ main {
     color: #3d2b23;
 }
 
-.confirmacao-container {
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px #0002;
-    padding: 36px 36px;
-    width: 25rem;
-    margin: 0 auto;
-    position: relative;
-    color: #3d2b23;
-    font-family: 'Montserrat', Arial, sans-serif;
-}
-
-footer {
-    position: relative;
-    font-family: "Work Sans", sans-serif;
-    font-weight: 400;
-    display: flex;
-    font-size: 0.8rem;
-    text-align: center;
-    background-color: white;
-    border-top: 2px solid #593d36;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 1.6rem;
-}
-
-footer .social-icons a i {
-    color: #5a3e36;
-    font-size: 1.15rem;
-    padding: 0.19rem;
-}
 
 .botoes-confirmacao {
     display: flex;
@@ -202,7 +192,7 @@ footer .social-icons a i {
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    font-family: 'Montserrat', Arial, sans-serif;
+    font-family: "Montserrat", Arial, sans-serif;
     transition: background-color 0.3s ease;
 }
 
@@ -232,6 +222,30 @@ button a {
     height: 100%;
 }
 
+
+footer {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    display: flex;
+    font-size: 0.8rem;
+    text-align: center;
+    background-color: white;
+    border-top: 2px solid #593d36;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.6rem;
+    padding-bottom: 0;
+}
+
+footer .social-icons a i {
+    color: #5a3e36;
+    font-size: 1.15rem;
+    padding: 0.19rem;
+}
+
+/* ===============================
+   RESPONSIVIDADE
+================================ */
 @media (max-width: 900px) {
     .titulo-pagamento {
         font-size: 2rem;
@@ -241,26 +255,36 @@ button a {
 
 @media (max-width: 720px) {
     .confirmacao-container {
-        padding: 1rem;
-        width: 70%;
+        width: 75%;
+        padding: 1.5rem;
     }
 
     .botao-voltar {
         position: static;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 }
 
-@media (max-width: 455px) {
+@media (max-width: 480px) {
+    .titulo-pagamento {
+        font-size: 1.4rem;
+        margin-top: 1.8rem;
+    }
+
+    .confirmacao-container {
+        width: 80%;
+        border-radius: 12px;
+    }
+
     #list {
         display: block;
     }
 
-    header {
-        justify-content: space-between;
+    header nav ul {
+        display: none;
     }
 
-    header nav ul {
+    header nav ul li a.entrar {
         display: none;
     }
 
@@ -269,13 +293,38 @@ button a {
         margin-left: -1.5rem;
     }
 
-    header nav ul li a.entrar {
-        display: none;
-    }
-
     footer {
         justify-content: center;
         flex-direction: column-reverse;
         font-size: 0.7rem;
     }
 }
+
+@media (max-width: 360px) {
+    .confirmacao-container {
+        width: 90%;
+        border-radius: 12px;
+    }
+
+    .titulo-pagamento {
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+    }
+
+    .botoes-confirmacao button {
+        width: 100%;
+        max-width: 100%;
+        font-size: 0.9rem;
+        padding: 10px 0;
+    }
+
+    .botao-voltar {
+        width: 32px;
+        height: 32px;
+        font-size: 1.1rem;
+        top: 10px;
+        left: 10px;
+    }
+}
+
+

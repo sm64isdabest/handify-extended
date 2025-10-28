@@ -43,7 +43,6 @@
   </header>
 
   <main>
-    <!-- Seção 1: Tela de confirmação antes da compra -->
     <div class="confirmacao-container" id="tela-confirmar" style="display: block">
       <button class="botao-voltar" onclick="history.back()">
         <i class="bi bi-arrow-left"></i>
@@ -56,7 +55,6 @@
       </div>
     </div>
 
-    <!-- Seção 2: Tela de pagamento confirmado (inicialmente oculta) -->
     <div class="confirmacao-container" id="tela-confirmado" style="display: none">
       <button class="botao-voltar" id="voltar-confirmacao">
         <i class="bi bi-arrow-left"></i>
