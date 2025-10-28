@@ -36,8 +36,11 @@ class User
         return null;
     }
 
-    public function registerUser($user_fullname, $email, $password)
+     public function registerUser($user_fullname, $email, $password)
     {
+        if ($this->getUserByEmail($email)) {
+            return "Email já cadastrado";
+        }
         try {
             if ($this->fullnameCol) {
                 $sql = "INSERT INTO app_user (email, password, `{$this->fullnameCol}`, created_at) VALUES (:email, :password, :user_fullname, NOW())";
@@ -57,7 +60,7 @@ class User
             }
             return false;
         } catch (PDOException $error) {
-            error_log("Model\User::registerUser error: " . $error->getMessage());
+            error_log($error->getMessage());
             return false;
         }
     }
@@ -81,7 +84,6 @@ class User
         try {
             if (!$this->fullnameCol)
                 return false;
-
             $sql = "SELECT `{$this->fullnameCol}`, email FROM app_user WHERE id_user = :id AND `{$this->fullnameCol}` = :user_fullname AND email = :email";
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(":id", $id, PDO::PARAM_INT);

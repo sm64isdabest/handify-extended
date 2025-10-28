@@ -31,6 +31,10 @@ class UserController
                 return ['success' => false, 'message' => 'Preencha todos os campos obrigatórios.'];
             }
 
+            if ($this->checkUserByEmail($email)) {
+                return ['success' => false, 'message' => 'Este e-mail já está cadastrado.'];
+            }
+
             $userId = $this->userModel->registerUser($user_fullname, $email, $password);
             if ($userId && is_int($userId) && $userId > 0) {
                 return ['success' => true, 'id_user' => $userId];
