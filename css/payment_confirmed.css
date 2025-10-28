@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 body {
     font-family: "Montserrat", Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: 
-    linear-gradient(rgba(245, 236, 218, 0.7), rgba(245, 236, 218, 0.7)), 
-    url("../images/fundos/fundo_madeira_carvalho.jpg");
+    background: linear-gradient(rgba(245, 236, 218, 0.7), rgba(245, 236, 218, 0.7)), 
+                url("../images/fundos/fundo_madeira_carvalho.jpg");
     background-size: cover; 
     background-position: center center; 
     background-attachment: fixed; 
@@ -21,8 +21,6 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    /* background-color: white;
-    border-bottom: 2px solid #593d36; */
 }
 
 header .logo {
@@ -91,7 +89,7 @@ header nav ul li a.entrar i {
     background: #ffffff;
     border-radius: 20px;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    padding: 1.2rem 1.2rem;
+    padding: 1.2rem;
     z-index: 2000;
     display: none;
 }
@@ -112,7 +110,7 @@ header nav ul li a.entrar i {
 main {
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: calc(100vh - 150px);
+    min-height: calc(100vh - 162px);
     align-content: center;
 }
 
@@ -124,7 +122,7 @@ main {
     padding: 3rem;
     max-width: 600px;
     width: 90%;
-    margin: 1rem;
+    margin: 1rem auto;
     position: relative;
     color: #3d2b23;
     font-family: "Montserrat", Arial, sans-serif;
@@ -145,6 +143,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background 0.2s;
 }
 
 .botao-voltar:hover {
@@ -307,14 +306,26 @@ button a {
     height: 100%;
 }
 
+/* Media Queries unificadas */
+@media (max-width: 900px) {
+    .titulo-pagamento {
+        font-size: 2rem;
+        margin-bottom: 32px;
+    }
+}
+
 @media (max-width: 720px) {
     .confirmacao-container {
-        width: 75%;
+        width: 70%;
+        padding: 1rem;
+    }
+    .botao-voltar {
+        position: static;
+        font-size: 1.2rem;
     }
 }
 
 @media (max-width: 480px) {
-
     .titulo-pagamento {
         font-size: 1.4rem;
         margin-top: 1.8rem;
@@ -326,14 +337,12 @@ button a {
         box-sizing: border-box;
     }
 
-    strong {
+    strong, ul {
         font-size: 1rem;
     }
-    
-    ul {
-        font-size: 1rem;
-    }
+}
 
+@media (max-width: 455px) {
     #list {
         display: block;
     }
