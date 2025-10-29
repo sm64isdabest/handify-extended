@@ -15,7 +15,7 @@
     <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
     <nav>
       <ul>
-        <li><a href="../../index.php">Home</a></li>
+        <li><a href="../index.php">Home</a></li>
         <li><a href="about.php#footer">Contato</a></li>
         <li><a href="about.php">Sobre</a></li>
         <li style="display: none;">
@@ -38,14 +38,14 @@
         </li>
         <li><a href="about.php">Sobre</a></li>
         <li><a href="about.php#footer">Contato</a></li>
-        <li><a href="../../index.php">Home</a></li>
+        <li><a href="../index.php">Home</a></li>
       </ul>
     </div>
   </header>
 
   <main>
     <div class="container-pagamento">
-      <a href="../../index.php" class="botao-voltar">
+      <a href="../index.php" class="botao-voltar">
         <i class="bi bi-arrow-left"></i>
       </a>
       <h2 class="titulo-pagamento">Formas de pagamento</h2>

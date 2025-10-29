@@ -16,7 +16,7 @@
         <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
         <nav>
             <ul>
-                <li><a href="../../index.php">Home</a></li>
+                <li><a href="../index.php">Home</a></li>
                 <li><a href="about.php#footer">Contato</a></li>
                 <li><a href="about.php">Sobre</a></li>
                 <li style="display: none;">
@@ -39,16 +39,17 @@
                 </li>
                 <li><a href="about.php">Sobre</a></li>
                 <li><a href="about.php#footer">Contato</a></li>
-                <li><a href="../../index.php">Produtos</a></li>
+                <li><a href="../index.php">Home</a></li>
             </ul>
         </div>
     </header>
 
     <main>
         <div class="container-pagamento">
-            <button class="botao-voltar" aria-label="Voltar">
+            <a href="../View/payment-methods.php">
+                <button class="botao-voltar" aria-label="Voltar"  >
                 <i class="bi bi-arrow-left"></i>
-            </button>
+            </button></a>
             <h2 class="titulo-pagamento">Adicionar Cartão</h2>
             <div class="formulario-e-preview">
                 <form class="formulario-cartao" autocomplete="off" novalidate>

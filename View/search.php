@@ -22,7 +22,7 @@
         <ul id="autocomplete-list" class="autocomplete-items"></ul>
       </div>
       <ul>
-        <li><a href="../../index.php">Home</a></li>
+        <li><a href="../index.php">Home</a></li>
         <li><a href="#footer">Contato</a></li>
         <li><a href="about.php">Sobre</a></li>
         <li style="display: none;">
@@ -45,7 +45,7 @@
           </li>
           <li><a href="about.php">Sobre</a></li>
           <li><a href="#footer">Contato</a></li>
-          <li><a href="../../index.php">Home</a></li>
+          <li><a href="../index.php">Home</a></li>
         </ul>
       </div>
     </nav>

@@ -31,7 +31,7 @@
             </div>
             <nav id="mainNav">
                 <ul>
-                    <li><a href="../../index.php" class="nav-link" data-target="produtos">Home</a></li>
+                    <li><a href="../index.php" class="nav-link" data-target="produtos">Home</a></li>
                     <li><a href="about.php#footer" class="nav-link" data-target="contatos">Contato</a></li>
                     <li><a href="about.php" class="nav-link" data-target="sobre">Sobre</a></li>
                     <li><a href="login.php" class="entrar" data-target="entrar"><i class="bi bi-person"></i>Entrar</a>
@@ -73,7 +73,7 @@
                 </li>
                 <li><a href="about.php">Sobre</a></li>
                 <li><a href="about.php#footer">Contato</a></li>
-                <li><a href="../../index.php">Home</a></li>
+                <li><a href="../index.php">Home</a></li>
             </ul>
         </div>
     </header>
