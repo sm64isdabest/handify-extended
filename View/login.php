@@ -1,27 +1,4 @@
-<?php
-session_start();
-require_once '../Controller/UserController.php';
-use Controller\UserController;
 
-$controller = new UserController();
-$message = '';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $email = trim($_POST['email'] ?? '');
-  $password = $_POST['password'] ?? '';
-
-  if (empty($email) || empty($password)) {
-    $message = "Preencha todos os campos!";
-  } else {
-    if ($controller->login($email, $password)) {
-      header('Location: ../index.php');
-      exit;
-    } else {
-      $message = "Email ou senha incorretos.";
-    }
-  }
-}
-?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">

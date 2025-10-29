@@ -110,17 +110,23 @@ class UserController
     }
 
     public function login($email, $password)
-    {
-        $user = $this->userModel->getUserByEmail($email);
+{
+    $user = $this->userModel->getUserByEmail($email);
 
-        if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['id'] = $user['id_user'];
-            $_SESSION['user_fullname'] = $user['user_fullname'] ?? null;
-            $_SESSION['email'] = $user['email'];
-            return true;
+    if ($user && isset($user['password']) && password_verify($password, $user['password'])) {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
         }
-        return false;
+
+        $_SESSION['id'] = $user['id_user'];
+        $_SESSION['user_fullname'] = $user['user_fullname'] ?? '';
+        $_SESSION['email'] = $user['email'];
+
+        return true;
     }
+
+    return false;
+}
 
     public function isLoggedIn()
     {
