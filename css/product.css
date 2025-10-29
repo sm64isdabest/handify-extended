@@ -7,12 +7,12 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #FAECCE;
-    background-image: url("../images/fundos/fundo_palha.png");
+    background-image: url("../images/fundos/fundo_madeira_carvalho.jpg");
 }
 
 header {
     font-family: "Alexandria", sans-serif;
-    background-color: #fff;
+    background-color: #FAECCE;
     border-bottom: 2px solid #5a3e36;
     padding: 10px 20px;
 }
@@ -586,7 +586,7 @@ footer {
     display: flex;
     font-size: 0.9rem;
     text-align: center;
-    background-color: #fff;
+    background-color: #FAECCE;
     border-top: 1px solid #ddd;
     flex-direction: row;
     justify-content: space-between;
@@ -598,6 +598,24 @@ footer .social-icons a i {
     font-size: 1.05rem;
     padding: 0.19rem;
 }
+
+/* --- CORREÇÃO DO FOOTER --- */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  margin-top: auto;
+}
+
 
 .botoes_adc {
     display: none;
@@ -1879,3 +1897,4 @@ footer .social-icons a i {
         padding: 0.2rem 0.5rem;
     }
 }
+
