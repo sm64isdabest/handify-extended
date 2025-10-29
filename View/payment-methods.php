@@ -50,12 +50,6 @@
       </a>
       <h2 class="titulo-pagamento">Formas de pagamento</h2>
       <div class="meios-pagamento">
-        <a href="payment-bank-slip.php" class="opcao-pagamento" style="text-decoration: none; color: inherit">
-          <span class="icone-pagamento">
-            <img src="../images/icones/Logo-BOLETO.png" alt="Boleto Bancário" />
-          </span>
-          <span class="rotulo-pagamento">Boleto bancário</span>
-        </a>
         <a href="payment-pix.php" class="opcao-pagamento" style="text-decoration: none; color: inherit">
           <span class="icone-pagamento">
             <img src="../images/icones/Logo-PIX.png" alt="Pix" />
