@@ -8,12 +8,12 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="stylesheet" href="../css/payment-card.css" />
-    <link rel="shortcut icon" href="../images/favicon.ico" />
+    <link rel="shortcut icon" href="../images/outros/favicon.ico" />
 </head>
 
 <body>
     <header>
-        <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+        <img src="../images/outros/logo-handify.png" alt="Handify Logo" class="logo" />
         <nav>
             <ul>
                 <li><a href="../index.php">Home</a></li>

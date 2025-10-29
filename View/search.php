@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pesquisa - Handify</title>
   <link rel="stylesheet" href="../css/search.css" />
-  <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="../images/outros/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous" />
@@ -15,7 +15,7 @@
 <body style="background-color: #faecce">
   <header>
     <nav>
-      <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+      <img src="../images/outros/logo-handify.png" alt="Handify Logo" class="logo" />
       <div class="search-bar">
         <input type="text" id="searchInput" autocomplete="off" placeholder="Buscar produtos..." />
         <i id="searchButton" class="bi bi-search"></i>

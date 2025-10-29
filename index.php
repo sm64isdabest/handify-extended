@@ -16,7 +16,7 @@
 <body style="background-color: #FAECCE;">
   <header>
     <nav>
-      <img src="images/logo-handify.png" alt="Handify Logo" class="logo" />
+      <img src="images/outros/logo-handify.png" alt="Handify Logo" class="logo" />
       <div class="search-bar">
         <input type="text" id="searchInput" autocomplete="off" placeholder="Buscar produtos..." />
         <i id="searchButton" class="bi bi-search"></i>

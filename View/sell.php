@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vender - Handify</title>
     <link rel="stylesheet" href="../css/sell.css">
-    <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="../images/outros/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous" />
@@ -14,7 +14,7 @@
 
 <body>
     <header>
-        <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+        <img src="../images/outros/logo-handify.png" alt="Handify Logo" class="logo" />
         <nav>
             <ul>
                 <li><a href="../index.php">Home</a></li>
