@@ -8,19 +8,29 @@ $controller = new UserController();
 $message = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
+  $email = trim($_POST['email'] ?? '');
+  $password = $_POST['password'] ?? '';
 
-    if (empty($email) || empty($password)) {
-        $message = "Preencha todos os campos!";
+  if (empty($email) || empty($password)) {
+    $message = "Preencha todos os campos!";
+  } else {
+    if ($controller->login($email, $password)) {
+      $userName = $controller->getUserNameByEmail($email);
+
+      setcookie('userName', urlencode($userName), [
+        'expires' => time() + 7 * 24 * 60 * 60,
+        'path' => '/',
+        'secure' => false,
+        'httponly' => false,
+        'samesite' => 'Lax'
+      ]);
+
+      header('Location: ../index.php');
+      exit;
     } else {
-        if ($controller->login($email, $password)) {
-            header('Location: ../../../index.php');
-            exit;
-        } else {
-            $message = "Email ou senha incorretos.";
-        }
+      $message = "Email ou senha incorretos.";
     }
+  }
 }
 ?>
 

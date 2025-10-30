@@ -27,15 +27,11 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  if (userName) {
-    const formattedName = formatUserName(decodeURIComponent(userName));
-    entrarLi.style.display = "none";
-    entrarLiMobile.style.display = "none";
-    userLoggedLi.style.display = "block";
-    userLoggedLi.style.display = "list-item";
-    userLoggedLiMobile.style.display = "block";
-    userLoggedLiMobile.style.display = "list-item";
-    userLoggedLi.innerHTML = `<i class="bi bi-person"></i> ${formattedName}`;
-    userLoggedLiMobile.innerHTML = `<i class="bi bi-person"></i> ${formattedName}`;
-  }
+  const formattedName = formatUserName(decodeURIComponent(userName));
+  entrarLi.style.display = "none";
+  entrarLiMobile.style.display = "none";
+  userLoggedLi.style.display = "list-item";
+  userLoggedLiMobile.style.display = "list-item";
+  userLoggedLi.innerHTML = `<i class="bi bi-person"></i> ${formattedName}`;
+  userLoggedLiMobile.innerHTML = `<i class="bi bi-person"></i> ${formattedName}`;
 });

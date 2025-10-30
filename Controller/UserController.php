@@ -110,23 +110,23 @@ class UserController
     }
 
     public function login($email, $password)
-{
-    $user = $this->userModel->getUserByEmail($email);
+    {
+        $user = $this->userModel->getUserByEmail($email);
 
-    if ($user && isset($user['password']) && password_verify($password, $user['password'])) {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
+        if ($user && isset($user['password']) && password_verify($password, $user['password'])) {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            $_SESSION['id'] = $user['id_user'];
+            $_SESSION['user_fullname'] = $user['user_fullname'] ?? '';
+            $_SESSION['email'] = $user['email'];
+
+            return true;
         }
 
-        $_SESSION['id'] = $user['id_user'];
-        $_SESSION['user_fullname'] = $user['user_fullname'] ?? '';
-        $_SESSION['email'] = $user['email'];
-
-        return true;
+        return false;
     }
-
-    return false;
-}
 
     public function isLoggedIn()
     {
@@ -136,5 +136,22 @@ class UserController
     public function getUserData($id, $user_fullname, $email)
     {
         return $this->userModel->getUserInfo($id, $user_fullname, $email);
+    }
+    public function getUserNameByEmail($email)
+    {
+        $user = $this->userModel->getUserByEmail($email);
+        if (!$user) {
+            return '';
+        }
+        $id_user = $user['id_user'];
+        $customer = $this->customerModel->getByUserId($id_user);
+        if ($customer && isset($customer['user_fullname'])) {
+            return $customer['user_fullname'];
+        }
+        $store = $this->storeModel->getStoreByUserId($id_user);
+    if ($store && isset($store['name'])) {
+        return $store['name'];
+    }
+        return '';
     }
 }
