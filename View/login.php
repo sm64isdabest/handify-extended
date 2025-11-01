@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   } else {
     if ($controller->login($email, $password)) {
       $userName = $controller->getUserNameByEmail($email);
+      $userType = $_SESSION['user_type'] ?? 'customer';
 
       setcookie('userName', urlencode($userName), [
         'expires' => time() + 7 * 24 * 60 * 60,
@@ -24,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'httponly' => false,
         'samesite' => 'Lax'
       ]);
+      setcookie('userType', $userType, time() + (7 * 24 * 60 * 60), '/');
 
       header('Location: ../index.php');
       exit;
