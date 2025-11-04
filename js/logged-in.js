@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   logoutBtn.addEventListener("click", () => {
     deleteCookie("userName");
-    location.reload();
+    location.href = "View/login.php";
   });
 
   const rastrearBtn = document.getElementById('rastrear-btn');
