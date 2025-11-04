@@ -27,10 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
       $result = $controller->registerCustomerUser($user_fullname, $email, $password);
     }
-
+    if (is_array($result) && !empty($result['success'])) {
+      setcookie('userName', urlencode($user_fullname), time() + (7 * 24 * 60 * 60), '/');
+      header('Location: ../index.php');
+      exit;
     if (is_array($result) && !empty($result['success'])) {
       header('Location: ../index.php');
       exit;
+    }
     } else {
       if (is_array($result) && !empty($result['message'])) {
         $message = $result['message'];

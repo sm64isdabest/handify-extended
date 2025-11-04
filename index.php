@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -23,21 +26,24 @@
         <ul id="autocomplete-list" class="autocomplete-items"></ul>
       </div>
       <ul>
-        <li><a href="index.php" class="scroll-link">Produtos</a></li>
+        <li><a href="index.php" class="scroll-link">Home</a></li>
         <li><a href="#footer">Contato</a></li>
         <li><a href="View/about.php">Sobre</a></li>
         <li>
           <a href="View/login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
         </li>
-        <li class="user-logged" style="display: none;">
-          <i class="bi bi-person"></i> placeholder
+        <li class="user-logged" style="display: none; position: relative;">
+          <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
+          <span class="user-name"></span>
+          <div class="menu-popup">
+            <p class="user-name-popup"></p>
+            <button class="menu-item logout-btn">Sair</button>
+          </div>
         </li>
       </ul>
-
-      <div class="mobile-buttons">
-        <button id="cart"><i class="bi bi-cart"></i></button>
-        <button id="list"><i class="bi bi-list"></i></button>
-      </div>
+      
+      <button id="cart"><i class="bi bi-cart"></i></button>
+      <button id="list"><i class="bi bi-list"></i></button>
       <div id="popup-menu">
         <ul class="popup-list">
           <li>
@@ -48,7 +54,7 @@
           </li>
           <li><a href="pages/about.php">Sobre</a></li>
           <li><a href="#footer">Contato</a></li>
-          <li><a href="index.php" class="scroll-link">Produtos</a></li>
+          <li><a href="index.php" class="scroll-link">Home</a></li>
         </ul>
       </div>
     </nav>
@@ -59,7 +65,13 @@
           <a href="View/login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <a href="View/search.php" class="btn">Categorias</a>
-        <a href="View/sell.php" class="btn">Vender</a>
+        <a href="#main" class="scroll-link btn">Ofertas</a>
+        <?php if (
+          (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'store') ||
+          (isset($_COOKIE['userType']) && $_COOKIE['userType'] === 'store')
+        ): ?>
+          <a href="View/sell.php" class="btn">Vender</a>
+        <?php endif; ?>
         <button id="rastrear-btn">Rastrear</button>
       </div>
       <button class="cart"><i class="bi bi-cart"></i></button>
