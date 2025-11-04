@@ -49,9 +49,14 @@ session_start();
           <li>
             <a href="View/login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
           </li>
-          <li class="user-logged-mobile" style="display: none;">
-            <i class="bi bi-person"></i> placeholder
-          </li>
+           <li class="user-logged" style="display: none; position: relative;">
+          <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
+          <span class="user-name"></span>
+          <div class="menu-popup">
+            <p class="user-name-popup"></p>
+            <button class="menu-item logout-btn">Sair</button>
+          </div>
+        </li>
           <li><a href="pages/about.php">Sobre</a></li>
           <li><a href="#footer">Contato</a></li>
           <li><a href="index.php" class="scroll-link">Home</a></li>
