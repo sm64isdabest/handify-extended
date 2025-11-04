@@ -370,63 +370,63 @@ session_start();
         </div>
       </div>
     </section>
-
-    <!-- Benefícios -->
-    <section class="beneficios">
-      <div class="rounded-4 beneficio card">
-        <i class="bi bi-shield-check"></i>
-        <h4>Segurança</h4>
-        <p>
-          Este site utiliza protocolos de segurança avançados para garantir a
-          proteção de seus dados durante a navegação.
-        </p>
-      </div>
-      <div class="rounded-4 beneficio card">
-        <i class="bi bi-patch-check"></i>
-        <h4>Confiável</h4>
-        <p>
-          Pode confiar: aqui tudo é feito com cuidado, segurança e respeito
-          por você.
-        </p>
-      </div>
-      <div class="rounded-4 beneficio card rounded">
-        <i class="bi bi-truck"></i>
-        <h4>Frete grátis</h4>
-        <p>
-          Do carrinho até a sua casa, com segurança, carinho e frete grátis.
-        </p>
-      </div>
-    </section>
-
-    <!-- Atendimento -->
-    <section class="atendimento">
-      <div class="rounded-4 atendimento-card card">
-        <h4>Compre pelo telefone</h4>
-        <p>
-          Atendimento das 8h às 19h de <b>segunda a sexta</b>. 8h às 14h aos
-          <b>sábados</b>.
-        </p>
-        <span>(71) 97534-4397</span>
-        <span>0800-020-5243</span>
-      </div>
-      <div class="rounded-4 atendimento-card card">
-        <h4>Atendimento ao cliente</h4>
-        <p>Das 08h às 19h de segunda a sábado, exceto feriados.</p>
-        <span>handifycontato@gmail.com</span>
-        <span>0800-020-6639</span>
-      </div>
-      <div class="rounded-4 atendimento-card card">
-        <h4>Compre pelo Whatsapp</h4>
-        <p>
-          Para todo o território nacional. Horário de atendimento sujeito à
-          região.
-        </p>
-        <span><i class="bi bi-whatsapp"></i> (71) 9985-7897</span>
-        <span><i class="bi bi-whatsapp"></i> (71) 9535-6332</span>
-      </div>
-    </section>
   </main>
 
+  <!-- Benefícios -->
+  <section class="beneficios">
+    <div class="rounded-4 beneficio card">
+      <i class="bi bi-shield-check"></i>
+      <h4>Segurança</h4>
+      <p>
+        Este site utiliza protocolos de segurança avançados para garantir a
+        proteção de seus dados durante a navegação.
+      </p>
+    </div>
+    <div class="rounded-4 beneficio card">
+      <i class="bi bi-patch-check"></i>
+      <h4>Confiável</h4>
+      <p>
+        Pode confiar: aqui tudo é feito com cuidado, segurança e respeito
+        por você.
+      </p>
+    </div>
+    <div class="rounded-4 beneficio card rounded">
+      <i class="bi bi-truck"></i>
+      <h4>Frete grátis</h4>
+      <p>
+        Do carrinho até a sua casa, com segurança, carinho e frete grátis.
+      </p>
+    </div>
+  </section>
+
+  <!-- Atendimento -->
+  <section class="atendimento">
+    <div class="rounded-4 atendimento-card card">
+      <h4>Compre pelo telefone</h4>
+      <p>
+        Atendimento das 8h às 19h de segunda a sexta. 8h às 14h aos sábados.
+      </p>
+      <button>(71) 97534-4397</button>
+      <button>0800-020-5243</button>
+    </div>
+    <div class="rounded-4 atendimento-card card">
+      <h4>Atendimento ao cliente</h4>
+      <p>Das 08h às 19h de segunda a sábado, exceto feriados.</p>
+      <button>handifycontato@gmail.com</button>
+      <button>0800-020-6639</button>
+    </div>
+    <div class="rounded-4 atendimento-card card">
+      <h4>Compre pelo Whatsapp</h4>
+      <p>
+        Para todo o território nacional. Horário de atendimento sujeito à
+        região.
+      </p>
+      <button><i class="bi bi-whatsapp"></i> (71) 9985-7897</button>
+      <button><i class="bi bi-whatsapp"></i> (71) 9535-6332</button>
+    </div>
+  </section>
+
+  <!-- Formas de pagamento -->
   <section class="pagamento card">
     <h4>Formas de pagamento</h4>
     <div class="pagamento-icones">

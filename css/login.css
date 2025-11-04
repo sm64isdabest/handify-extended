@@ -5,16 +5,20 @@
 
 
 body {
-  background-color: #fbe9c6;
+  background-color: #FAECCE;
   font-family: 'Montserrat', Arial, sans-serif;
   color: #3d2b23;
   margin: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: url("../images/fundos/fundo_madeira.png");
+  background:
+    linear-gradient(rgba(245, 236, 218, 0.7), rgba(245, 236, 218, 0.7)),
+    url("../images/fundos/background_login.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 header {
@@ -24,7 +28,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: white;
+  background-color: #FAECCE;
   border-bottom: 2px solid #593d36;
 }
 
@@ -49,7 +53,7 @@ header nav ul li a {
 
 header nav ul li a.entrar {
   background-color: #593d36;
-  color: white;
+  color: #FAECCE;
   padding: 0.9rem;
   border-radius: 15px;
 }
@@ -126,26 +130,24 @@ main {
 
 .cadastro-container {
   display: flex;
+  flex: 1;
   justify-content: center;
   align-items: center;
-  padding: 50px;
   min-height: calc(100vh - 150px);
   background-size: cover;
   background-position: center;
 }
 
 .image-container img {
-  width: 100%;
+  padding: 1rem;
   max-width: 100%;
-  height: auto;
+  min-width: 265px;
   display: block;
-  border-radius: 0;
-  object-fit: cover;
-  margin-left: 0;
-  margin-right: 0;
+  border-radius: 10px;
 }
 
 .form-container {
+  padding: 20px;
   border-radius: 10px;
   max-width: 450px;
   margin-left: 20px;
@@ -227,7 +229,7 @@ footer {
   display: flex;
   font-size: 0.8rem;
   text-align: center;
-  background-color: white;
+  background-color: #FAECCE;
   border-top: 2px solid #593d36;
   flex-direction: row;
   justify-content: space-between;
@@ -240,7 +242,7 @@ footer .social-icons a i {
   padding: 0.19rem;
 }
 
-@media screen and (min-width: 610px) and (max-width: 1024px) {
+@media (max-width: 768px) {
   body {
     background-color: #fbe9c6;
     font-family: 'Montserrat', Arial, sans-serif;
@@ -255,14 +257,10 @@ footer .social-icons a i {
 
   .image-container img {
     content: url("../images/fundos/produtos_artesanais2.png");
-    width: 100%;
-    max-width: 100%;
     height: auto;
     display: block;
     border-radius: 3rem;
-    object-fit: cover;
-    margin-left: 0;
-    margin-right: 0;
+    padding: 0;
     border: #5a3e36 0.2rem solid;
   }
 
@@ -292,7 +290,7 @@ footer .social-icons a i {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 521px) {
   body {
     background-color: #fbe9c6;
     font-family: 'Montserrat', Arial, sans-serif;
@@ -309,17 +307,17 @@ footer .social-icons a i {
     display: block;
   }
 
+  #popup-menu ul {
+    list-style: none;
+    margin-left: -1.5rem;
+  }
+
   .image-container img {
-    content: url("../images/fundos/produtos_artesanais3.png");
-    margin-top: -5rem;
+    content: url("../images/fundos/objetos_artesanais3.png");
+    margin-top: 65px;
     width: 100vw;
-    max-width: 100vw;
-    height: auto;
     border-radius: 0;
-    object-fit: cover;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0rem;
+    border: 0;
   }
 
   main {
@@ -334,14 +332,14 @@ footer .social-icons a i {
     margin-bottom: 0rem;
   }
 
-  header nav ul {
-    display: none;
+  header {
+    position: fixed;
+    width: 100%;
+    justify-content: space-between;
   }
 
-  header i {
-    display: flex;
-    font-size: 1.5rem;
-    color: #3d2b23;
+  header nav ul {
+    display: none;
   }
 
   .cadastro-container {
@@ -351,9 +349,10 @@ footer .social-icons a i {
   }
 
   .form-container {
-    margin-top: 1rem;
-    margin-right: 1.2rem;
-    width: 80vw;
+    padding: 20px;
+    width: 100%;
+    min-width: 100%;
+    margin: 2rem 0;
   }
 
   .form-container h1 {
