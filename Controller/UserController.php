@@ -110,36 +110,37 @@ class UserController
     }
 
     public function login($email, $password)
-{
-    $user = $this->userModel->getUserByEmail($email);
+    {
+        $user = $this->userModel->getUserByEmail($email);
 
-    if ($user && isset($user['password']) && password_verify($password, $user['password'])) {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
+        if ($user && isset($user['password']) && password_verify($password, $user['password'])) {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            $_SESSION['id'] = $user['id_user'];
+            $_SESSION['user_fullname'] = $user['user_fullname'] ?? '';
+            $_SESSION['email'] = $user['email'];
+
+            $id_user = $user['id_user'];
+
+            $store = $this->storeModel->getStoreByUserId($id_user);
+
+            $customer = $this->customerModel->getByUserId($id_user);
+
+            if ($store) {
+                $_SESSION['user_type'] = 'store';
+            } elseif ($customer) {
+                $_SESSION['user_type'] = 'customer';
+            } else {
+                $_SESSION['user_type'] = 'unknown';
+            }
+
+            return true;
         }
 
-        $_SESSION['id'] = $user['id_user'];
-        $_SESSION['user_fullname'] = $user['user_fullname'] ?? '';
-        $_SESSION['email'] = $user['email'];
-
-        $id_user = $user['id_user'];
-
-        $store = $this->storeModel->getStoreByUserId($id_user);
-        $customer = $this->customerModel->getByUserId($id_user);
-
-        if ($store) {
-            $_SESSION['user_type'] = 'store';
-        } elseif ($customer) {
-            $_SESSION['user_type'] = 'customer';
-        } else {
-            $_SESSION['user_type'] = 'unknown';
-        }
-
-        return true;
+        return false;
     }
-
-    return false;
-}
 
     public function isLoggedIn()
     {
@@ -162,9 +163,12 @@ class UserController
             return $customer['user_fullname'];
         }
         $store = $this->storeModel->getStoreByUserId($id_user);
-    if ($store && isset($store['name'])) {
-        return $store['name'];
-    }
+        if ($store) {
+            return $store['name'] ?? $store['store_name'] ?? '';
+        }
+
         return '';
     }
 }
+
+?>

@@ -18,14 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $userName = $controller->getUserNameByEmail($email);
       $userType = $_SESSION['user_type'] ?? 'customer';
 
-      setcookie('userName', urlencode($userName), [
+      $cookieOptions = [
         'expires' => time() + 7 * 24 * 60 * 60,
         'path' => '/',
         'secure' => false,
         'httponly' => false,
         'samesite' => 'Lax'
-      ]);
-      setcookie('userType', $userType, time() + (7 * 24 * 60 * 60), '/');
+      ];
+
+      setcookie('userName', urlencode($userName), $cookieOptions);
+      setcookie('userType', $userType, $cookieOptions);
 
       header('Location: ../index.php');
       exit;

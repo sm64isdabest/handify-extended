@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div id="popup-menu">
       <ul class="popup-list">
         <li style="display: none;">
-          <a href="sign-up.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+          <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <li class="user-logged-mobile" style="display: none;">
           <i class="bi bi-person"></i> placeholder

@@ -12,33 +12,51 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = trim(strip_tags($_POST['userEmail'] ?? ''));
   $password = $_POST['userPass'] ?? '';
   $passwordConfirm = $_POST['userPassConfirm'] ?? '';
-
   $cnpj = trim(strip_tags($_POST['cnpj'] ?? ''));
   $store_name = trim(strip_tags($_POST['storeName'] ?? ''));
   $address = trim(strip_tags($_POST['address'] ?? ''));
   $phone = trim(strip_tags($_POST['phone'] ?? ''));
+
   if ($password !== $passwordConfirm) {
     $message = "As senhas não conferem.";
   } else {
-    $result = $controller->registerStoreUser(
-      $user_fullname,
-      $email,
-      $password,
-      $cnpj,
-      $store_name,
-      $address,
-      $phone
-    );
+    $result = $controller->registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone);
 
-    if (is_array($result) && !empty($result['success'])) {
-      header('Location: ../index.php');
-      exit;
+    if (!empty($result['success'])) {
+      $user = $controller->checkUserByEmail($email);
+      if ($user) {
+        $_SESSION['id'] = $user['id_user'];
+        $_SESSION['user_fullname'] = $user_fullname;
+        $_SESSION['email'] = $email;
+        $_SESSION['user_type'] = 'store';
+
+        setcookie('userName', urlencode($store_name), [
+          'expires' => time() + 7 * 24 * 60 * 60,
+          'path' => '/',
+          'secure' => false,
+          'httponly' => false,
+          'samesite' => 'Lax'
+        ]);
+        setcookie('userType', 'store', [
+          'expires' => time() + 7 * 24 * 60 * 60,
+          'path' => '/',
+          'secure' => false,
+          'httponly' => false,
+          'samesite' => 'Lax'
+        ]);
+
+        header('Location: ../index.php');
+        exit;
+      } else {
+        $message = "Erro ao recuperar usuário.";
+      }
     } else {
       $message = $result['message'] ?? 'Erro ao realizar cadastro da loja.';
     }
   }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -74,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div id="popup-menu">
       <ul class="popup-list">
         <li style="display: none;">
-          <a href="sign-up.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+          <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <li class="user-logged-mobile" style="display: none;">
           <i class="bi bi-person"></i> placeholder
