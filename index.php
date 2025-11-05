@@ -58,7 +58,7 @@
         </li>
         <a href="View/search.php" class="btn">Categorias</a>
         <a href="#main" class="scroll-link btn">Ofertas</a>
-  <a href="View/sell.php" class="btn">Vender</a>
+        <a href="View/sell.php" class="btn">Vender</a>
         <button id="rastrear-btn">Rastrear</button>
       </div>
       <button class="cart"><i class="bi bi-cart"></i></button>
@@ -69,7 +69,7 @@
   <div id="rastrear-popup" style="display: none;">
     <div class="container-principal">
       <header class="cabecalho">
-  <img src="images/logo-handify.png" alt="Logo Handify" class="logo" />
+        <img src="images/logo-handify.png" alt="Logo Handify" class="logo" />
         <div class="linha-vertical"></div>
         <h2>Rastrear</h2>
         <button class="retorn" id="close-rastrear"><i class="bi bi-x"></i></button>
@@ -108,7 +108,7 @@
   <div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
       <div class="carousel-item active">
-  <img src="images/fundos/ofertabannernobkg1.png" class="d-block mx-auto" alt="" />
+        <img src="images/fundos/ofertabannernobkg1.png" class="d-block mx-auto" alt="" />
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -128,7 +128,7 @@
           <div class="oferta-header">
             <span class="oferta-titulo">Oferta do dia</span>
           </div>
-            <span class="oferta-descricao"></span>
+          <span class="oferta-descricao"></span>
           <div class="oferta-conteudo">
             <div class="oferta-info">
               <span class="oferta-desconto"></span>
@@ -142,7 +142,7 @@
           <div class="oferta-header">
             <span class="oferta-titulo">Oferta Semanal</span>
           </div>
-            <span class="oferta-descricao"></span>
+          <span class="oferta-descricao"></span>
           <div class="oferta-conteudo">
             <div class="oferta-info">
               <span class="oferta-desconto"></span>
@@ -171,7 +171,7 @@
             <span class="spantext"></span>
           </div>
         </div>
-  <button class="oferta-btn"><a href="View/search.php">Veja mais</a></button>
+        <button class="oferta-btn"><a href="View/search.php">Veja mais</a></button>
       </div>
     </section>
 
@@ -179,7 +179,7 @@
       <h3 class="produtos-paraC">Produtos para cozinha</h3>
       <div class="produtos-lista">
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -190,7 +190,7 @@
           </div>
         </div>
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -201,7 +201,7 @@
           </div>
         </div>
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -212,7 +212,7 @@
           </div>
         </div>
         <div class="produto faqueiro">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -223,7 +223,7 @@
           </div>
         </div>
         <div class="produto panela">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -240,7 +240,7 @@
       <h3 class="produtos-decorativos">Produtos decorativos</h3>
       <div class="produtos-lista">
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -251,7 +251,7 @@
           </div>
         </div>
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -262,7 +262,7 @@
           </div>
         </div>
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -273,7 +273,7 @@
           </div>
         </div>
         <div class="produto jarro-flor">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -284,7 +284,7 @@
           </div>
         </div>
         <div class="produto pato">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -301,7 +301,7 @@
       <h3 class="moveis">Móveis</h3>
       <div class="produtos-lista">
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -312,7 +312,7 @@
           </div>
         </div>
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -323,7 +323,7 @@
           </div>
         </div>
         <div class="produto">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -334,7 +334,7 @@
           </div>
         </div>
         <div class="produto poltrona-positano">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -345,7 +345,7 @@
           </div>
         </div>
         <div class="produto banco banqueta-vime">
-          
+
           <span class="produto-nome"></span>
           <div class="produto-preco-bloco">
             <div class="produto-preco-desconto-container">
@@ -417,11 +417,11 @@
   <section class="pagamento card">
     <h4>Formas de pagamento</h4>
     <div class="pagamento-icones">
-  <img src="images/icones/visa-logo.png" alt="Visa" />
-  <img src="images/icones/Mastercard.png" alt="Mastercard" />
-  <img src="images/icones/Logo-ELO.png" alt="Elo" />
-  <img src="images/icones/Logo-BOLETO.png" alt="Boleto" />
-  <img src="images/icones/Logo-PIX.png" alt="Pix" />
+      <img src="images/icones/visa-logo.png" alt="Visa" />
+      <img src="images/icones/Mastercard.png" alt="Mastercard" />
+      <img src="images/icones/Logo-ELO.png" alt="Elo" />
+      <img src="images/icones/Logo-BOLETO.png" alt="Boleto" />
+      <img src="images/icones/Logo-PIX.png" alt="Pix" />
     </div>
   </section>
 
