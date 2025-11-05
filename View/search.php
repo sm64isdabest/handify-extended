@@ -220,7 +220,6 @@
       <img src="../images/icones/visa-logo.png" alt="Visa" />
       <img src="../images/icones/Mastercard.png" alt="Mastercard" />
       <img src="../images/icones/Logo-ELO.png" alt="Elo" />
-      <img src="../images/icones/Logo-BOLETO.png" alt="Boleto" />
       <img src="../images/icones/Logo-PIX.png" alt="Pix" />
     </div>
   </section>

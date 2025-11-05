@@ -486,6 +486,7 @@ footer {
 
 .caracteristicas .card {
   border: solid grey;
+  background: #392621;
   border-radius: 1rem;
   align-items: center;
   width: 25rem;
@@ -504,14 +505,14 @@ footer {
 }
 
 .caracteristicas .card-body h5 {
-  color: black;
+  color: rgb(252, 252, 252);
   font-size: 1rem;
 }
 
 .caracteristicas .card p {
   width: auto;
   height: auto;
-  color: #000000;
+  color: #fdfdfd;
   background: none;
   text-decoration: none;
 }
@@ -548,6 +549,7 @@ footer .social-icons a i {
 
 .contatos .card {
   border: solid grey;
+  background: #392621;
   border-radius: 1rem;
   align-items: center;
   text-align: center;
@@ -557,14 +559,14 @@ footer .social-icons a i {
 }
 
 .contatos .card-body h5 {
-  color: #000000;
+  color: #ffffff;
   font-size: 1.7rem;
   align-items: center;
   text-align: center;
 }
 
 .contatos .card-body p {
-  color: #000000;
+  color: #ffffff;
   background: none;
   text-decoration: none;
   align-items: center;
@@ -595,6 +597,7 @@ footer .social-icons a i {
   margin: 36px auto 20px auto;
   box-sizing: border-box;
   border: 1px solid #3d2b23be;
+  background: #392621;
 }
 
 
@@ -603,7 +606,7 @@ footer .social-icons a i {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 25px;
-  color: #3d2b23;
+  color: #ffffff;
 }
 
 .pagamento-icones {
