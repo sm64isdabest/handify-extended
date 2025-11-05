@@ -160,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </label>
 
           <div class="buttons">
-            <button type="submit" class="active1">Cadastrar Loja</button>
+            <button type="submit" class="active">Cadastrar Loja</button>
             <button type="button" onclick="window.location.href='sign-up.php'">Para Consumidores</button>
           </div>
         </form>
