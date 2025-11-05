@@ -13,6 +13,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = trim(strip_tags($_POST['userEmail'] ?? ''));
   $password = $_POST['userPass'] ?? '';
   $passwordConfirm = $_POST['userPassConfirm'] ?? '';
+  $phone = trim(strip_tags($_POST['phone'] ?? ''));
+  $birthdate = trim(strip_tags($_POST['birthdate'] ?? ''));
+  $address = trim(strip_tags($_POST['address'] ?? ''));
 
   if ($password !== $passwordConfirm) {
     $message = "As senhas não conferem.";
@@ -20,21 +23,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['cnpj'])) {
       $cnpj = trim(strip_tags($_POST['cnpj'] ?? ''));
       $store_name = trim(strip_tags($_POST['storeName'] ?? ''));
-      $address = trim(strip_tags($_POST['address'] ?? ''));
-      $phone = trim(strip_tags($_POST['phone'] ?? ''));
-
       $result = $controller->registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone);
     } else {
-      $result = $controller->registerCustomerUser($user_fullname, $email, $password);
+      $result = $controller->registerCustomerUser($user_fullname, $email, $password, $phone, $birthdate, $address);
     }
     if (is_array($result) && !empty($result['success'])) {
-      setcookie('userName', urlencode($user_fullname), time() + (7 * 24 * 60 * 60), '/');
+      setcookie('userName', urldecode($user_fullname), time() + (7 * 24 * 60 * 60), '/');
       header('Location: ../index.php');
       exit;
-    if (is_array($result) && !empty($result['success'])) {
-      header('Location: ../index.php');
-      exit;
-    }
     } else {
       if (is_array($result) && !empty($result['message'])) {
         $message = $result['message'];
@@ -112,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST" action="">
           <label id="labelUserName" for="userName">
             <i class="bi bi-person"></i>
-            <input type="text" id="userName" name="userName" autocomplete="username" placeholder="Usuário" required />
+            <input type="text" id="userName" name="userName" autocomplete="name" placeholder="Nome completo" required />
           </label>
 
           <label id="labelUserEmail" for="userEmail">
@@ -129,6 +125,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <i class="bi bi-lock"></i>
             <input type="password" id="userPassConfirm" name="userPassConfirm" placeholder="Confirme sua senha"
               required />
+          </label>
+
+          <label id="labelPhone" for="phone">
+            <i class="bi bi-telephone"></i>
+            <input type="text" id="phone" name="phone" placeholder="Telefone" />
+          </label>
+
+          <label id="labelBirthdate" for="birthdate">
+            <i class="bi bi-calendar"></i>
+            <input type="date" id="birthdate" name="birthdate" placeholder="Data de nascimento" />
+          </label>
+
+          <label id="labelAddress" for="address">
+            <i class="bi bi-house"></i>
+            <input type="text" id="address" name="address" placeholder="Endereço" />
           </label>
 
           <span>Por favor, preencha todos os campos!</span>

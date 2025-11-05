@@ -20,17 +20,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   if ($password !== $passwordConfirm) {
     $message = "As senhas não conferem.";
   } else {
-    $result = $controller->registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone);
+    $result = $controller->registerStoreUser(
+      $user_fullname,
+      $email,
+      $password,
+      $cnpj,
+      $store_name,
+      $address,    
+      $phone
+    );
 
     if (!empty($result['success'])) {
-      $user = $controller->checkUserByEmail($email);
-      if ($user) {
-        $_SESSION['id'] = $user['id_user'];
-        $_SESSION['user_fullname'] = $user_fullname;
-        $_SESSION['email'] = $email;
-        $_SESSION['user_type'] = 'store';
-
-        setcookie('userName', urlencode($store_name), [
+      if ($controller->login($email, $password)) {
+        setcookie('userName', urldecode($store_name), [
           'expires' => time() + 7 * 24 * 60 * 60,
           'path' => '/',
           'secure' => false,
@@ -48,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: ../index.php');
         exit;
       } else {
-        $message = "Erro ao recuperar usuário.";
+        $message = "Erro ao criar sessão do usuário.";
       }
     } else {
       $message = $result['message'] ?? 'Erro ao realizar cadastro da loja.';
@@ -120,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST" action="">
           <label for="userName">
             <i class="bi bi-person"></i>
-            <input type="text" id="userName" name="userName" placeholder="Usuário" required />
+            <input type="text" id="userName" name="userName" placeholder="Nome Completo" required />
           </label>
 
           <label for="userEmail">

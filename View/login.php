@@ -13,6 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if (empty($email) || empty($password)) {
     $message = "Preencha todos os campos!";
+  } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $message = "Email inválido.";
   } else {
     if ($controller->login($email, $password)) {
       $userName = $controller->getUserNameByEmail($email);
@@ -26,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'samesite' => 'Lax'
       ];
 
-      setcookie('userName', urlencode($userName), $cookieOptions);
+      setcookie('userName', urldecode($userName), $cookieOptions);
       setcookie('userType', $userType, $cookieOptions);
 
       header('Location: ../index.php');
@@ -96,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
           <label id="labelUserPass" for="userPass">
             <i class="bi bi-key"></i>
-            <input type="password" id="userPass" name="password" placeholder="Insira sua senha" />
+            <input type="password" id="userPass" name="password" placeholder="Insira sua senha" required />
           </label>
 
           <?php if (!empty($message)): ?>

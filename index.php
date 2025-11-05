@@ -1,5 +1,7 @@
 <?php
 session_start();
+$userName = isset($_COOKIE['userName']) ? urldecode($_COOKIE['userName']) : '';
+$userType = isset($_COOKIE['userType']) ? $_COOKIE['userType'] : '';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

@@ -45,41 +45,48 @@ class Customer {
             throw new \Exception($e->getMessage());
         }
     }
-    
-    public function registerCustomer($id_user, $user_fullname) {
+
+    public function registerCustomer($id_user, $phone = null, $birthdate = null, $address = null) {
         try {
             $existingCustomer = $this->getByUserId($id_user);
             if ($existingCustomer) {
-                echo "Usuário já cadastrado.";
                 return false;
             }
-            
+
             if (!$this->tableExists()) {
                 throw new \Exception('Tabela "customer" não encontrada');
             }
 
             $columns = $this->getTableColumns();
-            $fullnameCols = ['user_fullname', 'name', 'username', 'userName'];
-            $nameCol = null;
 
-            foreach ($fullnameCols as $col) {
-                if (in_array($col, $columns)) {
-                    $nameCol = $col;
-                    break;
-                }
+            $sql = "INSERT INTO `$this->table` (id_user";
+            $params = [':id_user' => $id_user];
+
+            if (in_array('phone', $columns) && $phone !== null) {
+                $sql .= ", phone";
+                $params[':phone'] = $phone;
+            }
+            if (in_array('birthdate', $columns) && $birthdate !== null) {
+                $sql .= ", birthdate";
+                $params[':birthdate'] = $birthdate;
+            }
+            if (in_array('address', $columns) && $address !== null) {
+                $sql .= ", address";
+                $params[':address'] = $address;
             }
 
-            if ($nameCol) {
-                $sql = "INSERT INTO `$this->table` (id_user, `$nameCol`) VALUES (:id_user, :user_fullname)";
-                $stmt = $this->db->prepare($sql);
-                $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
-                $stmt->bindParam(':user_fullname', $user_fullname, PDO::PARAM_STR);
-            } elseif (in_array('id_user', $columns) && count($columns) === 1) {
-                $sql = "INSERT INTO `$this->table` (id_user) VALUES (:id_user)";
-                $stmt = $this->db->prepare($sql);
-                $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
-            } else {
-                throw new \Exception('Nenhuma coluna de nome encontrada na tabela.');
+            $sql .= ") VALUES (:id_user";
+            if (isset($params[':phone']))
+                $sql .= ", :phone";
+            if (isset($params[':birthdate']))
+                $sql .= ", :birthdate";
+            if (isset($params[':address']))
+                $sql .= ", :address";
+            $sql .= ")";
+
+            $stmt = $this->db->prepare($sql);
+            foreach ($params as $key => $value) {
+                $stmt->bindValue($key, $value);
             }
 
             return $stmt->execute();
