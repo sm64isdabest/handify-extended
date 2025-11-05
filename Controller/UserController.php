@@ -30,16 +30,13 @@ class UserController
             if (empty($user_fullname) || empty($email) || empty($password)) {
                 return ['success' => false, 'message' => 'Preencha todos os campos obrigatórios.'];
             }
-
             if ($this->checkUserByEmail($email)) {
                 return ['success' => false, 'message' => 'Este e-mail já está cadastrado.'];
             }
-
             $userId = $this->userModel->registerUser($user_fullname, $email, $password);
             if ($userId && is_int($userId) && $userId > 0) {
                 return ['success' => true, 'id_user' => $userId];
             }
-
             return ['success' => false, 'message' => 'Erro ao inserir usuário no banco de dados.'];
         } catch (Exception $error) {
             return ['success' => false, 'message' => 'Erro ao cadastrar usuário: ' . $error->getMessage()];
@@ -49,21 +46,14 @@ class UserController
     public function registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone)
     {
         try {
-            if (
-                empty($user_fullname) || empty($email) || empty($password) ||
-                empty($cnpj) || empty($store_name) || empty($address) || empty($phone)
-            ) {
+            if (empty($user_fullname) || empty($email) || empty($password) || empty($cnpj) || empty($store_name) || empty($address) || empty($phone)) {
                 return ['success' => false, 'message' => 'Preencha todos os campos obrigatórios.'];
             }
-
             $userId = $this->userModel->registerUser($user_fullname, $email, $password);
             if (!$userId || !is_int($userId)) {
                 return ['success' => false, 'message' => 'Erro ao criar usuário.'];
             }
-
-            $id_store = $userId;
-
-            $storeOk = $this->storeModel->registerStore($id_store, $store_name, $cnpj, $phone, $address);
+            $storeOk = $this->storeModel->registerStore($userId, $store_name, $cnpj, $phone, $address);
             if ($storeOk) {
                 return ['success' => true];
             }
@@ -73,28 +63,24 @@ class UserController
         }
     }
 
-    public function registerCustomerUser($user_fullname, $email, $password)
+    public function registerCustomerUser($user_fullname, $email, $password, $phone = null, $birthdate = null, $address = null)
     {
         try {
             if (empty($user_fullname) && !empty($email)) {
                 $user_fullname = $email;
             }
-
             if (empty($user_fullname) || empty($email) || empty($password)) {
                 return ['success' => false, 'message' => 'Preencha todos os campos obrigatórios.'];
             }
-
             $userId = $this->userModel->registerUser($user_fullname, $email, $password);
             if (!$userId || !is_int($userId)) {
                 return ['success' => false, 'message' => 'Erro ao criar usuário.'];
             }
-
             $existing = $this->customerModel->getByUserId($userId);
             if ($existing) {
                 return ['success' => true];
             }
-
-            $reg = $this->customerModel->registerCustomer($userId, $user_fullname);
+            $reg = $this->customerModel->registerCustomer($userId, $phone, $birthdate, $address);
             if ($reg) {
                 return ['success' => true];
             }
@@ -110,37 +96,41 @@ class UserController
     }
 
     public function login($email, $password)
-{
-    $user = $this->userModel->getUserByEmail($email);
+    {
+        $user = $this->userModel->getUserByEmail($email);
 
-    if ($user && isset($user['password']) && password_verify($password, $user['password'])) {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
+        if ($user && isset($user['password']) && password_verify($password, $user['password'])) {
+            if (session_status() === PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            $_SESSION['id'] = $user['id_user'];
+            $_SESSION['user_fullname'] = $user['user_fullname'] ?? '';
+            $_SESSION['email'] = $user['email'];
+
+            if (isset($user['user_fullname'])) {
+                setcookie('userName', urlencode($user['user_fullname']), time() + 3600, "/");
+            }
+
+            $id_user = $user['id_user'];
+
+            $store = $this->storeModel->getStoreByUserId($id_user);
+
+            $customer = $this->customerModel->getByUserId($id_user);
+
+            if ($store) {
+                $_SESSION['user_type'] = 'store';
+            } elseif ($customer) {
+                $_SESSION['user_type'] = 'customer';
+            } else {
+                $_SESSION['user_type'] = 'unknown';
+            }
+
+            return true;
         }
 
-        $_SESSION['id'] = $user['id_user'];
-        $_SESSION['user_fullname'] = $user['user_fullname'] ?? '';
-        $_SESSION['email'] = $user['email'];
-
-        $id_user = $user['id_user'];
-        $id_store = $user['id_store'];
-
-        $store = $this->storeModel->getStoreByUserId($id_store);
-        $customer = $this->customerModel->getByUserId($id_user);
-
-        if ($store) {
-            $_SESSION['user_type'] = 'store';
-        } elseif ($customer) {
-            $_SESSION['user_type'] = 'customer';
-        } else {
-            $_SESSION['user_type'] = 'unknown';
-        }
-
-        return true;
+        return false;
     }
-
-    return false;
-}
 
     public function isLoggedIn()
     {
@@ -151,21 +141,25 @@ class UserController
     {
         return $this->userModel->getUserInfo($id, $user_fullname, $email);
     }
+
     public function getUserNameByEmail($email)
     {
         $user = $this->userModel->getUserByEmail($email);
-        if (!$user) {
+        if (!$user)
             return '';
-        }
+
         $id_user = $user['id_user'];
-        $customer = $this->customerModel->getByUserId($id_user);
-        if ($customer && isset($customer['user_fullname'])) {
-            return $customer['user_fullname'];
-        }
+
         $store = $this->storeModel->getStoreByUserId($id_user);
-    if ($store && isset($store['name'])) {
-        return $store['name'];
-    }
-        return '';
+        if ($store)
+            return $store['name'] ?? '';
+
+        $customer = $this->customerModel->getByUserId($id_user);
+        if ($customer)
+            return $user['user_fullname'] ?? '';
+
+        return $user['user_fullname'] ?? '';
     }
 }
+
+?>

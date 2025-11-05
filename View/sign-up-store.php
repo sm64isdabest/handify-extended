@@ -12,11 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $email = trim(strip_tags($_POST['userEmail'] ?? ''));
   $password = $_POST['userPass'] ?? '';
   $passwordConfirm = $_POST['userPassConfirm'] ?? '';
-
   $cnpj = trim(strip_tags($_POST['cnpj'] ?? ''));
   $store_name = trim(strip_tags($_POST['storeName'] ?? ''));
   $address = trim(strip_tags($_POST['address'] ?? ''));
   $phone = trim(strip_tags($_POST['phone'] ?? ''));
+
   if ($password !== $passwordConfirm) {
     $message = "As senhas não conferem.";
   } else {
@@ -26,25 +26,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $password,
       $cnpj,
       $store_name,
-      $address,
+      $address,    
       $phone
     );
 
-    if (is_array($result) && !empty($result['success'])) {
-      $_SESSION['store'] = [
-        'id_user' => $result['id_user'], // vem da tabela app_user
-        'id_store' => $result['id_store'], // vem da tabela store
-        'store_name' => $store_name
-      ];
+    if (!empty($result['success'])) {
+      if ($controller->login($email, $password)) {
+        setcookie('userName', urldecode($store_name), [
+          'expires' => time() + 7 * 24 * 60 * 60,
+          'path' => '/',
+          'secure' => false,
+          'httponly' => false,
+          'samesite' => 'Lax'
+        ]);
+        setcookie('userType', 'store', [
+          'expires' => time() + 7 * 24 * 60 * 60,
+          'path' => '/',
+          'secure' => false,
+          'httponly' => false,
+          'samesite' => 'Lax'
+        ]);
 
-      header('Location: ../index.php');
-      exit;
+        header('Location: ../index.php');
+        exit;
+      } else {
+        $message = "Erro ao criar sessão do usuário.";
+      }
     } else {
       $message = $result['message'] ?? 'Erro ao realizar cadastro da loja.';
     }
   }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -68,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li><a href="about.php#footer">Contato</a></li>
         <li><a href="about.php">Sobre</a></li>
         <li style="display: none;">
-          <a href="sign-up.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+          <a href="login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <li class="user-logged" style="display: none;">
           <i class="bi bi-person"></i> placeholder
@@ -80,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div id="popup-menu">
       <ul class="popup-list">
         <li style="display: none;">
-          <a href="sign-up.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+          <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <li class="user-logged-mobile" style="display: none;">
           <i class="bi bi-person"></i> placeholder
@@ -108,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST" action="">
           <label for="userName">
             <i class="bi bi-person"></i>
-            <input type="text" id="userName" name="userName" placeholder="Usuário" required />
+            <input type="text" id="userName" name="userName" placeholder="Nome Completo" required />
           </label>
 
           <label for="userEmail">
@@ -148,7 +162,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </label>
 
           <div class="buttons">
-            <button type="submit" class="active1">Cadastrar Loja</button>
+            <button type="submit" class="active">Cadastrar Loja</button>
             <button type="button" onclick="window.location.href='sign-up.php'">Para Consumidores</button>
           </div>
         </form>

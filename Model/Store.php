@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Model;
 
@@ -19,16 +19,12 @@ class Store {
         try {
             $existingStore = $this->getStoreByUserId($id_store);
             if ($existingStore) {
-                echo "Este usuário já possui uma loja cadastrada.";
-                return false;
+                return ['success' => false, 'message' => 'Este usuário já possui uma loja cadastrada.'];
             }
 
-            if (!empty($cnpj)) {
-                $checkCnpj = $this->getStoreByCnpj($cnpj);
-                if ($checkCnpj) {
-                    echo "Já existe uma loja cadastrada com este CNPJ.";
-                    return false;
-                }
+            $checkCnpj = $this->getStoreByCnpj($cnpj);
+            if ($checkCnpj) {
+                return ['success' => false, 'message' => 'Já existe uma loja cadastrada com este CNPJ.'];
             }
             $sql = 'INSERT INTO store (id_store, name, cnpj, phone, address) VALUES (:id_store, :name, :cnpj, :phone, :address)';
 
@@ -40,11 +36,16 @@ class Store {
             $stmt->bindParam(":phone", $phone, PDO::PARAM_STR);
             $stmt->bindParam(":address", $address, PDO::PARAM_STR);
 
-            return $stmt->execute();
+            $ok = $stmt->execute();
+
+            if ($ok) {
+                return ['success' => true];
+            } else {
+                return ['success' => false, 'message' => 'Erro ao inserir loja no banco de dados.'];
+            }
 
         } catch (PDOException $error) {
-            echo "Erro ao executar o comando " . $error->getMessage();
-            return false;
+            return ['success' => false, 'message' => 'Erro ao cadastrar loja: ' . $error->getMessage()];
         }
     }
 
@@ -59,10 +60,9 @@ class Store {
 
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $error) {
-            echo "Erro ao buscar loja: " . $error->getMessage();
             return false;
         }
-        
+
     }
     public function getStoreByCnpj($cnpj) {
         try {
@@ -72,7 +72,6 @@ class Store {
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $error) {
-            echo "Erro ao buscar loja por CNPJ: " . $error->getMessage();
             return false;
         }
     }
