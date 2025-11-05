@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li><a href="about.php#footer">Contato</a></li>
         <li><a href="about.php">Sobre</a></li>
         <li style="display: none;">
-          <a href="sign-up.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+          <a href="login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <li class="user-logged" style="display: none;">
           <i class="bi bi-person"></i> placeholder
