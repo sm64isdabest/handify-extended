@@ -15,9 +15,9 @@ class Store {
         $this->db = Connection::getInstance();
     }
 
-    public function registerStore($id_user, $store_name, $cnpj = null, $phone = null, $address = null) {
+    public function registerStore($id_store, $store_name, $cnpj = null, $phone = null, $address = null) {
         try {
-            $existingStore = $this->getStoreByUserId($id_user);
+            $existingStore = $this->getStoreByUserId($id_store);
             if ($existingStore) {
                 echo "Este usuário já possui uma loja cadastrada.";
                 return false;
@@ -30,11 +30,11 @@ class Store {
                     return false;
                 }
             }
-            $sql = 'INSERT INTO store (id_user, name, cnpj, phone, address) VALUES (:id_user, :name, :cnpj, :phone, :address)';
+            $sql = 'INSERT INTO store (id_store, name, cnpj, phone, address) VALUES (:id_store, :name, :cnpj, :phone, :address)';
 
             $stmt = $this->db->prepare($sql);
 
-            $stmt->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+            $stmt->bindParam(":id_store", $id_store, PDO::PARAM_INT);
             $stmt->bindParam(":name", $store_name, PDO::PARAM_STR);
             $stmt->bindParam(":cnpj", $cnpj, PDO::PARAM_STR);
             $stmt->bindParam(":phone", $phone, PDO::PARAM_STR);
@@ -48,12 +48,12 @@ class Store {
         }
     }
 
-    public function getStoreByUserId($id_user) {
+    public function getStoreByUserId($id_store) {
         try {
-            $sql = "SELECT * FROM store WHERE id_user = :id_user LIMIT 1";
+            $sql = "SELECT * FROM store WHERE id_store = :id_store LIMIT 1";
 
             $stmt = $this->db->prepare($sql);
-            $stmt->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+            $stmt->bindParam(":id_store", $id_store, PDO::PARAM_INT);
 
             $stmt->execute();
 

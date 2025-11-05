@@ -192,4 +192,4 @@ dist
 .ionide
 
 ### uploads folder ###
-.uploads/*
+uploads/*

@@ -61,9 +61,9 @@ class UserController
                 return ['success' => false, 'message' => 'Erro ao criar usuário.'];
             }
 
-            $id_user = $userId;
+            $id_store = $userId;
 
-            $storeOk = $this->storeModel->registerStore($id_user, $store_name, $cnpj, $phone, $address);
+            $storeOk = $this->storeModel->registerStore($id_store, $store_name, $cnpj, $phone, $address);
             if ($storeOk) {
                 return ['success' => true];
             }
@@ -123,8 +123,9 @@ class UserController
         $_SESSION['email'] = $user['email'];
 
         $id_user = $user['id_user'];
+        $id_store = $user['id_store'];
 
-        $store = $this->storeModel->getStoreByUserId($id_user);
+        $store = $this->storeModel->getStoreByUserId($id_store);
         $customer = $this->customerModel->getByUserId($id_user);
 
         if ($store) {

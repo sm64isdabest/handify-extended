@@ -35,15 +35,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $free_shipping = isset($_POST['free_shipping']) ? 1 : 0;
 
-            $result = $productController->registerProduct(
-                $name,
-                $description,
-                $imagePath,
-                (int) $stock,
-                (int) $price
-            );
+            // obtém id da loja/usuário a partir da sessão
+            $id_store_fk = $_SESSION['store']['id_store'];
+            var_dump($id_store_fk);
+            var_dump($_SESSION['store']['id_store']);
+            if (empty($id_store_fk)) {
+                $message = 'Erro: id da loja não encontrado na sessão. Faça login com a conta da empresa.';
+            } else {
+                $result = $productController->registerProduct(
+                    $name,
+                    $description,
+                    $imagePath,
+                    (int) $stock,
+                    (string) $price,
+                    $free_shipping,
+                    (int) $id_store_fk
+                );
 
-            $message = $result ? 'Produto cadastrado com sucesso.' : 'Erro ao cadastrar produto.';
+                $message = $result ? 'Produto cadastrado com sucesso.' : 'Erro ao cadastrar produto.';
+            }
         } else {
             $message = 'Erro ao mover arquivo enviado.';
         }
@@ -79,8 +89,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <li style="display: none;">
                     <a href="sign-up.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
                 </li>
-                <li class="user-logged" style="display: none;">
-                    <i class="bi bi-person"></i> placeholder
+                <li class="user-logged" style="display: none; position: relative;">
+                    <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
+                    <span class="user-name"></span>
+                    <div class="menu-popup">
+                        <p class="user-name-popup"></p>
+                        <button class="menu-item logout-btn">Sair</button>
+                    </div>
                 </li>
             </ul>
             <!-- PARA DISPOSITIVOS MÓVEIS -->
@@ -143,7 +158,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="submit">Vender</button>
         </form>
         <!-- Form -->
-
+        <?php if (!empty($message))
+            echo "<p style='color:red;text-align:center;'>$message</p>"; ?>
     </main>
 
     <footer>

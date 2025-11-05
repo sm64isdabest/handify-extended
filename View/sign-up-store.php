@@ -31,6 +31,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
 
     if (is_array($result) && !empty($result['success'])) {
+      $_SESSION['store'] = [
+        'id_user' => $result['id_user'], // vem da tabela app_user
+        'id_store' => $result['id_store'], // vem da tabela store
+        'store_name' => $store_name
+      ];
+
       header('Location: ../index.php');
       exit;
     } else {
