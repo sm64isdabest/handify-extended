@@ -176,6 +176,27 @@ input::placeholder {
   padding: 0.5rem;
 }
 
+.bi-patch-check::before {
+    content: "\f4b6";
+    color: white;
+
+}
+
+.bi-truck::before {
+    content: "\f5ea";
+    color: white;
+}
+
+.bi-shield-check::before {
+    content: "\f52f";
+    color: white;
+}
+
+label {
+    display: inline-block;
+    margin-left: 17px;
+}
+
 .autocomplete-items li {
   font-size: 0.9rem;
   padding-left: 0.5rem;
@@ -619,6 +640,7 @@ footer .social-icons a i {
   border-top: 2px solid #3d2b23;
   width: 83%;
   padding-top: 30px;
+  border-top: 1px solid rgba(61, 43, 35, 0.2);
 }
 
 .pagamento-icones img {
