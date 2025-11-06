@@ -16,18 +16,16 @@ class ProductController
         $this->productModel = $productModel;
     }
 
-    public function registerProduct($name, $description = null, $image, $stock, $price, $free_shipping = 0)
+    public function registerProduct($name, $description = null, $image, $stock, $price, $free_shipping = 0, $id_store_fk = null)
     {
         try {
-            // valida campos obrigatórios
-            if (empty($name) || empty($image) || $stock === '' || $price === '') {
+            if (empty($name) || empty($image) || $stock === '' || $price === '' || empty($id_store_fk)) {
                 return false;
             }
 
-            // normaliza valor de frete grátis para 0 ou 1
             $free_shipping = $free_shipping ? 1 : 0;
 
-            return $this->productModel->registerProduct($name, $description, $image, $stock, $price, $free_shipping);
+            return $this->productModel->registerProduct($name, $description, $image, $stock, $price, $free_shipping, $id_store_fk);
 
         } catch (Exception $error) {
             echo "Erro ao cadastrar produto: " . $error->getMessage();

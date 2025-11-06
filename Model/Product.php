@@ -17,10 +17,10 @@ class Product
         $this->db = Connection::getInstance();
     }
 
-    public function registerProduct($name, $description = null, $image, $stock, $price, $free_shipping)
+    public function registerProduct($name, $description = null, $image, $stock, $price, $free_shipping, $id_store_fk)
     {
         try {
-            $sql = 'INSERT INTO product (name, description, image, stock, price, free_shipping) VALUES (:name, :description, :image, :stock, :price, :free_shipping)';
+            $sql = 'INSERT INTO product (name, description, image, stock, price, free_shipping, id_store_fk) VALUES (:name, :description, :image, :stock, :price, :free_shipping, :id_store_fk)';
 
             $stmt = $this->db->prepare($sql);
 
@@ -28,9 +28,9 @@ class Product
             $stmt->bindParam(":description", $description, PDO::PARAM_STR);
             $stmt->bindParam(":image", $image, PDO::PARAM_STR);
             $stmt->bindParam(":stock", $stock, PDO::PARAM_INT);
-            $stmt->bindParam(":price", $price, PDO::PARAM_INT);
-            $stmt->bindParam(":free_shipping", $free_shipping, PDO::PARAM_BOOL);
-
+            $stmt->bindParam(":price", $price, PDO::PARAM_STR);
+            $stmt->bindParam(":free_shipping", $free_shipping, PDO::PARAM_INT);
+            $stmt->bindParam(":id_store_fk", $id_store_fk, PDO::PARAM_INT);
 
             return $stmt->execute();
 
@@ -89,8 +89,8 @@ class Product
             $stmt->bindParam(":description", $description, PDO::PARAM_STR);
             $stmt->bindParam(":image", $image, PDO::PARAM_STR);
             $stmt->bindParam(":stock", $stock, PDO::PARAM_INT);
-            $stmt->bindParam(":price", $price, PDO::PARAM_INT);
-            $stmt->bindParam(":price", $free_shipping, PDO::PARAM_BOOL);
+            $stmt->bindParam(":price", $price, PDO::PARAM_STR);
+            $stmt->bindParam(":free_shipping", $free_shipping, PDO::PARAM_INT);
             $stmt->bindParam(":id_product", $id_product, PDO::PARAM_INT);
 
             return $stmt->execute();

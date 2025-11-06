@@ -63,8 +63,20 @@ class Store {
         } catch (PDOException $error) {
             return false;
         }
-
     }
+
+    public function getStoreById($id_store) {
+        try {
+            $sql = "SELECT * FROM store WHERE id_store = :id_store LIMIT 1";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(":id_store", $id_store, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $error) {
+            return false;
+        }
+    }
+
     public function getStoreByCnpj($cnpj) {
         try {
             $sql = "SELECT * FROM store WHERE cnpj = :cnpj LIMIT 1";
