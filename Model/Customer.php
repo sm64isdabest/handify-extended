@@ -27,28 +27,28 @@ class Customer {
         return $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
     }
 
-    public function getByUserId($id_user) {
+    public function getByUserId($id_user_fk) {
         try {
             if (!$this->tableExists()) {
                 error_log('Customer::getByUserId - Tabela "customer" não encontrada');
                 return false;
             }
 
-            $sql = "SELECT * FROM `$this->table` WHERE id_user = :id_user LIMIT 1";
+            $sql = "SELECT * FROM `$this->table` WHERE id_user_fk = :id_user_fk LIMIT 1";
             $stmt = $this->db->prepare($sql);
-            $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+            $stmt->bindParam(':id_user_fk', $id_user_fk, PDO::PARAM_INT);
             $stmt->execute();
 
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
             error_log('Customer::getByUserId error: ' . $e->getMessage());
-            throw new \Exception($e->getMessage());
+            return false;
         }
     }
 
-    public function registerCustomer($id_user, $phone = null, $birthdate = null, $address = null) {
+    public function registerCustomer($id_user_fk, $phone = null, $birthdate = null, $address = null) {
         try {
-            $existingCustomer = $this->getByUserId($id_user);
+            $existingCustomer = $this->getByUserId($id_user_fk);
             if ($existingCustomer) {
                 return false;
             }
@@ -59,8 +59,8 @@ class Customer {
 
             $columns = $this->getTableColumns();
 
-            $sql = "INSERT INTO `$this->table` (id_user";
-            $params = [':id_user' => $id_user];
+            $sql = "INSERT INTO `$this->table` (id_user_fk";
+            $params = [':id_user_fk' => $id_user_fk];
 
             if (in_array('phone', $columns) && $phone !== null) {
                 $sql .= ", phone";
@@ -75,7 +75,7 @@ class Customer {
                 $params[':address'] = $address;
             }
 
-            $sql .= ") VALUES (:id_user";
+            $sql .= ") VALUES (:id_user_fk";
             if (isset($params[':phone']))
                 $sql .= ", :phone";
             if (isset($params[':birthdate']))
@@ -89,7 +89,12 @@ class Customer {
                 $stmt->bindValue($key, $value);
             }
 
-            return $stmt->execute();
+            $ok = $stmt->execute();
+            if ($ok) {
+                return (int) $this->db->lastInsertId();
+            }
+
+            return false;
 
         } catch (PDOException $e) {
             error_log('Customer::registerCustomer error: ' . $e->getMessage());
