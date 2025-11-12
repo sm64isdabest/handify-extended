@@ -41,6 +41,8 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Perfil - Handify</title>
+    <script src="../js/theme-loader.js"></script>
+    <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/profile.css">
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
@@ -85,7 +87,8 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                 <div class="avatar-initial"><?= htmlspecialchars($initial) ?></div>
             </div>
             <h2 class="profile-user-name">
-                <?= htmlspecialchars($profileData['user_fullname'] ?? 'Nome não encontrado') ?></h2>
+                <?= htmlspecialchars($profileData['user_fullname'] ?? 'Nome não encontrado') ?>
+            </h2>
             <p class="profile-user-email"><?= htmlspecialchars($profileData['email'] ?? 'Email não encontrado') ?></p>
 
             <div class="profile-nav">
@@ -93,7 +96,8 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                     Informações</a>
                 <a href="#orders" class="profile-nav-item"><i class="bi bi-box-seam"></i> Meus Pedidos</a>
                 <a href="#settings" class="profile-nav-item"><i class="bi bi-gear"></i> Configurações</a>
-                <a href="#" class="profile-nav-item logout-item logout-btn"><i class="bi bi-box-arrow-right"></i> Sair</a>
+                <a href="#" class="profile-nav-item logout-item logout-btn"><i class="bi bi-box-arrow-right"></i>
+                    Sair</a>
             </div>
         </div>
 
@@ -184,6 +188,14 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                     <h3>Configurações da Conta</h3>
                 </div>
                 <div class="settings-item">
+                    <p><strong>Modo Escuro</strong>
+                        <small>Alterne entre o tema claro e escuro.</small>
+                    </p>
+                    <button id="theme-toggle-btn" class="theme-btn">
+                        <i class="bi bi-moon-stars-fill"></i>
+                    </button>
+                </div>
+                <div class="settings-item">
                     <p><strong>Alterar Senha</strong></p>
                     <button class="edit-btn">Alterar</button>
                 </div>
@@ -191,6 +203,7 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                     <p><strong>Excluir Conta</strong>
                         <small>Esta ação é permanente e não pode ser desfeita.</small>
                     </p>
+
                     <button class="edit-btn danger">Excluir</button>
                 </div>
             </section>
@@ -208,6 +221,7 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
     </footer>
     <script src="../js/logged-in.js"></script>
     <script src="../js/profile.js"></script>
+    
 </body>
 
 </html>

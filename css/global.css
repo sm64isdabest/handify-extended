@@ -1,0 +1,50 @@
+:root {
+    --cor-fundo: #f5ecda;
+    --cor-fundo-caixa: #ffffff;
+    --cor-texto-primario: #593d36;
+    --cor-texto-secundario: #8a7a74;
+    --cor-borda: #f0e5d8;
+    --cor-interativo: #593d36;
+    --cor-interativo-texto: #ffffff;
+    --cor-perigo: #e53935;
+    --imagem-fundo: linear-gradient(rgba(245, 236, 218, 0.4), rgba(245, 236, 218, 0.4)), url("../images/fundos/fundo_madeira_carvalho.jpg");
+}
+
+html.dark-mode {
+    --cor-fundo: #2a2a2a;
+    --cor-fundo-caixa: #3d3d3d;
+    --cor-texto-primario: #f0e5d8;
+    --cor-texto-secundario: #b0b0b0;
+    --cor-borda: #555555;
+    --cor-interativo: #c5a787;
+    --cor-interativo-texto: #3d2b23;
+    --cor-perigo: #ff6b6b;
+    --imagem-fundo: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/fundos/fundo_madeira_carvalho.jpg");
+}
+
+body {
+    font-family: "Montserrat", Arial, sans-serif;
+    background: var(--imagem-fundo);
+    color: var(--cor-texto-primario);
+    transition: background-color 0.3s, color 0.3s;
+    background-size: cover; 
+    background-position: center center; 
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--cor-texto-primario);
+}
+
+p, a, label, span {
+    color: var(--cor-texto-primario);
+}
+
+a {
+    text-decoration: none;
+}

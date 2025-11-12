@@ -1,16 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap" );
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" );
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap"  );
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"  );
 
 body {
   font-family: "Montserrat", Arial, sans-serif;
   margin: 0;
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: 
-  linear-gradient(rgba(245, 236, 218, 0.4), rgba(245, 236, 218, 0.4)), 
-  url("../images/fundos/fundo_madeira_carvalho.jpg");
+  background: var(--imagem-fundo);
   background-size: cover; 
   background-position: center center; 
   background-attachment: fixed; 
@@ -41,21 +39,21 @@ header nav ul {
 
 header nav ul li a {
   text-decoration: none;
-  color: #333;
+  color: var(--cor-texto-primario);
   font-weight: bold;
 }
 
 header nav ul li a.entrar {
-  color: white;
+  color: var(--cor-interativo-texto);
   padding: 0.9rem;
   border-radius: 15px;
-  background-color: #593d36;
+  background-color: var(--cor-interativo);
 }
 .back-btn {
-    background-color: #593d36;
+    background-color: var(--cor-interativo);
     border-radius: 20px;
     border: none;
-    color: white;
+    color: var(--cor-interativo-texto);
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
@@ -77,7 +75,7 @@ header nav ul li a.entrar {
   height: 50px;
   border: none;
   border-radius: 1rem;
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
   cursor: pointer;
   background-color: transparent;
 }
@@ -90,7 +88,7 @@ header nav ul li a.entrar {
   position: absolute;
   top: 70px;
   right: 20px;
-  background: #ffffff;
+  background: var(--cor-fundo-caixa);
   border-radius: 20px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   padding: 1.2rem;
@@ -101,8 +99,8 @@ header nav ul li a.entrar {
 #popup-menu .popup-list a {
   display: block;
   margin: 0.7rem 0;
-  background: #5a3e36;
-  color: #fff;
+  background: var(--cor-interativo);
+  color: var(--cor-interativo-texto);
   padding: 0.7rem 1.2rem;
   border-radius: 16px;
   text-align: center;
@@ -113,34 +111,56 @@ header nav ul li a.entrar {
 
 .user-logged,
 .user-logged-mobile {
-  color: #484848;
+  color: var(--cor-texto-secundario);
   font-style: italic;
 }
 
 main.profile-main-container {
-    background: 
-    linear-gradient(rgba(245, 236, 218, 0.4), rgba(245, 236, 218, 0.4)), 
-    url("../images/fundos/fundo_madeira_carvalho.jpg");
-    background-size: cover; 
-    background-position: center center; 
-    background-attachment: fixed; 
-    background-repeat: no-repeat; 
     padding: 2rem;
     display: flex;
     gap: 30px;
     font-family: "Work Sans", sans-serif;
     flex: 1;
+    background: none;
 }
 
 .profile-sidebar {
     flex: 0 0 400px;
     height: 600px;
-    background-color: #fff;
+    background-color: var(--cor-fundo-caixa);
     border-radius: 22px;
-    border: 2.5px  #3d2b23;
+    border: 2.5px solid var(--cor-texto-primario);
     padding: 30px 20px;
     text-align: center;
     align-self: flex-start;
+}
+
+.theme-btn {
+    background: none;
+    border: 1px solid var(--cor-borda);
+    color: var(--cor-texto-primario);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; 
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.theme-btn:hover {
+    background-color: var(--cor-borda);
+    transform: scale(1.1);
+}
+
+.theme-btn:active {
+    transform: scale(0.95);
+}
+
+.theme-btn i {
+    color: inherit; 
 }
 
 .profile-user-avatar {
@@ -148,11 +168,11 @@ main.profile-main-container {
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    background-color: #5a3e36;
+    background-color: var(--cor-interativo);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: var(--cor-interativo-texto);
     font-size: 3rem;
     font-family: "Alexandria", sans-serif;
 }
@@ -161,13 +181,13 @@ main.profile-main-container {
     font-family: "Alexandria", sans-serif;
     font-size: 1.8rem;
     font-weight: 700;
-    color: #3d2b23;
+    color: var(--cor-texto-primario);
     margin: 0;
 }
 
 .profile-user-email {
     font-size: 0.9rem;
-    color: #777;
+    color: var(--cor-texto-secundario);
     margin-bottom: 30px;
 }
 
@@ -181,17 +201,17 @@ main.profile-main-container {
     border-radius: 12px;
     text-decoration: none;
     font-weight: 600;
-    color: #3d2b23;
+    color: var(--cor-texto-primario);
     transition: background-color 0.3s, color 0.3s;
 }
 
 .profile-nav-item:hover {
-    background-color: #f0e5d8;
+    background-color: var(--cor-borda);
 }
 
 .profile-nav-item.active {
-    background-color: #5a3e36;
-    color: #fff;
+    background-color: var(--cor-interativo);
+    color: var(--cor-interativo-texto);
 }
 
 .profile-nav-item i {
@@ -200,7 +220,7 @@ main.profile-main-container {
 
 .logout-item {
     margin-top: 100px;
-    color: #e53935;
+    color: var(--cor-perigo);
 }
 
 .profile-content {
@@ -209,11 +229,11 @@ main.profile-main-container {
 
 .profile-section {
     display: none;
-    background-color: #fff;
+    background-color: var(--cor-fundo-caixa);
     border-radius: 22px;
     height: 600px;
     padding: 30px;
-    border: 2.5px  #3d2b23;
+    border: 2.5px solid var(--cor-texto-primario);
 }
 
 .profile-section.active {
@@ -224,7 +244,7 @@ main.profile-main-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #f0e5d8;
+    border-bottom: 2px solid var(--cor-borda);
     padding-bottom: 15px;
     margin-bottom: 25px;
 }
@@ -233,13 +253,13 @@ main.profile-main-container {
     font-family: "Alexandria", sans-serif;
     font-size: 2rem;
     font-weight: 700;
-    color: #3d2b23;
+    color: var(--cor-texto-primario);
     margin: 0;
 }
 
 .edit-btn {
-    background-color: #5a3e36;
-    color: #fff;
+    background-color: var(--cor-interativo);
+    color: var(--cor-interativo-texto);
     border: none;
     border-radius: 10px;
     padding: 8px 16px;
@@ -252,14 +272,15 @@ main.profile-main-container {
 }
 
 .edit-btn:hover {
-    background-color: #3c2923;
+    filter: brightness(0.8);
 }
 
 .edit-btn.danger {
-    background-color: #e53935;
+    background-color: var(--cor-perigo);
+    color: white;
 }
 .edit-btn.danger:hover {
-    background-color: #c62828;
+    filter: brightness(0.8);
 }
 
 .info-grid {
@@ -271,14 +292,14 @@ main.profile-main-container {
 .info-item label {
     font-size: 0.9rem;
     font-weight: 600;
-    color: #777;
+    color: var(--cor-texto-secundario);
     margin-bottom: 5px;
     display: block;
 }
 
 .info-item p {
     font-size: 1.1rem;
-    color: #3d2b23;
+    color: var(--cor-texto-primario);
     margin: 0;
 }
 
@@ -291,7 +312,7 @@ main.profile-main-container {
     align-items: center;
     justify-content: space-between;
     padding: 20px;
-    border: 2px solid #f0e5d8;
+    border: 2px solid var(--cor-borda);
     border-radius: 16px;
     margin-bottom: 15px;
 }
@@ -319,8 +340,8 @@ main.profile-main-container {
 
 .details-btn {
     background: none;
-    border: 2px solid #5a3e36;
-    color: #5a3e36;
+    border: 2px solid var(--cor-interativo);
+    color: var(--cor-interativo);
     font-weight: 700;
     padding: 8px 20px;
     border-radius: 10px;
@@ -329,8 +350,8 @@ main.profile-main-container {
 }
 
 .details-btn:hover {
-    background-color: #5a3e36;
-    color: #fff;
+    background-color: var(--cor-interativo);
+    color: var(--cor-interativo-texto);
 }
 
 .settings-item {
@@ -338,7 +359,7 @@ main.profile-main-container {
     justify-content: space-between;
     align-items: center;
     padding: 20px 0;
-    border-bottom: 1px solid #f0e5d8;
+    border-bottom: 1px solid var(--cor-borda);
 }
 .settings-item:last-child {
     border-bottom: none;
@@ -347,7 +368,7 @@ main.profile-main-container {
     margin: 0;
 }
 .settings-item small {
-    color: red;
+    color: var(--cor-texto-secundario);
 }
 
 footer {
@@ -361,7 +382,7 @@ footer {
 }
 
 footer .social-icons a i {
-  color: #5a3e36;
+  color: var(--cor-interativo);
   font-size: 1.15rem;
   padding: 0.19rem;
 }

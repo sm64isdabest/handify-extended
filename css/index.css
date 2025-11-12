@@ -1,15 +1,15 @@
-@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap" );
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" );
 
 body {
   font-family: "Montserrat", Arial, sans-serif;
   margin: 0;
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
 }
 
 a.btn,
 .menu-bar button {
-  color: #fff;
+  color: var(--cor-interativo-texto);
   border: none;
   border-radius: 0.6rem 0.6rem 0 0;
   font-size: 14px;
@@ -22,7 +22,7 @@ a.btn,
   justify-content: center;
   cursor: pointer;
   text-decoration: none;
-  background-color: #5a3e36;
+  background-color: var(--cor-interativo);
   transition: background-color 250ms ease, transform 150ms ease;
   will-change: background-color, transform;
 }
@@ -30,13 +30,13 @@ a.btn,
 a.btn:hover,
 .menu-bar button:hover,
 a.entrar:hover {
-  background-color: #3c2923;
-  color: #fff;
+  background-color: var(--cor-texto-primario);
+  color: var(--cor-fundo-caixa);
 }
 
 header {
   font-family: "Alexandria", sans-serif;
-  border-bottom: 2px solid #593d36;
+  border-bottom: 2px solid var(--cor-interativo);
 }
 
 nav {
@@ -64,15 +64,15 @@ header nav ul {
 
 header nav ul li a {
   text-decoration: none;
-  color: #333;
+  color: var(--cor-texto-primario);
   font-weight: bold;
 }
 
 header nav ul li a.entrar {
-  color: white;
+  color: var(--cor-interativo-texto);
   padding: 0.9rem;
   border-radius: 15px;
-  background-color: #593d36;
+  background-color: var(--cor-interativo);
   transition: background-color 250ms ease, transform 150ms ease;
   will-change: background-color, transform;
 }
@@ -88,9 +88,9 @@ header nav ul li a.entrar i {
   border: none;
   border-radius: 1rem;
   margin: -10px;
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
   cursor: pointer;
-  background-color: #FAECCE;
+  background-color: var(--cor-borda);
   transition: background-color 250ms ease, transform 150ms ease;
   will-change: background-color, transform;
 }
@@ -115,17 +115,17 @@ header nav ul li a.entrar i {
 
 .user-logged,
 .user-logged-mobile {
-  color: #484848;
+  color: var(--cor-texto-secundario);
   font-style: italic;
 }
 
 .user-logged i,
 .user-logged-mobile i {
-  background-color: #5b5b5bbb;
+  background-color: var(--cor-interativo);
   padding: 0.5rem;
   border-radius: 15rem;
-  color: rgb(230, 230, 230);
-  border: 2px solid #484848;
+  color: var(--cor-interativo-texto);
+  border: 2px solid var(--cor-texto-secundario);
 }
 
 .menu-bar button.cart {
@@ -137,15 +137,14 @@ header nav ul li a.entrar i {
   padding-right: 0.1rem;
 }
 
-.menu-bar dbutton:hover {
-  background-color: #000000;
-}
 .user-name{
   font-weight: 600;
+  color: var(--cor-texto-primario);
 }
 .user-name-popup{
   margin-bottom: 8px;
   font-weight: 600;
+  color: var(--cor-texto-primario);
 }
 .user-logged {
   position: relative;
@@ -155,7 +154,7 @@ header nav ul li a.entrar i {
   position: absolute;
   top: 40px;
   right: 0;
-  background: #fff;
+  background: var(--cor-fundo-caixa);
   border-radius: 20px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   padding: 0.8rem;
@@ -177,8 +176,8 @@ header nav ul li a.entrar i {
   width: 100%;
   padding: 8px 12px;
   border: none;
-  background-color: #5a3e36;
-  color: #fff;
+  background-color: var(--cor-interativo);
+  color: var(--cor-interativo-texto);
   border-radius: 12px;
   cursor: pointer;
   text-align: center;
@@ -187,14 +186,14 @@ header nav ul li a.entrar i {
 }
 
 .menu-popup .menu-item:hover {
-  background-color: #7a574d;
+  filter: brightness(1.2);
 }
 
 #popup-menu {
   position: absolute;
   top: 70px;
   right: 20px;
-  background: #ffffff;
+  background: var(--cor-fundo-caixa);
   border-radius: 20px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   padding: 1.2rem 1.2rem;
@@ -205,8 +204,8 @@ header nav ul li a.entrar i {
 #popup-menu .popup-list a {
   display: block;
   margin: 0.7rem 0;
-  background: #5a3e36;
-  color: #fff;
+  background: var(--cor-interativo);
+  color: var(--cor-interativo-texto);
   padding: 0.7rem 1.2rem;
   border-radius: 16px;
   text-align: center;
@@ -218,8 +217,8 @@ header nav ul li a.entrar i {
 .search-bar {
   display: flex;
   align-items: center;
-  background-color: #5a3e36;
-  border: 1px solid #ffffff;
+  background-color: var(--cor-interativo);
+  border: 1px solid var(--cor-fundo-caixa);
   border-radius: 20px;
   padding: 5px 10px;
   width: calc(100% - 550px);
@@ -228,7 +227,7 @@ header nav ul li a.entrar i {
 }
 
 .search-bar i {
-  color: rgb(255, 255, 255);
+  color: var(--cor-interativo-texto);
   cursor: pointer;
 }
 
@@ -239,11 +238,12 @@ header nav ul li a.entrar i {
   font-size: 14px;
   width: 100%;
   background: none;
-  color: white;
+  color: var(--cor-interativo-texto);
 }
 
 input::placeholder {
-  color: white;
+  color: var(--cor-interativo-texto);
+  opacity: 0.8;
 }
 
 .search-bar button {
@@ -260,15 +260,15 @@ input::placeholder {
 }
 
 .nav-links a {
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
   text-decoration: none;
   font-weight: bold;
   font-size: 1.1rem;
 }
 
 .btn-entrar {
-  background: #3d2b23;
-  color: #fff;
+  background: var(--cor-texto-primario);
+  color: var(--cor-fundo-caixa);
   border: none;
   border-radius: 18px;
   padding: 6px 18px;
@@ -281,8 +281,8 @@ input::placeholder {
 }
 
 .cart-btn {
-  background: #3d2b23;
-  color: #fff;
+  background: var(--cor-texto-primario);
+  color: var(--cor-fundo-caixa);
   border: none;
   border-radius: 50%;
   width: 38px;
@@ -298,7 +298,7 @@ input::placeholder {
   display: none;
   border: none;
   font-size: 2rem;
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
   cursor: pointer;
 }
 
@@ -322,7 +322,7 @@ input::placeholder {
 .carousel,
 .slide {
   background-image: url("../images/fundos/fundo_madeira.png");
-  border-bottom: solid 0.3rem #4a2c2a;
+  border-bottom: solid 0.3rem var(--cor-interativo);
 }
 
 .carousel-control-prev-icon,
@@ -337,8 +337,8 @@ input::placeholder {
 }
 
 .menu-btn {
-  background: #3d2b23;
-  color: #fff;
+  background: var(--cor-texto-primario);
+  color: var(--cor-fundo-caixa);
   border: none;
   border-radius: 10px;
   padding: 8px 18px;
@@ -355,13 +355,13 @@ input::placeholder {
   justify-content: space-between;
   padding: 18px 0;
   height: 11rem;
-  border-bottom: 3px solid #3d2b23;
+  border-bottom: 3px solid var(--cor-texto-primario);
 }
 
 .banner-arrow {
   border: none;
   font-size: 2rem;
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
   cursor: pointer;
   padding: 0 18px;
 }
@@ -371,10 +371,11 @@ input::placeholder {
   max-width: 600px;
   padding: 0 24px;
   margin-left: 440px;
-  background: #ffffffe7;
+  background: var(--cor-fundo-caixa);
+  opacity: 0.9;
   padding: 24px;
   border-radius: 16px;
-  border-color: #3d2b23;
+  border-color: var(--cor-texto-primario);
 }
 
 .banner-content h2 {
@@ -382,17 +383,19 @@ input::placeholder {
   margin: 0 0 8px 0;
   font-weight: bold;
   width: 25rem;
+  color: var(--cor-texto-primario);
 }
 
 .banner-content p {
   font-size: 1.1rem;
   font-family: "Alexandria", sans-serif;
   font-weight: 500;
+  color: var(--cor-texto-primario);
 }
 
 .banner-off b {
-  background: #3d2b23;
-  color: #fff;
+  background: var(--cor-texto-primario);
+  color: var(--cor-fundo-caixa);
   border-radius: 18px;
   padding: 8px 16px;
   font-size: 2rem;
@@ -403,8 +406,8 @@ input::placeholder {
 
 .banner-off {
   font-size: 1.5rem;
-  background: #3d2b23;
-  color: #fff;
+  background: var(--cor-texto-primario);
+  color: var(--cor-fundo-caixa);
   border-radius: 18px;
   padding: 8px 16px;
 }
@@ -415,10 +418,9 @@ input::placeholder {
 }
 
 main {
-  background-image: url(../images/fundos/fundo_madeira_carvalho.jpg);
+  background: none;
   padding: 1rem;
-  background-size: cover;
-  border-bottom: 5px solid #593d36;
+  border-bottom: 5px solid var(--cor-interativo);
 }
 
 .card {
@@ -432,7 +434,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #392621;
+  background-color: var(--cor-interativo);
   border-radius: 16px;
   width: 600px;
   max-width: 98vw;
@@ -446,19 +448,19 @@ main {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 25px;
-  color: white;
+  color: var(--cor-interativo-texto);
 }
 
 .pagamento-icones {
   display: flex;
-  background: white;
+  background: var(--cor-fundo-caixa);
   justify-content: center;
   align-items: center;
   gap: 32px;
   flex-wrap: wrap;
   padding: 0.75rem;
   border-radius: 1.5rem;
-  border: 0.5rem solid #4b3a35;
+  border: 0.5rem solid var(--cor-interativo);
 }
 
 .pagamento-icones img {
@@ -477,9 +479,9 @@ main {
 
 .oferta-dia,
 .oferta-semanal {
-  background: #fff;
+  background: var(--cor-fundo-caixa);
   border-radius: 22px;
-  border: 2.5px dotted #3d2b23;
+  border: 2.5px dotted var(--cor-texto-primario);
   box-shadow: 0 2px 8px #0001;
   padding: 28px 32px 24px 32px;
   min-width: 370px;
@@ -500,7 +502,7 @@ main {
 .oferta-titulo {
   font-size: 2rem;
   font-weight: bold;
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
   margin-bottom: 0;
   margin-top: 0;
   display: block;
@@ -514,7 +516,7 @@ main {
 
 .oferta-descricao {
   font-size: 1.2rem;
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
   margin-bottom: 0.5rem;
   margin-top: -0.5rem;
   display: block;
@@ -556,14 +558,14 @@ main {
 }
 
 .oferta-preco-antigo {
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
   font-size: 1.1rem;
   margin-bottom: 0.1rem;
   display: block;
 }
 
 .preco-antigo {
-  color: #e53935;
+  color: var(--cor-perigo);
   font-size: 1.1rem;
   text-decoration: line-through;
   font-weight: bold;
@@ -571,7 +573,7 @@ main {
 }
 
 .oferta-preco-novo {
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
   font-size: 1.7rem;
   font-weight: 500;
   margin-bottom: 0.2rem;
@@ -580,15 +582,15 @@ main {
 
 .oferta-preco-novo b {
   font-size: 2.2rem;
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
   font-weight: bold;
   display: block;
   margin-top: 0.1rem;
 }
 
 .oferta-btn {
-  background: #3d2b23;
-  color: #fff;
+  background: var(--cor-texto-primario);
+  color: var(--cor-fundo-caixa);
   border: none;
   border-radius: 16px;
   padding: 12px 36px;
@@ -604,17 +606,17 @@ main {
 
 .oferta-btn a {
   text-decoration: none;
-  color: white;
+  color: var(--cor-fundo-caixa);
 }
 
 .oferta-btn:hover {
-  background-color: #80574c;
-  color: white;
+  background-color: var(--cor-interativo);
+  color: var(--cor-interativo-texto);
 }
 
 .outras-ofertas {
   flex: 1;
-  background: #fff;
+  background: var(--cor-fundo-caixa);
   border-radius: 18px;
   padding: 22px 22px 18px 22px;
   box-shadow: 0 2px 8px #0001;
@@ -622,7 +624,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid #3d2b23;
+  border: 2px solid var(--cor-texto-primario);
   font-family: "Alexandria", sans-serif;
   font-size: 1.3rem;
   font-weight: bold;
@@ -642,7 +644,7 @@ main {
   font-size: 2rem;
   margin-bottom: 12px;
   text-align: center;
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
 }
 
 .outras-ofertas-lista {
@@ -660,7 +662,7 @@ main {
 .outras-ofertas-lista .produto-nome {
   font-size: 1rem;
   font-weight: 500;
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
   margin-bottom: 8px;
   text-align: center;
 }
@@ -668,6 +670,7 @@ main {
 .produto-nome {
   font-family: "Alexandria", sans-serif;
   font-weight: 500;
+  color: var(--cor-texto-primario);
 }
 
 .outras-ofertas-lista img {
@@ -678,8 +681,8 @@ main {
 }
 
 .outras-ofertas .veja-mais-btn {
-  background: #3d2b23;
-  color: #fff;
+  background: var(--cor-texto-primario);
+  color: var(--cor-fundo-caixa);
   border: none;
   border-radius: 12px;
   padding: 12px 36px;
@@ -701,19 +704,19 @@ main {
 }
 
 section.produtos {
-  border: 2px solid #3d2b2388;
+  border: 2px solid var(--cor-borda);
 }
 
 section .oferta-semanal {
-  border: 2px solid #3d2b2388;
+  border: 2px solid var(--cor-borda);
 }
 
 section .oferta-dia {
-  border: 2px solid #3d2b2388;
+  border: 2px solid var(--cor-borda);
 }
 
 section .outras-ofertas {
-  border: 2px solid #3d2b2388;
+  border: 2px solid var(--cor-borda);
 }
 
 .produto {
@@ -743,7 +746,7 @@ section .outras-ofertas {
 .produto-nome {
   font-size: 1.1rem;
   margin-bottom: 2px;
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
   text-align: center;
   font-weight: 500;
   min-height: 28px;
@@ -753,7 +756,7 @@ section .outras-ofertas {
 }
 
 .produto-preco-anterior-label {
-  color: #e53935;
+  color: var(--cor-perigo);
   font-size: 0.8rem;
   font-weight: bold;
   margin-bottom: 0;
@@ -774,7 +777,7 @@ section .outras-ofertas {
 }
 
 .produto-preco-antigo {
-  color: #e53935;
+  color: var(--cor-perigo);
   font-size: 0.8rem;
   text-decoration: line-through;
   font-weight: bold;
@@ -795,7 +798,7 @@ section .outras-ofertas {
 
 .produto-preco {
   font-size: 1.5rem;
-  color: #3d2b23;
+  color: var(--cor-texto-primario);
   font-weight: bold;
   text-align: center;
 }
@@ -814,19 +817,12 @@ section .outras-ofertas {
   vertical-align: middle;
 }
 
-.produtos-decorativos {
-  font-size: 1.5rem;
-  margin-left: 0.6rem;
-}
-
-.produtos-paraC {
-  font-size: 1.5rem;
-  margin-left: 0.6rem;
-}
-
+.produtos-decorativos,
+.produtos-paraC,
 .moveis {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   margin-left: 0.6rem;
+  color: var(--cor-texto-primario);
 }
 
 .beneficios {
@@ -839,18 +835,19 @@ section .outras-ofertas {
 .beneficio {
   text-align: center;
   width: 25rem;
-  background-color: #392621 !important;
+  background-color: var(--cor-interativo);
   padding: 1rem;
   font-family: "Work Sans", Arial, sans-serif;
 }
 
 .beneficio h4,
 .beneficio i {
-  color: white;
+  color: var(--cor-interativo-texto);
 }
 
 .beneficio p {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--cor-interativo-texto);
+  opacity: 0.8;
 }
 
 .beneficio i {
@@ -868,24 +865,25 @@ section .outras-ofertas {
 .atendimento-card {
   text-align: center;
   width: 25rem;
-  background-color: #392621 !important;
+  background-color: var(--cor-interativo);
 }
 
 .atendimento-card h4 {
-  color: white;
+  color: var(--cor-interativo-texto);
   font-family: "Work Sans", sans-serif;
 }
 
 .atendimento-card button,
 .atendimento-card p {
   font-family: "Work Sans", sans-serif;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--cor-interativo-texto);
+  opacity: 0.8;
   font-size: 1rem;
 }
 
 .atendimento-card button {
-  background-color: #4b3a35;
-  color: white;
+  background-color: var(--cor-texto-primario);
+  color: var(--cor-fundo-caixa);
   width: 100%;
   height: 3rem;
   margin-bottom: 1rem;
@@ -906,7 +904,7 @@ footer {
 }
 
 footer .social-icons a i {
-  color: #5a3e36;
+  color: var(--cor-interativo);
   font-size: 1.15rem;
   padding: 0.19rem;
 }
@@ -926,8 +924,8 @@ footer .social-icons a i {
   position: absolute;
   visibility: hidden;
   top: 95%;
-  background-color: #5a3e36;
-  color: white;
+  background-color: var(--cor-interativo);
+  color: var(--cor-interativo-texto);
   z-index: 99;
   list-style: none;
   width: 95%;
@@ -948,12 +946,12 @@ footer .social-icons a i {
   height: 100%;
   box-sizing: border-box;
   padding: 0.5rem;
-  border-bottom: 2px solid hwb(29 0% 74%);
+  border-bottom: 2px solid var(--cor-borda);
   transition: background 0.9s;
 }
 
 .autocomplete-items li:hover {
-  background: #3c2923;
+  filter: brightness(0.8);
 }
 
 .autocomplete-items li:active {
@@ -963,7 +961,6 @@ footer .social-icons a i {
 }
 
 @media (max-width: 1020px) {
-
   .panela,
   .pato,
   .banqueta-vime {
@@ -972,19 +969,16 @@ footer .social-icons a i {
 }
 
 @media (min-width: 769px) {
-
   #cart,
   #list {
     display: none;
   }
-
   .mobile-buttons {
     display: none;
   }
 }
 
 @media (max-width: 768px) {
-
   .header-menu,
   .nav-links,
   .btn-entrar,
@@ -993,56 +987,46 @@ footer .social-icons a i {
   nav ul li a {
     display: none;
   }
-
   .search-bar {
     width: calc(100% - 290px);
   }
-
   .mobile-buttons {
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
   }
-
   #cart,
   #list {
     display: block;
   }
-
   #cart:hover,
   #cart:focus,
   #list:hover,
   #list:focus {
-    background-color: #f8e4ba;
+    background-color: var(--cor-borda);
   }
 }
 
 @media (max-width: 664px) {
-
   .jarro-flor,
   .faqueiro,
   .poltrona-positano {
     display: none;
   }
-
   .produtos-lista {
     padding-left: 0;
     padding-right: 0;
   }
-
   .ofertas {
     flex-direction: column;
   }
-
   .ofertas div:nth-child(1) {
     gap: 0 !important;
   }
-
   .oferta-dia,
   .oferta-semanal {
     max-width: 100%;
   }
-
   .outras-ofertas {
     margin: 1rem;
   }
