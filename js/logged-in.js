@@ -7,8 +7,8 @@ function getCookie(name) {
   return null;
 }
 
-function deleteCookie(name) {
-  document.cookie = name + "=; expires=Thu, 23 Set 2025 00:00:00 UTC; path=/;";
+function performLogout() {
+  window.location.href = "logout.php"; 
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -17,40 +17,52 @@ document.addEventListener("DOMContentLoaded", function () {
   const entrarLiMobile = document.querySelector("li .entrar-mobile")?.parentElement;
   const userLoggedLi = document.querySelector("li.user-logged");
 
-  if (!userName) {
+  if (userName) {
+    const formattedName = decodeURIComponent(userName);
+    entrarLi && (entrarLi.style.display = "none");
+    entrarLiMobile && (entrarLiMobile.style.display = "none");
+    
+    if (userLoggedLi) {
+        userLoggedLi.style.display = "list-item";
+        const userNameSpan = userLoggedLi.querySelector(".user-name");
+        
+        if (userNameSpan) {
+            userNameSpan.textContent = formattedName;
+        }
+    }
+
+  } else {
     entrarLi && (entrarLi.style.display = "block");
     entrarLiMobile && (entrarLiMobile.style.display = "block");
-    userLoggedLi && (userLoggedLi.style.display = "none");
-    return;
+    if (userLoggedLi) {
+        userLoggedLi.style.display = "none";
+    }
   }
 
-  const formattedName = decodeURIComponent(userName);
-  entrarLi && (entrarLi.style.display = "none");
-  entrarLiMobile && (entrarLiMobile.style.display = "none");
-  userLoggedLi && (userLoggedLi.style.display = "list-item");
+  const logoutButtons = document.querySelectorAll(".logout-btn");
 
-  const userNameSpan = userLoggedLi.querySelector(".user-name");
-  userNameSpan.textContent = formattedName;
-
-  const profileBtn = userLoggedLi.querySelector(".profile-btn");
-  const menuPopup = userLoggedLi.querySelector(".menu-popup");
-  const logoutBtn = userLoggedLi.querySelector(".logout-btn");
-
-  profileBtn.addEventListener("click", () => {
-    menuPopup.classList.toggle("show");
+  logoutButtons.forEach(button => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault(); 
+      performLogout();
+    });
   });
 
-  document.addEventListener("click", (e) => {
-    if (!menuPopup.contains(e.target) && !profileBtn.contains(e.target)) {
-      menuPopup.classList.remove("show");
-    }
-  });
+  const profileBtn = document.querySelector(".profile-btn");
+  const menuPopup = document.querySelector(".menu-popup");
 
-  logoutBtn.addEventListener("click", () => {
-    deleteCookie("userName");
-    location.href = "View/login.php";
-  });
+  if (profileBtn && menuPopup) {
+    profileBtn.addEventListener("click", () => {
+      menuPopup.classList.toggle("show");
+    });
 
+    document.addEventListener("click", (e) => {
+      if (!menuPopup.contains(e.target) && !profileBtn.contains(e.target)) {
+        menuPopup.classList.remove("show");
+      }
+    });
+  }
+  
   const rastrearBtn = document.getElementById('rastrear-btn');
   const rastrearPopup = document.getElementById('rastrear-popup');
   const closeRastrear = document.getElementById('close-rastrear');

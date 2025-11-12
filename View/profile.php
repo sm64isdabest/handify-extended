@@ -93,7 +93,7 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                     Informações</a>
                 <a href="#orders" class="profile-nav-item"><i class="bi bi-box-seam"></i> Meus Pedidos</a>
                 <a href="#settings" class="profile-nav-item"><i class="bi bi-gear"></i> Configurações</a>
-                <a href="#" class="profile-nav-item logout-item"><i class="bi bi-box-arrow-right"></i> Sair</a>
+                <a href="#" class="profile-nav-item logout-item logout-btn"><i class="bi bi-box-arrow-right"></i> Sair</a>
             </div>
         </div>
 
@@ -206,7 +206,8 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
             <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram"></i></a>
         </div>
     </footer>
-
+    <script src="../js/logged-in.js"></script>
+    <script src="../js/profile.js"></script>
 </body>
 
 </html>

@@ -8,16 +8,21 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background: 
+  linear-gradient(rgba(245, 236, 218, 0.4), rgba(245, 236, 218, 0.4)), 
+  url("../images/fundos/fundo_madeira_carvalho.jpg");
+  background-size: cover; 
+  background-position: center center; 
+  background-attachment: fixed; 
+  background-repeat: no-repeat;
 }
 
 header {
   font-family: "Alexandria", sans-serif;
-  border-bottom: 2px solid #593d36;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #FAECCE;
 }
 
 header .logo {
@@ -342,7 +347,7 @@ main.profile-main-container {
     margin: 0;
 }
 .settings-item small {
-    color: #777;
+    color: red;
 }
 
 footer {
@@ -353,8 +358,6 @@ footer {
   text-align: center;
   justify-content: space-between;
   padding: 1.6rem;
-  border-top: 2px solid #593d36;
-  background-color: #FAECCE;
 }
 
 footer .social-icons a i {
