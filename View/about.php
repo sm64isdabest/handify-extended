@@ -33,19 +33,19 @@
                 <button id="list"><i class="bi bi-list"></i></button>
             </nav>
             <div id="popup-menu">
-            <ul class="popup-list">
-                <li style="display: none;">
-                    <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
-                </li>
-                <li class="user-logged-mobile" style="display: none;">
-                    <i class="bi bi-person"></i> placeholder
-                </li>
-                <li><a href="about.php">Sobre</a></li>
-                <li><a href="#footer">Contato</a></li>
-                <li><a href="../../index.php">Home</a></li>
-            </ul>
+                <ul class="popup-list">
+                    <li style="display: none;">
+                        <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+                    </li>
+                    <li class="user-logged-mobile" style="display: none;">
+                        <i class="bi bi-person"></i> placeholder
+                    </li>
+                    <li><a href="about.php">Sobre</a></li>
+                    <li><a href="#footer">Contato</a></li>
+                    <li><a href="../../index.php">Home</a></li>
+                </ul>
             </div>
-                <!-- </header> -->
+            <!-- </header> -->
         </section>
         <section class="sobre-hero">
             <div class="sobre-hero-content">
@@ -57,7 +57,8 @@
         </section>
         <section class="sobre-info">
             <div class="sobre-info-top">
-                <div class="sobre-info-text-box" style="background-color: #faecce; padding: 1rem; border-radius: 8px; border-radius: 2rem;">
+                <div class="sobre-info-text-box"
+                    style="background-color: #faecce; padding: 1rem; border-radius: 8px; border-radius: 2rem;">
                     <h2 class="sobre-info-title">Artesanato</h2>
                     <p class="sobre-info-desc">
                         O artesanato é uma forma de criar com as próprias mãos, usando matérias-primas naturais
@@ -71,9 +72,10 @@
         </section>
         <section class="sobre-info">
             <div class="sobre-info-top">
-                <div class="sobre-info-text-box" style="background-color: #faecce; padding: 1rem; border-radius: 8px; border-radius: 2rem;">
+                <div class="sobre-info-text-box" style="background-color: #faecce; padding: 1rem; border-radius: 8px; border-radius: 2rem;ggggggg
+                ">
                     <h2 class="sobre-info-title">Sobre o Handify</h2>
-                    <p class="sobre-info-desc" >
+                    <p class="sobre-info-desc">
                         A Handify é um marketplace que valoriza o trabalho artesanal, conectando criadores independentes
                         com pessoas que buscam produtos únicos e feitos com cuidado. Além de vender, a plataforma
                         promove a sustentabilidade, a originalidade e a história por trás de cada peça, criando uma
@@ -92,8 +94,8 @@
                     Atendimento das 8h às 19h de segunda a sexta. 8h às 14h aos sábados.
                 </p>
             </div>
-            <button>(71) 97534-4397</button>
-            <button>0800-020-5243</button>
+            <button>(71) 00000-0000</button>
+            <button>0000-000-0000</button>
         </div>
         <div class="card">
             <div class="card-body">
@@ -103,7 +105,7 @@
                 </p>
             </div>
             <button>handifycontato@gmail.com</button>
-            <button>0800-020-6639</button>
+            <button>0000-000-0000</button>
         </div>
         <div class="card">
             <div class="card-body">
@@ -113,8 +115,8 @@
                     região.
                 </p>
             </div>
-            <button><i class="bi bi-whatsapp"></i> (71) 9985-7897</button>
-            <button><i class="bi bi-whatsapp"></i> (71) 9535-6332</button>
+            <button><i class="bi bi-whatsapp"></i> (71) 0000-0000</button>
+            <button><i class="bi bi-whatsapp"></i> (71) 0000-0000</button>
         </div>
     </div>
 

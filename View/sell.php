@@ -1,3 +1,73 @@
+<?php
+
+session_start();
+require_once __DIR__ . '/../Model/Store.php';
+require_once __DIR__ . '/../Model/Product.php';
+require_once __DIR__ . '/../Controller/ProductController.php';
+
+use Model\Product;
+use Controller\ProductController;
+use Model\Store;
+
+$productModel = new Product();
+$storeModel = new Store();
+$productController = new ProductController($productModel);
+$message = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = $_POST['name'] ?? '';
+    $description = $_POST['description'] ?? '';
+    $stock = $_POST['stock'] ?? '';
+    $price = $_POST['price'] ?? '';
+
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $uploadDir = __DIR__ . '/../uploads/products/';
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+
+        $tmpName = $_FILES['image']['tmp_name'];
+        $origName = basename($_FILES['image']['name']);
+        $ext = pathinfo($origName, PATHINFO_EXTENSION);
+        $safeName = uniqid('prod_', true) . '.' . $ext;
+        $destPath = $uploadDir . $safeName;
+
+        if (move_uploaded_file($tmpName, $destPath)) {
+            $imagePath = 'uploads/products/' . $safeName;
+
+            $free_shipping = isset($_POST['free_shipping']) ? 1 : 0;
+
+            // obtém id da loja/usuário a partir da sessão
+            $id_user_logado = $_SESSION['id'];
+            $storeData = $id_user_logado ? $storeModel->getStoreByUserId($id_user_logado): null;
+            $id_store_fk = $storeData['id_store'];
+            var_dump($id_store_fk);
+            var_dump($_SESSION['store']['id_store']);
+            if (empty($id_store_fk)) {
+                $message = 'Erro: id da loja não encontrado na sessão. Faça login com a conta da empresa.';
+            } else {
+                $result = $productController->registerProduct(
+                    $name,
+                    $description,
+                    $imagePath,
+                    (int) $stock,
+                    (string) $price,
+                    $free_shipping,
+                    (int) $id_store_fk
+                );
+
+                $message = $result ? 'Produto cadastrado com sucesso.' : 'Erro ao cadastrar produto.';
+            }
+        } else {
+            $message = 'Erro ao mover arquivo enviado.';
+        }
+    } else {
+        $message = 'Imagem obrigatória ou falha no upload.';
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -23,8 +93,13 @@
                 <li style="display: none;">
                     <a href="sign-up.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
                 </li>
-                <li class="user-logged" style="display: none;">
-                    <i class="bi bi-person"></i> placeholder
+                <li class="user-logged" style="display: none; position: relative;">
+                    <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
+                    <span class="user-name"></span>
+                    <div class="menu-popup">
+                        <p class="user-name-popup"></p>
+                        <button class="menu-item logout-btn">Sair</button>
+                    </div>
                 </li>
             </ul>
             <!-- PARA DISPOSITIVOS MÓVEIS -->
@@ -46,50 +121,49 @@
     </header>
 
     <main>
-        <div class="container-produto">
-            <div class="sidebar">
-                <button class="btn-add"><i class="bi bi-plus"></i></button>
-                <button class="btn-back"> <i class="bi bi-arrow-left"> </i> </button>
-            </div>
-            <div class="imagem-produto">
-                <button class="btn-add"><i class="bi bi-plus"></i></button>
-            </div>
-            <!-- para dispositivos móveis -->
-            <button class="mobile btn-add"><i class="bi bi-plus"></i></button>
-            <div class="info-produto">
-                <div class="nome-produto">
-                    <input type="text" placeholder="Nome do Produto" />
+        <!-- Form -->
+        <form method="POST" action="" enctype="multipart/form-data">
+            <div class="container-produto">
+                <div class="sidebar">
+                    <button class="btn-back"> <i class="bi bi-arrow-left"> </i> </button>
                 </div>
-                <div class="valor-produto">
-                    <input type="text" placeholder="Valor do Produto" />
-                </div>
-                <div class="parcelas-produto">
-                    <input type="text" placeholder="Parcelas" />
-                </div>
-                <div class="descricao-produto">
-                    <input type="text" placeholder="Descrição do Produto" />
-                </div>
-            </div>
-            <div class="destaque-produto">
-                <div class="titulo-destaque">Informações De Destaque</div>
-                <div class="botoes-destaque">
-                    <button>+</button>
-                    <button>+</button>
-                    <button>+</button>
-                    <button>+</button>
-                </div>
-                <div class="quantidade-produto">
-                    <input type="text" placeholder="Quantidade" />
-                </div>
-                <button class="comprar-agora" disabled>Comprar Agora</button>
-                <button class="adicionar-carrinho" disabled>Adicionar ao Carrinho</button>
-            </div>
-        </div>
 
-        <div class="quadro-descricao">
-            <input type="text" placeholder="Descrição do Produto" />
-        </div>
+                <div class="imagem-produto">
+                    <!-- trocar o botão por input file -->
+                    <input type="file" id="image" name="image" accept="image/*" required />
+                </div>
+                <div class="info-produto">
+                    <div class="nome-produto">
+                        <input type="text" id="name" name="name" autocomplete="off" placeholder="Nome do produto"
+                            required />
+                    </div>
+                    <div class="valor-produto">
+                        <input type="number" id="price" name="price" placeholder="Preço" step="0.01" min="0" required />
+                    </div>
+                </div>
+                <div class="destaque-produto">
+                    <div class="titulo-destaque">Informações de destaque</div>
+                    <div class="botoes-destaque">
+                        <input id="free_shipping" name="free_shipping" type="checkbox">Frete grátis</input>
+                        <!-- <p class="free-shipping">Frete grátis</p> -->
+                    </div>
+                    <div class="quantidade-produto">
+                        <input type="number" id="stock" name="stock" placeholder="Quantidade" min="0" required />
+                    </div>
+                    <button class="comprar-agora" disabled>Comprar Agora</button>
+                    <button class="adicionar-carrinho" disabled>Adicionar ao Carrinho</button>
+                </div>
+            </div>
 
+            <div class="quadro-descricao">
+                <textarea name="description" id="description" placeholder="Descrição do produto..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit">Vender</button>
+        </form>
+        <!-- Form -->
+        <?php if (!empty($message))
+            echo "<p style='color:red;text-align:center;'>$message</p>"; ?>
     </main>
 
     <footer>
@@ -119,8 +193,8 @@
     <script src="../js/logged-in.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
-    crossorigin="anonymous"></script>
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

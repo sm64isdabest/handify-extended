@@ -7,8 +7,8 @@ body {
   color: #3d2b23;
 }
 
-a.btn {
-  background-color: #5a3e36; /* mesma cor de fundo dos botões originais */
+a.btn,
+.menu-bar button {
   color: #fff;
   border: none;
   border-radius: 0.6rem 0.6rem 0 0;
@@ -22,10 +22,15 @@ a.btn {
   justify-content: center;
   cursor: pointer;
   text-decoration: none;
+  background-color: #5a3e36;
+  transition: background-color 250ms ease, transform 150ms ease;
+  will-change: background-color, transform;
 }
 
-a.btn:hover {
-  background-color: #3c2923; /* cor de hover similar ao botão */
+a.btn:hover,
+.menu-bar button:hover,
+a.entrar:hover {
+  background-color: #3c2923;
   color: #fff;
 }
 
@@ -40,7 +45,6 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: white;
 }
 
 header .logo {
@@ -65,49 +69,45 @@ header nav ul li a {
 }
 
 header nav ul li a.entrar {
-  background-color: #593d36;
   color: white;
   padding: 0.9rem;
   border-radius: 15px;
+  background-color: #593d36;
+  transition: background-color 250ms ease, transform 150ms ease;
+  will-change: background-color, transform;
 }
 
 header nav ul li a.entrar i {
   margin-right: 0.3rem;
 }
 
-header #cart {
-  display: none;
-}
-
-header #cart {
+#cart,
+#list {
   width: 50px;
   height: 50px;
-  display: none;
-  background: none;
   border: none;
-  border-radius: 100%;
+  border-radius: 1rem;
   margin: -10px;
+  color: #3d2b23;
+  cursor: pointer;
+  background-color: #FAECCE;
+  transition: background-color 250ms ease, transform 150ms ease;
+  will-change: background-color, transform;
 }
 
-header #list {
-  width: 50px;
-  height: 50px;
-  display: none;
-  background: none;
-  border: none;
-  border-radius: 100%;
-  margin: -10px;
+#cart i,
+#list i {
+  font-size: xx-large;
 }
 
 .menu-bar {
   display: flex;
-  background-color: white;
   justify-content: center;
 }
 
 .menu-bar div {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   margin: 0 auto;
   justify-content: end;
   text-align: center;
@@ -128,18 +128,6 @@ header #list {
   border: 2px solid #484848;
 }
 
-.menu-bar button {
-  background-color: #5a3e36;
-  color: #fff;
-  border: none;
-  border-radius: 0.6rem 0.6rem 0 0;
-  font-size: 14px;
-  height: 2rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  width: auto;
-}
-
 .menu-bar button.cart {
   font-size: 18px;
   height: 2rem;
@@ -152,13 +140,54 @@ header #list {
 .menu-bar dbutton:hover {
   background-color: #000000;
 }
-
-#cart i {
-  font-size: xx-large;
+.user-name{
+  font-weight: 600;
+}
+.user-name-popup{
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+.user-logged {
+  position: relative;
 }
 
-#list i {
-  font-size: xx-large;
+.menu-popup {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  padding: 0.8rem;
+  display: none;
+  min-width: 120px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-popup.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-popup .menu-item {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background-color: #5a3e36;
+  color: #fff;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 8px;
+  transition: background-color 0.2s;
+}
+
+.menu-popup .menu-item:hover {
+  background-color: #7a574d;
 }
 
 #popup-menu {
@@ -193,7 +222,7 @@ header #list {
   border: 1px solid #ffffff;
   border-radius: 20px;
   padding: 5px 10px;
-  width: 30rem;
+  width: calc(100% - 550px);
   margin-left: 10rem;
   position: absolute;
 }
@@ -386,11 +415,13 @@ input::placeholder {
 }
 
 main {
-  padding: 24px 0 0 0;
+  background-image: url(../images/fundos/fundo_madeira_carvalho.jpg);
+  padding: 1rem;
+  background-size: cover;
+  border-bottom: 5px solid #593d36;
 }
 
 .card {
-  background: #fff;
   border-radius: 14px;
   padding: 12px;
   margin: 1rem;
@@ -401,15 +432,13 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background-color: #392621;
   border-radius: 16px;
-  box-shadow: 0 2px 8px #0001;
   width: 600px;
   max-width: 98vw;
-  padding: 24px 0 18px 0;
+  padding: 1rem;
   margin: 36px auto 20px auto;
   box-sizing: border-box;
-  border: 1px solid #3d2b23be;
 }
 
 .pagamento h4 {
@@ -417,19 +446,19 @@ main {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 25px;
-  color: #3d2b23;
+  color: white;
 }
 
 .pagamento-icones {
   display: flex;
+  background: white;
   justify-content: center;
   align-items: center;
   gap: 32px;
-  width: 100%;
-  margin-top: 0;
-  border-top: 2px solid #3d2b23;
-  width: 83%;
-  padding-top: 30px;
+  flex-wrap: wrap;
+  padding: 0.75rem;
+  border-radius: 1.5rem;
+  border: 0.5rem solid #4b3a35;
 }
 
 .pagamento-icones img {
@@ -579,8 +608,8 @@ main {
 }
 
 .oferta-btn:hover {
-  background: #ffe9ba;
-  color: #3d2b23;
+  background-color: #80574c;
+  color: white;
 }
 
 .outras-ofertas {
@@ -664,8 +693,6 @@ main {
 .produtos-lista {
   display: flex;
   justify-content: space-around;
-  align-items: space-between;
-  gap: 11rem;
   padding-left: 1.5rem;
   margin-top: 18px;
   padding-bottom: 8px;
@@ -804,65 +831,75 @@ section .outras-ofertas {
 
 .beneficios {
   display: flex;
-  gap: 18px;
-  margin: 24px 24px 0 24px;
-  font-family: "Work Sans", Arial, sans-serif;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .beneficio {
-  flex: 1;
   text-align: center;
-  border: 2px solid #39262179;
+  width: 25rem;
+  background-color: #392621 !important;
+  padding: 1rem;
   font-family: "Work Sans", Arial, sans-serif;
 }
 
-.beneficio-card {
-  border-radius: 15px;
+.beneficio h4,
+.beneficio i {
+  color: white;
+}
+
+.beneficio p {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .beneficio i {
   font-size: 2rem;
-  color: #3d2b23;
   margin-bottom: 8px;
 }
 
 .atendimento {
   display: flex;
-  gap: 18px;
-  margin: 24px 24px 0 24px;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
 }
 
 .atendimento-card {
-  flex: 1;
   text-align: center;
-  border: 2px solid #39262179;
+  width: 25rem;
+  background-color: #392621 !important;
 }
 
-.atendimento-card span,
+.atendimento-card h4 {
+  color: white;
+  font-family: "Work Sans", sans-serif;
+}
+
+.atendimento-card button,
 .atendimento-card p {
   font-family: "Work Sans", sans-serif;
-  display: block;
-  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.8);
   font-size: 1rem;
 }
 
-.atendimento-card span {
-  background: #3d2b23;
-  color: #fff;
-  padding: 14px;
-  border-radius: 12px;
+.atendimento-card button {
+  background-color: #4b3a35;
+  color: white;
+  width: 100%;
+  height: 3rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 1rem;
 }
 
 footer {
   position: relative;
-  height: 80px;
   font-family: "Work Sans", sans-serif;
   font-weight: 400;
   display: flex;
   font-size: 0.8rem;
   text-align: center;
-  background-color: white;
-  border-top: 2px solid #593d36;
   flex-direction: row;
   justify-content: space-between;
   padding: 1.6rem;
@@ -882,7 +919,6 @@ footer .social-icons a i {
   margin-bottom: 0;
   width: auto;
   max-width: 100%;
-  height: 18rem;
   object-fit: contain;
 }
 
@@ -914,7 +950,7 @@ footer .social-icons a i {
   padding: 0.5rem;
   border-bottom: 2px solid hwb(29 0% 74%);
   transition: background 0.9s;
-}*  
+}
 
 .autocomplete-items li:hover {
   background: #3c2923;
@@ -933,449 +969,87 @@ footer .social-icons a i {
   .banqueta-vime {
     display: none;
   }
-
-  .search-bar {
-    width: 20rem;
-  }
 }
 
-@media (max-width: 860px) {
-  .search-bar {
-    width: fit-content;
-  }
-}
+@media (min-width: 769px) {
 
-@media screen and (max-width: 1448px) and (min-width: 610px) {
-
-  .outras-ofertas .outras-produto-retrato,
-  .outras-ofertas,
-  .outras-ofertas .outras-produto-panela {
+  #cart,
+  #list {
     display: none;
   }
 
-  .outras-ofertas-lista,
-  .spantext {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
-  }
-
-  main .outras-ofertas-lista {
-    display: flex;
-    flex-direction: column;
-  }
-
-  main .produtos-lista {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 0rem;
-    padding-right: 0rem;
-    gap: 3rem;
-  }
-
-  .banner-content {
-    margin-left: 0;
-    max-width: 100%;
-    padding: 16px;
-    border-radius: 12px;
-  }
-
-  .banner-content h2 {
-    font-size: 1.5rem;
-    width: 100%;
-  }
-
-  .banner-content p {
-    font-size: 1rem;
-  }
-
-  .banner img {
-    margin: 16px auto 0 auto;
-    width: 180px;
-  }
-
-  .oferta-dia,
-  .oferta-semanal {
-    max-width: none;
-  }
-
-  .outras-ofertas {
-    flex: 1 1 35%;
-    margin-left: 0;
-  }
-
-  .outras-ofertas-lista .spantext {
-    font-size: 1rem;
-  }
-
-  footer {
-    flex-direction: column;
-    gap: 12px;
-    font-size: 1rem;
-    padding: 12px 24px;
+  .mobile-buttons {
+    display: none;
   }
 }
 
 @media (max-width: 768px) {
-  body {
-    width: 100vw;
-    min-width: 0;
-    max-width: 100vw;
-    overflow-x: hidden;
-    background: #faebd0;
-    padding: 0;
-    margin: 0;
-  }
-
-  header {
-    width: 100vw;
-    min-width: 0;
-    max-width: 100vw;
-    box-sizing: border-box;
-    background: #fff;
-    border-bottom: 2px solid #593d36;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 1rem;
-  }
-
-  .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 16px;
-    background-color: white;
-    width: 100vw;
-  }
-
-  .logo {
-    margin-right: 40vw;
-    height: 2.5rem;
-    object-fit: contain;
-    display: block;
-  }
-
-  .header-icons {
-    display: flex;
-    align-items: center;
-  }
 
   .header-menu,
   .nav-links,
-  .search-bar,
   .btn-entrar,
-  .panela,
-  .pato,
-  .banco,
   .menu-bar,
-  nav ul {
-    display: none !important;
+  nav ul li,
+  nav ul li a {
+    display: none;
   }
 
-  .outras-ofertas .outras-produto-retrato,
-  .outras-ofertas,
-  .outras-ofertas .outras-produto-panela {
-    display: block;
+  .search-bar {
+    width: calc(100% - 290px);
+  }
+
+  .mobile-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
   }
 
   #cart,
   #list {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    background: none;
-    border: none;
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 2rem;
-    color: #3d2b23;
-    margin-left: 5rem;
-    margin-right: 0;
-    cursor: pointer;
-  }
-
-  .cart-btn,
-  .menu-mobile {
-    min-width: 34px;
-    min-height: 34px;
-    font-size: 1.4rem;
-  }
-
-  .carousel,
-  .slide {
-    width: 100vw;
-    min-width: 0;
-    max-width: 100vw;
-    margin: 0 auto;
-  }
-
-  .carousel-inner img {
-    width: 100vw;
-    max-width: 340px;
-    margin: 0 auto;
     display: block;
-    height: auto;
-    object-fit: contain;
   }
 
-  main,
-  .ofertas,
-  .card,
-  section {
-    margin: 0 auto;
-    padding: 0;
-    box-sizing: border-box;
-    max-width: 98vw;
+  #cart:hover,
+  #cart:focus,
+  #list:hover,
+  #list:focus {
+    background-color: #f8e4ba;
   }
+}
 
-  .ofertas,
-  .card,
-  section {
-    width: 96vw;
-    max-width: 98vw;
-    margin: 0 auto 18px auto;
-    border-radius: 16px;
-  }
+@media (max-width: 664px) {
 
-  .oferta-dia,
-  .oferta-semanal,
-  .outras-ofertas {
-    padding: 16px 8px;
-    border-radius: 16px;
-    margin-bottom: 12px;
-    min-width: 0;
-    max-width: 100vw;
-    width: 100%;
-    box-sizing: border-box;
-    height: auto;
-  }
-
-  .produto .produto-preco-bloco .produto-preco-desconto-container {
-    display: flex;
-    flex-direction: column-reverse;
-  }
-
-  .oferta-titulo,
-  .outras-ofertas-titulo {
-    font-size: 1rem;
-    margin-bottom: 6px;
-  }
-
-  .produtos-paraC,
-  .produtos-decorativos,
-  .moveis {
-    font-size: 1.3rem;
-    margin-top: 1.5rem;
-  }
-
-  .oferta-flor {
-    width: 26px;
-    height: 26px;
-  }
-
-  .oferta-img {
-    width: 90px;
-    height: 90px;
-  }
-
-  .oferta-info {
-    min-width: 0;
-  }
-
-  .oferta-btn,
-  .veja-mais-btn {
-    font-size: 1rem;
-    padding: 8px 24px;
-    border-radius: 8px;
-    margin: 0 auto;
-    margin-top: 8px;
-    width: 90%;
-    max-width: 200px;
-  }
-
-  .oferta-descricao {
-    font-size: 0.8rem;
-  }
-
-  .oferta-desconto {
-    font-size: 0.6rem;
-  }
-
-  .oferta-btn {
-    font-size: 0.5rem;
-    max-width: 20vw;
-  }
-
-  .oferta-preco-novo {
-    font-size: 0.7rem;
-  }
-
-  .oferta-preco-novo b {
-    font-size: 1.3rem;
-    width: 35vw;
-  }
-
-  .preco-antigo {
-    font-size: 0.8rem;
-  }
-
-  .outras-ofertas-lista {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .outras-ofertas-lista img {
-    width: 60px;
-    max-width: 80px;
-    margin: 0 auto 4px auto;
-    height: auto;
-  }
-
-  .outras-ofertas-lista .produto-nome,
-  .produto-nome {
-    font-size: 0.7rem;
-    text-align: center;
-    margin-bottom: 2px;
-    width: 100%;
-  }
-
-  .spantext {
-    font-size: 0.6rem;
-  }
-
-  .produtos-lista {
-    grid-template-columns: 1fr 1fr;
-    gap: 14px 8px;
-    padding: 12px 4px 8px 4px;
-    border-radius: 12px;
-    background: #fff;
-  }
-
-  .produto {
-    width: 80px;
-    max-width: 90px;
-    min-height: 90px;
-    margin: 0;
-    padding: 0;
-  }
-
-  .produto img {
-    height: 44px;
-    max-width: 60px;
-    margin-bottom: 4px;
-  }
-
-  .produto-preco {
-    font-size: 0.95rem;
-  }
-
-  .produto-desconto {
-    font-size: 0.5rem;
-    min-width: 32px;
-    padding: 2px 4px;
-  }
-
-  .produto-preco-antigo,
-  .produto-preco-anterior-label {
-    font-size: 0.6rem;
-  }
-
-  .ofertas {
-    margin-top: 3rem;
-  }
-
-  .beneficios,
-  .atendimento {
-    flex-direction: column;
-    gap: 10px;
-    margin: 10px 0 0 0;
-    width: 98vw;
-    max-width: 98vw;
-  }
-
-  .beneficio,
-  .atendimento-card {
-    font-size: 0.95rem;
-    padding: 10px 8px;
-    border-radius: 12px;
-  }
-
-  .pagamento.card {
-    width: 96vw;
-    max-width: 98vw;
-    padding: 14px 0 10px 0;
-    border-radius: 12px;
-  }
-
-  .pagamento-icones {
-    gap: 10px;
-    padding-top: 12px;
-    width: 100%;
-    border-top: 1.5px solid #3d2b23;
-  }
-
-  .pagamento-icones img {
-    height: 22px;
-  }
-
-  footer {
-    width: 100vw;
-    max-width: 100vw;
-    padding: 10px 0 6px 0;
-    font-size: 0.9rem;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .footer-icons {
-    gap: 10px;
-    font-size: 1.3rem;
-    margin-top: 4px;
-  }
-
-  .cart-btn,
-  .bibi-list-btn,
-  .menu-mobile {
-    background: none;
-    border: none;
-    color: #3d2b23;
-    font-size: 1.5rem;
-    min-width: 36px;
-    min-height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    padding: 0;
-    margin: 0;
-  }
-
-  .produto-preco-desconto-container {
-    width: 4rem;
-  }
-
-  .outras-ofertas-titulo {
-    text-align: center;
-    width: 100%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .outras-ofertas-header .oferta-flor {
+  .jarro-flor,
+  .faqueiro,
+  .poltrona-positano {
     display: none;
   }
 
-  .outras-ofertas .oferta-btn {
-    margin: 0;
-    width: 100rem;
-    height: 2rem;
-    padding: 0;
+  .produtos-lista {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .ofertas {
+    flex-direction: column;
+  }
+
+  .ofertas div:nth-child(1) {
+    gap: 0 !important;
+  }
+
+  .oferta-dia,
+  .oferta-semanal {
+    max-width: 100%;
+  }
+
+  .outras-ofertas {
+    margin: 1rem;
+  }
+}
+
+@media (max-width: 544px) {
+  .produto:nth-child(3) {
+    display: none;
   }
 }
