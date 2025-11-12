@@ -69,6 +69,12 @@ header nav ul li a.entrar i {
     border: 2px solid #484848;
 }
 
+.botao-voltar {
+        position: relative;
+        left: 20px;
+        top: 10px;
+    }
+
 #list {
     width: 50px;
     height: 50px;
@@ -111,18 +117,22 @@ header nav ul li a.entrar i {
 main {
     min-height: calc(100vh - 162px);
     align-content: center;
+    height: 500px;
+    
 }
 
 .container-pagamento {
     background: #fff;
     border-radius: 16px;
     box-shadow: 0 4px 12px #0002;
-    padding: 36px 0 36px 0;
+    padding: 13px 0 13px 0;
     max-width: 1100px;
     width: 96%;
+    height: 430px;
     margin: 0 auto;
     position: relative;
     border: none;
+    top: 1px;
 }
 
 .botao-voltar {
@@ -216,7 +226,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 18px;
 }
 
 .boleto-logo img {
@@ -290,12 +300,13 @@ footer {
     position: relative;
     font-family: "Work Sans", sans-serif;
     font-weight: 400;
-    display: flex;
     font-size: 0.8rem;
     text-align: center;
     flex-direction: row;
     justify-content: space-between;
     padding: 1.6rem;
+    text-align: center;
+    align-items: center;
 }
 
 footer .social-icons a i {
@@ -305,12 +316,19 @@ footer .social-icons a i {
 }
 
 @media (max-width: 900px) {
+
+    .botao-voltar {
+        position: relative;
+        left: 10px;
+        top: 10px;
+    }
+
     .container-pagamento {
         padding: 24px 0 24px 0;
     }
 }
 
-@media (max-width: 455px) {
+@media (max-width: 511px) {
     .botao-voltar {
         position: static;
         margin-left: 1rem;
@@ -339,6 +357,12 @@ footer .social-icons a i {
     header nav ul li a.entrar {
         display: none;
     }
+
+    .container-pagamento p {
+        position: relative;
+        bottom: 20px;
+    }
+    
 
     footer {
         justify-content: center;
