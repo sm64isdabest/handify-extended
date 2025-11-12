@@ -2,6 +2,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 
 
 body {
@@ -12,8 +14,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background:
-    linear-gradient(rgba(245, 236, 218, 0.7), rgba(245, 236, 218, 0.7)),
+  background: 
+    linear-gradient(rgba(245, 236, 218, 0.7), rgba(245, 236, 218, 0.7)), 
     url("../images/fundos/background_login.jpg");
   background-size: cover;
   background-repeat: no-repeat;
@@ -95,7 +97,7 @@ header nav ul li a.entrar i {
   position: absolute;
   top: 70px;
   right: 20px;
-  background: #ffffff;
+  background: #FAECCE;
   border-radius: 20px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   padding: 1.2rem 1.2rem;
@@ -107,7 +109,6 @@ header nav ul li a.entrar i {
   display: block;
   margin: 0.7rem 0;
   background: #5a3e36;
-  color: #fff;
   padding: 0.7rem 1.2rem;
   border-radius: 16px;
   text-align: center;
@@ -125,7 +126,7 @@ main {
   margin-bottom: 40px;
   background-size: cover;
   background-repeat: no-repeat;
-  margin-bottom: 0rem;
+  /* margin-bottom: 0rem; */
 }
 
 .cadastro-container {
@@ -304,6 +305,7 @@ footer .social-icons a i {
   }
 
   #list {
+    list-style-type: none;
     display: block;
   }
 
