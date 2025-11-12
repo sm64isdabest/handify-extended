@@ -7,8 +7,8 @@ body {
   margin: 0;
   padding: 0;
   background:
-  linear-gradient(rgba(245, 236, 218, 0.7), rgba(245, 236, 218, 0.7)),
-  url("../images/fundos/pexels-fwstudio-33348-129733.jpg");
+    linear-gradient(rgba(245, 236, 218, 0.7), rgba(245, 236, 218, 0.7)),
+    url("../images/fundos/pexels-fwstudio-33348-129733.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -35,6 +35,7 @@ header nav ul {
   gap: 20px;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
 header nav ul li a {
@@ -83,6 +84,45 @@ header nav ul li a.entrar i {
   font-size: xx-large;
 }
 
+.menu-popup {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  padding: 0.8rem;
+  display: none;
+  min-width: 120px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-popup.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-popup .menu-item {
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  background-color: #5a3e36;
+  color: #fff;
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 8px;
+  transition: background-color 0.2s;
+}
+
+.menu-popup .menu-item:hover {
+  background-color: #7a574d;
+}
+
 #popup-menu {
   position: absolute;
   top: 70px;
@@ -114,8 +154,27 @@ main {
 
 form {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 2rem;
+}
+
+.submit {
+  border-style: none;
+  font-family: "Alexandria", sans-serif;
+  border-radius: 1rem;
+  color: white;
+  font-size: 24px;
+  padding: 0.5rem 2rem;
+  background-color: rgb(57, 33, 33);
+  transition: background-color 250ms ease, transform 150ms ease;
+  will-change: background-color, transform;
+}
+
+.submit:hover,
+.submit:focus {
+  background-color: #80574c;
+  cursor: pointer;
 }
 
 .venda-container {
@@ -160,19 +219,6 @@ form {
   background: #d3d3d3;
   border: 2px solid #000000;
   border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.imagem-produto .plus {
-  font-size: 2.5rem;
-  color: #333;
-  background: #fff;
-  border-radius: 50%;
-  border: 3px solid #333;
-  width: 48px;
-  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -359,13 +405,7 @@ footer .social-icons a i {
   padding: 0.19rem;
 }
 
-@media (max-width: 1367px) {
-  form {
-    flex-direction: column;
-  }
-}
-
-@media (min-width: 602px) and (max-width: 992px) {
+@media (max-width: 1130px) {
   .quadro-descricao {
     width: 90%;
     height: 90%;
@@ -401,6 +441,10 @@ footer .social-icons a i {
     margin: 0 10px;
   }
 
+  .imagem-produto {
+    min-width: 330px;
+  }
+
   .btn-add {
     width: 45px;
     height: 45px;
@@ -411,10 +455,6 @@ footer .social-icons a i {
     width: 45px;
     height: 45px;
     font-size: 1.2rem;
-  }
-
-  .imagem-produto .btn-add {
-    display: block;
   }
 
   .sidebar .btn-add {
@@ -487,6 +527,10 @@ footer .social-icons a i {
     display: block;
   }
 
+  form {
+    gap: 1rem;
+  }
+
   header {
     position: fixed;
     width: 100%;
@@ -533,8 +577,6 @@ footer .social-icons a i {
   }
 
   .imagem-produto {
-    width: 90%;
-    height: 300px;
     margin-right: 0;
     margin-left: 0;
   }
@@ -598,25 +640,6 @@ footer .social-icons a i {
 
   .mobile {
     display: block;
-  }
-
-  .quadro-descricao {
-    height: 60vh;
-    width: 90%;
-  }
-
-  .quadro-descricao span {
-    font-size: 1rem;
-  }
-
-  .quadro-descricao input {
-    padding-bottom: 100px;
-    font-size: 1.2rem;
-    width: 90%;
-    height: 90%;
-    padding-bottom: 250px;
-    font-size: 1.5rem;
-    font-weight: 500;
   }
 
   footer {
