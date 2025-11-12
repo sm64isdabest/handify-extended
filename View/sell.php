@@ -1,14 +1,16 @@
 <?php
 
 session_start();
-
+require_once __DIR__ . '/../Model/Store.php';
 require_once __DIR__ . '/../Model/Product.php';
 require_once __DIR__ . '/../Controller/ProductController.php';
 
 use Model\Product;
 use Controller\ProductController;
+use Model\Store;
 
 $productModel = new Product();
+$storeModel = new Store();
 $productController = new ProductController($productModel);
 $message = '';
 
@@ -36,7 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $free_shipping = isset($_POST['free_shipping']) ? 1 : 0;
 
             // obtém id da loja/usuário a partir da sessão
-            $id_store_fk = $_SESSION['store']['id_store'];
+            $id_user_logado = $_SESSION['id'];
+            $storeData = $id_user_logado ? $storeModel->getStoreByUserId($id_user_logado): null;
+            $id_store_fk = $storeData['id_store'];
             var_dump($id_store_fk);
             var_dump($_SESSION['store']['id_store']);
             if (empty($id_store_fk)) {

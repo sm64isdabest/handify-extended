@@ -15,9 +15,12 @@ class Store {
         $this->db = Connection::getInstance();
     }
 
-    public function registerStore($id_store, $store_name, $cnpj = null, $phone = null, $address = null) {
+    public function registerStore($id_user_fk, $store_name, $cnpj, $phone, $address) {
         try {
-            $existingStore = $this->getStoreByUserId($id_store);
+            if (empty($store_name) || empty($cnpj) || empty($phone) || empty($address)) {
+                return ['success' => false, 'message' => 'Preencha todos os campos da loja.'];
+            }
+            $existingStore = $this->getStoreByUserId($id_user_fk);
             if ($existingStore) {
                 return ['success' => false, 'message' => 'Este usuário já possui uma loja cadastrada.'];
             }
@@ -26,11 +29,11 @@ class Store {
             if ($checkCnpj) {
                 return ['success' => false, 'message' => 'Já existe uma loja cadastrada com este CNPJ.'];
             }
-            $sql = 'INSERT INTO store (id_store, name, cnpj, phone, address) VALUES (:id_store, :name, :cnpj, :phone, :address)';
+            $sql = 'INSERT INTO store (id_user_fk, name, cnpj, phone, address) VALUES (:id_user_fk, :name, :cnpj, :phone, :address)';
 
             $stmt = $this->db->prepare($sql);
 
-            $stmt->bindParam(":id_store", $id_store, PDO::PARAM_INT);
+            $stmt->bindParam(":id_user_fk", $id_user_fk, PDO::PARAM_INT);
             $stmt->bindParam(":name", $store_name, PDO::PARAM_STR);
             $stmt->bindParam(":cnpj", $cnpj, PDO::PARAM_STR);
             $stmt->bindParam(":phone", $phone, PDO::PARAM_STR);
@@ -39,7 +42,7 @@ class Store {
             $ok = $stmt->execute();
 
             if ($ok) {
-                return ['success' => true];
+                return (int) $this->db->lastInsertId();
             } else {
                 return ['success' => false, 'message' => 'Erro ao inserir loja no banco de dados.'];
             }
@@ -49,21 +52,31 @@ class Store {
         }
     }
 
-    public function getStoreByUserId($id_store) {
+    public function getStoreByUserId($id_user_fk) {
         try {
-            $sql = "SELECT * FROM store WHERE id_store = :id_store LIMIT 1";
+            $sql = "SELECT * FROM store WHERE id_user_fk = :id_user_fk LIMIT 1";
 
             $stmt = $this->db->prepare($sql);
-            $stmt->bindParam(":id_store", $id_store, PDO::PARAM_INT);
-
-            $stmt->execute();
-
+            $stmt->bindParam(":id_user_fk", $id_user_fk, PDO::PARAM_INT);
+            $stmt->execute();            
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $error) {
             return false;
         }
-
     }
+
+    public function getStoreById($id_store) {
+        try {
+            $sql = "SELECT * FROM store WHERE id_store = :id_store LIMIT 1";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(":id_store", $id_store, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $error) {
+            return false;
+        }
+    }
+
     public function getStoreByCnpj($cnpj) {
         try {
             $sql = "SELECT * FROM store WHERE cnpj = :cnpj LIMIT 1";

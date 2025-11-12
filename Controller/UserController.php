@@ -51,11 +51,17 @@ class UserController
             }
             $userId = $this->userModel->registerUser($user_fullname, $email, $password);
             if (!$userId || !is_int($userId)) {
+                if (is_array($userId) && isset($userId['message'])) {
+                    return $userId;
+                }
                 return ['success' => false, 'message' => 'Erro ao criar usuário.'];
             }
-            $storeOk = $this->storeModel->registerStore($userId, $store_name, $cnpj, $phone, $address);
-            if ($storeOk) {
+            $storeId = $this->storeModel->registerStore($userId, $store_name, $cnpj, $phone, $address);
+            if ($storeId && is_int($storeId)) {
                 return ['success' => true];
+            }
+            if (is_array($storeId) && isset($storeId['message'])) {
+                return $storeId;
             }
             return ['success' => false, 'message' => 'Erro ao inserir loja no banco de dados.'];
         } catch (Exception $error) {
@@ -74,15 +80,17 @@ class UserController
             }
             $userId = $this->userModel->registerUser($user_fullname, $email, $password);
             if (!$userId || !is_int($userId)) {
+                if (is_array($userId) && isset($userId['message'])) {
+                    return $userId;
+                }
                 return ['success' => false, 'message' => 'Erro ao criar usuário.'];
             }
-            $existing = $this->customerModel->getByUserId($userId);
-            if ($existing) {
+            $customerId = $this->customerModel->registerCustomer($userId, $phone, $birthdate, $address);
+            if ($customerId && is_int($customerId)) {
                 return ['success' => true];
             }
-            $reg = $this->customerModel->registerCustomer($userId, $phone, $birthdate, $address);
-            if ($reg) {
-                return ['success' => true];
+            if ($customerId === false && $this->customerModel->getByUserId($userId)) {
+                return ['success' => false, 'message' => 'Este usuário já possui um perfil de cliente.'];
             }
             return ['success' => false, 'message' => 'Erro ao inserir customer no banco de dados.'];
         } catch (Exception $error) {
