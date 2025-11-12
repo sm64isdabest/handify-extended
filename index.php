@@ -39,6 +39,7 @@ $userType = isset($_COOKIE['userType']) ? $_COOKIE['userType'] : '';
           <span class="user-name"></span>
           <div class="menu-popup">
             <p class="user-name-popup"></p>
+            <button class="menu-item" onclick="window.location.href='View/profile.php'">Meu Perfil</button>
             <button class="menu-item logout-btn">Sair</button>
           </div>
         </li>
