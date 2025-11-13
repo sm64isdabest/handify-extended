@@ -58,7 +58,7 @@ class UserController
             }
             $storeId = $this->storeModel->registerStore($userId, $store_name, $cnpj, $phone, $address);
             if ($storeId && is_int($storeId)) {
-                return ['success' => true];
+                return ['success' => true, 'user_id' => $userId];
             }
             if (is_array($storeId) && isset($storeId['message'])) {
                 return $storeId;
@@ -87,7 +87,7 @@ class UserController
             }
             $customerId = $this->customerModel->registerCustomer($userId, $phone, $birthdate, $address);
             if ($customerId && is_int($customerId)) {
-                return ['success' => true];
+                return ['success' => true, 'user_id' => $userId];
             }
             if ($customerId === false && $this->customerModel->getByUserId($userId)) {
                 return ['success' => false, 'message' => 'Este usuário já possui um perfil de cliente.'];

@@ -28,6 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $result = $controller->registerCustomerUser($user_fullname, $email, $password, $phone, $birthdate, $address);
     }
     if (is_array($result) && !empty($result['success'])) {
+      $_SESSION['id'] = $result['user_id'];
+      $_SESSION['user_type'] = 'customer';
+      $_SESSION['email'] = $email;
       setcookie('userName', urldecode($user_fullname), time() + (7 * 24 * 60 * 60), '/');
       header('Location: ../index.php');
       exit;
