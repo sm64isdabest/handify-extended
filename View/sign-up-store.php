@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $password,
       $cnpj,
       $store_name,
-      $address,    
+      $address,
       $phone
     );
 
@@ -130,15 +130,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="email" id="userEmail" name="userEmail" placeholder="E-mail" required />
           </label>
 
-          <label for="userPass">
+          <label id="labelUserPass" for="userPass">
             <i class="bi bi-key"></i>
-            <input type="password" id="userPass" name="userPass" placeholder="Senha" required />
+            <div class="password-input-container">
+              <input type="password" id="userPass" name="userPass" placeholder="Insira sua senha" required />
+              <i class="bi bi-eye-slash password-toggle" data-target="userPass"></i>
+            </div>
           </label>
 
-          <label for="userPassConfirm">
+          <label id="labelUserPassConfirm" for="userPassConfirm">
             <i class="bi bi-lock"></i>
-            <input type="password" id="userPassConfirm" name="userPassConfirm" placeholder="Confirme sua senha"
-              required />
+            <div class="password-input-container">
+              <input type="password" id="userPassConfirm" name="userPassConfirm" placeholder="Confirme sua senha"
+                required />
+              <i class="bi bi-eye-slash password-toggle" data-target="userPassConfirm"></i>
+            </div>
           </label>
 
           <label for="cnpj">
@@ -186,6 +192,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <script src="../js/mobile-pop-up.js"></script>
   <script src="https://unpkg.com/imask"></script>
   <script src="../js/sign-up/telefone.js"></script>
+  <script src="../js/sign-up/senha.js"></script>
   <script src="../js/sign-up/cnpj.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </body>

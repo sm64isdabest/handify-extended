@@ -90,6 +90,57 @@ header nav ul li a.entrar i {
   z-index: 2000;
   display: none;
 }
+#labelUserPass, #labelUserPassConfirm {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    transition: border-color 0.2s;
+}
+
+#labelUserPass:focus-within, #labelUserPassConfirm:focus-within {
+    border-color: #5a3e36;
+}
+
+#labelUserPass > i, #labelUserPassConfirm > i {
+    font-size: 1.2rem;
+    color: #5a3e36;
+    margin-right: 10px;
+}
+
+.password-input-container {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+}
+
+.password-input-container input {
+    border: none;
+    padding: 0;
+    padding-right: 30px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+}
+
+.password-input-container .password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777;
+    transition: color 0.2s;
+    z-index: 10;
+    font-size: 1.1rem;
+}
+
+.password-input-container .password-toggle:hover {
+    color: #3d2b23;
+}
 
 #popup-menu .popup-list a {
   display: block;
