@@ -220,8 +220,8 @@ header nav ul li a.entrar i {
   background-color: var(--cor-interativo);
   border: 1px solid var(--cor-fundo-caixa);
   border-radius: 20px;
-  padding: 5px 10px;
-  width: calc(100% - 550px);
+  padding: 4px 8px;
+  width: calc(100% - 600px);
   margin-left: 10rem;
   position: absolute;
 }

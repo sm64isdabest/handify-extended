@@ -221,7 +221,7 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
     </footer>
     <script src="../js/logged-in.js"></script>
     <script src="../js/profile.js"></script>
-    
+
 </body>
 
 </html>

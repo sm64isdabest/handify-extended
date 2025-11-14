@@ -8,7 +8,7 @@ function getCookie(name) {
 }
 
 function performLogout() {
-  window.location.href = "logout.php"; 
+  window.location.href = "View/logout.php"; 
 }
 
 document.addEventListener("DOMContentLoaded", function () {
