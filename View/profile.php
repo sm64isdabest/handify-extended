@@ -163,9 +163,9 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                             <i class="bi bi-check-circle-fill"></i> Entregue
                         </div>
                         <div class="order-details">
-                            <p><strong>Pedido:</strong> #10548</p>
-                            <p><strong>Data:</strong> 28/10/2025</p>
-                            <p><strong>Total:</strong> R$ 129,90</p>
+                            <p><strong>Pedido:</strong></p>
+                            <p><strong>Data:</strong></p>
+                            <p><strong>Total:</strong></p>
                         </div>
                         <a href="#" class="details-btn">Ver Detalhes</a>
                     </div>
@@ -174,9 +174,9 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                             <i class="bi bi-truck"></i> Em Transporte
                         </div>
                         <div class="order-details">
-                            <p><strong>Pedido:</strong> #10591</p>
-                            <p><strong>Data:</strong> 10/11/2025</p>
-                            <p><strong>Total:</strong> R$ 89,50</p>
+                            <p><strong>Pedido:</strong></p>
+                            <p><strong>Data:</strong></p>
+                            <p><strong>Total:</strong></p>
                         </div>
                         <a href="#" class="details-btn">Rastrear</a>
                     </div>
