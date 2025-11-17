@@ -27,6 +27,63 @@ header .logo {
   height: 50px;
   margin-top: -7px;
 }
+.info-item input[type="text"],
+.info-item input[type="email"],
+.info-item input[type="date"],
+.info-item input[type="password"] {
+    width: 65%;
+    padding: 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-top: 6px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.info-item input:focus {
+    border-color: #5a3e36;
+    box-shadow: 0 0 0 3px rgba(90, 62, 54, 0.1);
+    outline: none;
+}
+
+.info-item input:disabled {
+    background-color: #f5f5f5;
+    color: #777;
+    cursor: not-allowed;
+}
+
+.form-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.edit-btn {
+    background-color: #5a3e36;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.1s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.edit-btn:hover {
+    background-color: #3d2b23;
+    transform: translateY(-1px);
+}
+
+.edit-btn.danger {
+    background-color: #e53935;
+}
+
+.edit-btn.danger:hover {
+    background-color: #c62828;
+}
 
 header nav ul {
   list-style: none;
@@ -285,15 +342,24 @@ main.profile-main-container {
 
 .info-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.info-item input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .info-item label {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--cor-texto-secundario);
-    margin-bottom: 5px;
     display: block;
 }
 

@@ -103,53 +103,121 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
 
         <div class="profile-content">
             <section id="info" class="profile-section active">
-                <div class="section-header">
-                    <h3>Minhas Informações</h3>
-                    <button class="edit-btn"><i class="bi bi-pencil-square"></i> Editar</button>
+                <div id="view-mode">
+                    <div class="section-header">
+                        <h3>Minhas Informações</h3>
+                        <button id="edit-info-btn" class="edit-btn"><i class="bi bi-pencil-square"></i> Editar</button>
+                    </div>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>Nome Completo</label>
+                            <p><?= htmlspecialchars($profileData['user_fullname'] ?? 'Não informado') ?></p>
+                        </div>
+                        <div class="info-item">
+                            <label>Email</label>
+                            <p><?= htmlspecialchars($profileData['email'] ?? 'Não informado') ?></p>
+                        </div>
+
+                        <?php if ($_SESSION['user_type'] === 'customer'): ?>
+                            <div class="info-item">
+                                <label>Telefone</label>
+                                <p><?= htmlspecialchars($profileData['phone'] ?? 'Não informado') ?></p>
+                            </div>
+                            <div class="info-item">
+                                <label>Data de Nascimento</label>
+                                <p><?= isset($profileData['birthdate']) ? date('d/m/Y', strtotime($profileData['birthdate'])) : 'Não informado' ?>
+                                </p>
+                            </div>
+                            <div class="info-item full-width">
+                                <label>Endereço</label>
+                                <p><?= htmlspecialchars($profileData['address'] ?? 'Não informado') ?></p>
+                            </div>
+
+                        <?php elseif ($_SESSION['user_type'] === 'store'): ?>
+                            <div class="info-item">
+                                <label>Nome da Loja</label>
+                                <p><?= htmlspecialchars($profileData['name'] ?? 'Não informado') ?></p>
+                            </div>
+                            <div class="info-item">
+                                <label>CNPJ</label>
+                                <p><?= htmlspecialchars($profileData['cnpj'] ?? 'Não informado') ?></p>
+                            </div>
+                            <div class="info-item">
+                                <label>Telefone da Loja</label>
+                                <p><?= htmlspecialchars($profileData['phone'] ?? 'Não informado') ?></p>
+                            </div>
+                            <div class="info-item full-width">
+                                <label>Endereço da Loja</label>
+                                <p><?= htmlspecialchars($profileData['address'] ?? 'Não informado') ?></p>
+                            </div>
+                        <?php endif; ?>
+                    </div>
                 </div>
-                <div class="info-grid">
-                    <div class="info-item">
-                        <label>Nome Completo</label>
-                        <p><?= htmlspecialchars($profileData['user_fullname'] ?? 'Não informado') ?></p>
-                    </div>
-                    <div class="info-item">
-                        <label>Email</label>
-                        <p><?= htmlspecialchars($profileData['email'] ?? 'Não informado') ?></p>
+            <div id="edit-mode" style="display: none;">
+                    <div class="section-header">
+                        <h3>Editar Informações</h3>
                     </div>
 
-                    <?php if ($_SESSION['user_type'] === 'customer'): ?>
-                        <div class="info-item">
-                            <label>Telefone</label>
-                            <p><?= htmlspecialchars($profileData['phone'] ?? 'Não informado') ?></p>
-                        </div>
-                        <div class="info-item">
-                            <label>Data de Nascimento</label>
-                            <p><?= isset($profileData['birthdate']) ? date('d/m/Y', strtotime($profileData['birthdate'])) : 'Não informado' ?>
-                            </p>
-                        </div>
-                        <div class="info-item full-width">
-                            <label>Endereço</label>
-                            <p><?= htmlspecialchars($profileData['address'] ?? 'Não informado') ?></p>
+                    <form id="edit-profile-form" method="POST" action="process_profile_update.php">
+
+                        <div class="info-grid">
+
+                            <div class="info-item">
+                                <label for="user_fullname">Nome Completo</label>
+                                <input type="text" id="user_fullname" name="user_fullname"
+                                    value="<?= htmlspecialchars($profileData['user_fullname'] ?? '') ?>" required>
+                            </div>
+
+                            <div class="info-item">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email"
+                                    value="<?= htmlspecialchars($profileData['email'] ?? '') ?>" required>
+                            </div>
+
+                            <?php if ($_SESSION['user_type'] === 'customer'): ?>
+
+                                <div class="info-item">
+                                    <label for="phone">Telefone</label>
+                                    <input type="text" id="phone" name="phone"
+                                        value="<?= htmlspecialchars($profileData['phone'] ?? '') ?>">
+                                </div>
+
+                                <div class="info-item full-width">
+                                    <label for="address">Endereço</label>
+                                    <input type="text" id="address" name="address"
+                                        value="<?= htmlspecialchars($profileData['address'] ?? '') ?>">
+                                </div>
+
+                            <?php elseif ($_SESSION['user_type'] === 'store'): ?>
+
+                                <div class="info-item">
+                                    <label for="name">Nome da Loja</label>
+                                    <input type="text" id="name" name="name"
+                                        value="<?= htmlspecialchars($profileData['name'] ?? '') ?>" required>
+                                </div>
+
+                                <div class="info-item">
+                                    <label for="phone">Telefone da Loja</label>
+                                    <input type="text" id="phone" name="phone"
+                                        value="<?= htmlspecialchars($profileData['phone'] ?? '') ?>">
+                                </div>
+
+                                <div class="info-item full-width">
+                                    <label for="address">Endereço da Loja</label>
+                                    <input type="text" id="address" name="address"
+                                        value="<?= htmlspecialchars($profileData['address'] ?? '') ?>">
+                                </div>
+
+                            <?php endif; ?>
+
                         </div>
 
-                    <?php elseif ($_SESSION['user_type'] === 'store'): ?>
-                        <div class="info-item">
-                            <label>Nome da Loja</label>
-                            <p><?= htmlspecialchars($profileData['name'] ?? 'Não informado') ?></p>
+                        <div class="form-actions" style="margin-top: 30px; display: flex; gap: 15px;">
+                            <button type="submit" class="edit-btn"><i class="bi bi-save"></i> Salvar Alterações</button>
+                            <button type="button" id="cancel-edit-btn" class="edit-btn danger"><i
+                                    class="bi bi-x-circle"></i> Cancelar</button>
                         </div>
-                        <div class="info-item">
-                            <label>CNPJ</label>
-                            <p><?= htmlspecialchars($profileData['cnpj'] ?? 'Não informado') ?></p>
-                        </div>
-                        <div class="info-item">
-                            <label>Telefone da Loja</label>
-                            <p><?= htmlspecialchars($profileData['phone'] ?? 'Não informado') ?></p>
-                        </div>
-                        <div class="info-item full-width">
-                            <label>Endereço da Loja</label>
-                            <p><?= htmlspecialchars($profileData['address'] ?? 'Não informado') ?></p>
-                        </div>
-                    <?php endif; ?>
+                    </form>
                 </div>
             </section>
 
