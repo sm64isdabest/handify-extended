@@ -2,7 +2,18 @@
 session_start();
 $userName = isset($_COOKIE['userName']) ? urldecode($_COOKIE['userName']) : '';
 $userType = isset($_COOKIE['userType']) ? $_COOKIE['userType'] : '';
+
+require_once __DIR__ . '/Model/Product.php';
+use Model\Product;
+
+$productModel = new Product();
+$products = $productModel->getAllProducts();
+if ($products === false) {
+  $products = [];
+}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -43,7 +54,7 @@ $userType = isset($_COOKIE['userType']) ? $_COOKIE['userType'] : '';
           </div>
         </li>
       </ul>
-      
+
       <button id="cart"><i class="bi bi-cart"></i></button>
       <button id="list"><i class="bi bi-list"></i></button>
       <div id="popup-menu">
@@ -51,14 +62,14 @@ $userType = isset($_COOKIE['userType']) ? $_COOKIE['userType'] : '';
           <li>
             <a href="View/login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
           </li>
-           <li class="user-logged" style="display: none; position: relative;">
-          <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
-          <span class="user-name"></span>
-          <div class="menu-popup">
-            <p class="user-name-popup"></p>
-            <button class="menu-item logout-btn">Sair</button>
-          </div>
-        </li>
+          <li class="user-logged" style="display: none; position: relative;">
+            <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
+            <span class="user-name"></span>
+            <div class="menu-popup">
+              <p class="user-name-popup"></p>
+              <button class="menu-item logout-btn">Sair</button>
+            </div>
+          </li>
           <li><a href="pages/about.php">Sobre</a></li>
           <li><a href="#footer">Contato</a></li>
           <li><a href="index.php" class="scroll-link">Home</a></li>

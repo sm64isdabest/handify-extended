@@ -114,6 +114,19 @@ class Product
             return false;
         }
     }
+
+    public function getAllProducts()
+    {
+        try {
+            $sql = "SELECT * FROM product ORDER BY id_product DESC";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $error) {
+            echo "Erro ao buscar produtos: " . $error->getMessage();
+            return false;
+        }
+    }
 }
 
 ?>
