@@ -114,6 +114,21 @@ class Product
             return false;
         }
     }
+
+     public function getAllProducts(int $limit = 20)
+    {
+        try {
+            $sql = "SELECT id_product AS id, name, /*slug,*/ image AS img, price FROM product ORDER BY id_product DESC LIMIT :limit";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $error) {
+            // opcional: log em vez de echo
+            return [];
+        }
+    }
+
 }
 
 ?>

@@ -2,7 +2,95 @@
 session_start();
 $userName = isset($_COOKIE['userName']) ? urldecode($_COOKIE['userName']) : '';
 $userType = isset($_COOKIE['userType']) ? $_COOKIE['userType'] : '';
+
+require_once __DIR__ . '/Model/Product.php';
+require_once __DIR__ . '/Model/Connection.php';
+use Model\Product;
+use Model\Connection;
+
+$products = [];
+$dbError = null;
+
+try {
+    $db = Connection::getInstance();
+    $stmt = $db->prepare("
+        SELECT id_product AS id, name, image AS img, price, category
+        FROM product
+        ORDER BY category, id_product DESC
+        LIMIT 20
+    ");
+    $stmt->execute();
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    $products = [];
+    $dbError = $e->getMessage();
+}
+
+// Endpoint JSON para frontend
+if (isset($_GET['action']) && $_GET['action'] === 'get-products') {
+    header('Content-Type: application/json; charset=UTF-8');
+    if ($dbError) {
+        http_response_code(500);
+        echo json_encode(['error' => 'DB_ERROR', 'message' => $dbError]);
+    } else {
+        echo json_encode(['products' => $products]);
+    }
+    exit;
+}
+
+function normalize_img_path($src) {
+    if (empty($src)) return '';
+    $src = trim($src);
+    // converte barras invertidas em normais (Windows para URL)
+    $src = str_replace('\\', '/', $src);
+    // remove ../ ou ./
+    $src = preg_replace('#^(\.\./)+#', '', $src);
+    $src = preg_replace('#^(\./)+#', '', $src);
+    // se for URL absoluta, retorna
+    if (preg_match('#^https?://#i', $src)) return $src;
+    // se começar com '/', usa como caminho absoluto
+    if (strpos($src, '/') === 0) return $src;
+    // base da aplicação (ex: /handify-extended)
+    $base = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
+    if ($base === '' || $base === '/') $base = '';
+    return $base . '/' . ltrim($src, '/');
+}
+
+function normalize_category_key($cat) {
+    if (empty($cat)) return '';
+    $cat = trim((string)$cat);
+    // remove acentos
+    $cat = iconv('UTF-8', 'ASCII//TRANSLIT', $cat);
+    $cat = strtolower($cat);
+    // keep only letters (remove espaços e sinais)
+    $cat = preg_replace('/[^a-z0-9]/', '', $cat);
+    return $cat;
+}
+
+function getProductsForCategory(array $products, string $categoryName, int $limit = 5): array {
+    $key = normalize_category_key($categoryName);
+    $matched = array_filter($products, function($p) use ($key) {
+        return normalize_category_key($p['category'] ?? '') === $key;
+    });
+
+    $matched = array_values($matched); // reindex
+    if (count($matched) >= $limit) {
+        return array_slice($matched, 0, $limit);
+    }
+
+    // completar com outros produtos que não estão em $matched (sem duplicar)
+    $result = $matched;
+    $idsTaken = array_column($result, 'id');
+    foreach ($products as $p) {
+        if (count($result) >= $limit) break;
+        if (in_array($p['id'], $idsTaken, true)) continue;
+        $result[] = $p;
+        $idsTaken[] = $p['id'];
+    }
+    return $result;
+  }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -195,188 +283,124 @@ $userType = isset($_COOKIE['userType']) ? $_COOKIE['userType'] : '';
       </div>
     </section>
 
+
     <section id="produto" class="rounded-4 card produtos Cozinha">
       <h3 class="produtos-paraC">Produtos para cozinha</h3>
       <div class="produtos-lista">
-        <div class="produto">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
+        <?php
+        // usa a função que preenche até 5 itens por categoria (completa com outros sem duplicar)
+        $cozinhaProducts = getProductsForCategory($products, 'Cozinha', 5);
+        if (empty($cozinhaProducts)) {
+            echo '<p style="color: #666; padding: 20px;">Nenhum produto disponível no momento.</p>';
+        } else {
+            foreach ($cozinhaProducts as $p):
+                $img = normalize_img_path($p['img'] ?? '');
+        ?>
+          <div class="produto" data-slug="<?= htmlspecialchars($p['slug'] ?? '') ?>">
+            <?php if (!empty($img)): ?>
+              <img src="<?= htmlspecialchars($img) ?>" alt="<?= htmlspecialchars($p['name'] ?? '') ?>" style="height:110px;width:auto;object-fit:contain;margin:0 auto 6px;display:block;">
+            <?php endif; ?>
+            <span class="produto-nome"><?= htmlspecialchars($p['name'] ?? '') ?></span>
+            <div class="produto-preco-bloco">
+              <div class="produto-preco-desconto-container">
+                <?php if (!empty($p['originalPrice'])): ?>
+                  <span class="produto-preco-antigo">R$ <?= number_format((float)str_replace(['R$', '.',' '], ['', '.',''], $p['originalPrice']), 2, ',', '.') ?></span>
+                <?php endif; ?>
+                <?php if (!empty($p['discount'])): ?>
+                  <span class="produto-desconto"><?= htmlspecialchars($p['discount']) ?>%</span>
+                <?php endif; ?>
+              </div>
+              <span class="produto-preco">R$ <?= number_format((float)str_replace(['R$', '.',' '], ['', '.',''], $p['price']), 2, ',', '.') ?></span>
             </div>
-            <span class="produto-preco"></span>
           </div>
-        </div>
-        <div class="produto">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto faqueiro">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto panela">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
+        <?php
+            endforeach;
+        }
+        ?>
       </div>
     </section>
 
-    <section class="rounded-4 produtos card Decorativos">
-      <h3 class="produtos-decorativos">Produtos decorativos</h3>
-      <div class="produtos-lista">
-        <div class="produto">
 
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
+<section class="rounded-4 produtos card Decorativos">
+  <h3 class="produtos-decorativos">Produtos decorativos</h3>
+  <div class="produtos-lista">
+    <?php
+    $decorativosProducts = getProductsForCategory($products, 'Decorativos', 5);
+    if (empty($decorativosProducts)) {
+        echo '<p style="color: #666; padding: 20px;">Nenhum produto disponível no momento.</p>';
+    } else {
+        foreach ($decorativosProducts as $p):
+            $img = normalize_img_path($p['img'] ?? '');
+    ?>
+      <div class="produto" data-slug="<?= htmlspecialchars($p['slug'] ?? '') ?>">
+        <?php if (!empty($img)): ?>
+          <img src="<?= htmlspecialchars($img) ?>" alt="<?= htmlspecialchars($p['name'] ?? '') ?>" style="height:110px;width:auto;object-fit:contain;margin:0 auto 6px;display:block;">
+        <?php endif; ?>
+        <span class="produto-nome"><?= htmlspecialchars($p['name'] ?? '') ?></span>
+        <div class="produto-preco-bloco">
+          <div class="produto-preco-desconto-container">
+            <?php if (!empty($p['originalPrice'])): ?>
+              <span class="produto-preco-antigo">R$ <?= number_format((float)str_replace(['R$', '.',' '], ['', '.',''], $p['originalPrice']), 2, ',', '.') ?></span>
+            <?php endif; ?>
+            <?php if (!empty($p['discount'])): ?>
+              <span class="produto-desconto"><?= htmlspecialchars($p['discount']) ?>%</span>
+            <?php endif; ?>
           </div>
-        </div>
-        <div class="produto">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto jarro-flor">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto pato">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
+          <span class="produto-preco">R$ <?= number_format((float)str_replace(['R$', '.',' '], ['', '.',''], $p['price']), 2, ',', '.') ?></span>
         </div>
       </div>
-    </section>
+    <?php
+        endforeach;
+    }
+    ?>
+  </div>
+</section>
 
-    <section class="rounded-4 card produtos Moveis">
-      <h3 class="moveis">Móveis</h3>
-      <div class="produtos-lista">
-        <div class="produto">
 
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
+<section class="rounded-4 card produtos Moveis">
+  <h3 class="moveis">Móveis</h3>
+  <div class="produtos-lista">
+    <?php
+    $moveisProducts = getProductsForCategory($products, 'Móveis', 4);
+    if (empty($moveisProducts)) {
+        echo '<p style="color: #666; padding: 20px;">Nenhum produto disponível no momento.</p>';
+    } else {
+        foreach ($moveisProducts as $p):
+            // normaliza e resolve caminho web/local
+            $imgPath = normalize_img_path($p['img'] ?? '');
+            $webImg = $imgPath ?: 'images/placeholder-no-image.png';
+            // tenta transformar em caminho físico para ver se o arquivo existe
+            $localCandidate = $_SERVER['DOCUMENT_ROOT'] . '/' . ltrim($imgPath, '/');
+            if (!empty($imgPath) && file_exists($localCandidate)) {
+                $webImg = $imgPath;
+            } else {
+                $webImg = 'images/placeholder-no-image.png';
+            }
+    ?>
+      <div class="produto" data-slug="<?= htmlspecialchars($p['slug'] ?? '') ?>">
+        <?php if (!empty($webImg)): ?>
+          <img src="<?= htmlspecialchars($webImg) ?>" alt="<?= htmlspecialchars($p['name'] ?? 'Produto') ?>" style="height:110px;width:auto;object-fit:contain;margin:0 auto 6px;display:block;" loading="lazy">
+        <?php endif; ?>
+        <span class="produto-nome"><?= htmlspecialchars($p['name'] ?? '') ?></span>
+        <div class="produto-preco-bloco">
+          <div class="produto-preco-desconto-container">
+            <?php if (!empty($p['originalPrice'])): ?>
+              <span class="produto-preco-antigo">R$ <?= number_format((float)str_replace(['R$', '.',' '], ['', '.',''], $p['originalPrice']), 2, ',', '.') ?></span>
+            <?php endif; ?>
+            <?php if (!empty($p['discount'])): ?>
+              <span class="produto-desconto"><?= htmlspecialchars($p['discount']) ?>%</span>
+            <?php endif; ?>
           </div>
-        </div>
-        <div class="produto">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto poltrona-positano">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto banco banqueta-vime">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
+          <span class="produto-preco">R$ <?= number_format((float)str_replace(['R$', '.',' '], ['', '.',''], $p['price']), 2, ',', '.') ?></span>
         </div>
       </div>
-    </section>
+    <?php
+        endforeach;
+    }
+    ?>
+  </div>
+</section>
+
   </main>
 
   <!-- Benefícios -->
