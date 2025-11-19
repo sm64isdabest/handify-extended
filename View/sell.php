@@ -3,14 +3,17 @@
 session_start();
 require_once __DIR__ . '/../Model/Store.php';
 require_once __DIR__ . '/../Model/Product.php';
+require_once __DIR__ . '/../Model/Category.php';
 require_once __DIR__ . '/../Controller/ProductController.php';
 
 use Model\Product;
 use Controller\ProductController;
 use Model\Store;
+use Model\Category;
 
 $productModel = new Product();
 $storeModel = new Store();
+$categoryModel = new Category();
 $productController = new ProductController($productModel);
 $message = '';
 
@@ -37,26 +40,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $free_shipping = isset($_POST['free_shipping']) ? 1 : 0;
 
-            // obtém id da loja/usuário a partir da sessão
-            $id_user_logado = $_SESSION['id'];
-            $storeData = $id_user_logado ? $storeModel->getStoreByUserId($id_user_logado): null;
-            $id_store_fk = $storeData['id_store'];
-            var_dump($id_store_fk);
-            var_dump($_SESSION['store']['id_store']);
-            if (empty($id_store_fk)) {
-                $message = 'Erro: id da loja não encontrado na sessão. Faça login com a conta da empresa.';
+            $id_user_logado = $_SESSION['id'] ?? null;
+            if (!$id_user_logado) {
+                $message = 'Erro: usuário não autenticado. Faça login com a conta da empresa.';
             } else {
-                $result = $productController->registerProduct(
-                    $name,
-                    $description,
-                    $imagePath,
-                    (int) $stock,
-                    (string) $price,
-                    $free_shipping,
-                    (int) $id_store_fk
-                );
+                $storeData = $storeModel->getStoreByUserId($id_user_logado);
+                if (empty($storeData) || !isset($storeData['id_store'])) {
+                    $message = 'Erro: loja não encontrada para este usuário. Cadastre ou associe a loja à conta.';
+                } else {
+                    $id_store_fk = (int) $storeData['id_store'];
 
-                $message = $result ? 'Produto cadastrado com sucesso.' : 'Erro ao cadastrar produto.';
+                    $result = $productController->registerProduct(
+                        $name,
+                        $description,
+                        $imagePath,
+                        (int) $stock,
+                        (string) $price,
+                        $free_shipping,
+                        $id_store_fk
+                    );
+
+                    $message = $result ? 'Produto cadastrado com sucesso.' : 'Erro ao cadastrar produto.';
+                }
             }
         } else {
             $message = 'Erro ao mover arquivo enviado.';
@@ -150,6 +155,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="quantidade-produto">
                         <input type="number" id="stock" name="stock" placeholder="Quantidade" min="0" required />
                     </div>
+                    <input list="categorias">
+
+                    <datalist id="categorias">
+                        <?php 
+                        $categorias = $categoryModel->getAllCategories();
+
+                        foreach($categorias as $c):
+                        ?>
+                        <option value="<?= htmlspecialchars($c['name']) ?>"></option>
+                        <?php endforeach; ?>
+                    </datalist>
+
                     <button class="comprar-agora" disabled>Comprar Agora</button>
                     <button class="adicionar-carrinho" disabled>Adicionar ao Carrinho</button>
                 </div>
@@ -162,8 +179,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="submit">Vender</button>
         </form>
         <!-- Form -->
-        <?php if (!empty($message))
-            echo "<p style='color:red;text-align:center;'>$message</p>"; ?>
+        <?php if (!empty($message)): ?>
+            <?php $isSuccess = ($message === 'Produto cadastrado com sucesso.'); ?>
+            <div id="flash-message" role="status" aria-live="polite" style="
+        position: fixed;
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: <?= $isSuccess ? '#28a745' : '#dc3545' ?>;
+        color: #fff;
+        padding: 1rem 1.25rem;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.30);
+        z-index: 9999;
+        max-width: 90%;
+        min-width: 240px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 0.95rem;
+        ">
+                <?= htmlspecialchars($message, ENT_QUOTES, 'UTF-8') ?>
+            </div>
+            <script>
+                (function () {
+                    const el = document.getElementById('flash-message');
+                    if (!el) return;
+                    // auto hide after 5s
+                    setTimeout(() => {
+                        el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                        el.style.opacity = '0';
+                        el.style.transform = 'translateX(-50%) translateY(-10px)';
+                        setTimeout(() => el.remove(), 420);
+                    }, 5000);
+                })();
+            </script>
+        <?php endif; ?>
     </main>
 
     <footer>

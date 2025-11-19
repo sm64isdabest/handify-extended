@@ -16,7 +16,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: white;
+  background-color: rgb(250, 236, 206);
   border-bottom: 2px solid #593d36;
 }
 
@@ -41,7 +41,7 @@ header nav ul li a {
 
 header nav ul li a.entrar {
   background-color: #593d36;
-  color: white;
+  color: rgb(250, 236, 206);
   padding: 0.9rem;
   border-radius: 15px;
 }
@@ -161,7 +161,7 @@ header nav ul li a.entrar i {
   min-height: calc(100vh - 150px);
   justify-content: center;
   align-items: center;
-  background-image: url("../images/fundos/fundo_madeira.png");
+  background-image: url("../images/fundos/fundo_original.png");
   background-size: cover;
   background-position: center;
 }
@@ -261,7 +261,7 @@ footer {
   display: flex;
   font-size: 0.8rem;
   text-align: center;
-  background-color: white;
+  background-color: rgb(250, 236, 206);
   border-top: 2px solid #593d36;
   flex-direction: row;
   justify-content: space-between;
