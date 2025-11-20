@@ -193,3 +193,7 @@ dist
 
 ### uploads folder ###
 uploads/*
+
+### Stripe Config Files ###
+config/stripe.php
+/stripe-config.php

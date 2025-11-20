@@ -108,22 +108,13 @@ class UserController
         $user = $this->userModel->getUserByEmail($email);
 
         if ($user && isset($user['password']) && password_verify($password, $user['password'])) {
-            if (session_status() === PHP_SESSION_NONE) {
-                session_start();
-            }
 
             $_SESSION['id'] = $user['id_user'];
             $_SESSION['user_fullname'] = $user['user_fullname'] ?? '';
             $_SESSION['email'] = $user['email'];
 
-            if (isset($user['user_fullname'])) {
-                setcookie('userName', urlencode($user['user_fullname']), time() + 3600, "/");
-            }
-
             $id_user = $user['id_user'];
-
             $store = $this->storeModel->getStoreByUserId($id_user);
-
             $customer = $this->customerModel->getByUserId($id_user);
 
             if ($store) {

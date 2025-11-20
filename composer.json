@@ -11,6 +11,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">= 8.0",
-        "ext-mbstring": "*"
+        "ext-mbstring": "*",
+        "stripe/stripe-php": "^19.1@beta"
     }
 }

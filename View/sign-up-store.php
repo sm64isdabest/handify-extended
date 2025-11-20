@@ -17,7 +17,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $address = trim(strip_tags($_POST['address'] ?? ''));
   $phone = trim(strip_tags($_POST['phone'] ?? ''));
 
-  if ($password !== $passwordConfirm) {
+  if (empty($user_fullname) || empty($email) || empty($password) || empty($cnpj) || empty($store_name) || empty($address) || empty($phone)) {
+    $message = "Preencha todos os campos obrigatórios.";
+  } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $message = "Email inválido.";
+  } elseif (strlen($password) < 6) {
+    $message = "A senha deve ter pelo menos 6 caracteres.";
+  } elseif ($password !== $passwordConfirm) {
     $message = "As senhas não conferem.";
   } else {
     $result = $controller->registerStoreUser(
@@ -31,27 +37,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
 
     if (!empty($result['success'])) {
-      if ($controller->login($email, $password)) {
-        setcookie('userName', urldecode($store_name), [
-          'expires' => time() + 7 * 24 * 60 * 60,
-          'path' => '/',
-          'secure' => false,
-          'httponly' => false,
-          'samesite' => 'Lax'
-        ]);
-        setcookie('userType', 'store', [
-          'expires' => time() + 7 * 24 * 60 * 60,
-          'path' => '/',
-          'secure' => false,
-          'httponly' => false,
-          'samesite' => 'Lax'
-        ]);
+      
+      $_SESSION['id'] = $result['user_id'];
+      $_SESSION['user_type'] = 'store';
+      $_SESSION['email'] = $email;
+      $_SESSION['user_fullname'] = $user_fullname;
 
-        header('Location: ../index.php');
-        exit;
-      } else {
-        $message = "Erro ao criar sessão do usuário.";
-      }
+      error_log("Store signup successful - User ID: " . $result['user_id']);
+      error_log("Session data after store signup: " . print_r($_SESSION, true));
+
+      setcookie('userName', urldecode($store_name), [
+        'expires' => time() + 7 * 24 * 60 * 60,
+        'path' => '/',
+        'secure' => false,
+        'httponly' => false,
+        'samesite' => 'Lax'
+      ]);
+      setcookie('userType', 'store', [
+        'expires' => time() + 7 * 24 * 60 * 60,
+        'path' => '/',
+        'secure' => false,
+        'httponly' => false,
+        'samesite' => 'Lax'
+      ]);
+
+      header('Location: ../index.php');
+      exit;
     } else {
       $message = $result['message'] ?? 'Erro ao realizar cadastro da loja.';
     }

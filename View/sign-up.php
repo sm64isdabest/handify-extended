@@ -17,29 +17,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $birthdate = trim(strip_tags($_POST['birthdate'] ?? ''));
   $address = trim(strip_tags($_POST['address'] ?? ''));
 
-  if ($password !== $passwordConfirm) {
+  if (empty($user_fullname) || empty($email) || empty($password)) {
+    $message = "Preencha todos os campos obrigatórios.";
+  } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $message = "Email inválido.";
+  } elseif (strlen($password) < 6) {
+    $message = "A senha deve ter pelo menos 6 caracteres.";
+  } elseif ($password !== $passwordConfirm) {
     $message = "As senhas não conferem.";
   } else {
     if (!empty($_POST['cnpj'])) {
       $cnpj = trim(strip_tags($_POST['cnpj'] ?? ''));
       $store_name = trim(strip_tags($_POST['storeName'] ?? ''));
       $result = $controller->registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone);
+      
+      if (is_array($result) && !empty($result['success'])) {
+        $_SESSION['id'] = $result['user_id'];
+        $_SESSION['user_type'] = 'store';
+        $_SESSION['email'] = $email;
+        $_SESSION['user_fullname'] = $user_fullname;
+        
+        setcookie('userName', urldecode($store_name), time() + (7 * 24 * 60 * 60), '/');
+        header('Location: ../index.php');
+        exit;
+      }
     } else {
       $result = $controller->registerCustomerUser($user_fullname, $email, $password, $phone, $birthdate, $address);
-    }
-    if (is_array($result) && !empty($result['success'])) {
-      $_SESSION['id'] = $result['user_id'];
-      $_SESSION['user_type'] = 'customer';
-      $_SESSION['email'] = $email;
-      setcookie('userName', urldecode($user_fullname), time() + (7 * 24 * 60 * 60), '/');
-      header('Location: ../index.php');
-      exit;
-    } else {
-      if (is_array($result) && !empty($result['message'])) {
-        $message = $result['message'];
-      } else {
-        $message = 'Erro ao realizar cadastro.';
+    
+      if (is_array($result) && !empty($result['success'])) {
+        $_SESSION['id'] = $result['user_id'];
+        $_SESSION['user_type'] = 'customer';
+        $_SESSION['email'] = $email;
+        $_SESSION['user_fullname'] = $user_fullname;
+        
+        setcookie('userName', urldecode($user_fullname), time() + (7 * 24 * 60 * 60), '/');
+        header('Location: ../index.php');
+        exit;
       }
+    }
+  
+    if (is_array($result) && !empty($result['message'])) {
+      $message = $result['message'];
+    } else {
+      $message = 'Erro ao realizar cadastro.';
     }
   }
 }

@@ -96,9 +96,9 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                     Informações</a>
                 <a href="#orders" class="profile-nav-item"><i class="bi bi-box-seam"></i> Meus Pedidos</a>
                 <a href="#payments" class="profile-nav-item"><i class="bi bi-credit-card"></i> Formas de Pagamento
-                <a href="#settings" class="profile-nav-item"><i class="bi bi-gear"></i> Configurações</a>
-                <a href="#" class="profile-nav-item logout-item logout-btn"><i class="bi bi-box-arrow-right"></i>
-                    Sair</a>
+                    <a href="#settings" class="profile-nav-item"><i class="bi bi-gear"></i> Configurações</a>
+                    <a href="#" class="profile-nav-item logout-item logout-btn"><i class="bi bi-box-arrow-right"></i>
+                        Sair</a>
             </div>
         </div>
 
@@ -154,7 +154,7 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                         <?php endif; ?>
                     </div>
                 </div>
-            <div id="edit-mode" style="display: none;">
+                <div id="edit-mode" style="display: none;">
                     <div class="section-header">
                         <h3>Editar Informações</h3>
                     </div>
@@ -252,6 +252,76 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                 </div>
             </section>
 
+            <section id="payments" class="profile-section">
+                <div class="section-header">
+                    <h3>Formas de Pagamento</h3>
+                    <button id="add-card-btn" class="edit-btn">
+                        <i class="bi bi-plus-circle"></i> Adicionar Cartão
+                    </button>
+                </div>
+
+                <div id="cards-container" class="card-list">
+                    <?php
+                    require_once __DIR__ . '/../Model/UserCard.php';
+                    use Model\UserCard;
+
+                    $cardModel = new UserCard();
+                    $cards = $cardModel->getCardsByUserId($_SESSION['id']);
+
+                    if (count($cards) === 0): ?>
+                        <p>Nenhum cartão cadastrado.</p>
+                    <?php else:
+                        foreach ($cards as $card): ?>
+                            <div class="order-card">
+                                <div class="order-details" style="gap: 12px;">
+                                    <p><strong><?= strtoupper($card['brand']) ?></strong></p>
+                                    <p>•••• <?= $card['last4'] ?></p>
+                                    <p><?= sprintf("%02d/%d", $card['exp_month'], $card['exp_year']) ?></p>
+                                    <?php if ($card['is_default']): ?>
+                                        <span class="status-delivered">
+                                            <i class="bi bi-check-circle-fill"></i> Padrão
+                                        </span>
+                                    <?php endif; ?>
+                                </div>
+
+                                <div style="display:flex; gap: 10px;">
+                                    <?php if (!$card['is_default']): ?>
+                                        <button class="edit-btn" onclick="setDefaultCard(<?= $card['id_card'] ?>)">
+                                            Tornar Padrão
+                                        </button>
+                                    <?php endif; ?>
+                                    <button class="edit-btn danger" onclick="deleteCard(<?= $card['id_card'] ?>)">
+                                        Excluir
+                                    </button>
+                                </div>
+                            </div>
+                        <?php endforeach; endif; ?>
+                </div>
+                <div id="addCardModal" class="modal">
+                    <div class="modal-content">
+                        <h3>Adicionar Cartão</h3>
+
+                        <form id="add-card-form">
+                            <label>Nome do Titular</label>
+                            <input type="text" id="cardholderName" required>
+
+                            <label>Número do Cartão</label>
+                            <div id="card-number-element" class="stripe-input"></div>
+
+                            <label>Validade</label>
+                            <div id="card-expiry-element" class="stripe-input"></div>
+
+                            <label>CVC</label>
+                            <div id="card-cvc-element" class="stripe-input"></div>
+
+                            <button type="submit" class="edit-btn">Salvar</button>
+                        </form>
+
+                        <button id="closeCardModal" class="edit-btn danger">Fechar</button>
+                    </div>
+                </div>
+            </section>
+
             <section id="settings" class="profile-section">
                 <div class="section-header">
                     <h3>Configurações da Conta</h3>
@@ -288,9 +358,10 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
             <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram"></i></a>
         </div>
     </footer>
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="../js/logged-in.js"></script>
     <script src="../js/profile.js"></script>
-
+    <script src="../js/payment-card/add-card.js"></script>
 </body>
 
 </html>
