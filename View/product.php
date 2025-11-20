@@ -1,3 +1,19 @@
+<?php
+require_once __DIR__ . '/../Model/Product.php';
+use Model\Product;
+
+$product = null;
+if (isset($_GET['produto'])) {
+    $slug = trim($_GET['produto']);
+    $productModel = new Product();
+    $product = $productModel->getProductBySlug($slug);
+} elseif (isset($_GET['id'])) {
+    $id = intval($_GET['id']);
+    $productModel = new Product();
+    $product = $productModel->getProductById($id);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -81,10 +97,21 @@
         <div class="product-page">
             <section class="product-gallery">
                 <div class="main-image">
-                    <img src="../images/produtos/bolsas/bolsa-palha.png" alt="Imagem principal do produto" />
+                    <img src="<?php
+                        $imgPath = '../images/produtos/bolsas/bolsa-palha.png';
+                        if (!empty($product['image'])) {
+                            $img = $product['image'];
+                            if (strpos($img, 'http') === 0 || strpos($img, '/') === 0) {
+                                $imgPath = $img;
+                            } else {
+                                $imgPath = '../' . ltrim($img, '/');
+                            }
+                        }
+                        echo htmlspecialchars($imgPath);
+                    ?>" alt="<?php echo htmlspecialchars($product['name'] ?? 'Imagem do produto'); ?>" />
 
                     <h2 class="text_tablet">Estoque disponível</h2>
-                    <p class="sub_text_tablet">Quantidade: 1 (200 disponíveis)</p>
+                    <p class="sub_text_tablet">Quantidade: <?php echo htmlspecialchars($product['stock'] ?? '0'); ?> (<?php echo htmlspecialchars($product['stock'] ?? '0'); ?> disponíveis)</p>
                 </div>
 
             </section>
@@ -95,27 +122,27 @@
                             class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
                             class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
                 </div>
-                <h1>Bolsa de palha</h1>
+                <h1><?php echo htmlspecialchars($product['name'] ?? 'Produto não encontrado'); ?></h1>
+                <?php
+                    $rawPrice = $product['price'] ?? '';
+                    $priceFormatted = is_numeric($rawPrice) ? 'R$ ' . number_format($rawPrice, 2, ',', '.') : $rawPrice;
+                    $oldPrice = $product['original_price'] ?? '';
+                    $oldPriceFormatted = is_numeric($oldPrice) ? 'R$ ' . number_format($oldPrice, 2, ',', '.') : $oldPrice;
+                ?>
                 <p class="price">
-                    <span class="old-price">R$ 279,90 OFF</span>
-                    <span class="current-price">R$ 139,95</span>
+                    <span class="old-price"><?php echo htmlspecialchars($oldPriceFormatted); ?></span>
+                    <span class="current-price"><?php echo htmlspecialchars($priceFormatted); ?></span>
                 </p>
-                <p class="installments">em 12x R$ 23,32*</p>
+                <p class="installments">em 12x <?php echo htmlspecialchars($priceFormatted); ?>*</p>
                 <a href="#" class="payment-methods">Ver meios de pagamentos</a>
 
                 <div class="product-info">
                     <p>O que você precisa saber sobre esse produto</p>
-                    <p class="bolsa">Cor: <span class="color">Bege escuro</span></p>
-                    <p class="alça">
-                        Cor da Alça: <span class="handle-color">Marrom</span>
-                    </p>
-                    <p class="palha">
-                        Material: <span class="material">Palha trançada sintética</span>
-                    </p>
+                    <p><?php echo nl2br(htmlspecialchars($product['description'] ?? 'Descrição não disponível.')); ?></p>
                 </div>
                 <div class="disponiveis_clc">
                     <h3>Estoque disponível</h3>
-                    <p>Quantidade: 1 (200 Disponível)</p>
+                    <p>Quantidade: <?php echo htmlspecialchars($product['stock'] ?? '0'); ?> (<?php echo htmlspecialchars($product['stock'] ?? '0'); ?> Disponível)</p>
                 </div>
                 <div class="botoes_adc">
                     <button class="btn_1" id="btn_1" onclick="window.location.href = 'payment-methods.php'">Comprar Agora</button>

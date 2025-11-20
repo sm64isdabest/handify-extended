@@ -12,6 +12,16 @@ document.addEventListener('click', function (e) {
     // Produto na lista
     const produtoDiv = e.target.closest('.produto');
     if (produtoDiv && produtoDiv.querySelector('.produto-nome')) {
+        const dataSlug = produtoDiv.dataset.slug;
+        const dataId = produtoDiv.dataset.id;
+        if (dataSlug) {
+            window.location.href = `View/product.php?produto=${encodeURIComponent(dataSlug)}`;
+            return;
+        }
+        if (dataId) {
+            window.location.href = `View/product.php?id=${encodeURIComponent(dataId)}`;
+            return;
+        }
         const nome = produtoDiv.querySelector('.produto-nome').textContent;
         const slug = getSlugByName(nome);
         if (slug) {
