@@ -43,7 +43,7 @@
 
   <main>
     <div class="container-pagamento">
-      <a href="../../index.php" class="botao-voltar">
+      <a onclick="history.back()" class="botao-voltar">
         <i class="bi bi-arrow-left"></i>
       </a>
       <h2 class="titulo-pagamento">Formas de pagamento</h2>

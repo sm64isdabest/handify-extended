@@ -8,8 +8,9 @@ require_once __DIR__ . '/partials/interface_produto.php';
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Produto - Handify</title>    
+    <title>Produto - Handify</title>
     <link rel="stylesheet" href="../css/product.css" />
+    <link rel="stylesheet" href="../css/global.css" />
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -19,14 +20,14 @@ require_once __DIR__ . '/partials/interface_produto.php';
 <body>
     <header>
         <nav>
-            <img src="images/logo-handify.png" alt="Handify Logo" class="logo" />
+            <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
             <div class="search-bar">
                 <input type="text" id="searchInput" autocomplete="off" placeholder="Buscar produtos..." />
                 <i id="searchButton" class="bi bi-search"></i>
                 <ul id="autocomplete-list" class="autocomplete-items"></ul>
             </div>
             <ul>
-                <li><a href="index.php" class="scroll-link">Home</a></li>
+                <li><a href="../index.php" class="scroll-link">Home</a></li>
                 <li><a href="#footer">Contato</a></li>
                 <li><a href="View/about.php">Sobre</a></li>
                 <li>
@@ -37,14 +38,11 @@ require_once __DIR__ . '/partials/interface_produto.php';
                     <span class="user-name"></span>
                     <div class="menu-popup">
                         <p class="user-name-popup"></p>
-                        <button class="menu-item" onclick="window.location.href='View/profile.php'">Meu Perfil</button>
+                        <button class="menu-item" onclick="window.location.href='profile.php'">Meu Perfil</button>
                         <button class="menu-item logout-btn">Sair</button>
                     </div>
                 </li>
             </ul>
-
-            <button id="cart"><i class="bi bi-cart"></i></button>
-            <button id="list"><i class="bi bi-list"></i></button>
             <div id="popup-menu">
                 <ul class="popup-list">
                     <li>
@@ -114,7 +112,7 @@ require_once __DIR__ . '/partials/interface_produto.php';
                             class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
                 </div>
                 <h1><?php echo htmlspecialchars($product['name'] ?? 'Produto não encontrado'); ?></h1>
-                
+
                 <p class="price">
                     <span class="old-price"><?php echo htmlspecialchars($oldPriceFormatted); ?></span>
                     <span class="current-price"><?php echo htmlspecialchars($priceFormatted); ?></span>
@@ -364,12 +362,12 @@ require_once __DIR__ . '/partials/interface_produto.php';
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
 
+    <script src="../js/theme-loader.js"></script>
+    <script type="module" src="../js/logged-in.js"></script>
     <script type="module" src="../js/product/icon-pop-up.js"></script>
-    <script type="module" src="../js/product/menu-list-pop-up.js"></script>
     <script type="module" src="../js/product/add-to-cart.js"></script>
     <script type="module" src="../js/product/switch-product.js"></script>
     <script type="module" src="../js/search.js"></script>
-    <script src="../js/logged-in.js"></script>
 </body>
 
 </html>

@@ -95,6 +95,7 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                 <a href="#info" class="profile-nav-item active"><i class="bi bi-person-lines-fill"></i> Minhas
                     Informações</a>
                 <a href="#orders" class="profile-nav-item"><i class="bi bi-box-seam"></i> Meus Pedidos</a>
+                <a href="#payments" class="profile-nav-item"><i class="bi bi-credit-card"></i> Formas de Pagamento
                 <a href="#settings" class="profile-nav-item"><i class="bi bi-gear"></i> Configurações</a>
                 <a href="#" class="profile-nav-item logout-item logout-btn"><i class="bi bi-box-arrow-right"></i>
                     Sair</a>

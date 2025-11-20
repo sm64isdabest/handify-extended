@@ -57,9 +57,6 @@ if ($products === false) {
           </div>
         </li>
       </ul>
-
-      <button id="cart"><i class="bi bi-cart"></i></button>
-      <button id="list"><i class="bi bi-list"></i></button>
       <div id="popup-menu">
         <ul class="popup-list">
           <li>
@@ -400,7 +397,6 @@ if ($products === false) {
       <img src="images/icones/visa-logo.png" alt="Visa" />
       <img src="images/icones/Mastercard.png" alt="Mastercard" />
       <img src="images/icones/Logo-ELO.png" alt="Elo" />
-      <img src="images/icones/Logo-BOLETO.png" alt="Boleto" />
       <img src="images/icones/Logo-PIX.png" alt="Pix" />
     </div>
   </section>
