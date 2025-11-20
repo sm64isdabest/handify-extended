@@ -212,61 +212,7 @@ if ($products === false) {
     <section id="produto" class="rounded-4 card produtos Cozinha">
       <h3 class="produtos-paraC">Produtos para cozinha</h3>
       <div class="produtos-lista">
-        <div class="produto">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto faqueiro">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto panela">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
+        <?php require_once __DIR__ . '/View/partials/secao_produtos.php'; ?>
       </div>
     </section>
 

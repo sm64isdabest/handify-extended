@@ -1,17 +1,5 @@
 <?php
-require_once __DIR__ . '/../Model/Product.php';
-use Model\Product;
-
-$product = null;
-if (isset($_GET['produto'])) {
-    $slug = trim($_GET['produto']);
-    $productModel = new Product();
-    $product = $productModel->getProductBySlug($slug);
-} elseif (isset($_GET['id'])) {
-    $id = intval($_GET['id']);
-    $productModel = new Product();
-    $product = $productModel->getProductById($id);
-}
+require_once __DIR__ . '/partials/interface_produto.php';
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +8,7 @@ if (isset($_GET['produto'])) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Produto - Handify</title>
+    <title>Produto - Handify</title>    
     <link rel="stylesheet" href="../css/product.css" />
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
@@ -30,67 +18,69 @@ if (isset($_GET['produto'])) {
 
 <body>
     <header>
-        <div class="header-container">
-            <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" 
+        <nav>
+            <img src="images/logo-handify.png" alt="Handify Logo" class="logo" />
             <div class="search-bar">
-                <input type="text" autocomplete="off" placeholder="Buscar produtos..." id="searchInput" />
-                <i class="bi bi-search" id="searchButton"></i>
+                <input type="text" id="searchInput" autocomplete="off" placeholder="Buscar produtos..." />
+                <i id="searchButton" class="bi bi-search"></i>
                 <ul id="autocomplete-list" class="autocomplete-items"></ul>
             </div>
-            <div class="menu_clc">
-                <button id="cartIconMobile">
-                    <i class="bi bi-cart"></i>
-                </button>
-                <button id="listToggle">
-                    <i class="bi bi-list"></i>
-                </button>
-            </div>
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="../../index.php" class="nav-link" data-target="produtos">Home</a></li>
-                    <li><a href="about.php#footer" class="nav-link" data-target="contatos">Contato</a></li>
-                    <li><a href="about.php" class="nav-link" data-target="sobre">Sobre</a></li>
-                    <li><a href="login.php" class="entrar" data-target="entrar"><i class="bi bi-person"></i>Entrar</a>
+            <ul>
+                <li><a href="index.php" class="scroll-link">Home</a></li>
+                <li><a href="#footer">Contato</a></li>
+                <li><a href="View/about.php">Sobre</a></li>
+                <li>
+                    <a href="View/login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+                </li>
+                <li class="user-logged" style="display: none; position: relative;">
+                    <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
+                    <span class="user-name"></span>
+                    <div class="menu-popup">
+                        <p class="user-name-popup"></p>
+                        <button class="menu-item" onclick="window.location.href='View/profile.php'">Meu Perfil</button>
+                        <button class="menu-item logout-btn">Sair</button>
+                    </div>
+                </li>
+            </ul>
+
+            <button id="cart"><i class="bi bi-cart"></i></button>
+            <button id="list"><i class="bi bi-list"></i></button>
+            <div id="popup-menu">
+                <ul class="popup-list">
+                    <li>
+                        <a href="View/login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
                     </li>
-                    <li class="user-logged" style="display: none;">
-                        <i class="bi bi-person"></i> placeholder
+                    <li class="user-logged" style="display: none; position: relative;">
+                        <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
+                        <span class="user-name"></span>
+                        <div class="menu-popup">
+                            <p class="user-name-popup"></p>
+                            <button class="menu-item logout-btn">Sair</button>
+                        </div>
                     </li>
+                    <li><a href="pages/about.php">Sobre</a></li>
+                    <li><a href="#footer">Contato</a></li>
+                    <li><a href="index.php" class="scroll-link">Home</a></li>
                 </ul>
-            </nav>
-        </div>
+            </div>
+        </nav>
+
         <div class="menu-bar">
             <div>
-                <button class="menu-bar-btn" id="categoriasBtn">Categorias</button>
-                <button class="menu-bar-btn" id="ofertasBtn">Ofertas</button>
-                <button class="menu-bar-btn" id="vender-btn"
-                    onclick="window.location.href = './sell.php'">Vender</button>
-                <button class="menu-bar-btn" id="historicoBtn">Histórico</button>
+                <li style="display: none;">
+                    <a href="View/login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+                </li>
+                <a href="View/search.php" class="btn">Categorias</a>
+                <a href="#main" class="scroll-link btn">Ofertas</a>
+                <?php if (
+                    (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'store') ||
+                    (isset($_COOKIE['userType']) && $_COOKIE['userType'] === 'store')
+                ): ?>
+                    <a href="View/sell.php" class="btn">Vender</a>
+                <?php endif; ?>
+                <button id="rastrear-btn">Rastrear</button>
             </div>
-            <button class="cart-btn" id="cartIconDesktop"><i class="bi bi-cart"></i></button>
-        </div>
-        <div id="popup-menu">
-            <ul class="popup-list">
-                <header class="pop_up">
-                    <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
-                    <i class="bi bi-cart3"></i>
-                    <p>Carrinho de compra</p>
-                    <button class="sair_pop"><i class="bi bi-box-arrow-right"></i></button>
-                </header>
-            </ul>
-            <div class="pag_pop"></div>
-        </div>
-        <div id="popup-menu-list">
-            <ul class="popup-list-mob">
-                <li>
-                    <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
-                </li>
-                <li class="user-logged-mobile" style="display: none;">
-                    <i class="bi bi-person"></i> placeholder
-                </li>
-                <li><a href="about.php">Sobre</a></li>
-                <li><a href="about.php#footer">Contato</a></li>
-                <li><a href="../../index.php">Home</a></li>
-            </ul>
+            <button class="cart"><i class="bi bi-cart"></i></button>
         </div>
     </header>
     <main>
@@ -98,20 +88,21 @@ if (isset($_GET['produto'])) {
             <section class="product-gallery">
                 <div class="main-image">
                     <img src="<?php
-                        $imgPath = '../images/produtos/bolsas/bolsa-palha.png';
-                        if (!empty($product['image'])) {
-                            $img = $product['image'];
-                            if (strpos($img, 'http') === 0 || strpos($img, '/') === 0) {
-                                $imgPath = $img;
-                            } else {
-                                $imgPath = '../' . ltrim($img, '/');
-                            }
+                    $imgPath = '../images/produtos/bolsas/bolsa-palha.png';
+                    if (!empty($product['image'])) {
+                        $img = $product['image'];
+                        if (strpos($img, 'http') === 0 || strpos($img, '/') === 0) {
+                            $imgPath = $img;
+                        } else {
+                            $imgPath = '../' . ltrim($img, '/');
                         }
-                        echo htmlspecialchars($imgPath);
+                    }
+                    echo htmlspecialchars($imgPath);
                     ?>" alt="<?php echo htmlspecialchars($product['name'] ?? 'Imagem do produto'); ?>" />
 
                     <h2 class="text_tablet">Estoque disponível</h2>
-                    <p class="sub_text_tablet">Quantidade: <?php echo htmlspecialchars($product['stock'] ?? '0'); ?> (<?php echo htmlspecialchars($product['stock'] ?? '0'); ?> disponíveis)</p>
+                    <p class="sub_text_tablet">Quantidade: <?php echo htmlspecialchars($stock); ?>
+                        (<?php echo htmlspecialchars($stock); ?> disponíveis)</p>
                 </div>
 
             </section>
@@ -123,29 +114,29 @@ if (isset($_GET['produto'])) {
                             class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
                 </div>
                 <h1><?php echo htmlspecialchars($product['name'] ?? 'Produto não encontrado'); ?></h1>
-                <?php
-                    $rawPrice = $product['price'] ?? '';
-                    $priceFormatted = is_numeric($rawPrice) ? 'R$ ' . number_format($rawPrice, 2, ',', '.') : $rawPrice;
-                    $oldPrice = $product['original_price'] ?? '';
-                    $oldPriceFormatted = is_numeric($oldPrice) ? 'R$ ' . number_format($oldPrice, 2, ',', '.') : $oldPrice;
-                ?>
+                
                 <p class="price">
                     <span class="old-price"><?php echo htmlspecialchars($oldPriceFormatted); ?></span>
                     <span class="current-price"><?php echo htmlspecialchars($priceFormatted); ?></span>
                 </p>
-                <p class="installments">em 12x <?php echo htmlspecialchars($priceFormatted); ?>*</p>
+                <p class="installments">em <?php echo $installments; ?>x
+                    <?php echo htmlspecialchars($installmentAmountFormatted); ?>*
+                </p>
                 <a href="#" class="payment-methods">Ver meios de pagamentos</a>
 
                 <div class="product-info">
                     <p>O que você precisa saber sobre esse produto</p>
-                    <p><?php echo nl2br(htmlspecialchars($product['description'] ?? 'Descrição não disponível.')); ?></p>
+                    <p><?php echo nl2br(htmlspecialchars($product['description'] ?? 'Descrição não disponível.')); ?>
+                    </p>
                 </div>
                 <div class="disponiveis_clc">
                     <h3>Estoque disponível</h3>
-                    <p>Quantidade: <?php echo htmlspecialchars($product['stock'] ?? '0'); ?> (<?php echo htmlspecialchars($product['stock'] ?? '0'); ?> Disponível)</p>
+                    <p>Quantidade: <?php echo htmlspecialchars($stock); ?> (<?php echo htmlspecialchars($stock); ?>
+                        Disponível)</p>
                 </div>
                 <div class="botoes_adc">
-                    <button class="btn_1" id="btn_1" onclick="window.location.href = 'payment-methods.php'">Comprar Agora</button>
+                    <button class="btn_1" id="btn_1" onclick="window.location.href = 'payment-methods.php'">Comprar
+                        Agora</button>
                     <button class="add-to-cart">Adicionar ao Carrinho</button>
                 </div>
             </section>
@@ -168,11 +159,13 @@ if (isset($_GET['produto'])) {
 
                 <div class="stock-info">
                     <p><strong>Estoque disponível</strong></p>
-                    <p>Quantidade: 1 (200 Disponível)</p>
+                    <p>Quantidade: <?php echo htmlspecialchars($stock); ?> (<?php echo htmlspecialchars($stock); ?>
+                        Disponível)</p>
                 </div>
 
                 <div class="purchase-buttons">
-                    <button class="buy-now" id="buy-now" onclick="window.location.href = 'payment-methods.php'">Comprar Agora</button>
+                    <button class="buy-now" id="buy-now" onclick="window.location.href = 'payment-methods.php'">Comprar
+                        Agora</button>
                     <button class="add-to-cart" data-index="1">Adicionar ao Carrinho</button>
                 </div>
             </section>
