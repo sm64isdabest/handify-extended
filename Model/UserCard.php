@@ -28,20 +28,36 @@ class UserCard
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function getCardById($id_card, $id_user)
+    {
+        $stmt = $this->db->prepare("
+            SELECT *
+            FROM user_cards
+            WHERE id_card = :id_card AND id_user_fk = :id_user
+        ");
+        $stmt->execute([
+            ':id_card' => $id_card,
+            ':id_user' => $id_user
+        ]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
     public function addCard($data)
     {
         $stmt = $this->db->prepare("
-            SELECT COUNT(*) FROM user_cards WHERE id_user_fk = :id_user
-        ");
+        SELECT COUNT(*) FROM user_cards WHERE id_user_fk = :id_user
+    ");
         $stmt->execute([':id_user' => $data['id_user_fk']]);
         $isFirst = $stmt->fetchColumn() == 0;
 
         $stmt = $this->db->prepare("
-            INSERT INTO user_cards
-            (id_user_fk, stripe_payment_method, brand, last4, exp_month, exp_year, cardholder_name, is_default)
-            VALUES
-            (:id_user_fk, :stripe_payment_method, :brand, :last4, :exp_month, :exp_year, :cardholder_name, :is_default)
-        ");
+        INSERT INTO user_cards
+        (id_user_fk, stripe_payment_method, brand, last4, exp_month, exp_year, cardholder_name,
+         tax_id, email, phone, address_line1, address_line2, city, state, postal_code, is_default)
+        VALUES
+        (:id_user_fk, :stripe_payment_method, :brand, :last4, :exp_month, :exp_year, :cardholder_name,
+         :tax_id, :email, :phone, :address_line1, :address_line2, :city, :state, :postal_code, :is_default)
+    ");
 
         return $stmt->execute([
             ':id_user_fk' => $data['id_user_fk'],
@@ -51,6 +67,14 @@ class UserCard
             ':exp_month' => $data['exp_month'],
             ':exp_year' => $data['exp_year'],
             ':cardholder_name' => $data['cardholder_name'],
+            ':tax_id' => $data['tax_id'] ?? null,
+            ':email' => $data['email'] ?? null,
+            ':phone' => $data['phone'] ?? null,
+            ':address_line1' => $data['address_line1'] ?? null,
+            ':address_line2' => $data['address_line2'] ?? null,
+            ':city' => $data['city'] ?? null,
+            ':state' => $data['state'] ?? null,
+            ':postal_code' => $data['postal_code'] ?? null,
             ':is_default' => $isFirst ? 1 : 0
         ]);
     }

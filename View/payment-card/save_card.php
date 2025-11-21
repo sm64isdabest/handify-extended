@@ -12,7 +12,7 @@ if (!isset($_SESSION['id'])) {
 }
 
 require_once __DIR__ . '/../../Model/UserCard.php';
-require_once __DIR__ . '/../../Model/Connection.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 try {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -21,18 +21,21 @@ try {
 
     $pm_id = $_POST['pm_id'] ?? '';
     $name = $_POST['name'] ?? '';
+    $taxId = $_POST['tax_id'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $phone = $_POST['phone'] ?? '';
+    $addressLine1 = $_POST['addressLine1'] ?? '';
+    $addressLine2 = $_POST['addressLine2'] ?? '';
+    $city = $_POST['city'] ?? '';
+    $state = $_POST['state'] ?? '';
+    $postalCode = $_POST['postalCode'] ?? '';
 
     if (empty($pm_id) || empty($name)) {
         throw new Exception('Dados incompletos');
     }
 
-    if (!class_exists('Stripe\StripeClient')) {
-        require_once __DIR__ . '/../../vendor/autoload.php';
-    }
-
-    $stripe = new \Stripe\StripeClient('secret_key');
+    $stripe = new \Stripe\StripeClient('chave secreta');
     $paymentMethod = $stripe->paymentMethods->retrieve($pm_id);
-
     $cardData = [
         'id_user_fk' => $_SESSION['id'],
         'stripe_payment_method' => $pm_id,
@@ -40,7 +43,15 @@ try {
         'last4' => $paymentMethod->card->last4,
         'exp_month' => $paymentMethod->card->exp_month,
         'exp_year' => $paymentMethod->card->exp_year,
-        'cardholder_name' => $name
+        'cardholder_name' => $name,
+        'tax_id' => $taxId,
+        'email' => $email,
+        'phone' => $phone,
+        'address_line1' => $addressLine1,
+        'address_line2' => $addressLine2,
+        'city' => $city,
+        'state' => $state,
+        'postal_code' => $postalCode
     ];
 
     $userCardModel = new Model\UserCard();
@@ -56,4 +67,3 @@ try {
     http_response_code(400);
     echo json_encode(['success' => false, 'message' => $e->getMessage()]);
 }
-?>

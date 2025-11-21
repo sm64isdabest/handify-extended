@@ -305,6 +305,22 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                             <label>Nome do Titular</label>
                             <input type="text" id="cardholderName" required>
 
+                            <label>CPF ou CNPJ</label>
+                            <input type="text"  id="cardTaxId" required placeholder="000.000.000-00">
+
+                            <label>Email</label>
+                            <input type="email" id="cardEmail" required>
+
+                            <label>Telefone</label>
+                            <input type="text" id="cardPhone" required>
+
+                            <label>Endereço</label>
+                            <input type="text" id="addressLine1" placeholder="Rua, Número" required>
+                            <input type="text" id="addressLine2" placeholder="Complemento">
+                            <input type="text" id="city" placeholder="Cidade" required>
+                            <input type="text" id="state" placeholder="Estado" required>
+                            <input type="text" id="postalCode" placeholder="CEP" required>
+
                             <label>Número do Cartão</label>
                             <div id="card-number-element" class="stripe-input"></div>
 
@@ -360,6 +376,9 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
     </footer>
     <script src="https://js.stripe.com/v3/"></script>
     <script src="../js/logged-in.js"></script>
+    <script src="https://unpkg.com/imask"></script>
+    <script src="../js/sign-up/telefone.js"></script>
+    <script src="../js/cpf.js"></script>
     <script src="../js/profile.js"></script>
     <script src="../js/payment-card/add-card.js"></script>
 </body>

@@ -30,32 +30,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $cnpj = trim(strip_tags($_POST['cnpj'] ?? ''));
       $store_name = trim(strip_tags($_POST['storeName'] ?? ''));
       $result = $controller->registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone);
-      
+
       if (is_array($result) && !empty($result['success'])) {
         $_SESSION['id'] = $result['user_id'];
         $_SESSION['user_type'] = 'store';
         $_SESSION['email'] = $email;
         $_SESSION['user_fullname'] = $user_fullname;
-        
-        setcookie('userName', urldecode($store_name), time() + (7 * 24 * 60 * 60), '/');
+
+        setcookie('userName', urldecode($store_name), time() + 604800, '/');
         header('Location: ../index.php');
         exit;
       }
     } else {
       $result = $controller->registerCustomerUser($user_fullname, $email, $password, $phone, $birthdate, $address);
-    
+
       if (is_array($result) && !empty($result['success'])) {
         $_SESSION['id'] = $result['user_id'];
         $_SESSION['user_type'] = 'customer';
         $_SESSION['email'] = $email;
         $_SESSION['user_fullname'] = $user_fullname;
-        
-        setcookie('userName', urldecode($user_fullname), time() + (7 * 24 * 60 * 60), '/');
+
+        setcookie('userName', urldecode($user_fullname), time() + 604800, '/');
         header('Location: ../index.php');
         exit;
       }
     }
-  
+
     if (is_array($result) && !empty($result['message'])) {
       $message = $result['message'];
     } else {

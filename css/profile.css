@@ -254,7 +254,7 @@ main.profile-main-container {
     gap: 12px;
     padding: 12px 15px;
     margin: 8px 0;
-    margin-top: 50px;
+    margin-top: 40px;
     border-radius: 12px;
     text-decoration: none;
     font-weight: 600;
@@ -276,7 +276,7 @@ main.profile-main-container {
 }
 
 .logout-item {
-    margin-top: 100px;
+    margin-top: 40px;
     color: var(--cor-perigo);
 }
 
@@ -472,11 +472,14 @@ footer .social-icons a i {
     background: var(--cor-fundo-caixa);
     border: 3px solid var(--cor-texto-primario);
     border-radius: 22px;
-    padding: 30px;
-    width: 100%;
-    max-width: 430px;
+    padding: 20px 25px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
     animation: modalAppear .25s ease-out;
     font-family: "Work Sans", sans-serif;
+    box-sizing: border-box;
 }
 
 @keyframes modalAppear {
@@ -491,6 +494,65 @@ footer .social-icons a i {
     color: var(--cor-texto-primario);
     text-align: center;
     margin-bottom: 20px;
+}
+
+.modal-content input,
+.modal-content .stripe-input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid var(--cor-texto-primario);
+    border-radius: 10px;
+    font-size: 1rem;
+    background: var(--cor-fundo-caixa);
+    color: var(--cor-texto-primario);
+    box-sizing: border-box;
+}
+
+.modal-content input::placeholder {
+    color: var(--cor-texto-secundario);
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--cor-texto-primario);
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: "Work Sans", sans-serif;
+}
+
+.modal-content button.edit-btn {
+    background: var(--cor-texto-primario);
+    color: var(--cor-fundo-caixa);
+    margin-top: 10px;
+}
+
+.modal-content button.edit-btn.danger {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.modal-content .address-group input {
+    margin-bottom: 10px;
+}
+
+.modal-content .row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.modal-content .row input {
+    flex: 1 1 48%;
 }
 
 #add-card-form label {
@@ -537,20 +599,6 @@ footer .social-icons a i {
     border-color: var(--cor-perigo) !important;
 }
 
-.modal-content .edit-btn {
-    width: 100%;
-    justify-content: center;
-    border-radius: 12px;
-    padding: 12px;
-    font-size: 1rem;
-    margin-top: 10px;
-}
-
-.modal-content .danger {
-    width: 100%;
-    justify-content: center;
-    margin-top: 10px;
-}
 
 @media (max-width: 992px) {
     main.profile-main-container {

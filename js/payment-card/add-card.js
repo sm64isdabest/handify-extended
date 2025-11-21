@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target === modal) modal.classList.remove("active");
     };
 
-    const stripe = Stripe("chave publica");
+    const stripe = Stripe("pk_test_51SNEcaEd75aj9tpI2xFRModOM6mj82epY1TxOPg3R0Y7ezYdl0nourKIIJ4VH40ZTp9LZ4NY3v4AjoaTCYzNOe3800nuUZqHfR");
     const elements = stripe.elements();
 
     const cardNumber = elements.create("cardNumber");
@@ -27,11 +27,30 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
 
         const name = document.getElementById("cardholderName").value;
+        const taxId = document.getElementById("cardTaxId").value;
+        const email = document.getElementById("cardEmail").value;
+        const phone = document.getElementById("cardPhone").value;
+        const addressLine1 = document.getElementById("addressLine1").value;
+        const addressLine2 = document.getElementById("addressLine2").value;
+        const city = document.getElementById("city").value;
+        const state = document.getElementById("state").value;
+        const postalCode = document.getElementById("postalCode").value;
 
         const { paymentMethod, error } = await stripe.createPaymentMethod({
             type: "card",
             card: cardNumber,
-            billing_details: { name }
+            billing_details: {
+                name,
+                email,
+                phone,
+                address: {
+                    line1: addressLine1,
+                    line2: addressLine2,
+                    city: city,
+                    state: state,
+                    postal_code: postalCode
+                }
+            }
         });
 
         if (error) return alert(error.message);
@@ -40,10 +59,18 @@ document.addEventListener("DOMContentLoaded", () => {
             const req = await fetch("/handify-extended/View/payment-card/save_card.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                credentials: "include", 
+                credentials: "include",
                 body: new URLSearchParams({
                     pm_id: paymentMethod.id,
-                    name
+                    name,
+                    tax_id: taxId,
+                    email,
+                    phone,
+                    addressLine1,
+                    addressLine2,
+                    city,
+                    state,
+                    postalCode
                 })
             });
 
@@ -58,5 +85,33 @@ document.addEventListener("DOMContentLoaded", () => {
         } catch (err) {
             alert("Erro de conexão: " + err.message);
         }
+    };
+
+    window.deleteCard = function (cardId) {
+        if (!cardId) {
+            alert("ID do cartão não definido");
+            return;
+        }
+
+        if (!confirm("Tem certeza que deseja excluir este cartão?")) return;
+
+        const formData = new FormData();
+        formData.append('id_card', cardId);
+
+        fetch("/handify-extended/View/payment-card/delete_card.php", {
+            method: "POST",
+            body: formData,
+            credentials: "include"
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Cartão removido com sucesso!");
+                    location.reload();
+                } else {
+                    alert("Erro ao remover cartão: " + (data.message ?? ""));
+                }
+            })
+            .catch(err => alert("Erro de conexão: " + err.message));
     };
 });
