@@ -3,17 +3,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-    background: 
-    linear-gradient(rgba(245, 236, 218, 0.7), rgba(245, 236, 218, 0.7)), 
-    url("../images/fundos/fundo_madeira_carvalho.jpg");
-    background-size: cover; 
-    background-position: center center; 
-    background-attachment: fixed; 
-    background-repeat: no-repeat; 
+  font-family: "Montserrat", Arial, sans-serif;
+  margin: 0;
+  color: var(--cor-texto-primario);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--imagem-fundo);
+  background-size: cover; 
+  background-position: center center; 
+  background-attachment: fixed; 
+  background-repeat: no-repeat;
 }
 
 header {
@@ -114,30 +114,30 @@ header nav ul li a.entrar i {
 main {
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: calc(100vh - 162px);
+    min-height: calc(100vh - 161px);
     align-content: center;
-    margin-bottom: 30px;
 }
 
 .container-pagamento {
-    background: white;
+    background: var(--cor-fundo-caixa);
     border-radius: 16px;
     box-shadow: 0 4px 12px #0002;
-    padding: 16px 0 16px 0;
-    height: 520px;
+    padding: 36px;
     max-width: 1100px;
+    width: 96%;
     margin: 0 auto;
-    top: 15px;
     position: relative;
-    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .botao-voltar {
     position: absolute;
     top: 24px;
     left: 24px;
-    background: #5a3e36;
-    color: #fff;
+    background: var(--cor-interativo);
+    color: var(--cor-interativo-texto);
     border: none;
     border-radius: 50%;
     width: 40px;
@@ -161,150 +161,228 @@ main {
     margin-bottom: 48px;
     margin-top: 0;
     letter-spacing: 1px;
-    color: #3d2b23;
+    color: var(--cor-texto-primario);
 }
 
-.formulario-e-preview {
-    display: flex;
-    gap: 40px;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: flex-start;
-}
-
-.container-preview-cartao {
-    flex: 1 1 320px;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    margin-left: 60px;
-}
-
-.linha-formulario {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 80px;
-}
-
-.grupo-formulario.pequeno {
-    display: flex;
-    flex-direction: column;
-    min-width: 160px;
-}
-
-.formulario-cartao {
-    max-width: 400px;
+#cards-box {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.rotulo {
-    font-weight: 600;
-    margin-bottom: 6px;
-    color: #3d2b23;
-}
-
-input[type="text"],
-input[type="password"] {
-    padding: 10px 14px;
-    font-size: 1rem;
-    border: 1px solid #b88c4a;
-    border-radius: 8px;
-    outline: none;
-    transition: border-color 0.2s;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus {
-    border-color: #5a3e36;
-}
-
-.grupo-formulario.pequeno {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.preview-cartao {
-    background: linear-gradient(135deg, #b88c4a, #5a3e36);
-    border-radius: 16px;
     width: 100%;
-    height: 220px;
-    color: #fff;
-    padding: 24px 32px;
-    box-shadow: 0 4px 12px #0006;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
 }
 
-.logos-cartao {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.logos-cartao img {
-    height: 40px;
-    width: auto;
-}
-
-.numero-cartao-display {
-    font-size: 1.4rem;
-    letter-spacing: 3px;
-    font-weight: 600;
-    margin-top: 20px;
-}
-
-.nome-cartao-display,
-.validade-cartao-display {
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
-}
-
-.icone-contactless-cartao {
-    position: absolute;
-    top: 24px;
-    left: 32px;
-    font-size: 1.8rem;
-    opacity: 0.8;
-}
-
-.dados-seguros {
+.card-option {
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    gap: 20px;
+    background: var(--cor-fundo-caixa);
+    border: 2px solid var(--cor-borda);
+    border-radius: 12px;
+    padding: 20px 24px;
+    width: 80%;
+    max-width: 600px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.card-option:hover {
+    border: 2px solid var(--cor-interativo);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+}
+
+.card-option input[type="radio"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.card-option span {
+    font-weight: 500;
+    color: var(--cor-texto-primario);
+}
+
+.btn-pay {
+    width: 80%;
+    max-width: 600px;
+    background-color: var(--cor-interativo);
+    color: var(--cor-interativo-texto);
+    padding: 16px 0;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
     font-weight: 600;
-    color: #4CAF50;
-    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    margin-top: 32px;
+}
+
+.btn-pay:hover {
+    background-color: #b88c4a;
+    box-shadow: 0 4px 12px rgba(184,140,74,0.27);
 }
 
 .botao-adicionar {
-    background-color: #5a3e36;
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    padding: 10px 0;
-    font-size: 1.2rem;
-    font-weight: 700;
-    width: 100%;
-    max-width: 400px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 40px auto 0 auto;
     display: block;
-    text-decoration: none;
     text-align: center;
+    margin-top: 24px;
+    text-decoration: none;
+    color: var(--cor-interativo);
+    font-weight: 500;
+    font-size: 1.1rem;
 }
 
 .botao-adicionar:hover {
-    background-color: #b88c4a;
+    text-decoration: underline;
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(3px);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 15px;
+}
+
+.modal.active {
+    display: flex !important;
+}
+
+.modal-content {
+    background: var(--cor-fundo-caixa);
+    border: 3px solid var(--cor-texto-primario);
+    border-radius: 22px;
+    padding: 20px 25px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalAppear .25s ease-out;
+    font-family: "Work Sans", sans-serif;
+    box-sizing: border-box;
+}
+
+@keyframes modalAppear {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    font-family: "Alexandria", sans-serif;
+    font-size: 1.7rem;
+    color: var(--cor-texto-primario);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.modal-content input,
+.modal-content .stripe-input {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 2px solid var(--cor-texto-primario);
+    border-radius: 10px;
+    font-size: 1rem;
+    background: var(--cor-fundo-caixa);
+    color: var(--cor-texto-primario);
+    box-sizing: border-box;
+}
+
+.modal-content input::placeholder {
+    color: var(--cor-texto-secundario);
+}
+
+.modal-content label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: var(--cor-texto-primario);
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    font-family: "Work Sans", sans-serif;
+}
+
+.modal-content button.edit-btn {
+    background: var(--cor-texto-primario);
+    color: var(--cor-fundo-caixa);
+    margin-top: 10px;
+}
+
+.modal-content button.edit-btn.danger {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.modal-content .address-group input {
+    margin-bottom: 10px;
+}
+
+.modal-content .row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.modal-content .row input {
+    flex: 1 1 48%;
+}
+
+#add-card-form label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--cor-texto-secundario);
+    display: block;
+    margin-bottom: 6px;
+}
+
+#cardholderName {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--cor-borda);
+    background: var(--cor-fundo);
+    border-radius: 12px;
+    margin-bottom: 18px;
+    font-size: 1rem;
+    color: var(--cor-texto-primario);
+    transition: 0.2s;
+}
+
+#cardholderName:focus {
+    border-color: var(--cor-interativo);
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
+    outline: none;
+}
+
+.stripe-input {
+    padding: 14px;
+    border: 2px solid var(--cor-borda);
+    border-radius: 12px;
+    background: white;
+    margin-bottom: 18px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.StripeElement--focus {
+    border-color: var(--cor-interativo) !important;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.12);
+}
+
+.StripeElement--invalid {
+    border-color: var(--cor-perigo) !important;
+}
 footer {
     position: relative;
     font-family: "Work Sans", sans-serif;
@@ -338,9 +416,14 @@ footer .social-icons a i {
     }
 
     .titulo-pagamento {
-        font-size: 2rem;
-        margin-bottom: 32px;
-    }
+    text-align: center;
+    font-size: 2.1rem;
+    font-weight: 700;
+    margin-bottom: 48px;
+    margin-top: 0;
+    letter-spacing: 1px;
+    color: #3d2b23;
+}
 
     .formulario-e-preview {
         flex-direction: column;

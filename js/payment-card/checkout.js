@@ -88,11 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     window.deleteCard = function (cardId) {
-        if (!cardId) {
-            alert("ID do cartão não definido");
-            return;
-        }
-
+        if (!cardId) return alert("ID do cartão não definido");
         if (!confirm("Tem certeza que deseja excluir este cartão?")) return;
 
         const formData = new FormData();

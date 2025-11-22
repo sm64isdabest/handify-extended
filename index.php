@@ -435,7 +435,6 @@ if ($products === false) {
     integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
     crossorigin="anonymous"></script>
   <script type="module" src="js/search.js"></script>
-  <script type="module" src="js/database.js"></script>
   <script type="module" src="js/logged-in.js"></script>
   <script type="module" src="js/index/track-pop-up.js"></script>
   <script type="module" src="js/index/go-to-product.js"></script>

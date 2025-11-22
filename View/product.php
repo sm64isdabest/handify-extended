@@ -62,7 +62,6 @@ require_once __DIR__ . '/partials/interface_produto.php';
                 </ul>
             </div>
         </nav>
-
         <div class="menu-bar">
             <div>
                 <li style="display: none;">
@@ -70,10 +69,7 @@ require_once __DIR__ . '/partials/interface_produto.php';
                 </li>
                 <a href="View/search.php" class="btn">Categorias</a>
                 <a href="#main" class="scroll-link btn">Ofertas</a>
-                <?php if (
-                    (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'store') ||
-                    (isset($_COOKIE['userType']) && $_COOKIE['userType'] === 'store')
-                ): ?>
+                <?php if ((isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'store') || (isset($_COOKIE['userType']) && $_COOKIE['userType'] === 'store')): ?>
                     <a href="View/sell.php" class="btn">Vender</a>
                 <?php endif; ?>
                 <button id="rastrear-btn">Rastrear</button>
@@ -85,26 +81,13 @@ require_once __DIR__ . '/partials/interface_produto.php';
         <div class="product-page">
             <section class="product-gallery">
                 <div class="main-image">
-                    <img src="<?php
-                    $imgPath = '../images/produtos/bolsas/bolsa-palha.png';
-                    if (!empty($product['image'])) {
-                        $img = $product['image'];
-                        if (strpos($img, 'http') === 0 || strpos($img, '/') === 0) {
-                            $imgPath = $img;
-                        } else {
-                            $imgPath = '../' . ltrim($img, '/');
-                        }
-                    }
-                    echo htmlspecialchars($imgPath);
-                    ?>" alt="<?php echo htmlspecialchars($product['name'] ?? 'Imagem do produto'); ?>" />
-
+                    <img src="../uploads/products/<?php echo htmlspecialchars(basename($product['image'])); ?>"
+                        alt="<?php echo htmlspecialchars($product['name'] ?? 'Imagem do produto'); ?>" />
                     <h2 class="text_tablet">Estoque disponível</h2>
                     <p class="sub_text_tablet">Quantidade: <?php echo htmlspecialchars($stock); ?>
                         (<?php echo htmlspecialchars($stock); ?> disponíveis)</p>
                 </div>
-
             </section>
-
             <section class="product-details">
                 <div class="avaliar">
                     <button class="sair"><i class="bi bi-arrow-left"></i></button> 4.8<span><i
@@ -112,7 +95,6 @@ require_once __DIR__ . '/partials/interface_produto.php';
                             class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
                 </div>
                 <h1><?php echo htmlspecialchars($product['name'] ?? 'Produto não encontrado'); ?></h1>
-
                 <p class="price">
                     <span class="old-price"><?php echo htmlspecialchars($oldPriceFormatted); ?></span>
                     <span class="current-price"><?php echo htmlspecialchars($priceFormatted); ?></span>
@@ -121,7 +103,6 @@ require_once __DIR__ . '/partials/interface_produto.php';
                     <?php echo htmlspecialchars($installmentAmountFormatted); ?>*
                 </p>
                 <a href="#" class="payment-methods">Ver meios de pagamentos</a>
-
                 <div class="product-info">
                     <p>O que você precisa saber sobre esse produto</p>
                     <p><?php echo nl2br(htmlspecialchars($product['description'] ?? 'Descrição não disponível.')); ?>
@@ -133,42 +114,40 @@ require_once __DIR__ . '/partials/interface_produto.php';
                         Disponível)</p>
                 </div>
                 <div class="botoes_adc">
-                    <button class="btn_1" id="btn_1" onclick="window.location.href = 'payment-methods.php'">Comprar
-                        Agora</button>
-                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                    <button class="add-to-cart" data-product='<?php echo json_encode([
+                        "id" => $product['id'] ?? 0,
+                        "name" => $product['name'] ?? '',
+                        "price" => isset($product['price']) ? number_format((float) $product['price'], 2, '.', '') : 0,
+                        "image" => $imagePath
+                    ], JSON_HEX_APOS | JSON_HEX_QUOT); ?>'>
+                        Adicionar ao Carrinho
+                    </button>
                 </div>
             </section>
-
             <section class="purchase-info">
                 <div class="delivery-info">
-                    <p>
-                        <span class="gratis">Chegará grátis amanhã</span><br />Comprando
-                        dentro das próximas 16 h 28 min
+                    <p><span class="gratis">Chegará grátis amanhã</span><br />Comprando dentro das próximas 16 h 28 min
                     </p>
-                    <p>
-                        <span class="compra">Frete Grátis</span><br />Comprando dentro das
-                        próximas 16 h 28 min
-                    </p>
-                    <p>
-                        <span class="devol">Devolução</span><br />Você tem 30 dias a
-                        partir da data de recebimento.
-                    </p>
+                    <p><span class="compra">Frete Grátis</span><br />Comprando dentro das próximas 16 h 28 min</p>
+                    <p><span class="devol">Devolução</span><br />Você tem 30 dias a partir da data de recebimento.</p>
                 </div>
-
                 <div class="stock-info">
                     <p><strong>Estoque disponível</strong></p>
                     <p>Quantidade: <?php echo htmlspecialchars($stock); ?> (<?php echo htmlspecialchars($stock); ?>
                         Disponível)</p>
                 </div>
-
                 <div class="purchase-buttons">
-                    <button class="buy-now" id="buy-now" onclick="window.location.href = 'payment-methods.php'">Comprar
-                        Agora</button>
-                    <button class="add-to-cart" data-index="1">Adicionar ao Carrinho</button>
+                    <button class="add-to-cart" data-product='<?= json_encode([
+                        "id" => $product['id'] ?? 0,
+                        "name" => $product['name'] ?? '',
+                        "price" => $product['price'] ?? 0,
+                        "image" => !empty($product['image']) ? '../uploads/products/' . $product['image'] : ''
+                    ], JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
+                        Adicionar ao Carrinho
+                    </button>
                 </div>
             </section>
         </div>
-
         <div class="ofertas">
             <section class="other-offers">
                 <h2>Outras ofertas</h2>
@@ -216,20 +195,13 @@ require_once __DIR__ . '/partials/interface_produto.php';
             <section class="descricao-produto">
                 <h2>Sobre o produto</h2>
                 <p>Bolsa de palha – estilo e versatilidade em cada detalhe</p>
-                <p>
-                    Com design artesanal e acabamento sofisticado, a bolsa de palha é a
-                    escolha perfeita para quem busca leveza, charme e funcionalidade.
-                    Ideal para compor looks casuais ou praianos, ela une beleza natural
-                    com praticidade no uso diário.
-                </p>
-                <p>
-                    Leve, espaçosa e resistente, conta com alças confortáveis e um
-                    interior bem distribuído, sendo ideal para levar seus itens essenciais
-                    com elegância. Um acessório que nunca sai de moda e combina com
-                    diversas ocasiões, do passeio ao ar livre até eventos descontraídos.
-                </p>
+                <p>Com design artesanal e acabamento sofisticado, a bolsa de palha é a escolha perfeita para quem busca
+                    leveza, charme e funcionalidade. Ideal para compor looks casuais ou praianos, ela une beleza natural
+                    com praticidade no uso diário.</p>
+                <p>Leve, espaçosa e resistente, conta com alças confortáveis e um interior bem distribuído, sendo ideal
+                    para levar seus itens essenciais com elegância. Um acessório que nunca sai de moda e combina com
+                    diversas ocasiões, do passeio ao ar livre até eventos descontraídos.</p>
             </section>
-
             <section class="produto-reviews">
                 <div class="reviews-container">
                     <div class="avaliações">
@@ -248,10 +220,8 @@ require_once __DIR__ . '/partials/interface_produto.php';
                                 </picture>
                                 <strong class="Foto">Carla</strong>
                             </p>
-                            <p>
-                                Ela é linda, o tamanho é ideal, o material de qualidade, e o
-                                preço muito bom. Amei a cor. 👜
-                            </p>
+                            <p>Ela é linda, o tamanho é ideal, o material de qualidade, e o preço muito bom. Amei a cor.
+                                👜</p>
                         </div>
                         <div class="review">
                             <p>
@@ -260,83 +230,29 @@ require_once __DIR__ . '/partials/interface_produto.php';
                                 </picture>
                                 <strong class="Foto">Renata</strong>
                             </p>
-                            <p>
-                                Adorei a bolsa. Bem divertida. Cabe muita coisa. A cor também
-                                gostei. Pode comprar sem medo.
-                            </p>
+                            <p>Adorei a bolsa. Bem divertida. Cabe muita coisa. A cor também gostei. Pode comprar sem
+                                medo.</p>
                         </div>
-                    </div>
-                </div>
-        </div>
-        </section>
-        <div class="Produtos-similares">
-            <h1>Outros produtos similares</h1>
-            <div class="carrossel-container">
-                <button class="carrossel-arrow left">←</button>
-                <div class="carrossel-cards">
-                    <div class="card">
-                        <img src="../images/produtos/utensilios/faqueiro.png" alt="Suporte de faqueiros" />
-                        <h5>Suporte de faqueiros</h5>
-                        <p class="card-text">R$ 87,90 OFF</p>
-                        <p class="sub-card-text">R$ 78,90</p>
-                    </div>
-                    <div class="card">
-                        <img src="../images/produtos/decoracoes/Vaso.png" alt="Vasos pintados" />
-                        <h5>Vasos pintados</h5>
-                        <p class="card-text">R$ 199,90 OFF</p>
-                        <p class="sub-card-text">R$ 99,99</p>
-                    </div>
-                    <div class="card">
-                        <img src="../images/produtos/decoracoes/Quadro.png" alt="Porta-retratos" />
-                        <h5>Porta-retratos</h5>
-                        <p class="card-text">R$ 57,90 OFF</p>
-                        <p class="sub-card-text">R$ 29,90</p>
-                    </div>
-                    <div class="card">
-                        <img src="../images/produtos/utensilios/Colher.png" alt="Colher de pau" />
-                        <h5>Colher de pau</h5>
-                        <p class="card-text">R$ 25,99 OFF</p>
-                        <p class="sub-card-text">R$ 15,99</p>
-                    </div>
-                </div>
-                <button class="carrossel-arrow right">→</button>
-            </div>
-            <section class="produtos">
-                <div class="card">
-                    <img src="../images/produtos/bolsas/bolsa-palha-clara.png" class="card-img-top"
-                        alt="Bolsa De Palha Praia Feminina Bolsa Ombro Grande" />
-                    <div class="card-body">
-                        <h5>Bolsa De Palha Praia Feminina</h5>
-                        <p class="sub-card-text">R$ 95,99</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="../images/produtos/bolsas/bolsa.png" class="card-img-top"
-                        alt="Bolsa Praia Linda Palha Feminina Com Zíper + Pigente" />
-                    <div class="card-body">
-                        <h5>Bolsa Praia Linda Palha Feminina Com Zíper + Pigente</h5>
-                        <p class="sub-card-text">R$ 42,99</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="../images/produtos/bolsas/bolsa-menor.png" class="card-img-top"
-                        alt="Bolsa De Palha Feminina Clutch" />
-                    <div class="card-body">
-                        <h5>Bolsa De Palha Feminina Clutch </h5>
-                        <p class="sub-card-text">R$ 46,99</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="../images/produtos/bolsas/bolsa-maior.png" class="card-img-top"
-                        alt="Bolsa Feminina De Palha Meia Lua Grande" />
-                    <div class="card-body">
-                        <h5 class="card-title">Bolsa Feminina De Palha Meia Lua Grande</h5>
-                        <p class="sub-card-text">R$ 78,99</p>
                     </div>
                 </div>
             </section>
         </div>
     </main>
+    <div id="cart-popup" class="cart-popup">
+        <div class="cart-content">
+            <button class="cart-close">&times;</button>
+            <div class="cart-header">
+                <img src="../images/logo-handify.png" alt="Handify" class="cart-logo" />
+                <h3>Meu Carrinho</h3>
+            </div>
+            <div class="cart-items"></div>
+            <div class="cart-footer">
+                <p>Total: <span class="cart-total">R$ 0,00</span></p>
+                <button class="checkout-btn" onclick="window.location.href = 'payment-methods.php'">Ir para
+                    Pagamento</button>
+            </div>
+        </div>
+    </div>
     <footer>
         <p>© 2025 HANDIFY. Todos os direitos reservados.</p>
         <div class="social-icons">
@@ -346,27 +262,15 @@ require_once __DIR__ . '/partials/interface_produto.php';
             <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram"></i></a>
         </div>
     </footer>
-
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
-    </div>
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
-
     <script src="../js/theme-loader.js"></script>
     <script type="module" src="../js/logged-in.js"></script>
-    <script type="module" src="../js/product/icon-pop-up.js"></script>
+    <script>
+        const currentProduct = <?php echo json_encode($product); ?>;
+    </script>
     <script type="module" src="../js/product/add-to-cart.js"></script>
-    <script type="module" src="../js/product/switch-product.js"></script>
+    <script type="module" src="../js/product/icon-pop-up.js"></script>
     <script type="module" src="../js/search.js"></script>
 </body>
 
