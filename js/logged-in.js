@@ -8,7 +8,7 @@ function getCookie(name) {
 }
 
 function performLogout() {
-  window.location.href = "View/logout.php"; 
+  window.location.href = "/handify-extended/View/logout.php"; 
 }
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -1,5 +1,36 @@
 <?php
+session_start();
+
+if (!isset($_SESSION['id']) && isset($_COOKIE['userId'], $_COOKIE['userName'], $_COOKIE['userType'])) {
+    $_SESSION['id'] = $_COOKIE['userId'];
+    $_SESSION['user_fullname'] = $_COOKIE['userName'];
+    $_SESSION['user_type'] = $_COOKIE['userType'];
+}
+
+if (!isset($_SESSION['id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+$userId = $_SESSION['id'];
+$userName = $_SESSION['user_fullname'] ?? '';
+$userType = $_SESSION['user_type'] ?? '';
+
 require_once __DIR__ . '/partials/interface_produto.php';
+require_once __DIR__ . '../../Model/Product.php';
+use Model\Product;
+
+$productModel = new Product();
+$products = $productModel->getAllProducts();
+
+if (!isset($product) || empty($product)) {
+    header('Location: index.php');
+    exit;
+}
+
+$otherProducts = array_filter($products, function ($p) use ($product) {
+    return $p['id_product'] !== $product['id_product'];
+});
 ?>
 
 <!DOCTYPE html>
@@ -77,6 +108,7 @@ require_once __DIR__ . '/partials/interface_produto.php';
             <button class="cart"><i class="bi bi-cart"></i></button>
         </div>
     </header>
+
     <main>
         <div class="product-page">
             <section class="product-gallery">
@@ -88,6 +120,7 @@ require_once __DIR__ . '/partials/interface_produto.php';
                         (<?php echo htmlspecialchars($stock); ?> disponíveis)</p>
                 </div>
             </section>
+
             <section class="product-details">
                 <div class="avaliar">
                     <button class="sair"><i class="bi bi-arrow-left"></i></button> 4.8<span><i
@@ -103,11 +136,7 @@ require_once __DIR__ . '/partials/interface_produto.php';
                     <?php echo htmlspecialchars($installmentAmountFormatted); ?>*
                 </p>
                 <a href="#" class="payment-methods">Ver meios de pagamentos</a>
-                <div class="product-info">
-                    <p>O que você precisa saber sobre esse produto</p>
-                    <p><?php echo nl2br(htmlspecialchars($product['description'] ?? 'Descrição não disponível.')); ?>
-                    </p>
-                </div>
+
                 <div class="disponiveis_clc">
                     <h3>Estoque disponível</h3>
                     <p>Quantidade: <?php echo htmlspecialchars($stock); ?> (<?php echo htmlspecialchars($stock); ?>
@@ -124,6 +153,7 @@ require_once __DIR__ . '/partials/interface_produto.php';
                     </button>
                 </div>
             </section>
+
             <section class="purchase-info">
                 <div class="delivery-info">
                     <p><span class="gratis">Chegará grátis amanhã</span><br />Comprando dentro das próximas 16 h 28 min
@@ -152,56 +182,33 @@ require_once __DIR__ . '/partials/interface_produto.php';
             <section class="other-offers">
                 <h2>Outras ofertas</h2>
                 <div class="offers-container">
-                    <div class="offer-item">
-                        <div class="card">
-                            <img src="../images/produtos/utensilios/faqueiro.png" class="card-img-top"
-                                alt="Suporte de faqueiros" />
-                            <div class="card-body">
-                                <h5 class="card-title">Suporte de faqueiros</h5>
-                                <p class="card-text">R$ 89,70 OFF</p>
-                                <p class="sub-card-text">R$ 78,90</p>
+                    <?php foreach ($otherProducts as $other): ?>
+                        <div class="produto">
+                            <img src="<?= !empty($other['image']) ? '../uploads/products/' . htmlspecialchars($other['image']) : '../images/produtos/utensilios/Colher.png' ?>"
+                                alt="<?= htmlspecialchars($other['name']) ?>" />
+                            <span class="produto-nome"><?= htmlspecialchars($other['name']) ?></span>
+                            <div class="produto-preco-bloco">
+                                <div class="produto-preco-desconto-container">
+                                    <?php if (!empty($other['old_price'])): ?>
+                                        <span class="produto-preco-antigo">R$
+                                            <?= number_format($other['old_price'], 2, ',', '.') ?></span>
+                                    <?php endif; ?>
+                                    <?php if (!empty($other['discount'])): ?>
+                                        <span class="produto-desconto"><?= $other['discount'] ?>% OFF</span>
+                                    <?php endif; ?>
+                                </div>
+                                <span class="produto-preco">R$ <?= number_format($other['price'], 2, ',', '.') ?></span>
                             </div>
+                            <button class="produto-btn">Comprar</button>
                         </div>
-                        <div class="card">
-                            <img src="../images/produtos/decoracoes/Vaso.png" class="card-img-top"
-                                alt="Vasos pintados" />
-                            <div class="card-body">
-                                <h5 class="card-title">Vasos pintados</h5>
-                                <p class="card-text">R$ 199,90 OFF</p>
-                                <p class="sub-card-text">R$ 99,99</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="../images/produtos/decoracoes/Quadro.png" class="card-img-top"
-                                alt="Porta-retratos" />
-                            <div class="card-body">
-                                <h5 class="card-title">Porta-retratos</h5>
-                                <p class="card-text">R$ 57,90 OFF</p>
-                                <p class="sub-card-text">R$ 29,90</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="../images/produtos/utensilios/Colher.png" class="card-img-top"
-                                alt="Colher de pau" />
-                            <div class="card-body">
-                                <h5 class="card-title">Colher de pau</h5>
-                                <p class="card-text">R$ 25,99 OFF</p>
-                                <p class="sub-card-text">R$ 15,99</p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
             <section class="descricao-produto">
                 <h2>Sobre o produto</h2>
-                <p>Bolsa de palha – estilo e versatilidade em cada detalhe</p>
-                <p>Com design artesanal e acabamento sofisticado, a bolsa de palha é a escolha perfeita para quem busca
-                    leveza, charme e funcionalidade. Ideal para compor looks casuais ou praianos, ela une beleza natural
-                    com praticidade no uso diário.</p>
-                <p>Leve, espaçosa e resistente, conta com alças confortáveis e um interior bem distribuído, sendo ideal
-                    para levar seus itens essenciais com elegância. Um acessório que nunca sai de moda e combina com
-                    diversas ocasiões, do passeio ao ar livre até eventos descontraídos.</p>
+                <p><?php echo nl2br(htmlspecialchars($product['description'] ?? 'Descrição não disponível.')); ?></p>
             </section>
+
             <section class="produto-reviews">
                 <div class="reviews-container">
                     <div class="avaliações">
@@ -238,6 +245,7 @@ require_once __DIR__ . '/partials/interface_produto.php';
             </section>
         </div>
     </main>
+
     <div id="cart-popup" class="cart-popup">
         <div class="cart-content">
             <button class="cart-close">&times;</button>
@@ -253,6 +261,7 @@ require_once __DIR__ . '/partials/interface_produto.php';
             </div>
         </div>
     </div>
+
     <footer>
         <p>© 2025 HANDIFY. Todos os direitos reservados.</p>
         <div class="social-icons">
@@ -262,6 +271,7 @@ require_once __DIR__ . '/partials/interface_produto.php';
             <a href="https://www.instagram.com/" target="_blank"><i class="bi bi-instagram"></i></a>
         </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="../js/theme-loader.js"></script>

@@ -1,5 +1,6 @@
 <?php
-$displayProducts = array_slice($products, 0, 5);
+$displayProducts = array_slice($displayProducts ?? $products, 0, 5);
+
 if (!empty($displayProducts)) {
   foreach ($displayProducts as $p) {
     $img = '';
@@ -43,5 +44,4 @@ if (!empty($displayProducts)) {
 } else {
   echo '<p>Nenhum produto cadastrado ainda.</p>';
 }
-
 ?>

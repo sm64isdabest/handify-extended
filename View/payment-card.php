@@ -42,22 +42,33 @@ $savedCards = $cardModel->getCardsByUserId($_SESSION['id']);
 <body>
     <header>
         <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+        <nav>
+            <ul>
+                <li><a href="../../index.php">Home</a></li>
+                <li><a href="about.php#footer">Contato</a></li>
+                <li><a href="about.php">Sobre</a></li>
+            </ul>
+        </nav>
     </header>
     <main>
         <div class="container-pagamento">
-            <h2>Resumo do Pedido</h2>
+            <strong class="titulo-resumo">Resumo do Pedido</strong>
             <div class="resumo-box">
-                <p><strong>Total do Carrinho:</strong> <span id="checkout-total">R$ 0,00</span></p>
-                <p><strong>Endereço de Entrega:</strong></p>
-                <input type="text" id="checkout-address" value="<?= $profileData['address'] ?? '' ?>">
-                <input type="text" id="checkout-city" value="<?= $profileData['city'] ?? '' ?>">
-                <input type="text" id="checkout-state" value="<?= $profileData['state'] ?? '' ?>">
-                <input type="text" id="checkout-cep" value="<?= $profileData['postal_code'] ?? '' ?>">
-                <label><strong>Parcelamento:</strong></label>
-                <select id="checkout-parcelas"></select>
+                <p class="total-carrinho">
+                    <strong>Total do Carrinho:</strong> <span id="checkout-total">R$ 0,00</span>
+                </p>
+                <p class="endereco-entrega">
+                    <strong>Endereço de Entrega:</strong>
+                </p>
+                <input type="text" id="checkout-address" class="input-endereco" value="<?= $profileData['address'] ?? '' ?>" placeholder="Endereço">
+                <input type="text" id="checkout-city" class="input-cidade" value="<?= $profileData['city'] ?? '' ?>" placeholder="Cidade">
+                <input type="text" id="checkout-state" class="input-estado" value="<?= $profileData['state'] ?? '' ?>" placeholder="Estado">
+                <input type="text" id="checkout-cep" class="input-cep" value="<?= $profileData['postal_code'] ?? '' ?>" placeholder="CEP">
+                <br>
+                <label class="parcelamento-label"><strong>Parcelamento:</strong></label>
+                <select id="checkout-parcelas" class="select-parcelas"></select>
             </div>
-
-            <h2>Escolha uma forma de pagamento</h2>
+            <strong class="titulo-pagamento">Escolha uma forma de pagamento</strong>
             <form id="select-card-form">
                 <div id="cards-box">
                     <?php if (!empty($savedCards)): ?>
@@ -75,7 +86,6 @@ $savedCards = $cardModel->getCardsByUserId($_SESSION['id']);
                         <p>Nenhum cartão salvo.</p>
                     <?php endif; ?>
                 </div>
-                <button type="submit">Selecionar Cartão</button>
             </form>
 
             <button id="add-card-btn" class="botao-adicionar">Adicionar novo cartão</button>

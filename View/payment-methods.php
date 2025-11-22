@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['id']) && isset($_COOKIE['userId'], $_COOKIE['userName'], $_COOKIE['userType'])) {
+  $_SESSION['id'] = $_COOKIE['userId'];
+  $_SESSION['user_fullname'] = $_COOKIE['userName'];
+  $_SESSION['user_type'] = $_COOKIE['userType'];
+}
+
+if (!isset($_SESSION['id'])) {
+  header('Location: login.php');
+  exit;
+}
+
+$userId = $_SESSION['id'];
+$userName = $_SESSION['user_fullname'] ?? '';
+$userType = $_SESSION['user_type'] ?? '';
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -15,7 +33,7 @@
   <header>
     <nav>
       <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
-    
+
       <ul>
         <li><a href="../index.php" class="scroll-link">Home</a></li>
         <li><a href="#footer">Contato</a></li>

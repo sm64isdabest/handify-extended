@@ -9,14 +9,17 @@ if (!isset($_SESSION['id'])) {
 require_once __DIR__ . '/../Model/User.php';
 require_once __DIR__ . '/../Model/Customer.php';
 require_once __DIR__ . '/../Model/Store.php';
+require_once __DIR__ . '/../Model/Purchase.php';
 
 use Model\User;
 use Model\Customer;
 use Model\Store;
+use Model\Purchase;
 
 $userModel = new User();
 $customerModel = new Customer();
 $storeModel = new Store();
+$purchaseModel = new Purchase();
 
 $userData = $userModel->getUserById($_SESSION['id']);
 $specificData = null;
@@ -29,10 +32,23 @@ if ($_SESSION['user_type'] === 'customer') {
 
 $userData = $userData ?: [];
 $specificData = $specificData ?: [];
-$profileData = array_merge($userData, $specificData);
+
+if ($_SESSION['user_type'] === 'store') {
+    $profileData = array_merge($userData, $specificData);
+    if (isset($specificData['name']))
+        $profileData['store_name'] = $specificData['name'];
+    if (isset($specificData['cnpj']))
+        $profileData['store_cnpj'] = $specificData['cnpj'];
+    if (isset($specificData['phone']))
+        $profileData['store_phone'] = $specificData['phone'];
+    if (isset($specificData['address']))
+        $profileData['store_address'] = $specificData['address'];
+} else {
+    $profileData = array_merge($userData, $specificData);
+}
 
 $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_fullname'], 0, 1) : '?';
-
+$purchases = $purchaseModel->getPurchasesByUserId($_SESSION['id']);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -57,8 +73,7 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                 <li><a href="../../index.php">Home</a></li>
                 <li><a href="about.php#footer">Contato</a></li>
                 <li><a href="about.php">Sobre</a></li>
-                <li class="user-logged" style="display: flex;">
-                </li>
+                <li class="user-logged" style="display: flex;"></li>
             </ul>
             <button id="list"><i class="bi bi-person"></i></button>
         </nav>
@@ -95,10 +110,13 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                 <a href="#info" class="profile-nav-item active"><i class="bi bi-person-lines-fill"></i> Minhas
                     Informações</a>
                 <a href="#orders" class="profile-nav-item"><i class="bi bi-box-seam"></i> Meus Pedidos</a>
-                <a href="#payments" class="profile-nav-item"><i class="bi bi-credit-card"></i> Formas de Pagamento
-                    <a href="#settings" class="profile-nav-item"><i class="bi bi-gear"></i> Configurações</a>
-                    <a href="#" class="profile-nav-item logout-item logout-btn"><i class="bi bi-box-arrow-right"></i>
-                        Sair</a>
+                <?php if ($_SESSION['user_type'] === 'store'): ?>
+                    <a href="#sales" class="profile-nav-item"><i class="bi bi-graph-up"></i> Histórico de Vendas</a>
+                <?php endif; ?>
+                <a href="#payments" class="profile-nav-item"><i class="bi bi-credit-card"></i> Formas de Pagamento</a>
+                <a href="#settings" class="profile-nav-item"><i class="bi bi-gear"></i> Configurações</a>
+                <a href="#" class="profile-nav-item logout-item logout-btn"><i class="bi bi-box-arrow-right"></i>
+                    Sair</a>
             </div>
         </div>
 
@@ -133,7 +151,6 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                                 <label>Endereço</label>
                                 <p><?= htmlspecialchars($profileData['address'] ?? 'Não informado') ?></p>
                             </div>
-
                         <?php elseif ($_SESSION['user_type'] === 'store'): ?>
                             <div class="info-item">
                                 <label>Nome da Loja</label>
@@ -158,17 +175,13 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                     <div class="section-header">
                         <h3>Editar Informações</h3>
                     </div>
-
                     <form id="edit-profile-form" method="POST" action="process_profile_update.php">
-
                         <div class="info-grid">
-
                             <div class="info-item">
                                 <label for="user_fullname">Nome Completo</label>
                                 <input type="text" id="user_fullname" name="user_fullname"
                                     value="<?= htmlspecialchars($profileData['user_fullname'] ?? '') ?>" required>
                             </div>
-
                             <div class="info-item">
                                 <label for="email">Email</label>
                                 <input type="email" id="email" name="email"
@@ -176,43 +189,34 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                             </div>
 
                             <?php if ($_SESSION['user_type'] === 'customer'): ?>
-
                                 <div class="info-item">
                                     <label for="phone">Telefone</label>
                                     <input type="text" id="phone" name="phone"
                                         value="<?= htmlspecialchars($profileData['phone'] ?? '') ?>">
                                 </div>
-
                                 <div class="info-item full-width">
                                     <label for="address">Endereço</label>
                                     <input type="text" id="address" name="address"
                                         value="<?= htmlspecialchars($profileData['address'] ?? '') ?>">
                                 </div>
-
                             <?php elseif ($_SESSION['user_type'] === 'store'): ?>
-
                                 <div class="info-item">
                                     <label for="name">Nome da Loja</label>
                                     <input type="text" id="name" name="name"
                                         value="<?= htmlspecialchars($profileData['name'] ?? '') ?>" required>
                                 </div>
-
                                 <div class="info-item">
                                     <label for="phone">Telefone da Loja</label>
                                     <input type="text" id="phone" name="phone"
                                         value="<?= htmlspecialchars($profileData['phone'] ?? '') ?>">
                                 </div>
-
                                 <div class="info-item full-width">
                                     <label for="address">Endereço da Loja</label>
                                     <input type="text" id="address" name="address"
                                         value="<?= htmlspecialchars($profileData['address'] ?? '') ?>">
                                 </div>
-
                             <?php endif; ?>
-
                         </div>
-
                         <div class="form-actions" style="margin-top: 30px; display: flex; gap: 15px;">
                             <button type="submit" class="edit-btn"><i class="bi bi-save"></i> Salvar Alterações</button>
                             <button type="button" id="cancel-edit-btn" class="edit-btn danger"><i
@@ -226,31 +230,95 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                 <div class="section-header">
                     <h3>Meus Pedidos</h3>
                 </div>
+
                 <div class="order-list">
-                    <div class="order-card">
-                        <div class="order-status status-delivered">
-                            <i class="bi bi-check-circle-fill"></i> Entregue
-                        </div>
-                        <div class="order-details">
-                            <p><strong>Pedido:</strong></p>
-                            <p><strong>Data:</strong></p>
-                            <p><strong>Total:</strong></p>
-                        </div>
-                        <a href="#" class="details-btn">Ver Detalhes</a>
-                    </div>
-                    <div class="order-card">
-                        <div class="order-status status-shipping">
-                            <i class="bi bi-truck"></i> Em Transporte
-                        </div>
-                        <div class="order-details">
-                            <p><strong>Pedido:</strong></p>
-                            <p><strong>Data:</strong></p>
-                            <p><strong>Total:</strong></p>
-                        </div>
-                        <a href="#" class="details-btn">Rastrear</a>
-                    </div>
+                    <?php
+                    if (count($purchases) === 0): ?>
+                        <p>Nenhum pedido encontrado.</p>
+                    <?php else:
+                        foreach ($purchases as $purchase):
+                            $code = "BR" . str_pad($purchase['id_purchase'], 8, "0", STR_PAD_LEFT) . "PY";
+                            ?>
+                            <div class="order-card">
+
+                                <div class="order-status">
+                                    <i class="bi bi-truck"></i>
+                                    <?= htmlspecialchars($purchase['status'] ?? 'Em transporte') ?>
+                                </div>
+
+                                <div class="order-details">
+                                    <p><strong>Pedido:</strong> #<?= $purchase['id_purchase'] ?></p>
+                                    <p><strong>Data:</strong> <?= date('d/m/Y H:i', strtotime($purchase['purchase_date'])) ?>
+                                    </p>
+                                    <p><strong>Total:</strong> R$ <?= number_format($purchase['total_amount'], 2, ',', '.') ?>
+                                    </p>
+                                    <p><strong>Código de Rastreamento:</strong> <?= $code ?></p>
+                                </div>
+
+                                <div style="display:flex; gap:10px;">
+                                    <button class="details-btn edit-btn" data-order="<?= $purchase['id_purchase'] ?>">Ver
+                                        Detalhes</button>
+                                    <button class="track-btn edit-btn"
+                                        data-purchase-id="<?= $purchase['id_purchase'] ?>">Rastrear</button>
+                                </div>
+                            </div>
+                        <?php endforeach;
+                    endif; ?>
                 </div>
             </section>
+
+            <?php if ($_SESSION['user_type'] === 'store'): ?>
+                <section id="sales" class="profile-section">
+                    <div class="section-header">
+                        <h3>Histórico de Vendas</h3>
+                    </div>
+                    <div class="order-list">
+                        <?php
+                        if ($_SESSION['user_type'] === 'store') {
+                            $storeData = $storeModel->getStoreByUserId($_SESSION['id']);
+                            $storeId = $storeData['id_store'] ?? null;
+                            $sales = $storeId ? $purchaseModel->getSalesByStoreId($storeId) : [];
+                        }
+                        if (count($sales) === 0): ?>
+                            <p>Nenhuma venda encontrada.</p>
+                        <?php else:
+                            foreach ($sales as $sale):
+                                $code = "BR" . str_pad($sale['id_purchase'], 8, "0", STR_PAD_LEFT) . "PY";
+                                ?>
+                                <div class="order-card">
+                                    <div class="order-status">
+                                        <i class="bi bi-truck"></i>
+                                        <?= htmlspecialchars($sale['status'] ?? 'Em transporte') ?>
+                                    </div>
+                                    <div class="order-details">
+                                        <p><strong>Pedido:</strong> #<?= $sale['id_purchase'] ?></p>
+                                        <p><strong>Data:</strong> <?= date('d/m/Y H:i', strtotime($sale['purchase_date'])) ?></p>
+                                        <p><strong>Total:</strong> R$ <?= number_format($sale['total_amount'], 2, ',', '.') ?></p>
+                                        <p><strong>Comprador:</strong> <?= htmlspecialchars($sale['buyer_name']) ?></p>
+                                        <p><strong>Código de Rastreamento:</strong> <?= $code ?></p>
+                                    </div>
+                                </div>
+                            <?php endforeach; endif; ?>
+                    </div>
+                </section>
+            <?php endif; ?>
+
+            <div id="trackingModal" class="modal">
+                <div class="modal-content tracking-content">
+                    <h3>Rastreamento do Pedido</h3>
+                    <p id="tracking-code"></p>
+                    <div id="tracking-steps"></div>
+                    <button id="closeTracking" class="edit-btn danger">Fechar</button>
+                </div>
+            </div>
+            <div id="detailsModal" class="modal">
+                <div class="modal-content tracking-content">
+                    <h3>Detalhes do Pedido</h3>
+                    <div id="order-items"></div>
+                    <p><strong>Total:</strong> R$ <span id="order-total"></span></p>
+                    <button id="closeDetails" class="edit-btn danger">Fechar</button>
+                </div>
+            </div>
 
             <section id="payments" class="profile-section">
                 <div class="section-header">
@@ -286,13 +354,11 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
 
                                 <div style="display:flex; gap: 10px;">
                                     <?php if (!$card['is_default']): ?>
-                                        <button class="edit-btn" onclick="setDefaultCard(<?= $card['id_card'] ?>)">
-                                            Tornar Padrão
-                                        </button>
+                                        <button class="edit-btn" onclick="setDefaultCard(<?= $card['id_card'] ?>)">Tornar
+                                            Padrão</button>
                                     <?php endif; ?>
-                                    <button class="edit-btn danger" onclick="deleteCard(<?= $card['id_card'] ?>)">
-                                        Excluir
-                                    </button>
+                                    <button class="edit-btn danger"
+                                        onclick="deleteCard(<?= $card['id_card'] ?>)">Excluir</button>
                                 </div>
                             </div>
                         <?php endforeach; endif; ?>
@@ -306,7 +372,7 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                             <input type="text" id="cardholderName" required>
 
                             <label>CPF ou CNPJ</label>
-                            <input type="text"  id="cardTaxId" required placeholder="000.000.000-00">
+                            <input type="text" id="cardTaxId" required placeholder="000.000.000-00">
 
                             <label>Email</label>
                             <input type="email" id="cardEmail" required>
@@ -358,7 +424,6 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
                     <p><strong>Excluir Conta</strong>
                         <small>Esta ação é permanente e não pode ser desfeita.</small>
                     </p>
-
                     <button class="edit-btn danger">Excluir</button>
                 </div>
             </section>
@@ -377,6 +442,7 @@ $initial = !empty($profileData['user_fullname']) ? mb_substr($profileData['user_
     <script src="https://js.stripe.com/v3/"></script>
     <script src="../js/logged-in.js"></script>
     <script src="https://unpkg.com/imask"></script>
+    <script src="../js/tracking.js"></script>
     <script src="../js/sign-up/telefone.js"></script>
     <script src="../js/cpf.js"></script>
     <script src="../js/profile.js"></script>

@@ -1,29 +1,48 @@
 console.log("profile.js loaded");
-document.addEventListener('DOMContentLoaded', function () {
-    const navLinks = document.querySelectorAll('.profile-nav-item:not(.logout-btn)');
-    const contentSections = document.querySelectorAll('.profile-section');
+
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.profile-nav-item[href^="#"]:not(.logout-btn)');
+    const sections = document.querySelectorAll('.profile-section');
+
+    function activateTab(targetId) {
+        console.log('Ativando tab:', targetId);
+        navLinks.forEach(nav => nav.classList.remove('active'));
+        sections.forEach(sec => {
+            sec.classList.remove('active');
+        });
+
+        const link = Array.from(navLinks).find(l => l.getAttribute('href') === targetId);
+        const section = document.querySelector(targetId);
+
+        if (link) {
+            link.classList.add('active');
+        }
+        if (section) {
+            section.classList.add('active');
+        }
+
+        console.log('Link ativo:', link);
+        console.log('Seção ativa:', section);
+    }
 
     navLinks.forEach(link => {
-        link.addEventListener('click', function (event) {
-            event.preventDefault();
-
-            navLinks.forEach(nav => nav.classList.remove('active'));
-            contentSections.forEach(sec => sec.classList.remove('active'));
-
-            this.classList.add('active');
-
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            if (targetSection) {
-                targetSection.classList.add('active');
-            }
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            console.log('Clicou no link:', targetId);
+            history.pushState(null, '', targetId);
+            activateTab(targetId);
         });
     });
 
-    const infoLink = document.querySelector('.profile-nav-item[href="#info"]');
-    if (infoLink) {
-        infoLink.click();
-    }
+    const initialHash = window.location.hash || '#info';
+    console.log('Hash inicial:', initialHash);
+    activateTab(initialHash);
+
+    window.addEventListener('hashchange', () => {
+        console.log('Hash changed:', window.location.hash);
+        activateTab(window.location.hash);
+    });
 
     const viewMode = document.getElementById('view-mode');
     const editMode = document.getElementById('edit-mode');
@@ -31,58 +50,68 @@ document.addEventListener('DOMContentLoaded', function () {
     const cancelButton = document.getElementById('cancel-edit-btn');
 
     if (editButton && cancelButton && viewMode && editMode) {
-        editButton.addEventListener('click', function () {
+        editButton.addEventListener('click', () => {
             viewMode.style.display = 'none';
             editMode.style.display = 'block';
         });
-
-        cancelButton.addEventListener('click', function () {
+        cancelButton.addEventListener('click', () => {
             editMode.style.display = 'none';
             viewMode.style.display = 'block';
         });
     }
 
-    const passwordViewMode = document.getElementById('password-view-mode');
-    const passwordEditMode = document.getElementById('password-edit-mode');
-    const changePasswordButton = document.getElementById('change-password-btn');
-    const cancelPasswordButton = document.getElementById('cancel-password-btn');
-
-    if (changePasswordButton && cancelPasswordButton && passwordViewMode && passwordEditMode) {
-        changePasswordButton.addEventListener('click', function () {
-            passwordViewMode.style.display = 'none';
-            passwordEditMode.style.display = 'block';
-        });
-
-        cancelPasswordButton.addEventListener('click', function () {
-            passwordEditMode.style.display = 'none';
-            passwordViewMode.style.display = 'block';
-        });
-    }
-    const themeToggleButton = document.getElementById('theme-toggle-btn');
-
-    if (themeToggleButton) {
-        const themeIcon = themeToggleButton.querySelector('i');
-
-        function updateIcon(theme) {
+    const themeBtn = document.getElementById('theme-toggle-btn');
+    if (themeBtn) {
+        const icon = themeBtn.querySelector('i');
+        const updateIcon = theme => {
             if (theme === 'dark') {
-                themeIcon.classList.remove('bi-moon-stars-fill');
-                themeIcon.classList.add('bi-sun-fill');
+                icon.classList.remove('bi-moon-stars-fill');
+                icon.classList.add('bi-sun-fill');
             } else {
-                themeIcon.classList.remove('bi-sun-fill');
-                themeIcon.classList.add('bi-moon-stars-fill');
+                icon.classList.remove('bi-sun-fill');
+                icon.classList.add('bi-moon-stars-fill');
             }
-        }
-
-        const initialTheme = localStorage.getItem('theme') || 'light';
-        updateIcon(initialTheme);
-
-        themeToggleButton.addEventListener('click', function () {
-            const isDarkMode = document.documentElement.classList.contains('dark-mode');
-            const newTheme = isDarkMode ? 'light' : 'dark';
-
+        };
+        const theme = localStorage.getItem('theme') || 'light';
+        updateIcon(theme);
+        themeBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.classList.toggle('dark-mode');
+            const newTheme = isDark ? 'dark' : 'light';
             localStorage.setItem('theme', newTheme);
-            document.documentElement.classList.toggle('dark-mode');
             updateIcon(newTheme);
         });
     }
+
+    const detailsModal = document.getElementById("detailsModal");
+    const closeDetails = document.getElementById("closeDetails");
+    const orderItems = document.getElementById("order-items");
+    const orderTotal = document.getElementById("order-total");
+
+    document.querySelectorAll(".details-btn").forEach(btn => {
+        btn.addEventListener("click", async () => {
+            const id = btn.dataset.order;
+            orderItems.innerHTML = "";
+            orderTotal.innerText = "";
+            try {
+                const res = await fetch(`order-details.php?purchaseId=${id}`);
+                const data = await res.json();
+                if (!data.items || data.items.length === 0) orderItems.innerHTML = "<p>Pedido vazio</p>";
+                else {
+                    data.items.forEach(item => {
+                        const div = document.createElement("div");
+                        div.classList.add("order-detail-item");
+                        div.innerHTML = `${item.name} - ${item.quantity}x R$ ${parseFloat(item.price_at_time_of_purchase).toFixed(2)}`;
+                        orderItems.appendChild(div);
+                    });
+                    orderTotal.innerText = parseFloat(data.total).toFixed(2);
+                }
+                detailsModal.style.display = "flex";
+            } catch {
+                orderItems.innerHTML = "<p>Erro ao carregar detalhes</p>";
+                detailsModal.style.display = "flex";
+            }
+        });
+    });
+
+    if (closeDetails) closeDetails.addEventListener("click", () => detailsModal.style.display = "none");
 });
