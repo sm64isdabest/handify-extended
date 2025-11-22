@@ -140,13 +140,16 @@ header nav ul li a.entrar i {
 .menu-bar dbutton:hover {
   background-color: #000000;
 }
-.user-name{
+
+.user-name {
   font-weight: 600;
 }
-.user-name-popup{
+
+.user-name-popup {
   margin-bottom: 8px;
   font-weight: 600;
 }
+
 .user-logged {
   position: relative;
 }
@@ -216,15 +219,18 @@ header nav ul li a.entrar i {
 }
 
 .search-bar {
-  display: flex;
   align-items: center;
   background-color: #5a3e36;
   border: 1px solid #ffffff;
   border-radius: 20px;
   padding: 5px 10px;
-  width: calc(100% - 550px);
-  margin-left: 10rem;
-  position: absolute;
+  overflow: hidden;
+  margin-right: 0.5rem;
+  flex: 1;
+}
+
+.search-bar form {
+  display: flex;
 }
 
 .search-bar i {
@@ -473,6 +479,8 @@ main {
   align-items: stretch;
   gap: 32px;
   margin: 0 0 32px 0;
+  width: fit-content;
+  justify-self: center;
 }
 
 .oferta-dia,
@@ -647,8 +655,7 @@ main {
 
 .outras-ofertas-lista {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 32px 32px;
   justify-items: center;
   align-items: center;
@@ -671,10 +678,11 @@ main {
 }
 
 .outras-ofertas-lista img {
-  width: 300px;
+  width: 110px;
   height: auto;
   margin-bottom: 0;
   display: block;
+  justify-self: center;
 }
 
 .outras-ofertas .veja-mais-btn {
