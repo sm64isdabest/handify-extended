@@ -1,3 +1,14 @@
+<?php
+require_once __DIR__ . '/../Model/Product.php';
+use Model\Product;
+
+$productModel = new Product();
+$products = $productModel->getAllProducts();
+if ($products === false) {
+  $products = [];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -109,9 +120,10 @@
 
     <section class="produtos">
       <h2 id="texto-produtos">Produtos encontrados</h2>
-      <div id="cards-inside">
+  <?php $serverRendered = !empty($products); ?>
+  <div id="cards-inside" <?php if ($serverRendered) echo 'data-server-rendered="1" style="visibility: visible;"'; ?> >
         <!-- CARD TEMPLATE -->
-        <div id="cardTemplate" class="fundo">
+  <div id="cardTemplate" class="fundo" style="display: none;" aria-hidden="true">
           <div class="card" style="
                 background-color: #4b3a35;
                 width: 15rem;
@@ -144,6 +156,55 @@
         <!-- CARD TEMPLATE -->
 
         <!-- Estrutura se repete aqui -->
+        <?php if (!empty($products)): ?>
+          <?php foreach ($products as $p): ?>
+            <?php
+              $name = htmlspecialchars($p['name']);
+              $rawImage = isset($p['image']) ? $p['image'] : '';
+              // normaliza o caminho da imagem: se já contém 'uploads/' usamos ../ + campo; senão assumimos uploads/products/
+              if (!empty($rawImage) && strpos($rawImage, 'uploads/') === 0) {
+                  $imagePath = '../' . $rawImage;
+              } elseif (!empty($rawImage)) {
+                  $imagePath = '../uploads/products/' . htmlspecialchars($rawImage);
+              } else {
+                  $imagePath = '../images/icones/placeholder.png';
+              }
+              $price = number_format((float)$p['price'], 2, ',', '.');
+            ?>
+            <div class="fundo">
+              <div class="card" style="
+                background-color: #4b3a35;
+                width: 15rem;
+                border-radius: 1.5rem;
+                border: #3c2924 solid;
+              ">
+                <picture>
+                  <img src="<?= $imagePath ?>" class="card-img-top" alt="<?= $name ?>" />
+                </picture>
+                <div class="card-body" style="padding: 0.1rem">
+                  <h5 class="card-title"><?= $name ?></h5>
+                  <h5 class="avaliacoes">
+                    4.6
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-half"></i>
+                    (81)
+                  </h5>
+                  <p class="card-text preco-original">R$ <?= $price ?></p>
+                  <div class="precos">
+                    <p class="sub-card-text">R$ <?= $price ?></p>
+                    <p id="oferta">&nbsp;</p>
+                  </div>
+                  <button onclick="window.location.href='product.php?id=<?= (int)$p['id_product'] ?>'">Ver mais</button>
+                </div>
+              </div>
+            </div>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <p>Nenhum produto encontrado.</p>
+        <?php endif; ?>
       </div>
     </section>
   </main>
