@@ -58,7 +58,7 @@ header nav ul li a.entrar i {
 
 .user-logged i,
 .user-logged-mobile i {
-  background-color: #5b5b5bbb;
+  background-color: var(--cor-interativo);
   padding: 0.5rem;
   border-radius: 15rem;
   color: rgb(230, 230, 230);

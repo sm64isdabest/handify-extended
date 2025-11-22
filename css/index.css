@@ -137,6 +137,7 @@ header nav ul li a.entrar i {
   padding-right: 0.1rem;
 }
 
+
 .user-name{
   font-weight: 600;
   color: var(--cor-texto-primario);
@@ -988,7 +989,7 @@ footer .social-icons a i {
     display: none;
   }
   .search-bar {
-    width: calc(100% - 290px);
+    width: calc(100% -  420px);
   }
   .mobile-buttons {
     display: flex;
@@ -1035,5 +1036,8 @@ footer .social-icons a i {
 @media (max-width: 544px) {
   .produto:nth-child(3) {
     display: none;
+  }
+  .search-bar {
+    width: calc(100% -  360px);
   }
 }

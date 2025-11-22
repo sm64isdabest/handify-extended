@@ -60,7 +60,7 @@ header nav ul li a.entrar i {
 
 .user-logged i,
 .user-logged-mobile i {
-    background-color: #5b5b5bbb;
+    background-color: var(--cor-interativo);
     padding: 0.5rem;
     border-radius: 15rem;
     color: rgb(230, 230, 230);
@@ -109,4 +109,53 @@ main {
 
 .confirmation-box a:hover {
     background-color: #b88c4a;
+}
+
+footer {
+    position: relative;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 400;
+    display: flex;
+    font-size: 0.8rem;
+    text-align: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.6rem;
+}
+
+footer .social-icons a i {
+    color: #5a3e36;
+    font-size: 1.15rem;
+    padding: 0.19rem;
+}
+
+@media (max-width: 455px) {
+    #list {
+        display: block;
+        color: #3d2b23;
+    }
+
+    header nav ul {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    header nav ul li a.entrar,
+    header nav ul li.user-logged {
+        display: none;
+    }
+
+    #popup-menu ul {
+        list-style: none;
+        margin-left: -1.5rem;
+    }
+
+    footer {
+        justify-content: center;
+        flex-direction: column-reverse;
+        font-size: 0.7rem;
+    }
 }

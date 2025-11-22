@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Montserrat", Arial, sans-serif;
     margin: 0;
     padding: 0;
     background: 
@@ -183,7 +183,7 @@ nav ul li a.entrar {
 }
 
 .user-logged i, .user-logged-mobile i {
-    background-color: #5b5b5bbb;
+    background-color: var(--cor-interativo);
     padding: 0.5rem;
     border-radius: 15rem;
     color: rgb(230, 230, 230);
@@ -451,7 +451,7 @@ footer .social-icons a i {
 
 }
 
-@media (max-width: 455px) {
+@media (max-width: 560px) {
     #list {
         display: block;
     }
@@ -461,6 +461,19 @@ footer .social-icons a i {
     }
 
     header nav ul {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    header nav ul li a.entrar,
+    header nav ul li.user-logged {
+        display: none;
+    }
+
+    .user-name {
         display: none;
     }
 
@@ -470,7 +483,8 @@ footer .social-icons a i {
     }
 
     header nav ul li a.entrar {
-        display: none;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
     }
 
     footer {
