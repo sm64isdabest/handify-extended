@@ -1,12 +1,33 @@
 <?php
 require_once __DIR__ . '/../Model/Product.php';
+require_once __DIR__ . '/../Model/Category.php';
+
 use Model\Product;
+use Model\Category;
 
 $productModel = new Product();
-$products = $productModel->getAllProducts();
+$categoryModel = new Category();
+
+$categorias = $categoryModel->getAllCategories();
+$categoryMap = [];
+if (!empty($categorias)) {
+  foreach ($categorias as $c) {
+    $categoryMap[(int) $c['id_category']] = $c['name'];
+  }
+}
+
+// BUSCA
+$searchTerm = isset($_GET['q']) ? trim($_GET['q']) : '';
+if ($searchTerm !== '') {
+  $products = $productModel->searchByName($searchTerm);
+} else {
+  $products = $productModel->getAllProducts();
+}
+
 if ($products === false) {
   $products = [];
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -27,21 +48,37 @@ if ($products === false) {
   <header>
     <nav>
       <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+
+      <!-- Funcionalidade de busca -->
       <div class="search-bar">
-        <input type="text" id="searchInput" autocomplete="off" placeholder="Buscar produtos..." />
-        <i id="searchButton" class="bi bi-search"></i>
-        <ul id="autocomplete-list" class="autocomplete-items"></ul>
+        <form method="GET">
+          <input type="text" id="searchInput" name="q" autocomplete="off" placeholder="Buscar produtos..."
+            value="<?= htmlspecialchars($searchTerm) ?>" />
+          <button type="submit">
+            <i id="searchButton" class="bi bi-search"></i>
+          </button>
+        </form>
+
+        <!-- <ul id="autocomplete-list" class="autocomplete-items" style="visibility: hidden">
+        </ul> -->
       </div>
+      <!-- Funcionalidade de busca -->
+
       <ul>
-        <li><a href="../../index.php">Home</a></li>
+        <li><a href="../index.php">Home</a></li>
         <li><a href="#footer">Contato</a></li>
         <li><a href="about.php">Sobre</a></li>
         <li style="display: none;">
           <a href="sign-up.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
         </li>
-        <li class="user-logged" style="display: none;">
-            <i class="bi bi-person"></i> placeholder
-          </li>
+        <li class="user-logged" style="display: none; position: relative;">
+          <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
+          <span class="user-name"></span>
+          <div class="menu-popup">
+            <p class="user-name-popup"></p>
+            <button class="menu-item logout-btn">Sair</button>
+          </div>
+        </li>
       </ul>
       <!-- PARA DISPOSITIVOS MÓVEIS -->
       <button id="cart"><i class="bi bi-cart"></i></button>
@@ -97,11 +134,14 @@ if ($products === false) {
     <section class="filtros">
       <ul class="categorias">
         <h2>Categorias</h2>
-        <li><button class="categoria-btn categoria-todas" data-category="">Todas</button></li>
-        <li><button class="categoria-btn" data-category="Bolsa">Bolsas</button></li>
-        <li><button class="categoria-btn" data-category="Decoracao">Decorações</button></li>
-        <li><button class="categoria-btn" data-category="Utensilios">Utensílios Domésticos</button></li>
-        <li><button class="categoria-btn" data-category="Moveis">Móveis</button></li>
+
+        <li><button class="categoria-btn active" value="all">Todos</button></li>
+        <?php foreach ($categorias as $c): ?>
+          <li>
+            <button class="categoria-btn"
+              value="<?= (int) $c['id_category'] ?>"><?= htmlspecialchars($c['name']) ?></button>
+          </li>
+        <?php endforeach; ?>
 
       </ul>
 
@@ -120,58 +160,30 @@ if ($products === false) {
 
     <section class="produtos">
       <h2 id="texto-produtos">Produtos encontrados</h2>
-  <?php $serverRendered = !empty($products); ?>
-  <div id="cards-inside" <?php if ($serverRendered) echo 'data-server-rendered="1" style="visibility: visible;"'; ?> >
-        <!-- CARD TEMPLATE -->
-  <div id="cardTemplate" class="fundo" style="display: none;" aria-hidden="true">
-          <div class="card" style="
-                background-color: #4b3a35;
-                width: 15rem;
-                border-radius: 1.5rem;
-                border: #3c2924 solid;
-              ">
-            <picture>
-              <img src="" class="card-img-top" alt="..." />
-            </picture>
-            <div class="card-body" style="padding: 0.1rem">
-              <h5 class="card-title">Placeholder</h5>
-              <h5 class="avaliacoes">
-                4.6
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-                (81)
-              </h5>
-              <p class="card-text preco-original">R$ Placeholder</p>
-              <div class="precos">
-                <p class="sub-card-text">R$ Placeholder</p>
-                <p id="oferta">Placeholder% OFF</p>
-              </div>
-              <button>Ver mais</button>
-            </div>
-          </div>
-        </div>
-        <!-- CARD TEMPLATE -->
+      <?php $serverRendered = !empty($products); ?>
+      <div id="cards-inside" <?php if ($serverRendered)
+        echo 'data-server-rendered="1" style="visibility: visible;"'; ?>>
 
-        <!-- Estrutura se repete aqui -->
+        <!-- CARD TEMPLATE -->
         <?php if (!empty($products)): ?>
           <?php foreach ($products as $p): ?>
             <?php
-              $name = htmlspecialchars($p['name']);
-              $rawImage = isset($p['image']) ? $p['image'] : '';
-              // normaliza o caminho da imagem: se já contém 'uploads/' usamos ../ + campo; senão assumimos uploads/products/
-              if (!empty($rawImage) && strpos($rawImage, 'uploads/') === 0) {
-                  $imagePath = '../' . $rawImage;
-              } elseif (!empty($rawImage)) {
-                  $imagePath = '../uploads/products/' . htmlspecialchars($rawImage);
-              } else {
-                  $imagePath = '../images/icones/placeholder.png';
-              }
-              $price = number_format((float)$p['price'], 2, ',', '.');
+            $name = htmlspecialchars($p['name']);
+            $rawImage = isset($p['image']) ? $p['image'] : '';
+            // normaliza o caminho da imagem: se já contém 'uploads/' usamos ../ + campo; senão assumimos uploads/products/
+            if (!empty($rawImage) && strpos($rawImage, 'uploads/') === 0) {
+              $imagePath = '../' . $rawImage;
+            } elseif (!empty($rawImage)) {
+              $imagePath = '../uploads/products/' . htmlspecialchars($rawImage);
+            } else {
+              $imagePath = '../images/icones/placeholder.png';
+            }
+            $price = number_format((float) $p['price'], 2, ',', '.');
+
+            $catId = isset($p['id_category_fk']) ? (int) $p['id_category_fk'] : 0;
+            $categoryName = isset($categoryMap[$catId]) ? htmlspecialchars($categoryMap[$catId]) : 'Sem categoria';
             ?>
-            <div class="fundo">
+            <div class="fundo" data-category-id="<?= $catId ?>" data-price="<?= htmlspecialchars((float) $p['price']) ?>">
               <div class="card" style="
                 background-color: #4b3a35;
                 width: 15rem;
@@ -183,7 +195,8 @@ if ($products === false) {
                 </picture>
                 <div class="card-body" style="padding: 0.1rem">
                   <h5 class="card-title"><?= $name ?></h5>
-                  <h5 class="avaliacoes">
+                  <p class="categoria"><?= $categoryName ?></p>
+                  <!-- <h5 class="avaliacoes">
                     4.6
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-fill"></i>
@@ -191,13 +204,13 @@ if ($products === false) {
                     <i class="bi bi-star-fill"></i>
                     <i class="bi bi-star-half"></i>
                     (81)
-                  </h5>
+                  </h5> -->
                   <p class="card-text preco-original">R$ <?= $price ?></p>
                   <div class="precos">
                     <p class="sub-card-text">R$ <?= $price ?></p>
                     <p id="oferta">&nbsp;</p>
                   </div>
-                  <button onclick="window.location.href='product.php?id=<?= (int)$p['id_product'] ?>'">Ver mais</button>
+                  <button onclick="window.location.href='product.php?id=<?= (int) $p['id_product'] ?>'">Ver mais</button>
                 </div>
               </div>
             </div>
@@ -205,6 +218,8 @@ if ($products === false) {
         <?php else: ?>
           <p>Nenhum produto encontrado.</p>
         <?php endif; ?>
+        <!-- CARD TEMPLATE -->
+
       </div>
     </section>
   </main>
@@ -307,9 +322,9 @@ if ($products === false) {
     new window.VLibras.Widget("https://vlibras.gov.br/app");
   </script>
 
-  <script type="module" src="../js/database.js"></script>
   <script type="module" src="../js/search.js"></script>
   <script type="module" src="../js/search/search-in-page.js"></script>
+  <script src="../js/search/filters.js"></script>
   <script src="../js/mobile-pop-up.js"></script>
   <script src="../js/logged-in.js"></script>
 

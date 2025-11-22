@@ -1,18 +1,9 @@
-console.log("searchInPage.js loaded");
-
-import { products } from '../database.js';
-
 const searchInput = document.getElementById('searchInput');
 const productsCards = document.getElementById('cards-inside');
-const cardTemplate = document.getElementById('cardTemplate').firstElementChild;
 const productsText = document.getElementById('texto-produtos');
 const priceInputs = document.querySelectorAll('input[name="price"]');
 
-// Se a área já foi renderizada pelo servidor, não sobrescrever com o render do cliente
 const serverRendered = productsCards && productsCards.dataset && productsCards.dataset.serverRendered === '1';
-if (serverRendered) {
-    console.log('cards-inside marcado como server-rendered — pulando renderização cliente');
-}
 
 // Função para pegar o parâmetro da URL
 function getQueryParam(param) {

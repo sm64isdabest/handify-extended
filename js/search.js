@@ -1,9 +1,5 @@
-console.log("search.js loaded");
-
-import { products } from './database.js';
-
 const searchInput = document.getElementById('searchInput');
-const searchButton = document.getElementById('searchButton'); // ícone da lupa
+const searchButton = document.getElementById('searchButton');
 
 let autocompleteList = document.getElementById('autocomplete-list');
 if (!autocompleteList) {

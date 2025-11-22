@@ -58,6 +58,21 @@ class Product
         }
     }
 
+    public function searchByName($name)
+    {
+        try {
+            $query = "SELECT * FROM product WHERE name LIKE :name";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(":name", '%' . $name . '%', PDO::PARAM_STR);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $error) {
+            echo "Erro na busca: " . $error->getMessage();
+            return false;
+        }
+    }
+
+
     public function getProductsByStoreId($id_store_fk)
     {
         try {
