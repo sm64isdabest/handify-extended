@@ -22,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $description = $_POST['description'] ?? '';
     $stock = $_POST['stock'] ?? '';
     $price = $_POST['price'] ?? '';
+    $id_category = $_POST['id_category'] ?? '';
 
     if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
         $uploadDir = __DIR__ . '/../uploads/products/';
@@ -54,10 +55,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $name,
                         $description,
                         $imagePath,
-                        (int) $stock,
-                        (string) $price,
+                        (int)$stock,
+                        (string)$price,
                         $free_shipping,
-                        $id_store_fk
+                        $id_store_fk,
+                        (int)$id_category
                     );
 
                     $message = $result ? 'Produto cadastrado com sucesso.' : 'Erro ao cadastrar produto.';
@@ -155,17 +157,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="quantidade-produto">
                         <input type="number" id="stock" name="stock" placeholder="Quantidade" min="0" required />
                     </div>
-                    <input list="categorias">
 
-                    <datalist id="categorias">
-                        <?php 
-                        $categorias = $categoryModel->getAllCategories();
+                    <div class="form-floating">
+                        <select class="form-select" id="floatingSelect" name="id_category">
+                            <?php
+                            $categorias = $categoryModel->getAllCategories();
 
-                        foreach($categorias as $c):
-                        ?>
-                        <option value="<?= htmlspecialchars($c['name']) ?>"></option>
-                        <?php endforeach; ?>
-                    </datalist>
+                            foreach ($categorias as $c):
+                                ?>
+                                <option value="<?= $c['id_category'] ?>"><?= htmlspecialchars($c['name']) ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <label for="floatingSelect">Categoria</label>
+                    </div>
 
                     <button class="comprar-agora" disabled>Comprar Agora</button>
                     <button class="adicionar-carrinho" disabled>Adicionar ao Carrinho</button>

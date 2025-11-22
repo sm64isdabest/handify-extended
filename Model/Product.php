@@ -17,10 +17,10 @@ class Product
         $this->db = Connection::getInstance();
     }
 
-    public function registerProduct($name, $description = null, $image, $stock, $price, $free_shipping, $id_store_fk)
+    public function registerProduct($name, $description = null, $image, $stock, $price, $free_shipping, $id_store_fk, $id_category)
     {
         try {
-            $sql = 'INSERT INTO product (name, description, image, stock, price, free_shipping, id_store_fk) VALUES (:name, :description, :image, :stock, :price, :free_shipping, :id_store_fk)';
+            $sql = 'INSERT INTO product (name, description, image, stock, price, free_shipping, id_store_fk, id_category_fk) VALUES (:name, :description, :image, :stock, :price, :free_shipping, :id_store_fk, :id_category_fk)';
 
             $stmt = $this->db->prepare($sql);
 
@@ -31,6 +31,7 @@ class Product
             $stmt->bindParam(":price", $price, PDO::PARAM_STR);
             $stmt->bindParam(":free_shipping", $free_shipping, PDO::PARAM_INT);
             $stmt->bindParam(":id_store_fk", $id_store_fk, PDO::PARAM_INT);
+            $stmt->bindParam(":id_category_fk", $id_category, PDO::PARAM_INT);
 
             return $stmt->execute();
 
