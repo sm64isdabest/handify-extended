@@ -13,40 +13,44 @@
 </head>
 
 <body>
+    <header>
+        <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+        <nav>
+            <ul>
+                <li><a href="../index.php">Home</a></li>
+                <li><a href="about.php#footer">Contato</a></li>
+                <li><a href="about.php">Sobre</a></li>
+                <li style="display: none;">
+                    <a href="sign-up.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+                </li>
+                <li class="user-logged" style="display: none; position: relative;">
+                    <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
+                    <span class="user-name"></span>
+                    <div class="menu-popup">
+                        <p class="user-name-popup"></p>
+                        <button class="menu-item logout-btn">Sair</button>
+                    </div>
+                </li>
+            </ul>
+            <!-- PARA DISPOSITIVOS MÓVEIS -->
+            <button id="list"><i class="bi bi-list"></i></button>
+        </nav>
+        <div id="popup-menu">
+            <ul class="popup-list">
+                <li style="display: none;">
+                    <a href="sign-up.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+                </li>
+                <li class="user-logged-mobile" style="display: none;">
+                    <i class="bi bi-person"></i> placeholder
+                </li>
+                <li><a href="about.php">Sobre</a></li>
+                <li><a href="about.php#footer">Contato</a></li>
+                <li><a href="../index.php">Home</a></li>
+            </ul>
+        </div>
+    </header>
+
     <main class="sobre-main">
-        <section class="about_header">
-            <!-- <header> -->
-            <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
-            <nav>
-                <ul>
-                    <li><a href="../../index.php">Home</a></li>
-                    <li><a href="#footer">Contato</a></li>
-                    <li><a href="about.php">Sobre</a></li>
-                    <li style="display: none;">
-                        <a href="login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
-                    </li>
-                    <li class="user-logged" style="display: none;">
-                        <i class="bi bi-person"></i> placeholder
-                    </li>
-                </ul>
-                <!-- PARA DISPOSITIVOS MÓVEIS -->
-                <button id="list"><i class="bi bi-list"></i></button>
-            </nav>
-            <div id="popup-menu">
-                <ul class="popup-list">
-                    <li style="display: none;">
-                        <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
-                    </li>
-                    <li class="user-logged-mobile" style="display: none;">
-                        <i class="bi bi-person"></i> placeholder
-                    </li>
-                    <li><a href="about.php">Sobre</a></li>
-                    <li><a href="#footer">Contato</a></li>
-                    <li><a href="../../index.php">Home</a></li>
-                </ul>
-            </div>
-            <!-- </header> -->
-        </section>
         <section class="sobre-hero">
             <div class="sobre-hero-content">
                 <h1>Handify – onde o feito à mão ganha espaço e valor</h1>
@@ -64,7 +68,8 @@
                         O artesanato é uma forma de criar com as próprias mãos, usando matérias-primas naturais
                         para dar vida a objetos únicos. Muitas vezes, esse trabalho é feito por famílias em casa
                         ou em pequenas oficinas, com muito cuidado e tradição. Essa prática é antiga vem lá do
-                        período Neolítico quando nossos ancestrais já poliam pedras para fazer armas, criavam cerâmicas
+                        período Neolítico quando nossos ancestrais já poliam pedras para fazer armas, criavam
+                        cerâmicas
                         para guardar alimentos e usavam a tecelagem para produzir redes, roupas e colchas.
                     </p>
                 </div>
@@ -76,7 +81,8 @@
                 ">
                     <h2 class="sobre-info-title">Sobre o Handify</h2>
                     <p class="sobre-info-desc">
-                        A Handify é um marketplace que valoriza o trabalho artesanal, conectando criadores independentes
+                        A Handify é um marketplace que valoriza o trabalho artesanal, conectando criadores
+                        independentes
                         com pessoas que buscam produtos únicos e feitos com cuidado. Além de vender, a plataforma
                         promove a sustentabilidade, a originalidade e a história por trás de cada peça, criando uma
                         comunidade em torno do feito à mão.

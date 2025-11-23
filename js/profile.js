@@ -1,5 +1,3 @@
-console.log("profile.js loaded");
-
 document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.profile-nav-item[href^="#"]:not(.logout-btn)');
     const sections = document.querySelectorAll('.profile-section');

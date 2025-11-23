@@ -1,5 +1,3 @@
-console.log("senha.js loaded");
-
 document.addEventListener('DOMContentLoaded', function() {
     const toggleIcons = document.querySelectorAll('.password-toggle');
     toggleIcons.forEach(icon => {

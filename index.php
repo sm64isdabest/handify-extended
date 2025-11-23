@@ -239,14 +239,6 @@ if ($products === false) {
             </picture>
             <span class="produto-nome"><?= $prod ? htmlspecialchars($prod['name']) : '' ?></span>
             <div class="produto-preco-bloco">
-              <div class="produto-preco-desconto-container">
-                <span class="produto-preco-antigo">
-                  <?= $prod && !empty($prod['price_old']) ? 'R$ ' . number_format((float) $prod['price_old'], 2, ',', '.') : '' ?>
-                </span>
-                <span class="produto-desconto">
-                  <?= $prod && !empty($prod['discount']) ? htmlspecialchars($prod['discount']) . '%' : '' ?>
-                </span>
-              </div>
               <span
                 class="produto-preco"><?= $prod ? 'R$ ' . number_format((float) $prod['price'], 2, ',', '.') : '' ?></span>
             </div>

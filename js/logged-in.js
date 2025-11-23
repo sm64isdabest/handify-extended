@@ -1,5 +1,3 @@
-console.log("logged-in.js loaded");
-
 function getCookie(name) {
   const value = "; " + document.cookie;
   const parts = value.split("; " + name + "=");

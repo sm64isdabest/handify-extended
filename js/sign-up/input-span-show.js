@@ -1,5 +1,3 @@
-console.log("input-span-show.js loaded");
-
 const form = document.querySelector(".form-container form");
 const storeBtn = document.querySelector(".active1");
 

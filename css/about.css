@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pacifico&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pacifico&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 body {
     margin: 0;
@@ -13,8 +12,11 @@ header {
     font-family: "Alexandria", sans-serif;
     font-weight: 600;
     display: flex;
-    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
     justify-content: space-between;
+    align-items: center;
     padding: 1rem;
     position: absolute;
 }
@@ -28,10 +30,9 @@ header nav ul {
     list-style: none;
     display: flex;
     gap: 20px;
-    justify-content: space-between;
+    margin: 0;
     padding: 0;
-    right: 50%;
-    transform: translateX(-50%);
+    align-items: center;
 }
 
 header nav ul li a {
@@ -51,18 +52,72 @@ header nav ul li a.entrar i {
     margin-right: 0.3rem;
 }
 
+.user-logged,
+.user-logged-mobile {
+    color: #484848;
+    font-style: italic;
+}
+
+.user-logged i,
+.user-logged-mobile i {
+    background-color: var(--cor-interativo);
+    padding: 0.5rem;
+    border-radius: 15rem;
+    color: rgb(230, 230, 230);
+    border: 2px solid #484848;
+}
+
 #list {
     width: 50px;
     height: 50px;
     display: none;
     background: none;
-    border: none;
     border-radius: 100%;
     margin: -10px;
+    border: none;
 }
 
 #list i {
     font-size: xx-large;
+}
+
+.menu-popup {
+    position: absolute;
+    top: 40px;
+    right: 0;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    padding: 0.8rem;
+    display: none;
+    min-width: 120px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-popup.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-popup .menu-item {
+    width: 100%;
+    padding: 8px 12px;
+    border: none;
+    background-color: #5a3e36;
+    color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 8px;
+    transition: background-color 0.2s;
+}
+
+.menu-popup .menu-item:hover {
+    background-color: #7a574d;
 }
 
 #popup-menu {
@@ -90,21 +145,6 @@ header nav ul li a.entrar i {
     font-size: 1.1rem;
 }
 
-.user-logged,
-.user-logged-mobile {
-    color: #484848;
-    font-style: italic;
-}
-
-.user-logged i,
-.user-logged-mobile i {
-    background-color: var(--cor-interativo);
-    padding: 0.5rem;
-    border-radius: 15rem;
-    color: rgb(230, 230, 230);
-    border: 2px solid #484848;
-}
-
 .sobre-search-form {
     display: none;
 }
@@ -120,48 +160,6 @@ header nav ul li a.entrar i {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
-}
-
-.about_header {
-    font-family: "Alexandria", sans-serif;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    position: absolute;
-    width: 100%;
-    z-index: 1000;
-}
-
-.about_header .logo {
-    height: 50px;
-    margin-top: -1rem;
-}
-
-.about_header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    justify-content: flex-end;
-    padding: 0;
-}
-
-.about_header nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-.about_header nav ul li a.entrar {
-    background-color: #593d36;
-    color: white;
-    padding: 0.9rem;
-    border-radius: 15px;
-}
-
-.about_header nav ul li a.entrar i {
-    margin-right: 0.3rem;
 }
 
 .sobre-hero {

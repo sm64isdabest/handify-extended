@@ -262,19 +262,6 @@ input::placeholder {
   font-size: 16px;
 }
 
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.nav-links a {
-  color: var(--cor-texto-primario);
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
-
 .btn-entrar {
   background: var(--cor-texto-primario);
   color: var(--cor-fundo-caixa);

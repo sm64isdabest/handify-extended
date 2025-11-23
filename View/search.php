@@ -38,6 +38,7 @@ if ($products === false) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pesquisa - Handify</title>
   <link rel="stylesheet" href="../css/search.css" />
+  <link rel="stylesheet" href="../css/global.css">
   <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -187,11 +188,13 @@ if ($products === false) {
               <div class="card" style="
                 background-color: #4b3a35;
                 width: 15rem;
+                margin: 0;
                 border-radius: 1.5rem;
                 border: #3c2924 solid;
               ">
                 <picture>
-                  <img src="<?= $imagePath ?>" class="card-img-top" alt="<?= $name ?>" />
+                  <img src="<?= $imagePath ?>" class="card-img-top" alt="<?= $name ?>"
+                    onerror="this.onerror=null; this.src='../images/icones/placeholder.png';" />
                 </picture>
                 <div class="card-body" style="padding: 0.1rem">
                   <h5 class="card-title"><?= $name ?></h5>
@@ -205,10 +208,8 @@ if ($products === false) {
                     <i class="bi bi-star-half"></i>
                     (81)
                   </h5> -->
-                  <p class="card-text preco-original">R$ <?= $price ?></p>
                   <div class="precos">
                     <p class="sub-card-text">R$ <?= $price ?></p>
-                    <p id="oferta">&nbsp;</p>
                   </div>
                   <button onclick="window.location.href='product.php?id=<?= (int) $p['id_product'] ?>'">Ver mais</button>
                 </div>
@@ -224,79 +225,68 @@ if ($products === false) {
     </section>
   </main>
 
-  <div class="caracteristicas">
-    <div class="card">
+  <!-- Benefícios -->
+  <section class="beneficios">
+    <div class="rounded-4 beneficio card">
       <i class="bi bi-shield-check"></i>
-      <div class="card-body">
-        <h5 class="card-title">Segurança</h5>
-        <p class="card-text">
-          Este site utiliza protocolos de segurança avançados para garantir a
-          proteção de seus dados durante a navegação.
-        </p>
-      </div>
+      <h4>Segurança</h4>
+      <p>
+        Este site utiliza protocolos de segurança avançados para garantir a
+        proteção de seus dados durante a navegação.
+      </p>
     </div>
-    <div class="card">
+    <div class="rounded-4 beneficio card">
       <i class="bi bi-patch-check"></i>
-      <div class="card-body">
-        <h5 class="card-title">Confiável</h5>
-        <p class="card-text">
-          Pode confiar: aqui tudo é feito com cuidado, segurança e respeito
-          por você.
-        </p>
-      </div>
+      <h4>Confiável</h4>
+      <p>
+        Pode confiar: aqui tudo é feito com cuidado, segurança e respeito
+        por você.
+      </p>
     </div>
-    <div class="card">
+    <div class="rounded-4 beneficio card rounded">
       <i class="bi bi-truck"></i>
-      <div class="card-body">
-        <h5 class="card-title">Frete grátis</h5>
-        <p class="card-text">
-          Do carrinho até a sua casa, com segurança, carinho e frete grátis.
-        </p>
-      </div>
+      <h4>Frete grátis</h4>
+      <p>
+        Do carrinho até a sua casa, com segurança, carinho e frete grátis.
+      </p>
     </div>
-  </div>
+  </section>
 
-  <div class="contatos">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Compre pelo telefone</h5>
-        <p class="card-text">
-          Atendimento das 8h às 19h de segunda a sexta. 8h às 14h aos sábados.
-        </p>
-      </div>
+  <!-- Atendimento -->
+  <section class="atendimento">
+    <div class="rounded-4 atendimento-card card">
+      <h4>Compre pelo telefone</h4>
+      <p>
+        Atendimento das 8h às 19h de segunda a sexta. 8h às 14h aos sábados.
+      </p>
       <button>(71) 97534-4397</button>
       <button>0800-020-5243</button>
     </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Atendimento ao cliente</h5>
-        <p class="card-text">
-          Das 08h às 19h de<br />segunda a sábado, exceto feriados.
-        </p>
-      </div>
+    <div class="rounded-4 atendimento-card card">
+      <h4>Atendimento ao cliente</h4>
+      <p>Das 08h às 19h de segunda a sábado, exceto feriados.</p>
       <button>handifycontato@gmail.com</button>
       <button>0800-020-6639</button>
     </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Compre pelo Whatsapp</h5>
-        <p class="card-text">
-          Para todo o território nacional. Horário de atendimento sujeito à
-          região.
-        </p>
-      </div>
+    <div class="rounded-4 atendimento-card card">
+      <h4>Compre pelo Whatsapp</h4>
+      <p>
+        Para todo o território nacional. Horário de atendimento sujeito à
+        região.
+      </p>
       <button><i class="bi bi-whatsapp"></i> (71) 9985-7897</button>
-      <button>(71) 9535-6332</button>
+      <button><i class="bi bi-whatsapp"></i> (71) 9535-6332</button>
     </div>
-  </div>
+  </section>
 
+  <!-- Formas de pagamento -->
   <section class="pagamento card">
     <h4>Formas de pagamento</h4>
     <div class="pagamento-icones">
-      <img src="../images/icones/visa-logo.png" alt="Visa" />
-      <img src="../images/icones/Mastercard.png" alt="Mastercard" />
-      <img src="../images/icones/Logo-ELO.png" alt="Elo" />
-      <img src="../images/icones/Logo-PIX.png" alt="Pix" />
+      <img src="images/icones/visa-logo.png" alt="Visa" />
+      <img src="images/icones/Mastercard.png" alt="Mastercard" />
+      <img src="images/icones/Logo-ELO.png" alt="Elo" />
+      <img src="images/icones/Logo-PIX.png" alt="Pix" />
     </div>
   </section>
 
