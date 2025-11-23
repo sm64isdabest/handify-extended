@@ -5,12 +5,39 @@
 body {
   background-color: #faecce;
   overflow-x: hidden;
+  color: var(--cor-texto-primario);
+}
+
+a.btn,
+.menu-bar button {
+  color: var(--cor-interativo-texto);
+  border: none;
+  border-radius: 0.6rem 0.6rem 0 0;
+  font-size: 14px;
+  height: 2rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: var(--cor-interativo);
+  transition: background-color 250ms ease, transform 150ms ease;
+  will-change: background-color, transform;
+}
+
+a.btn:hover,
+.menu-bar button:hover,
+a.entrar:hover {
+  background-color: var(--cor-texto-primario);
+  color: var(--cor-fundo-caixa);
 }
 
 header {
   font-family: "Alexandria", sans-serif;
   border-bottom: 2px solid #593d36;
-  background-color: #faecce;
 }
 
 nav {
@@ -19,7 +46,6 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #faecce;
 }
 
 header .logo {
@@ -38,7 +64,7 @@ header nav ul {
 
 header nav ul li a {
   text-decoration: none;
-  color: #333;
+  color: var(--cor-texto-primario);
   font-weight: bold;
 }
 
@@ -205,70 +231,13 @@ input::placeholder {
   font-size: 16px;
 }
 
-.autocomplete-items {
-  position: absolute;
-  visibility: hidden;
-  top: 95%;
-  background-color: #5a3e36;
-  color: white;
-  z-index: 99;
-  list-style: none;
-  width: 95%;
-  overflow: visible;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0.5rem;
-}
-
-.bi-patch-check::before {
-  content: "\f4b6";
-  color: white;
-
-}
-
-.bi-truck::before {
-  content: "\f5ea";
-  color: white;
-}
-
-.bi-shield-check::before {
-  content: "\f52f";
-  color: white;
-}
-
 label {
   display: inline-block;
   margin-left: 17px;
 }
 
-.autocomplete-items li {
-  font-size: 0.9rem;
-  padding-left: 0.5rem;
-  cursor: pointer;
-  white-space: normal;
-  background: none;
-  border: none;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  padding: 0.5rem;
-  border-bottom: 2px solid hwb(29 0% 74%);
-  transition: background 0.9s;
-}
-
-.autocomplete-items li:hover {
-  background: #3c2923;
-}
-
-.autocomplete-items li:active {
-  transform: translateY(2px) scale(0.98);
-  box-shadow: 0 1px 2px #0005 inset;
-  transition: transform 0.1s, box-shadow 0.1s;
-}
-
 .menu-bar {
   display: flex;
-  background-color: #faecce;
   justify-content: center;
 }
 
@@ -281,8 +250,6 @@ label {
 }
 
 .menu-bar button {
-  background-color: #5a3e36;
-  color: #fff;
   border: none;
   border-radius: 0.6rem 0.6rem 0 0;
   font-size: 14px;
@@ -326,13 +293,12 @@ main {
   display: flex;
   justify-content: center;
   padding: 20px;
-  background-color: #faecce;
 }
 
 .filtros {
   padding: 15px;
   height: fit-content;
-  background-color: #fff;
+  background-color: var(--cor-fundo-caixa);
   border-radius: 1rem;
 }
 
@@ -365,13 +331,13 @@ main {
   border-color: #4a2c2a;
   border-radius: 2rem;
   margin-left: 2rem;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--cor-fundo-caixa);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
 .produtos h2 {
   font-size: 1.5rem;
-  color: #4a2c2a;
+  color: var(--cor-texto-primario);
 }
 
 #cards-inside {
@@ -399,6 +365,7 @@ picture img {
 
 .card {
   padding: 1rem;
+  margin: 1rem;
 }
 
 .card-body .categoria {
@@ -420,6 +387,7 @@ picture img {
 
 .categorias li button {
   background: none;
+  color: var(--cor-texto-primario);
   border: none;
 }
 
@@ -465,19 +433,10 @@ picture img {
 }
 
 .card-body h5 {
-  color: white;
   font-weight: bold;
   font-size: 0.9rem;
   text-align: start;
-}
-
-.card-body .avaliacoes {
-  color: #828282;
-  font-size: small;
-}
-
-.avaliacoes i {
-  color: #ffc700;
+  color: var(--cor-texto-primario);
 }
 
 .precos {
@@ -490,18 +449,6 @@ picture img {
 .sub-card-text {
   font-size: x-large;
   font-weight: 600;
-  color: white;
-}
-
-.precos #oferta {
-  background-color: #4bac3f;
-  font-size: medium;
-  font-weight: bold;
-  margin-top: 0.5rem;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-  color: white;
-  border-radius: 1rem;
 }
 
 .card-body {
@@ -529,8 +476,8 @@ picture img {
 .card-body button {
   font-weight: 600;
   border: none;
-  color: #593d36;
-  background-color: white;
+  background-color: #593d36;
+  color: white;
   border-radius: 30rem;
   height: 3rem;
   width: 100%;
@@ -551,45 +498,74 @@ footer {
   padding: 1.6rem;
 }
 
-.caracteristicas {
+footer p {
+  color: #5a3e36;
+}
+
+.beneficios {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  padding: 1rem;
-  background-color: #faecce;
-  gap: 2rem;
+  gap: 1rem;
 }
 
-.caracteristicas .card {
-  border: solid grey;
-  background: #392621;
-  border-radius: 1rem;
-  align-items: center;
-  width: 25rem;
-  height: 15rem;
-}
-
-.caracteristicas .card-body {
-  flex-direction: column;
-  display: flex;
-  align-items: center;
+.beneficio {
   text-align: center;
+  width: 25rem;
+  background-color: var(--cor-interativo);
+  padding: 1rem;
+  font-family: "Work Sans", Arial, sans-serif;
 }
 
-.caracteristicas .card i {
+.beneficio h4,
+.beneficio i {
+  color: var(--cor-interativo-texto);
+}
+
+.beneficio p {
+  color: var(--cor-interativo-texto);
+  opacity: 0.8;
+}
+
+.beneficio i {
   font-size: 2rem;
+  margin-bottom: 8px;
 }
 
-.caracteristicas .card-body h5 {
-  color: rgb(252, 252, 252);
+.atendimento {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.atendimento-card {
+  text-align: center;
+  width: 25rem;
+  background-color: var(--cor-interativo);
+}
+
+.atendimento-card h4 {
+  color: var(--cor-interativo-texto);
+  font-family: "Work Sans", sans-serif;
+}
+
+.atendimento-card button,
+.atendimento-card p {
+  font-family: "Work Sans", sans-serif;
+  color: var(--cor-interativo-texto);
+  opacity: 0.8;
   font-size: 1rem;
 }
 
-.caracteristicas .card p {
-  width: auto;
-  height: auto;
-  color: #fdfdfd;
-  background: none;
-  text-decoration: none;
+.atendimento-card button {
+  background-color: var(--cor-texto-primario);
+  color: var(--cor-fundo-caixa);
+  width: 100%;
+  height: 3rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 1rem;
 }
 
 footer {

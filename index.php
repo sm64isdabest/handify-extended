@@ -2,9 +2,9 @@
 session_start();
 
 if (!isset($_SESSION['id']) && isset($_COOKIE['userId'], $_COOKIE['userName'], $_COOKIE['userType'])) {
-    $_SESSION['id'] = $_COOKIE['userId'];
-    $_SESSION['user_fullname'] = $_COOKIE['userName'];
-    $_SESSION['user_type'] = $_COOKIE['userType'];
+  $_SESSION['id'] = $_COOKIE['userId'];
+  $_SESSION['user_fullname'] = $_COOKIE['userName'];
+  $_SESSION['user_type'] = $_COOKIE['userType'];
 }
 
 $userId = $_SESSION['id'] ?? null;
@@ -58,7 +58,7 @@ if ($searchTerm !== '') {
 }
 
 if ($products === false) {
-    $products = [];
+  $products = [];
 }
 
 ?>
@@ -239,14 +239,6 @@ if ($products === false) {
             </picture>
             <span class="produto-nome"><?= $prod ? htmlspecialchars($prod['name']) : '' ?></span>
             <div class="produto-preco-bloco">
-              <div class="produto-preco-desconto-container">
-                <span class="produto-preco-antigo">
-                  <?= $prod && !empty($prod['price_old']) ? 'R$ ' . number_format((float) $prod['price_old'], 2, ',', '.') : '' ?>
-                </span>
-                <span class="produto-desconto">
-                  <?= $prod && !empty($prod['discount']) ? htmlspecialchars($prod['discount']) . '%' : '' ?>
-                </span>
-              </div>
               <span
                 class="produto-preco"><?= $prod ? 'R$ ' . number_format((float) $prod['price'], 2, ',', '.') : '' ?></span>
             </div>
@@ -282,14 +274,6 @@ if ($products === false) {
             </picture>
             <span class="produto-nome"><?= $prod ? htmlspecialchars($prod['name']) : '' ?></span>
             <div class="produto-preco-bloco">
-              <div class="produto-preco-desconto-container">
-                <span class="produto-preco-antigo">
-                  <?= $prod && !empty($prod['price_old']) ? 'R$ ' . number_format((float) $prod['price_old'], 2, ',', '.') : '' ?>
-                </span>
-                <span class="produto-desconto">
-                  <?= $prod && !empty($prod['discount']) ? htmlspecialchars($prod['discount']) . '%' : '' ?>
-                </span>
-              </div>
               <span
                 class="produto-preco"><?= $prod ? 'R$ ' . number_format((float) $prod['price'], 2, ',', '.') : '' ?></span>
             </div>
@@ -325,14 +309,6 @@ if ($products === false) {
             </picture>
             <span class="produto-nome"><?= $prod ? htmlspecialchars($prod['name']) : '' ?></span>
             <div class="produto-preco-bloco">
-              <div class="produto-preco-desconto-container">
-                <span class="produto-preco-antigo">
-                  <?= $prod && !empty($prod['price_old']) ? 'R$ ' . number_format((float) $prod['price_old'], 2, ',', '.') : '' ?>
-                </span>
-                <span class="produto-desconto">
-                  <?= $prod && !empty($prod['discount']) ? htmlspecialchars($prod['discount']) . '%' : '' ?>
-                </span>
-              </div>
               <span
                 class="produto-preco"><?= $prod ? 'R$ ' . number_format((float) $prod['price'], 2, ',', '.') : '' ?></span>
             </div>

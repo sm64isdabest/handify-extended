@@ -1,4 +1,3 @@
-console.log("theme-loader.js loaded");
 function applyTheme() {
     const currentTheme = localStorage.getItem('theme');
     if (currentTheme === 'dark') {
@@ -7,7 +6,9 @@ function applyTheme() {
         document.documentElement.classList.remove('dark-mode');
     }
 }
+
 applyTheme();
+
 window.addEventListener('load', applyTheme);
 document.addEventListener('DOMContentLoaded', applyTheme);
 window.addEventListener('pageshow', applyTheme);

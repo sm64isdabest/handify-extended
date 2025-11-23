@@ -1,5 +1,3 @@
-console.log('zoom-image.js loaded');
-
 const img = document.getElementById('zoomable-image');
 
 if (img) {

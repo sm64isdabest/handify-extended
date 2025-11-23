@@ -10,7 +10,8 @@ body {
     background-image: url("../images/fundos/fundo_madeira_carvalho.jpg");
 }
 
-a.btn, .menu-bar button {
+a.btn,
+.menu-bar button {
     color: var(--cor-interativo-texto);
     border: none;
     border-radius: 0.6rem 0.6rem 0 0;
@@ -29,7 +30,9 @@ a.btn, .menu-bar button {
     will-change: background-color, transform;
 }
 
-a.btn:hover, .menu-bar button:hover, a.entrar:hover {
+a.btn:hover,
+.menu-bar button:hover,
+a.entrar:hover {
     background-color: var(--cor-texto-primario);
     color: var(--cor-fundo-caixa);
 }
@@ -88,19 +91,22 @@ header nav ul li a.entrar i {
 }
 
 .search-bar {
-    display: flex;
     align-items: center;
-    background-color: var(--cor-interativo);
-    border: 1px solid var(--cor-fundo-caixa);
+    background-color: #5a3e36;
+    border: 1px solid #ffffff;
     border-radius: 20px;
-    padding: 4px 8px;
-    width: calc(100% - 600px);
-    margin-left: 10rem;
-    position: absolute;
+    padding: 5px 10px;
+    overflow: hidden;
+    margin-right: 0.5rem;
+    flex: 1;
+}
+
+.search-bar form {
+    display: flex;
 }
 
 .search-bar i {
-    color: var(--cor-interativo-texto);
+    color: white;
     cursor: pointer;
 }
 
@@ -111,11 +117,11 @@ header nav ul li a.entrar i {
     font-size: 14px;
     width: 100%;
     background: none;
-    color: var(--cor-interativo-texto);
+    color: white;
 }
 
 input::placeholder {
-    color: var(--cor-interativo-texto);
+    color: white;
     opacity: 0.8;
 }
 
@@ -171,12 +177,14 @@ nav ul li a.entrar {
     will-change: background-color, transform;
 }
 
-.user-logged, .user-logged-mobile {
+.user-logged,
+.user-logged-mobile {
     color: #484848;
     font-style: italic;
 }
 
-.user-logged i, .user-logged-mobile i {
+.user-logged i,
+.user-logged-mobile i {
     background-color: var(--cor-interativo);
     padding: 0.5rem;
     border-radius: 15rem;
@@ -184,7 +192,8 @@ nav ul li a.entrar {
     border: 2px solid #484848;
 }
 
-.user-name, .user-name-popup {
+.user-name,
+.user-name-popup {
     font-weight: 600;
     color: var(--cor-texto-primario);
 }
@@ -252,46 +261,6 @@ nav ul li a.entrar {
 .menu-bar button:hover {
     background-color: var(--cor-texto-primario);
     color: var(--cor-fundo-caixa);
-}
-
-.autocomplete-items {
-    position: absolute;
-    visibility: hidden;
-    top: 95%;
-    background-color: #5a3e36;
-    color: white;
-    z-index: 99;
-    list-style: none;
-    width: 95%;
-    overflow: visible;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0.5rem;
-}
-
-.autocomplete-items li {
-    font-size: 0.9rem;
-    padding-left: 0.5rem;
-    cursor: pointer;
-    white-space: normal;
-    background: none;
-    border: none;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    padding: 0.5rem;
-    border-bottom: 2px solid #3c2923;
-    transition: background 0.9s;
-}
-
-.autocomplete-items li:hover {
-    background: #3c2923;
-}
-
-.autocomplete-items li:active {
-    transform: translateY(2px) scale(0.98);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
-    transition: transform 0.1s, box-shadow 0.1s;
 }
 
 .product-page {
@@ -377,8 +346,46 @@ nav ul li a.entrar {
     font-size: 2.5rem;
     flex-direction: column;
     font-weight: bold;
-    color: #5a3e36;
     margin-bottom: 0.5rem;
+}
+
+.produto {
+    display: flex;
+    flex-direction: column;
+}
+
+.produto img {
+    max-width: 150px;
+}
+
+span.produto-nome {
+    font-size: 1.1rem;
+    margin-bottom: 2px;
+    color: var(--cor-texto-primario);
+    text-align: center;
+    font-weight: 500;
+    min-height: 28px;
+    line-height: 1.1;
+    width: 10rem;
+    display: block;
+    font-family: "Alexandria", sans-serif;
+}
+
+span.produto-preco {
+    font-size: 1.5rem;
+    color: var(--cor-texto-primario);
+    font-weight: bold;
+    text-align: center;
+}
+
+button.produto-btn {
+    font-weight: 600;
+    border: none;
+    background-color: #593d36;
+    color: white;
+    border-radius: 30rem;
+    height: 3rem;
+    width: 100%;
 }
 
 .avaliar {
@@ -395,12 +402,11 @@ nav ul li a.entrar {
 
 .product-details .installments {
     font-size: 1.5rem;
-    color: #333;
     margin-bottom: 1rem;
 }
 
 .product-details .payment-methods {
-    color: rgb(0, 0, 0);
+    color: var(--cor-texto-primario);
     text-decoration: underline;
     cursor: pointer;
 }
@@ -415,7 +421,8 @@ nav ul li a.entrar {
     margin: 0.5rem 0;
 }
 
-.color, .handle-color {
+.color,
+.handle-color {
     color: rgb(255, 255, 255);
     font-weight: bold;
 }
@@ -454,18 +461,24 @@ nav ul li a.entrar {
     gap: 1.5rem;
     border: solid black;
     border-radius: 1.1rem;
-    padding: 0.3rem;
+    padding: 1rem;
     width: auto;
     margin-right: 1rem;
 }
 
-.delivery-info, .stock-info {
+.delivery-info,
+.stock-info {
     font-size: 1rem;
     color: #333;
 }
 
-.gratis, .compra, .devol {
-    color: #FE5F2F;
+.compra {
+    color: white;
+    background-color: #FE5F2F;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    border-radius: 1.5rem;
+    font-family: 'Alexandria';
+    font-weight: 500;
 }
 
 .purchase-buttons {
@@ -491,26 +504,21 @@ nav ul li a.entrar {
 }
 
 .ofertas {
-    background-color: #fff;
+    background-color: var(--cor-fundo-caixa);
     padding: 1rem;
     border-radius: 1rem;
     margin: 2rem;
 }
 
-.other-offers h2 {
-    font-size: 3rem;
-    color: #000000;
-    margin-bottom: 1rem;
-}
-
 .offers-container {
-    display: flex;      
-    flex-wrap: wrap;     
-    gap: 1rem;         
+    display: flex;
+    flex-wrap: wrap;
     border: solid black;
     border-radius: 0.7rem;
-    padding: 1rem;    
+    padding: 1rem;
+    justify-content: space-around;
 }
+
 .offers-container .card {
     flex: 1 1 200px;
     max-width: 250px;
@@ -552,56 +560,9 @@ nav ul li a.entrar {
 
 .descricao-produto p {
     font-size: 1.3rem;
-    color: #333;
+    color: var(--cor-texto-secundario);
     line-height: 1.5;
     margin-bottom: 1rem;
-}
-
-.produto-reviews {
-    margin: 2rem 0;
-    padding: 1rem;
-    border-radius: 10px;
-}
-
-.produto-reviews h2 {
-    font-size: 2.7rem;
-    color: #000000;
-    margin-bottom: 1rem;
-    font-weight: bold;
-}
-
-.reviews-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 0;
-}
-
-.avaliações {
-    font-size: 2.5rem;
-    color: #5a3e36;
-}
-
-span i {
-    color: rgb(253, 189, 49);
-}
-
-.reviews-destaque {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.reviews-destaque .opn {
-    font-size: 2.7rem;
-    color: #000000;
-    font-weight: bold;
-}
-
-.reviews-destaque .review {
-    background-color: #4B3A35;
-    color: #fff;
-    border-radius: 10px;
-    padding: 1rem;
 }
 
 .card-text {
@@ -616,14 +577,9 @@ span i {
     font-weight: bold;
 }
 
-.Foto {
-    background-color: #40312C;
-    border-radius: 1rem;
-}
-
 .ofertas h2 {
     font-size: 2.7rem;
-    color: #000000;
+    color: var(--cor-texto-primario);
     margin-bottom: 1rem;
     font-weight: bold;
 }
@@ -688,7 +644,8 @@ footer .social-icons a i {
     padding: 0.19rem;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -704,7 +661,12 @@ footer {
     margin-top: auto;
 }
 
-.botoes_adc, .text_tablet, .sub_text_tablet, .menu_clc, .disponiveis_clc, .carrossel-container {
+.botoes_adc,
+.text_tablet,
+.sub_text_tablet,
+.menu_clc,
+.disponiveis_clc,
+.carrossel-container {
     display: none;
 }
 
@@ -951,6 +913,7 @@ footer {
     transform: translateX(-50%);
     bottom: 15px;
 }
+
 #cart-popup {
     position: fixed;
     top: 50px;
@@ -960,7 +923,7 @@ footer {
     background-color: var(--cor-fundo-caixa);
     border: 1px solid var(--cor-borda);
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     display: none;
     z-index: 1000;
     font-family: "Montserrat", Arial, sans-serif;
@@ -1321,7 +1284,8 @@ footer {
         height: 170px;
     }
 
-    .product-info, .descricao-produto p {
+    .product-info,
+    .descricao-produto p {
         font-size: 0.98rem;
     }
 }

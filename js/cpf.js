@@ -1,4 +1,3 @@
-console.log("cpf.js loaded");
 document.addEventListener('DOMContentLoaded', function () {
     const cpfInput = document.getElementById('cardTaxId');
 

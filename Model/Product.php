@@ -23,9 +23,9 @@ class Product
             $slug = $this->slugify($name);
 
             if ($this->hasColumn('slug')) {
-                $sql = 'INSERT INTO product (name, description, image, stock, price, free_shipping, id_store_fk, slug) VALUES (:name, :description, :image, :stock, :price, :free_shipping, :id_store_fk, :slug)';
+                $sql = 'INSERT INTO product (name, description, image, stock, price, free_shipping, id_store_fk, id_category_fk, slug) VALUES (:name, :description, :image, :stock, :price, :free_shipping, :id_store_fk, :id_category_fk, :slug)';
             } else {
-                $sql = 'INSERT INTO product (name, description, image, stock, price, free_shipping, id_store_fk) VALUES (:name, :description, :image, :stock, :price, :free_shipping, :id_store_fk)';
+                $sql = 'INSERT INTO product (name, description, image, stock, price, free_shipping, id_store_fk, id_category_fk) VALUES (:name, :description, :image, :stock, :price, :free_shipping, :id_store_fk, :id_category_fk)';
             }
 
             $stmt = $this->db->prepare($sql);
@@ -37,6 +37,7 @@ class Product
             $stmt->bindParam(":price", $price, PDO::PARAM_STR);
             $stmt->bindParam(":free_shipping", $free_shipping, PDO::PARAM_INT);
             $stmt->bindParam(":id_store_fk", $id_store_fk, PDO::PARAM_INT);
+            $stmt->bindParam(":id_category_fk", $id_category, PDO::PARAM_INT);
             if ($this->hasColumn('slug')) {
                 $stmt->bindParam(":slug", $slug, PDO::PARAM_STR);
             }

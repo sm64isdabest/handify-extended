@@ -1,5 +1,3 @@
-console.log("input-span-show.js loaded");
-
 const inputs = document.querySelectorAll("input");
 const form = document.querySelector(".form-container form");
 
