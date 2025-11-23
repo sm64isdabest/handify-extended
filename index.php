@@ -1,7 +1,15 @@
 <?php
 session_start();
-$userName = isset($_COOKIE['userName']) ? urldecode($_COOKIE['userName']) : '';
-$userType = isset($_COOKIE['userType']) ? $_COOKIE['userType'] : '';
+
+if (!isset($_SESSION['id']) && isset($_COOKIE['userId'], $_COOKIE['userName'], $_COOKIE['userType'])) {
+    $_SESSION['id'] = $_COOKIE['userId'];
+    $_SESSION['user_fullname'] = $_COOKIE['userName'];
+    $_SESSION['user_type'] = $_COOKIE['userType'];
+}
+
+$userId = $_SESSION['id'] ?? null;
+$userName = $_SESSION['user_fullname'] ?? '';
+$userType = $_SESSION['user_type'] ?? '';
 
 require_once __DIR__ . '/Model/Product.php';
 require_once __DIR__ . '/Model/Category.php';
@@ -50,7 +58,7 @@ if ($searchTerm !== '') {
 }
 
 if ($products === false) {
-  $products = [];
+    $products = [];
 }
 
 ?>
@@ -64,13 +72,15 @@ if ($products === false) {
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/global.css">
+  <script src="js/theme-loader.js"></script>
   <link rel="stylesheet" href="css/track-pop-up.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 </head>
 
-<body style="background-color: #FAECCE;">
+<body>
   <header>
     <nav>
       <img src="images/logo-handify.png" alt="Handify Logo" class="logo" />
@@ -102,13 +112,11 @@ if ($products === false) {
           <span class="user-name"></span>
           <div class="menu-popup">
             <p class="user-name-popup"></p>
+            <button class="menu-item" onclick="window.location.href='View/profile.php'">Meu Perfil</button>
             <button class="menu-item logout-btn">Sair</button>
           </div>
         </li>
       </ul>
-
-      <button id="cart"><i class="bi bi-cart"></i></button>
-      <button id="list"><i class="bi bi-list"></i></button>
       <div id="popup-menu">
         <ul class="popup-list">
           <li>
@@ -434,7 +442,6 @@ if ($products === false) {
       <img src="images/icones/visa-logo.png" alt="Visa" />
       <img src="images/icones/Mastercard.png" alt="Mastercard" />
       <img src="images/icones/Logo-ELO.png" alt="Elo" />
-      <img src="images/icones/Logo-BOLETO.png" alt="Boleto" />
       <img src="images/icones/Logo-PIX.png" alt="Pix" />
     </div>
   </section>
@@ -465,7 +472,6 @@ if ($products === false) {
     integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
     crossorigin="anonymous"></script>
   <script type="module" src="js/search.js"></script>
-  <script type="module" src="js/database.js"></script>
   <script type="module" src="js/logged-in.js"></script>
   <script type="module" src="js/index/track-pop-up.js"></script>
   <script type="module" src="js/index/go-to-product.js"></script>

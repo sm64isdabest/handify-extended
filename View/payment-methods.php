@@ -1,3 +1,21 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['id']) && isset($_COOKIE['userId'], $_COOKIE['userName'], $_COOKIE['userType'])) {
+  $_SESSION['id'] = $_COOKIE['userId'];
+  $_SESSION['user_fullname'] = $_COOKIE['userName'];
+  $_SESSION['user_type'] = $_COOKIE['userType'];
+}
+
+if (!isset($_SESSION['id'])) {
+  header('Location: login.php');
+  exit;
+}
+
+$userId = $_SESSION['id'];
+$userName = $_SESSION['user_fullname'] ?? '';
+$userType = $_SESSION['user_type'] ?? '';
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,45 +23,58 @@
   <meta charset="UTF-8" />
   <title>Pagamento | Handify</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/global.css" />
+  <link rel="stylesheet" href="../css/payment-methods.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/payment-methods.css" />
 </head>
 
 <body>
   <header>
-    <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
     <nav>
+      <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+
       <ul>
-        <li><a href="../../index.php">Home</a></li>
-        <li><a href="about.php#footer">Contato</a></li>
-        <li><a href="about.php">Sobre</a></li>
-        <li style="display: none;">
+        <li><a href="../index.php" class="scroll-link">Home</a></li>
+        <li><a href="#footer">Contato</a></li>
+        <li><a href="View/about.php">Sobre</a></li>
+        <li>
+          <a href="View/login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
         </li>
-        <li class="user-logged" style="display: none;">
-          <i class="bi bi-person"></i> placeholder
+        <li class="user-logged" style="display: none; position: relative;">
+          <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
+          <span class="user-name"></span>
+          <div class="menu-popup">
+            <p class="user-name-popup"></p>
+            <button class="menu-item" onclick="window.location.href='profile.php'">Meu Perfil</button>
+            <button class="menu-item logout-btn">Sair</button>
+          </div>
         </li>
       </ul>
-      <!-- PARA DISPOSITIVOS MÓVEIS -->
-      <button id="list"><i class="bi bi-list"></i></button>
+      <div id="popup-menu">
+        <ul class="popup-list">
+          <li>
+            <a href="View/login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+          </li>
+          <li class="user-logged" style="display: none; position: relative;">
+            <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
+            <span class="user-name"></span>
+            <div class="menu-popup">
+              <p class="user-name-popup"></p>
+              <button class="menu-item logout-btn">Sair</button>
+            </div>
+          </li>
+          <li><a href="pages/about.php">Sobre</a></li>
+          <li><a href="#footer">Contato</a></li>
+          <li><a href="index.php" class="scroll-link">Home</a></li>
+        </ul>
+      </div>
     </nav>
-    <div id="popup-menu">
-      <ul class="popup-list">
-        <li style="display: none;">
-        </li>
-        <li class="user-logged-mobile" style="display: none;">
-          <i class="bi bi-person"></i> placeholder
-        </li>
-        <li><a href="about.php">Sobre</a></li>
-        <li><a href="about.php#footer">Contato</a></li>
-        <li><a href="../../index.php">Home</a></li>
-      </ul>
-    </div>
   </header>
 
   <main>
     <div class="container-pagamento">
-      <a href="../../index.php" class="botao-voltar">
+      <a onclick="history.back()" class="botao-voltar">
         <i class="bi bi-arrow-left"></i>
       </a>
       <h2 class="titulo-pagamento">Formas de pagamento</h2>
@@ -63,7 +94,7 @@
       </div>
     </div>
   </main>
-  
+
   <footer>
     <p>© 2025 HANDIFY. Todos os direitos reservados.</p>
     <div class="social-icons">
@@ -87,6 +118,7 @@
   </script>
 
   <script type="module" src="../js/logged-in.js"></script>
+  <script type="module" src="../js/product/icon-pop-up.js"></script>
 </body>
 
 </html>

@@ -17,26 +17,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $birthdate = trim(strip_tags($_POST['birthdate'] ?? ''));
   $address = trim(strip_tags($_POST['address'] ?? ''));
 
-  if ($password !== $passwordConfirm) {
+  if (empty($user_fullname) || empty($email) || empty($password)) {
+    $message = "Preencha todos os campos obrigatórios.";
+  } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $message = "Email inválido.";
+  } elseif (strlen($password) < 6) {
+    $message = "A senha deve ter pelo menos 6 caracteres.";
+  } elseif ($password !== $passwordConfirm) {
     $message = "As senhas não conferem.";
   } else {
     if (!empty($_POST['cnpj'])) {
       $cnpj = trim(strip_tags($_POST['cnpj'] ?? ''));
       $store_name = trim(strip_tags($_POST['storeName'] ?? ''));
       $result = $controller->registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone);
+
+      if (is_array($result) && !empty($result['success'])) {
+        $_SESSION['id'] = $result['user_id'];
+        $_SESSION['user_type'] = 'store';
+        $_SESSION['email'] = $email;
+        $_SESSION['user_fullname'] = $user_fullname;
+
+        setcookie('userName', urldecode($store_name), time() + 604800, '/');
+        header('Location: ../index.php');
+        exit;
+      }
     } else {
       $result = $controller->registerCustomerUser($user_fullname, $email, $password, $phone, $birthdate, $address);
-    }
-    if (is_array($result) && !empty($result['success'])) {
-      setcookie('userName', urldecode($user_fullname), time() + (7 * 24 * 60 * 60), '/');
-      header('Location: ../index.php');
-      exit;
-    } else {
-      if (is_array($result) && !empty($result['message'])) {
-        $message = $result['message'];
-      } else {
-        $message = 'Erro ao realizar cadastro.';
+
+      if (is_array($result) && !empty($result['success'])) {
+        $_SESSION['id'] = $result['user_id'];
+        $_SESSION['user_type'] = 'customer';
+        $_SESSION['email'] = $email;
+        $_SESSION['user_fullname'] = $user_fullname;
+
+        setcookie('userName', urldecode($user_fullname), time() + 604800, '/');
+        header('Location: ../index.php');
+        exit;
       }
+    }
+
+    if (is_array($result) && !empty($result['message'])) {
+      $message = $result['message'];
+    } else {
+      $message = 'Erro ao realizar cadastro.';
     }
   }
 }
@@ -118,13 +141,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
           <label id="labelUserPass" for="userPass">
             <i class="bi bi-key"></i>
-            <input type="password" id="userPass" name="userPass" placeholder="Insira sua senha" required />
+            <div class="password-input-container">
+              <input type="password" id="userPass" name="userPass" placeholder="Insira sua senha" required />
+              <i class="bi bi-eye-slash password-toggle" data-target="userPass"></i>
+            </div>
           </label>
 
           <label id="labelUserPassConfirm" for="userPassConfirm">
             <i class="bi bi-lock"></i>
-            <input type="password" id="userPassConfirm" name="userPassConfirm" placeholder="Confirme sua senha"
-              required />
+            <div class="password-input-container">
+              <input type="password" id="userPassConfirm" name="userPassConfirm" placeholder="Confirme sua senha"
+                required />
+              <i class="bi bi-eye-slash password-toggle" data-target="userPassConfirm"></i>
+            </div>
           </label>
 
           <label id="labelPhone" for="phone">
@@ -183,6 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <script src="../js/mobile-pop-up.js"></script>
   <script src="https://unpkg.com/imask"></script>
   <script src="../js/sign-up/telefone.js"></script>
+  <script src="../js/sign-up/senha.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
     crossorigin="anonymous"></script>

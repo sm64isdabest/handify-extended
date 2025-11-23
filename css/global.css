@@ -1,0 +1,83 @@
+:root {
+    --cor-fundo: #f5ecda;
+    --cor-fundo-caixa: #ffffff;
+    --cor-texto-primario: #3a2a25;
+    --cor-texto-secundario: #8a7a74;
+    --cor-borda: #f0e5d8;
+    --cor-interativo: #593d36;
+    --cor-interativo-texto: #ffffff;
+    --cor-perigo: #e53935;
+    --imagem-fundo: linear-gradient(rgba(245, 236, 218, 0.4), rgba(245, 236, 218, 0.4)), url("../images/fundos/fundo_madeira_carvalho.jpg");
+}
+
+html.dark-mode {
+    --cor-fundo: #1a1a1a;
+    --cor-fundo-caixa: #2d2d2d;
+    --cor-texto-primario: #ffffff;
+    --cor-texto-secundario: #e0e0e0;
+    --cor-borda: #404040;
+    --cor-interativo: #d4b896;
+    --cor-interativo-texto: #1a1a1a;
+    --cor-perigo: #ff6b6b;
+    --imagem-fundo: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url("../images/fundos/fundo_madeira_carvalho.jpg");
+}
+
+.beneficio i,
+.atendimento-card i {
+    color: var(--cor-interativo);
+}
+
+body {
+    font-family: "Montserrat", Arial, sans-serif;
+    background: var(--imagem-fundo);
+    color: var(--cor-texto-primario);
+    transition: background-color 0.3s, color 0.3s;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--cor-texto-primario);
+}
+
+p, a, label, span {
+    color: var(--cor-texto-primario);
+}
+
+a {
+    text-decoration: none;
+}
+
+.card {
+    background-color: var(--cor-fundo-caixa) !important;
+    border: 1px solid var(--cor-borda) !important;
+}
+
+.oferta-btn,
+.atendimento-card button,
+.menu-item {
+    background-color: var(--cor-interativo) !important;
+    color: var(--cor-interativo-texto) !important;
+}
+
+.beneficio h4,
+.beneficio p,
+.atendimento-card h4,
+.atendimento-card p {
+    color: var(--cor-texto-primario);
+}
+
+.atendimento-card button {
+    background-color: var(--cor-interativo) !important;
+    color: var(--cor-interativo-texto) !important;
+}
+.pagamento.card{
+    background-color: var(--cor-interativo) !important;
+    color: var(--cor-interativo-texto) !important;
+}

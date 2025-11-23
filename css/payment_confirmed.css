@@ -1,19 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-
 body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: "Montserrat", Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background: linear-gradient(rgba(245, 236, 218, 0.7), rgba(245, 236, 218, 0.7)), 
-                url("../images/fundos/fundo_madeira_carvalho.jpg");
-    background-size: cover; 
-    background-position: center center; 
-    background-attachment: fixed; 
-    background-repeat: no-repeat; 
+    background: var(--imagem-fundo);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: var(--cor-texto-primario);
 }
-
 header {
     font-family: "Alexandria", sans-serif;
     font-weight: 600;
@@ -21,6 +18,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    /* background-color: #FAECCE; */
+    /* border-bottom: 2px solid #593d36; */
 }
 
 header .logo {
@@ -61,161 +60,59 @@ header nav ul li a.entrar i {
 
 .user-logged i,
 .user-logged-mobile i {
-    background-color: #5b5b5bbb;
+    background-color: var(--cor-interativo);
     padding: 0.5rem;
     border-radius: 15rem;
     color: rgb(230, 230, 230);
     border: 2px solid #484848;
 }
 
-#list {
-    width: 50px;
-    height: 50px;
-    display: none;
-    background: none;
-    border-radius: 100%;
-    margin: -10px;
-    border: none;
-}
-
-#list i {
-    font-size: xx-large;
-}
-
-#popup-menu {
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    padding: 1.2rem;
-    z-index: 2000;
-    display: none;
-}
-
-#popup-menu .popup-list a {
-    display: block;
-    margin: 0.7rem 0;
-    background: #5a3e36;
-    color: #fff;
-    padding: 0.7rem 1.2rem;
-    border-radius: 16px;
-    text-align: center;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 1.1rem;
-}
-
 main {
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: calc(100vh - 162px);
-    align-content: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.confirmacao-container {
-    justify-self: center;
-    background: #fff;
+.confirmation-box {
+    background-color: var(--cor-fundo-caixa);
+    padding: 50px;
     border-radius: 16px;
-    box-shadow: 0 4px 12px #0002;
-    padding: 3rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
     max-width: 600px;
     width: 90%;
-    margin: 1rem auto;
-    position: relative;
-    color: #3d2b23;
-    font-family: "Montserrat", Arial, sans-serif;
 }
 
-.botao-voltar {
-    position: absolute;
-    top: 24px;
-    left: 24px;
-    background: #5a3e36;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.6rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
+.confirmation-box h1 {
+    font-size: 2rem;
+    color: #28a745;
+    margin-bottom: 20px;
+    font-family: "Alexandria", sans-serif;
 }
 
-.botao-voltar:hover {
-    background: #b88c4a;
+.confirmation-box p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
 }
 
-.titulo-pagamento {
-    text-align: center;
-    font-size: 2.1rem;
-    font-weight: 700;
-    margin-bottom: 48px;
-    margin-top: 0;
-    letter-spacing: 1px;
-    color: #3d2b23;
+.confirmation-box a {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--cor-interativo);
+    color: var(--cor-interativo-texto);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-.meios-pagamento {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-    align-items: center;
-    width: 100%;
-}
-
-.opcao-pagamento {
-    display: flex;
-    align-items: center;
-    gap: 36px;
-    background: #fff;
-    border: 1px solid #3d2b23;
-    border-radius: 12px;
-    padding: 28px 36px;
-    width: 80%;
-    max-width: 600px;
-    font-size: 1.4rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: border 0.2s, box-shadow 0.2s;
-    box-shadow: none;
-}
-
-.opcao-pagamento:hover {
-    border: 2px solid #b88c4a;
-    box-shadow: 0 2px 12px #b88c4a22;
-}
-
-.icone-pagamento {
-    width: 90px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.opcao-pagamento .bi-credit-card {
-    font-size: 40px;
-}
-
-.icone-pagamento img {
-    max-width: 80px;
-    max-height: 40px;
-    object-fit: contain;
-}
-
-.rotulo-pagamento {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #3d2b23;
+.confirmation-box a:hover {
+    background-color: #b88c4a;
 }
 
 footer {
-    bottom: 5rem;
+    position: relative;
     font-family: "Work Sans", sans-serif;
     font-weight: 400;
     display: flex;
@@ -224,7 +121,6 @@ footer {
     flex-direction: row;
     justify-content: space-between;
     padding: 1.6rem;
-    padding-bottom: 0rem;
 }
 
 footer .social-icons a i {
@@ -233,125 +129,22 @@ footer .social-icons a i {
     padding: 0.19rem;
 }
 
-.resumo-cobranca {
-    font-size: 1.2rem;
-    margin: 24px 0;
-}
-
-.resumo-cobranca ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
-.resumo-cobranca li {
-    margin-bottom: 12px;
-}
-
-.botoes-confirmacao {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 32px;
-    align-items: center;
-}
-
-.icone-confirmado {
-    display: block;
-    margin: 24px auto;
-    max-width: 150px;
-    height: auto;
-}
-
-.mensagem-agradecimento {
-    text-align: center;
-    font-size: 1.1rem;
-    margin-top: 16px;
-}
-
-.botoes-confirmacao button {
-    width: 200px;
-    padding: 12px 0;
-    border-radius: 8px;
-    border: none;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: "Montserrat", Arial, sans-serif;
-    transition: background-color 0.3s ease;
-}
-
-.botao-confirmar {
-    background-color: #3d2b23;
-    color: #fff;
-}
-
-.botao-confirmar:hover {
-    background-color: #b88c4a;
-}
-
-.botao-cancelar {
-    background-color: #5a3e36;
-    color: #fff;
-}
-
-.botao-cancelar:hover {
-    background-color: #b88c4a;
-}
-
-button a {
-    text-decoration: none;
-    color: inherit;
-    display: inline-block;
-    width: 100%;
-    height: 100%;
-}
-
-/* Media Queries unificadas */
-@media (max-width: 900px) {
-    .titulo-pagamento {
-        font-size: 2rem;
-        margin-bottom: 32px;
-    }
-}
-
-@media (max-width: 720px) {
-    .confirmacao-container {
-        width: 70%;
-        padding: 1rem;
-    }
-    .botao-voltar {
-        position: static;
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .titulo-pagamento {
-        font-size: 1.4rem;
-        margin-top: 1.8rem;
-    }
-
-    .confirmacao-container {
-        width: 80%;
-        border-radius: 12px;
-        box-sizing: border-box;
-    }
-
-    strong, ul {
-        font-size: 1rem;
-    }
-}
-
 @media (max-width: 455px) {
     #list {
         display: block;
-    }
-
-    header {
-        justify-content: space-between;
+        color: #3d2b23;
     }
 
     header nav ul {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    header nav ul li a.entrar,
+    header nav ul li.user-logged {
         display: none;
     }
 
@@ -360,56 +153,9 @@ button a {
         margin-left: -1.5rem;
     }
 
-    header nav ul li a.entrar {
-        display: none;
-    }
-
     footer {
         justify-content: center;
         flex-direction: column-reverse;
         font-size: 0.7rem;
-    }
-}
-
-@media (max-width: 360px) {
-    .confirmacao-container {
-        width: 90%;
-        border-radius: 12px;
-        box-sizing: border-box;
-    }
-
-    .titulo-pagamento {
-        font-size: 1.4rem;
-        margin-bottom: 12px;
-        word-break: break-word;
-    }
-
-    .resumo-cobranca {
-        font-size: 0.9rem;
-        margin: 10px 0;
-    }
-
-    .botoes-confirmacao {
-        gap: 10px;
-        margin-top: 20px;
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .botoes-confirmacao button {
-        width: 100%;
-        max-width: 100%;
-        font-size: 0.9rem;
-        padding: 10px 0;
-        border-radius: 6px;
-    }
-
-    .botao-voltar {
-        width: 32px;
-        height: 32px;
-        font-size: 1.1rem;
-        top: 10px;
-        left: 10px;
     }
 }

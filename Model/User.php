@@ -64,6 +64,20 @@ class User
             return false;
         }
     }
+     public function getUserById($id_user)
+    {
+        try {
+            $sql = "SELECT * FROM app_user WHERE id_user = :id_user LIMIT 1";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(":id_user", $id_user, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $error) {
+            error_log("Erro ao buscar usuário por ID: " . $error->getMessage());
+            return false;
+        }
+    }
 
     public function getUserByEmail($email)
     {

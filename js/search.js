@@ -9,47 +9,50 @@ if (!autocompleteList) {
     searchInput.parentNode.appendChild(autocompleteList);
 }
 
-function goToSearchPage() {
-    const query = encodeURIComponent(searchInput.value.trim());
+function goToSearchPage(query) {
     if (query) {
-        window.location.href = `/View/search.php?q=${query}`;
+        window.location.href = `/View/search.php?q=${encodeURIComponent(query)}`;
     }
 }
 
-searchInput.addEventListener('input', function () {
-    const value = this.value.trim().toLowerCase();
+searchInput.addEventListener('input', async function () {
+    const value = this.value.trim();
     autocompleteList.innerHTML = '';
     if (!value) {
-        autocompleteList.style.visibility = 'hidden'; // Esconde se não houver valor
+        autocompleteList.style.visibility = 'hidden';
         return;
     }
 
-    // Filtra produtos pelo nome
-    const suggestions = products
-        .filter(p => p.name.toLowerCase().includes(value))
-        .slice(0, 4); // Limite de sugestões
+    try {
+        const response = await fetch(`/View/search-suggestions.php?q=${encodeURIComponent(value)}`);
+        if (!response.ok) throw new Error("Erro na requisição");
+        const suggestions = await response.json();
 
-    if (suggestions.length === 0) {
-        autocompleteList.style.visibility = 'hidden'; // Esconde se não houver sugestões
-        return;
-    }
+        if (suggestions.length === 0) {
+            autocompleteList.style.visibility = 'hidden';
+            return;
+        }
 
-    autocompleteList.style.visibility = 'visible';
+        autocompleteList.style.visibility = 'visible';
 
-    suggestions.forEach(product => {
-        const li = document.createElement('li');
-        li.textContent = product.name;
-        li.addEventListener('click', function () {
-            searchInput.value = product.name;
-            autocompleteList.innerHTML = '';
-            autocompleteList.style.visibility = 'hidden'; // Esconde ao selecionar
-            goToSearchPage();
+        suggestions.slice(0, 4).forEach(product => {
+            const li = document.createElement('li');
+            li.textContent = product.name;
+            li.addEventListener('click', () => {
+                searchInput.value = product.name;
+                autocompleteList.innerHTML = '';
+                autocompleteList.style.visibility = 'hidden';
+                goToSearchPage(product.name);
+            });
+            autocompleteList.appendChild(li);
         });
-        autocompleteList.appendChild(li);
-    });
+
+    } catch {
+        autocompleteList.style.visibility = 'hidden';
+    }
 });
 
-// Fecha sugestões ao clicar fora
+
 document.addEventListener('click', function (e) {
     if (e.target !== searchInput) {
         autocompleteList.innerHTML = '';
@@ -59,11 +62,11 @@ document.addEventListener('click', function (e) {
 
 searchInput.addEventListener('keydown', function (e) {
     if (e.key === 'Enter') {
-        goToSearchPage();
+        goToSearchPage(searchInput.value.trim());
         autocompleteList.innerHTML = '';
     }
 });
 
 if (searchButton) {
-    searchButton.addEventListener('click', goToSearchPage);
+    searchButton.addEventListener('click', () => goToSearchPage(searchInput.value.trim()));
 }

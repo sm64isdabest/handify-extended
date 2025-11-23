@@ -1,7 +1,7 @@
 function copyPixKey() {
     const pixKeyInput = document.getElementById('pixKey');
     pixKeyInput.select();
-    pixKeyInput.setSelectionRange(0, 99999); // For mobile devices
+    pixKeyInput.setSelectionRange(0, 99999);
     navigator.clipboard.writeText(pixKeyInput.value).then(() => {
         alert('Chave Pix copiada para a área de transferência!');
     }, () => {
