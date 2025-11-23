@@ -221,22 +221,6 @@ input::placeholder {
   padding: 0.5rem;
 }
 
-.bi-patch-check::before {
-  content: "\f4b6";
-  color: white;
-
-}
-
-.bi-truck::before {
-  content: "\f5ea";
-  color: white;
-}
-
-.bi-shield-check::before {
-  content: "\f52f";
-  color: white;
-}
-
 label {
   display: inline-block;
   margin-left: 17px;
@@ -467,19 +451,9 @@ picture img {
 }
 
 .card-body h5 {
-  color: white;
   font-weight: bold;
   font-size: 0.9rem;
   text-align: start;
-}
-
-.card-body .avaliacoes {
-  color: #828282;
-  font-size: small;
-}
-
-.avaliacoes i {
-  color: #ffc700;
 }
 
 .precos {
@@ -492,18 +466,6 @@ picture img {
 .sub-card-text {
   font-size: x-large;
   font-weight: 600;
-  color: white;
-}
-
-.precos #oferta {
-  background-color: #4bac3f;
-  font-size: medium;
-  font-weight: bold;
-  margin-top: 0.5rem;
-  padding-right: 0.5rem;
-  padding-left: 0.5rem;
-  color: white;
-  border-radius: 1rem;
 }
 
 .card-body {
@@ -531,8 +493,8 @@ picture img {
 .card-body button {
   font-weight: 600;
   border: none;
-  color: #593d36;
-  background-color: white;
+  background-color: #593d36;
+  color: white;
   border-radius: 30rem;
   height: 3rem;
   width: 100%;

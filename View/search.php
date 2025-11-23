@@ -199,15 +199,6 @@ if ($products === false) {
                 <div class="card-body" style="padding: 0.1rem">
                   <h5 class="card-title"><?= $name ?></h5>
                   <p class="categoria"><?= $categoryName ?></p>
-                  <!-- <h5 class="avaliacoes">
-                    4.6
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-fill"></i>
-                    <i class="bi bi-star-half"></i>
-                    (81)
-                  </h5> -->
                   <div class="precos">
                     <p class="sub-card-text">R$ <?= $price ?></p>
                   </div>
