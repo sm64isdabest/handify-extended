@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once __DIR__ . '/../Model/Product.php';
 require_once __DIR__ . '/../Model/Category.php';
 
@@ -38,7 +40,7 @@ if ($products === false) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pesquisa - Handify</title>
   <link rel="stylesheet" href="../css/search.css" />
-  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/global.css" />
   <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -59,9 +61,6 @@ if ($products === false) {
             <i id="searchButton" class="bi bi-search"></i>
           </button>
         </form>
-
-        <!-- <ul id="autocomplete-list" class="autocomplete-items" style="visibility: hidden">
-        </ul> -->
       </div>
       <!-- Funcionalidade de busca -->
 
@@ -77,6 +76,7 @@ if ($products === false) {
           <span class="user-name"></span>
           <div class="menu-popup">
             <p class="user-name-popup"></p>
+            <button class="menu-item" onclick="window.location.href='profile.php'">Meu Perfil</button>
             <button class="menu-item logout-btn">Sair</button>
           </div>
         </li>
@@ -94,17 +94,25 @@ if ($products === false) {
           </li>
           <li><a href="about.php">Sobre</a></li>
           <li><a href="#footer">Contato</a></li>
-          <li><a href="../../index.php">Home</a></li>
+          <li><a href="../index.php">Home</a></li>
         </ul>
       </div>
     </nav>
 
     <div class="menu-bar">
       <div>
-        <button>Categorias</button>
-        <button>Ofertas</button>
-        <button id="vender-btn" onclick="window.location.href = './sell.php'">Vender</button>
-        <button>Histórico</button>
+        <li style="display: none;">
+          <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+        </li>
+        <a href="search.php" class="btn">Categorias</a>
+        <a href="../index.php#main" class="scroll-link btn">Ofertas</a>
+        <?php if (
+          (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'store') ||
+          (isset($_COOKIE['userType']) && $_COOKIE['userType'] === 'store')
+        ): ?>
+          <a href="sell.php" class="btn">Vender</a>
+        <?php endif; ?>
+        <button id="rastrear-btn">Rastrear</button>
       </div>
       <button class="cart"><i class="bi bi-cart"></i></button>
     </div>
@@ -186,7 +194,6 @@ if ($products === false) {
             ?>
             <div class="fundo" data-category-id="<?= $catId ?>" data-price="<?= htmlspecialchars((float) $p['price']) ?>">
               <div class="card" style="
-                background-color: #4b3a35;
                 width: 15rem;
                 margin: 0;
                 border-radius: 1.5rem;
@@ -274,10 +281,10 @@ if ($products === false) {
   <section class="pagamento card">
     <h4>Formas de pagamento</h4>
     <div class="pagamento-icones">
-      <img src="images/icones/visa-logo.png" alt="Visa" />
-      <img src="images/icones/Mastercard.png" alt="Mastercard" />
-      <img src="images/icones/Logo-ELO.png" alt="Elo" />
-      <img src="images/icones/Logo-PIX.png" alt="Pix" />
+      <img src="../images/icones/visa-logo.png" alt="Visa" />
+      <img src="../images/icones/Mastercard.png" alt="Mastercard" />
+      <img src="../images/icones/Logo-ELO.png" alt="Elo" />
+      <img src="../images/icones/Logo-PIX.png" alt="Pix" />
     </div>
   </section>
 
@@ -306,6 +313,7 @@ if ($products === false) {
   <script type="module" src="../js/search.js"></script>
   <script type="module" src="../js/search/search-in-page.js"></script>
   <script src="../js/search/filters.js"></script>
+  <script src="../js/theme-loader.js"></script>
   <script src="../js/mobile-pop-up.js"></script>
   <script src="../js/logged-in.js"></script>
 

@@ -31,6 +31,14 @@ if (!isset($product) || empty($product)) {
 $otherProducts = array_filter($products, function ($p) use ($product) {
     return $p['id_product'] !== $product['id_product'];
 });
+
+// BUSCA
+$searchTerm = isset($_GET['q']) ? trim($_GET['q']) : '';
+if ($searchTerm !== '') {
+    $products = $productModel->searchByName($searchTerm);
+} else {
+    $products = $productModel->getAllProducts();
+}
 ?>
 
 <!DOCTYPE html>
@@ -52,17 +60,25 @@ $otherProducts = array_filter($products, function ($p) use ($product) {
     <header>
         <nav>
             <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+
+            <!-- Funcionalidade de busca -->
             <div class="search-bar">
-                <input type="text" id="searchInput" autocomplete="off" placeholder="Buscar produtos..." />
-                <i id="searchButton" class="bi bi-search"></i>
-                <ul id="autocomplete-list" class="autocomplete-items"></ul>
+                <form method="GET" action="search.php">
+                    <input type="text" id="searchInput" name="q" autocomplete="off" placeholder="Buscar produtos..."
+                        value="<?= htmlspecialchars($searchTerm) ?>" />
+                    <button type="submit">
+                        <i id="searchButton" class="bi bi-search"></i>
+                    </button>
+                </form>
             </div>
+            <!-- Funcionalidade de busca -->
+
             <ul>
                 <li><a href="../index.php" class="scroll-link">Home</a></li>
-                <li><a href="#footer">Contato</a></li>
-                <li><a href="View/about.php">Sobre</a></li>
+                <li><a href="about.php#footer">Contato</a></li>
+                <li><a href="about.php">Sobre</a></li>
                 <li>
-                    <a href="View/login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+                    <a href="login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
                 </li>
                 <li class="user-logged" style="display: none; position: relative;">
                     <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
@@ -77,7 +93,7 @@ $otherProducts = array_filter($products, function ($p) use ($product) {
             <div id="popup-menu">
                 <ul class="popup-list">
                     <li>
-                        <a href="View/login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+                        <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
                     </li>
                     <li class="user-logged" style="display: none; position: relative;">
                         <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
@@ -96,12 +112,12 @@ $otherProducts = array_filter($products, function ($p) use ($product) {
         <div class="menu-bar">
             <div>
                 <li style="display: none;">
-                    <a href="View/login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+                    <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
                 </li>
-                <a href="View/search.php" class="btn">Categorias</a>
-                <a href="#main" class="scroll-link btn">Ofertas</a>
+                <a href="search.php" class="btn">Categorias</a>
+                <a href="../index.php#main" class="scroll-link btn">Ofertas</a>
                 <?php if ((isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'store') || (isset($_COOKIE['userType']) && $_COOKIE['userType'] === 'store')): ?>
-                    <a href="View/sell.php" class="btn">Vender</a>
+                    <a href="sell.php" class="btn">Vender</a>
                 <?php endif; ?>
                 <button id="rastrear-btn">Rastrear</button>
             </div>

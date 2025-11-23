@@ -91,19 +91,22 @@ header nav ul li a.entrar i {
 }
 
 .search-bar {
-    display: flex;
     align-items: center;
-    background-color: var(--cor-interativo);
-    border: 1px solid var(--cor-fundo-caixa);
+    background-color: #5a3e36;
+    border: 1px solid #ffffff;
     border-radius: 20px;
-    padding: 4px 8px;
-    width: calc(100% - 600px);
-    margin-left: 10rem;
-    position: absolute;
+    padding: 5px 10px;
+    overflow: hidden;
+    margin-right: 0.5rem;
+    flex: 1;
+}
+
+.search-bar form {
+    display: flex;
 }
 
 .search-bar i {
-    color: var(--cor-interativo-texto);
+    color: white;
     cursor: pointer;
 }
 
@@ -114,11 +117,11 @@ header nav ul li a.entrar i {
     font-size: 14px;
     width: 100%;
     background: none;
-    color: var(--cor-interativo-texto);
+    color: white;
 }
 
 input::placeholder {
-    color: var(--cor-interativo-texto);
+    color: white;
     opacity: 0.8;
 }
 
@@ -343,7 +346,6 @@ nav ul li a.entrar {
     font-size: 2.5rem;
     flex-direction: column;
     font-weight: bold;
-    color: #5a3e36;
     margin-bottom: 0.5rem;
 }
 
@@ -400,12 +402,11 @@ button.produto-btn {
 
 .product-details .installments {
     font-size: 1.5rem;
-    color: #333;
     margin-bottom: 1rem;
 }
 
 .product-details .payment-methods {
-    color: rgb(0, 0, 0);
+    color: var(--cor-texto-primario);
     text-decoration: underline;
     cursor: pointer;
 }
@@ -503,16 +504,10 @@ button.produto-btn {
 }
 
 .ofertas {
-    background-color: #fff;
+    background-color: var(--cor-fundo-caixa);
     padding: 1rem;
     border-radius: 1rem;
     margin: 2rem;
-}
-
-.other-offers h2 {
-    font-size: 3rem;
-    color: #000000;
-    margin-bottom: 1rem;
 }
 
 .offers-container {
@@ -565,7 +560,7 @@ button.produto-btn {
 
 .descricao-produto p {
     font-size: 1.3rem;
-    color: #333;
+    color: var(--cor-texto-secundario);
     line-height: 1.5;
     margin-bottom: 1rem;
 }
@@ -584,7 +579,7 @@ button.produto-btn {
 
 .ofertas h2 {
     font-size: 2.7rem;
-    color: #000000;
+    color: var(--cor-texto-primario);
     margin-bottom: 1rem;
     font-weight: bold;
 }
