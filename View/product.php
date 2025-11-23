@@ -122,11 +122,6 @@ $otherProducts = array_filter($products, function ($p) use ($product) {
             </section>
 
             <section class="product-details">
-                <div class="avaliar">
-                    <button class="sair"><i class="bi bi-arrow-left"></i></button> 4.8<span><i
-                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                            class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
-                </div>
                 <h1><?php echo htmlspecialchars($product['name'] ?? 'Produto não encontrado'); ?></h1>
                 <p class="price">
                     <span class="old-price"><?php echo htmlspecialchars($oldPriceFormatted); ?></span>
@@ -155,12 +150,9 @@ $otherProducts = array_filter($products, function ($p) use ($product) {
             </section>
 
             <section class="purchase-info">
-                <div class="delivery-info">
-                    <p><span class="gratis">Chegará grátis amanhã</span><br />Comprando dentro das próximas 16 h 28 min
-                    </p>
-                    <p><span class="compra">Frete Grátis</span><br />Comprando dentro das próximas 16 h 28 min</p>
-                    <p><span class="devol">Devolução</span><br />Você tem 30 dias a partir da data de recebimento.</p>
-                </div>
+                <?php if (!empty($product) && isset($product['free_shipping']) && (int) $product['free_shipping'] === 1): ?>
+                    <p><span class="compra">Frete Grátis</span></p>
+                <?php endif; ?>
                 <div class="stock-info">
                     <p><strong>Estoque disponível</strong></p>
                     <p>Quantidade: <?php echo htmlspecialchars($stock); ?> (<?php echo htmlspecialchars($stock); ?>
@@ -182,24 +174,33 @@ $otherProducts = array_filter($products, function ($p) use ($product) {
             <section class="other-offers">
                 <h2>Outras ofertas</h2>
                 <div class="offers-container">
-                    <?php foreach ($otherProducts as $other): ?>
+                    <?php
+                    // seleciona até 5 produtos aleatórios
+                    $candidates = array_values(array_filter($products));
+                    if (!empty($candidates)) {
+                        shuffle($candidates);
+                        $random = array_slice($candidates, 0, 5);
+                    } else {
+                        $random = [];
+                    }
+
+                    foreach ($random as $rp):
+                        $rawImage = isset($rp['image']) ? $rp['image'] : '';
+                        if (!empty($rawImage) && strpos($rawImage, 'uploads/') === 0) {
+                            $imagePath = '../' . $rawImage;
+                        } elseif (!empty($rawImage)) {
+                            $imagePath = '../uploads/products/' . htmlspecialchars($rawImage);
+                        } else {
+                            $imagePath = '../images/icones/placeholder.png';
+                        }
+                        ?>
                         <div class="produto">
-                            <img src="<?= !empty($other['image']) ? '../uploads/products/' . htmlspecialchars($other['image']) : '../images/produtos/utensilios/Colher.png' ?>"
-                                alt="<?= htmlspecialchars($other['name']) ?>" />
-                            <span class="produto-nome"><?= htmlspecialchars($other['name']) ?></span>
-                            <div class="produto-preco-bloco">
-                                <div class="produto-preco-desconto-container">
-                                    <?php if (!empty($other['old_price'])): ?>
-                                        <span class="produto-preco-antigo">R$
-                                            <?= number_format($other['old_price'], 2, ',', '.') ?></span>
-                                    <?php endif; ?>
-                                    <?php if (!empty($other['discount'])): ?>
-                                        <span class="produto-desconto"><?= $other['discount'] ?>% OFF</span>
-                                    <?php endif; ?>
-                                </div>
-                                <span class="produto-preco">R$ <?= number_format($other['price'], 2, ',', '.') ?></span>
-                            </div>
-                            <button class="produto-btn">Comprar</button>
+                            <img src="<?= $imagePath ?>" alt="<?= htmlspecialchars($rp['name']) ?>"
+                                onerror="this.onerror=null; this.src='../images/icones/placeholder.png';" />
+                            <span class="produto-nome"><?= htmlspecialchars($rp['name']) ?></span>
+                            <span class="produto-preco">R$ <?= number_format($rp['price'], 2, ',', '.') ?></span>
+                            <button class="produto-btn"
+                                data-product-id="<?= (int) ($rp['id_product'] ?? $rp['id'] ?? 0) ?>">Comprar</button>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -209,40 +210,6 @@ $otherProducts = array_filter($products, function ($p) use ($product) {
                 <p><?php echo nl2br(htmlspecialchars($product['description'] ?? 'Descrição não disponível.')); ?></p>
             </section>
 
-            <section class="produto-reviews">
-                <div class="reviews-container">
-                    <div class="avaliações">
-                        <h2>Avaliações</h2>
-                        <p>4.8 <span><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-half"></i></span></p>
-                        <p>123 avaliações</p>
-                    </div>
-                    <div class="reviews-destaque">
-                        <p class="opn">Opinião em destaque</p>
-                        <div class="review">
-                            <p>
-                                <picture>
-                                    <img src="../images/icones/carla.png" alt="Foto de Carla" />
-                                </picture>
-                                <strong class="Foto">Carla</strong>
-                            </p>
-                            <p>Ela é linda, o tamanho é ideal, o material de qualidade, e o preço muito bom. Amei a cor.
-                                👜</p>
-                        </div>
-                        <div class="review">
-                            <p>
-                                <picture>
-                                    <img src="../images/icones/renata.png" alt="Foto de Renata" />
-                                </picture>
-                                <strong class="Foto">Renata</strong>
-                            </p>
-                            <p>Adorei a bolsa. Bem divertida. Cabe muita coisa. A cor também gostei. Pode comprar sem
-                                medo.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </div>
     </main>
 
@@ -272,6 +239,17 @@ $otherProducts = array_filter($products, function ($p) use ($product) {
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.produto-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const id = this.dataset.productId;
+                    if (!id || id === '0') return;
+                    window.location.href = 'product.php?id=' + encodeURIComponent(id);
+                });
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="../js/theme-loader.js"></script>
