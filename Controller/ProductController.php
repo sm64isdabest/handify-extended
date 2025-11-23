@@ -16,7 +16,7 @@ class ProductController
         $this->productModel = $productModel;
     }
 
-    public function registerProduct($name, $description = null, $image, $stock, $price, $free_shipping = 0, $id_store_fk = null)
+    public function registerProduct($name, $description = null, $image, $stock, $price, $free_shipping = 0, $id_store_fk = null, $id_category = null)
     {
         try {
             if (empty($name) || empty($image) || $stock === '' || $price === '' || empty($id_store_fk)) {
@@ -25,7 +25,7 @@ class ProductController
 
             $free_shipping = $free_shipping ? 1 : 0;
 
-            return $this->productModel->registerProduct($name, $description, $image, $stock, $price, $free_shipping, $id_store_fk);
+            return $this->productModel->registerProduct($name, $description, $image, $stock, $price, $free_shipping, $id_store_fk, $id_category);
 
         } catch (Exception $error) {
             echo "Erro ao cadastrar produto: " . $error->getMessage();

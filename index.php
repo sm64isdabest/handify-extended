@@ -12,10 +12,51 @@ $userName = $_SESSION['user_fullname'] ?? '';
 $userType = $_SESSION['user_type'] ?? '';
 
 require_once __DIR__ . '/Model/Product.php';
+require_once __DIR__ . '/Model/Category.php';
 use Model\Product;
+use Model\Category;
 
 $productModel = new Product();
 $products = $productModel->getAllProducts();
+$categoryModel = new Category();
+$allProducts = is_array($products) ? $products : [];
+$allCategories = $categoryModel->getAllCategories() ?: [];
+
+function getProductsByCategoryName(array $products, array $categories, string $searchName, int $limit = 5): array
+{
+  $searchName = mb_strtolower(trim($searchName));
+  if ($searchName === '')
+    return [];
+
+  $matchedIds = [];
+  foreach ($categories as $c) {
+    $cname = mb_strtolower($c['name'] ?? '');
+    if ($cname !== '' && mb_stripos($cname, $searchName) !== false) {
+      $matchedIds[] = (int) ($c['id_category'] ?? 0);
+    }
+  }
+
+  // filtra produtos por id_category_fk
+  $out = [];
+  foreach ($products as $p) {
+    $catId = isset($p['id_category_fk']) ? (int) $p['id_category_fk'] : 0;
+    if (in_array($catId, $matchedIds, true)) {
+      $out[] = $p;
+      if (count($out) >= $limit)
+        break;
+    }
+  }
+  return $out;
+}
+
+// BUSCA
+$searchTerm = isset($_GET['q']) ? trim($_GET['q']) : '';
+if ($searchTerm !== '') {
+  $products = $productModel->searchByName($searchTerm);
+} else {
+  $products = $productModel->getAllProducts();
+}
+
 if ($products === false) {
     $products = [];
 }
@@ -43,11 +84,22 @@ if ($products === false) {
   <header>
     <nav>
       <img src="images/logo-handify.png" alt="Handify Logo" class="logo" />
+
+      <!-- Funcionalidade de busca -->
       <div class="search-bar">
-        <input type="text" id="searchInput" autocomplete="off" placeholder="Buscar produtos..." />
-        <i id="searchButton" class="bi bi-search"></i>
-        <ul id="autocomplete-list" class="autocomplete-items"></ul>
+        <form method="GET" action="View/search.php">
+          <input type="text" id="searchInput" name="q" autocomplete="off" placeholder="Buscar produtos..."
+            value="<?= htmlspecialchars($searchTerm) ?>" />
+          <button type="submit">
+            <i id="searchButton" class="bi bi-search"></i>
+          </button>
+        </form>
+
+        <!-- <ul id="autocomplete-list" class="autocomplete-items" style="visibility: hidden">
+        </ul> -->
       </div>
+      <!-- Funcionalidade de busca -->
+
       <ul>
         <li><a href="index.php" class="scroll-link">Home</a></li>
         <li><a href="#footer">Contato</a></li>
@@ -161,185 +213,170 @@ if ($products === false) {
   </div>
 
   <main id="main">
-    <section class="ofertas">
-      <div style="display: flex; flex-direction: column; gap: 24px;">
-        <div class="rounded-4 55 oferta-dia card">
-          <div class="oferta-header">
-            <span class="oferta-titulo">Oferta do dia</span>
-          </div>
-          <span class="oferta-descricao"></span>
-          <div class="oferta-conteudo">
-            <div class="oferta-info">
-              <span class="oferta-desconto"></span>
-              <span class="oferta-preco-antigo"></span>
-              <span class="oferta-preco-novo"></span>
-              <button class="oferta-btn">Comprar</button>
-            </div>
-          </div>
-        </div>
-        <div class="rounded-4 oferta-semanal card">
-          <div class="oferta-header">
-            <span class="oferta-titulo">Oferta Semanal</span>
-          </div>
-          <span class="oferta-descricao"></span>
-          <div class="oferta-conteudo">
-            <div class="oferta-info">
-              <span class="oferta-desconto"></span>
-              <span class="oferta-preco-antigo"></span>
-              <span class="oferta-preco-novo"></span>
-              <button class="oferta-btn">Comprar</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="rounded-4 outras-ofertas card">
-        <div class="outras-ofertas-header">
-          <span class="outras-ofertas-titulo">Explore Mais</span>
-        </div>
-        <div class="outras-ofertas-lista">
-          <div class="outras-produto-vaso">
-            <span class="spantext"></span>
-          </div>
-          <div class="outras-produto-retrato">
-            <span class="spantext"></span>
-          </div>
-          <div class="outras-produto-panela">
-            <span class="spantext"></span>
-          </div>
-          <div class="outras-produto-colher">
-            <span class="spantext"></span>
-          </div>
-        </div>
-        <button class="oferta-btn"><a href="View/search.php">Veja mais</a></button>
-      </div>
-    </section>
-
     <section id="produto" class="rounded-4 card produtos Cozinha">
       <h3 class="produtos-paraC">Produtos para cozinha</h3>
       <div class="produtos-lista">
-        <?php require_once __DIR__ . '/View/partials/secao_produtos.php'; ?>
+
+        <?php
+        $prodCozinha = getProductsByCategoryName($allProducts, $allCategories, 'Cozinha', 5);
+        for ($i = 0; $i < 5; $i++):
+          $prod = $prodCozinha[$i] ?? null;
+
+          $rawImage = isset($prod['image']) ? $prod['image'] : '';
+          // normaliza o caminho da imagem: se já contém 'uploads/' usamos ../ + campo; senão assumimos uploads/products/
+          if (!empty($rawImage) && strpos($rawImage, 'uploads/') === 0) {
+            $imagePath = '' . $rawImage;
+          } elseif (!empty($rawImage)) {
+            $imagePath = 'uploads/products/' . htmlspecialchars($rawImage);
+          } else {
+            $imagePath = 'images/icones/placeholder.png';
+          }
+          ?>
+          <div class="produto">
+            <picture>
+              <img src="<?= $imagePath ?>" class="card-img-top"
+                alt="<?= $prod ? htmlspecialchars($prod['name']) : '' ?>" />
+            </picture>
+            <span class="produto-nome"><?= $prod ? htmlspecialchars($prod['name']) : '' ?></span>
+            <div class="produto-preco-bloco">
+              <div class="produto-preco-desconto-container">
+                <span class="produto-preco-antigo">
+                  <?= $prod && !empty($prod['price_old']) ? 'R$ ' . number_format((float) $prod['price_old'], 2, ',', '.') : '' ?>
+                </span>
+                <span class="produto-desconto">
+                  <?= $prod && !empty($prod['discount']) ? htmlspecialchars($prod['discount']) . '%' : '' ?>
+                </span>
+              </div>
+              <span
+                class="produto-preco"><?= $prod ? 'R$ ' . number_format((float) $prod['price'], 2, ',', '.') : '' ?></span>
+            </div>
+          </div>
+        <?php endfor; ?>
+
       </div>
     </section>
 
     <section class="rounded-4 produtos card Decorativos">
       <h3 class="produtos-decorativos">Produtos decorativos</h3>
       <div class="produtos-lista">
-        <div class="produto">
 
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto">
+        <?php
+        $prodCozinha = getProductsByCategoryName($allProducts, $allCategories, 'Decoração', 5);
+        for ($i = 0; $i < 5; $i++):
+          $prod = $prodCozinha[$i] ?? null;
 
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
+          $rawImage = isset($prod['image']) ? $prod['image'] : '';
+          // normaliza o caminho da imagem: se já contém 'uploads/' usamos ../ + campo; senão assumimos uploads/products/
+          if (!empty($rawImage) && strpos($rawImage, 'uploads/') === 0) {
+            $imagePath = '' . $rawImage;
+          } elseif (!empty($rawImage)) {
+            $imagePath = 'uploads/products/' . htmlspecialchars($rawImage);
+          } else {
+            $imagePath = 'images/icones/placeholder.png';
+          }
+          ?>
+          <div class="produto">
+            <picture>
+              <img src="<?= $imagePath ?>" class="card-img-top"
+                alt="<?= $prod ? htmlspecialchars($prod['name']) : '' ?>" />
+            </picture>
+            <span class="produto-nome"><?= $prod ? htmlspecialchars($prod['name']) : '' ?></span>
+            <div class="produto-preco-bloco">
+              <div class="produto-preco-desconto-container">
+                <span class="produto-preco-antigo">
+                  <?= $prod && !empty($prod['price_old']) ? 'R$ ' . number_format((float) $prod['price_old'], 2, ',', '.') : '' ?>
+                </span>
+                <span class="produto-desconto">
+                  <?= $prod && !empty($prod['discount']) ? htmlspecialchars($prod['discount']) . '%' : '' ?>
+                </span>
+              </div>
+              <span
+                class="produto-preco"><?= $prod ? 'R$ ' . number_format((float) $prod['price'], 2, ',', '.') : '' ?></span>
             </div>
-            <span class="produto-preco"></span>
           </div>
-        </div>
-        <div class="produto">
+        <?php endfor; ?>
 
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto jarro-flor">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto pato">
-
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
       </div>
     </section>
 
     <section class="rounded-4 card produtos Moveis">
       <h3 class="moveis">Móveis</h3>
       <div class="produtos-lista">
-        <div class="produto">
 
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto">
+        <?php
+        $prodCozinha = getProductsByCategoryName($allProducts, $allCategories, 'Móveis', 5);
+        for ($i = 0; $i < 5; $i++):
+          $prod = $prodCozinha[$i] ?? null;
 
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
+          $rawImage = isset($prod['image']) ? $prod['image'] : '';
+          // normaliza o caminho da imagem: se já contém 'uploads/' usamos ../ + campo; senão assumimos uploads/products/
+          if (!empty($rawImage) && strpos($rawImage, 'uploads/') === 0) {
+            $imagePath = '' . $rawImage;
+          } elseif (!empty($rawImage)) {
+            $imagePath = 'uploads/products/' . htmlspecialchars($rawImage);
+          } else {
+            $imagePath = 'images/icones/placeholder.png';
+          }
+          ?>
+          <div class="produto">
+            <picture>
+              <img src="<?= $imagePath ?>" class="card-img-top"
+                alt="<?= $prod ? htmlspecialchars($prod['name']) : '' ?>" />
+            </picture>
+            <span class="produto-nome"><?= $prod ? htmlspecialchars($prod['name']) : '' ?></span>
+            <div class="produto-preco-bloco">
+              <div class="produto-preco-desconto-container">
+                <span class="produto-preco-antigo">
+                  <?= $prod && !empty($prod['price_old']) ? 'R$ ' . number_format((float) $prod['price_old'], 2, ',', '.') : '' ?>
+                </span>
+                <span class="produto-desconto">
+                  <?= $prod && !empty($prod['discount']) ? htmlspecialchars($prod['discount']) . '%' : '' ?>
+                </span>
+              </div>
+              <span
+                class="produto-preco"><?= $prod ? 'R$ ' . number_format((float) $prod['price'], 2, ',', '.') : '' ?></span>
             </div>
-            <span class="produto-preco"></span>
           </div>
-        </div>
-        <div class="produto">
+        <?php endfor; ?>
 
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
-        </div>
-        <div class="produto poltrona-positano">
+      </div>
+    </section>
 
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
-            </div>
-            <span class="produto-preco"></span>
-          </div>
+    <section class="ofertas">
+      <div class="rounded-4 outras-ofertas card">
+        <div class="outras-ofertas-header">
+          <span class="outras-ofertas-titulo">Explore Mais</span>
         </div>
-        <div class="produto banco banqueta-vime">
+        <div class="outras-ofertas-lista">
+          <?php
+          // seleciona até 4 produtos aleatórios
+          $candidates = array_values(array_filter($allProducts));
+          if (!empty($candidates)) {
+            shuffle($candidates);
+            $random = array_slice($candidates, 0, 4);
+          } else {
+            $random = [];
+          }
 
-          <span class="produto-nome"></span>
-          <div class="produto-preco-bloco">
-            <div class="produto-preco-desconto-container">
-              <span class="produto-preco-antigo"></span>
-              <span class="produto-desconto"></span>
+          foreach ($random as $rp):
+            $rawImage = isset($rp['image']) ? $rp['image'] : '';
+            if (!empty($rawImage) && strpos($rawImage, 'uploads/') === 0) {
+              $imagePath = '' . $rawImage;
+            } elseif (!empty($rawImage)) {
+              $imagePath = 'uploads/products/' . htmlspecialchars($rawImage);
+            } else {
+              $imagePath = 'images/icones/placeholder.png';
+            }
+            ?>
+            <div class="outras-produto-aleatorio">
+              <picture>
+                <img src="<?= $imagePath ?>" alt="<?= htmlspecialchars($rp['name'] ?? '') ?>" />
+              </picture>
+              <span class="spantext"><?= htmlspecialchars($rp['name'] ?? '') ?></span>
             </div>
-            <span class="produto-preco"></span>
-          </div>
+          <?php endforeach; ?>
         </div>
+        <button class="oferta-btn"><a href="View/search.php">Veja mais</a></button>
       </div>
     </section>
   </main>
