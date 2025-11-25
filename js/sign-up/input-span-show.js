@@ -1,60 +1,57 @@
-console.log("input-span-show.js loaded");
-
-const usuarioBtn = document.querySelector(".active");
-const storeBtn = document.querySelector(".active1");
-const inputs = document.querySelectorAll("input");
 const form = document.querySelector(".form-container form");
+const storeBtn = document.querySelector(".active1");
 
-inputs.forEach((input) => {
-  input.addEventListener("focus", function () {
-    let errorMsg = document.querySelector("span");
-    errorMsg.style.display = "none";
-  });
+function showError(message) {
+    let errorSpan = form.querySelector("span.error-message");
+    if (!errorSpan) {
+        errorSpan = document.createElement("span");
+        errorSpan.className = "error-message";
+        errorSpan.style.color = "red";
+        errorSpan.style.display = "block";
+        errorSpan.style.marginTop = "10px";
+        const buttonsDiv = form.querySelector(".buttons");
+        if (buttonsDiv) {
+            form.insertBefore(errorSpan, buttonsDiv);
+        } else {
+            form.appendChild(errorSpan);
+        }
+    }
+    errorSpan.textContent = message;
+    errorSpan.style.display = "block";
+}
+
+function hideError() {
+    const errorSpan = form.querySelector("span.error-message");
+    if (errorSpan) {
+        errorSpan.style.display = "none";
+    }
+}
+
+form.addEventListener("submit", function (event) {
+    const userName = form.querySelector("#userName").value.trim();
+    const userEmail = form.querySelector("#userEmail").value.trim();
+    const userPass = form.querySelector("#userPass").value.trim();
+    const userPassConfirm = form.querySelector("#userPassConfirm").value.trim();
+    const cnpj = form.querySelector("#cnpj").value.trim();
+    const storeName = form.querySelector("#storeName").value.trim();
+    const address = form.querySelector("#address").value.trim();
+    const phone = form.querySelector("#phone").value.trim();
+
+    if (!userName || !userEmail || !userPass || !userPassConfirm || !cnpj || !storeName || !address || !phone) {
+        event.preventDefault(); 
+        showError("Por favor, preencha todos os campos.");
+        return;
+    }
+
+    if (userPass !== userPassConfirm) {
+        event.preventDefault();
+        showError("As senhas não conferem.");
+        return;
+    }
+
+    hideError();
 });
 
-function inputSpanShow() {
-  let userNameInput = form.querySelector("#userName") || form.querySelector("#userCNPJ");
-  let userName = userNameInput.value.trim();
-  let userEmail = form.querySelector("#userEmail").value.trim();
-  let userPass = form.querySelector("#userPass").value.trim();
-  let userPassConfirm = form.querySelector("#userPassConfirm").value.trim();
-  if (
-    userName === "" ||
-    userEmail === "" ||
-    userPass === "" ||
-    userPassConfirm === ""
-  ) {
-    let errorMsg = document.querySelector("span");
-    errorMsg.style.display = "block";
-    return true;
-  };
-  return false;
-};
-
-usuarioBtn.addEventListener("click", function () {
-  inputSpanShow();
-  if (!inputSpanShow()) {
-    let userNameInput = form.querySelector("#userName") || form.querySelector("#userPassConfirm");
-    let userName = userNameInput.value.trim();
-    document.cookie = "userName=" + encodeURIComponent(userName) + "; path=/";
-    window.location.href = "../../index.html";
-  };
-});
-
-// para ler o cookie em outra página:
-//
-// function getCookie(name) {
-//   const value = "; " + document.cookie;
-//   const parts = value.split("; " + name + "=");
-//   if (parts.length === 2) return parts.pop().split(";").shift();
-// }
-// const userName = getCookie("userName");
-// console.log(userName);
-
-storeBtn.addEventListener("click", function () {
-  inputSpanShow();
-  if (!inputSpanShow()) {
-    form.reset();
-    updateFormText();
-  };
+form.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("focus", hideError);
 });

@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="#sobre">Sobre</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#site">Site</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#autores">Autores</a>
 </p>
@@ -11,19 +11,17 @@
 
 O Handify é um projeto voltado para a divulgação e venda de produtos artesanais, com foco em facilitar o contato entre artesãos e clientes.
 
-## Projeto:
+## Site:
 
-Para testar o projeto localmente, basta clonar este repositório e abrir o arquivo `index.html` no seu navegador.
-
-```bash
-git clone https://github.com/Spaceza/HandIfy.git
-```
+# https://handify-extended.great-site.net/
 
 ## Tecnologias:
 
 - HTML5
 - CSS3
 - JavaScript
+- [PHP](https://www.php.net/)
+- [PHPUnit](https://phpunit.de/)
 - [Cypress](https://www.cypress.io/)
 - [Cucumber](https://cucumber.io/)
 - [Figma](https://www.figma.com/)
@@ -33,6 +31,6 @@ git clone https://github.com/Spaceza/HandIfy.git
 
 ## Autores:
 
-<a href="https://github.com/spaceza/handify/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=spaceza/handify" />
+<a href="https://github.com/sm64isdabest/handify-extended/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=sm64isdabest/handify-extended"/>
 </a>

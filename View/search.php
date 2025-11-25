@@ -1,3 +1,37 @@
+<?php
+session_start();
+
+require_once __DIR__ . '/../Model/Product.php';
+require_once __DIR__ . '/../Model/Category.php';
+
+use Model\Product;
+use Model\Category;
+
+$productModel = new Product();
+$categoryModel = new Category();
+
+$categorias = $categoryModel->getAllCategories();
+$categoryMap = [];
+if (!empty($categorias)) {
+  foreach ($categorias as $c) {
+    $categoryMap[(int) $c['id_category']] = $c['name'];
+  }
+}
+
+// BUSCA
+$searchTerm = isset($_GET['q']) ? trim($_GET['q']) : '';
+if ($searchTerm !== '') {
+  $products = $productModel->searchByName($searchTerm);
+} else {
+  $products = $productModel->getAllProducts();
+}
+
+if ($products === false) {
+  $products = [];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -6,6 +40,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pesquisa - Handify</title>
   <link rel="stylesheet" href="../css/search.css" />
+  <link rel="stylesheet" href="../css/global.css" />
   <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -16,21 +51,35 @@
   <header>
     <nav>
       <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+
+      <!-- Funcionalidade de busca -->
       <div class="search-bar">
-        <input type="text" id="searchInput" autocomplete="off" placeholder="Buscar produtos..." />
-        <i id="searchButton" class="bi bi-search"></i>
-        <ul id="autocomplete-list" class="autocomplete-items"></ul>
+        <form method="GET">
+          <input type="text" id="searchInput" name="q" autocomplete="off" placeholder="Buscar produtos..."
+            value="<?= htmlspecialchars($searchTerm) ?>" />
+          <button type="submit">
+            <i id="searchButton" class="bi bi-search"></i>
+          </button>
+        </form>
       </div>
+      <!-- Funcionalidade de busca -->
+
       <ul>
-        <li><a href="../../index.php">Home</a></li>
+        <li><a href="../index.php">Home</a></li>
         <li><a href="#footer">Contato</a></li>
         <li><a href="about.php">Sobre</a></li>
         <li style="display: none;">
           <a href="sign-up.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
         </li>
-        <li class="user-logged" style="display: none;">
-            <i class="bi bi-person"></i> placeholder
-          </li>
+        <li class="user-logged" style="display: none; position: relative;">
+          <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
+          <span class="user-name"></span>
+          <div class="menu-popup">
+            <p class="user-name-popup"></p>
+            <button class="menu-item" onclick="window.location.href='profile.php'">Meu Perfil</button>
+            <button class="menu-item logout-btn">Sair</button>
+          </div>
+        </li>
       </ul>
       <!-- PARA DISPOSITIVOS MÓVEIS -->
       <button id="cart"><i class="bi bi-cart"></i></button>
@@ -45,17 +94,25 @@
           </li>
           <li><a href="about.php">Sobre</a></li>
           <li><a href="#footer">Contato</a></li>
-          <li><a href="../../index.php">Home</a></li>
+          <li><a href="../index.php">Home</a></li>
         </ul>
       </div>
     </nav>
 
     <div class="menu-bar">
       <div>
-        <button>Categorias</button>
-        <button>Ofertas</button>
-        <button id="vender-btn" onclick="window.location.href = './sell.php'">Vender</button>
-        <button>Histórico</button>
+        <li style="display: none;">
+          <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+        </li>
+        <a href="search.php" class="btn">Categorias</a>
+        <a href="../index.php#main" class="scroll-link btn">Ofertas</a>
+        <?php if (
+          (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'store') ||
+          (isset($_COOKIE['userType']) && $_COOKIE['userType'] === 'store')
+        ): ?>
+          <a href="sell.php" class="btn">Vender</a>
+        <?php endif; ?>
+        <button id="rastrear-btn">Rastrear</button>
       </div>
       <button class="cart"><i class="bi bi-cart"></i></button>
     </div>
@@ -86,11 +143,14 @@
     <section class="filtros">
       <ul class="categorias">
         <h2>Categorias</h2>
-        <li><button class="categoria-btn categoria-todas" data-category="">Todas</button></li>
-        <li><button class="categoria-btn" data-category="Bolsa">Bolsas</button></li>
-        <li><button class="categoria-btn" data-category="Decoracao">Decorações</button></li>
-        <li><button class="categoria-btn" data-category="Utensilios">Utensílios Domésticos</button></li>
-        <li><button class="categoria-btn" data-category="Moveis">Móveis</button></li>
+
+        <li><button class="categoria-btn active" value="all">Todos</button></li>
+        <?php foreach ($categorias as $c): ?>
+          <li>
+            <button class="categoria-btn"
+              value="<?= (int) $c['id_category'] ?>"><?= htmlspecialchars($c['name']) ?></button>
+          </li>
+        <?php endforeach; ?>
 
       </ul>
 
@@ -109,118 +169,121 @@
 
     <section class="produtos">
       <h2 id="texto-produtos">Produtos encontrados</h2>
-      <div id="cards-inside">
+      <?php $serverRendered = !empty($products); ?>
+      <div id="cards-inside" <?php if ($serverRendered)
+        echo 'data-server-rendered="1" style="visibility: visible;"'; ?>>
+
         <!-- CARD TEMPLATE -->
-        <div id="cardTemplate" class="fundo">
-          <div class="card" style="
-                background-color: #4b3a35;
+        <?php if (!empty($products)): ?>
+          <?php foreach ($products as $p): ?>
+            <?php
+            $name = htmlspecialchars($p['name']);
+            $rawImage = isset($p['image']) ? $p['image'] : '';
+            // normaliza o caminho da imagem: se já contém 'uploads/' usamos ../ + campo; senão assumimos uploads/products/
+            if (!empty($rawImage) && strpos($rawImage, 'uploads/') === 0) {
+              $imagePath = '../' . $rawImage;
+            } elseif (!empty($rawImage)) {
+              $imagePath = '../uploads/products/' . htmlspecialchars($rawImage);
+            } else {
+              $imagePath = '../images/icones/placeholder.png';
+            }
+            $price = number_format((float) $p['price'], 2, ',', '.');
+
+            $catId = isset($p['id_category_fk']) ? (int) $p['id_category_fk'] : 0;
+            $categoryName = isset($categoryMap[$catId]) ? htmlspecialchars($categoryMap[$catId]) : 'Sem categoria';
+            ?>
+            <div class="fundo" data-category-id="<?= $catId ?>" data-price="<?= htmlspecialchars((float) $p['price']) ?>">
+              <div class="card" style="
                 width: 15rem;
+                margin: 0;
                 border-radius: 1.5rem;
                 border: #3c2924 solid;
               ">
-            <picture>
-              <img src="" class="card-img-top" alt="..." />
-            </picture>
-            <div class="card-body" style="padding: 0.1rem">
-              <h5 class="card-title">Placeholder</h5>
-              <h5 class="avaliacoes">
-                4.6
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-half"></i>
-                (81)
-              </h5>
-              <p class="card-text preco-original">R$ Placeholder</p>
-              <div class="precos">
-                <p class="sub-card-text">R$ Placeholder</p>
-                <p id="oferta">Placeholder% OFF</p>
+                <picture>
+                  <img src="<?= $imagePath ?>" class="card-img-top" alt="<?= $name ?>"
+                    onerror="this.onerror=null; this.src='../images/icones/placeholder.png';" />
+                </picture>
+                <div class="card-body" style="padding: 0.1rem">
+                  <h5 class="card-title"><?= $name ?></h5>
+                  <p class="categoria"><?= $categoryName ?></p>
+                  <div class="precos">
+                    <p class="sub-card-text">R$ <?= $price ?></p>
+                  </div>
+                  <button onclick="window.location.href='product.php?id=<?= (int) $p['id_product'] ?>'">Ver mais</button>
+                </div>
               </div>
-              <button>Ver mais</button>
             </div>
-          </div>
-        </div>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <p>Nenhum produto encontrado.</p>
+        <?php endif; ?>
         <!-- CARD TEMPLATE -->
 
-        <!-- Estrutura se repete aqui -->
       </div>
     </section>
   </main>
 
-  <div class="caracteristicas">
-    <div class="card">
+  <!-- Benefícios -->
+  <section class="beneficios">
+    <div class="rounded-4 beneficio card">
       <i class="bi bi-shield-check"></i>
-      <div class="card-body">
-        <h5 class="card-title">Segurança</h5>
-        <p class="card-text">
-          Este site utiliza protocolos de segurança avançados para garantir a
-          proteção de seus dados durante a navegação.
-        </p>
-      </div>
+      <h4>Segurança</h4>
+      <p>
+        Este site utiliza protocolos de segurança avançados para garantir a
+        proteção de seus dados durante a navegação.
+      </p>
     </div>
-    <div class="card">
+    <div class="rounded-4 beneficio card">
       <i class="bi bi-patch-check"></i>
-      <div class="card-body">
-        <h5 class="card-title">Confiável</h5>
-        <p class="card-text">
-          Pode confiar: aqui tudo é feito com cuidado, segurança e respeito
-          por você.
-        </p>
-      </div>
+      <h4>Confiável</h4>
+      <p>
+        Pode confiar: aqui tudo é feito com cuidado, segurança e respeito
+        por você.
+      </p>
     </div>
-    <div class="card">
+    <div class="rounded-4 beneficio card rounded">
       <i class="bi bi-truck"></i>
-      <div class="card-body">
-        <h5 class="card-title">Frete grátis</h5>
-        <p class="card-text">
-          Do carrinho até a sua casa, com segurança, carinho e frete grátis.
-        </p>
-      </div>
+      <h4>Frete grátis</h4>
+      <p>
+        Do carrinho até a sua casa, com segurança, carinho e frete grátis.
+      </p>
     </div>
-  </div>
+  </section>
 
-  <div class="contatos">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Compre pelo telefone</h5>
-        <p class="card-text">
-          Atendimento das 8h às 19h de segunda a sexta. 8h às 14h aos sábados.
-        </p>
-      </div>
+  <!-- Atendimento -->
+  <section class="atendimento">
+    <div class="rounded-4 atendimento-card card">
+      <h4>Compre pelo telefone</h4>
+      <p>
+        Atendimento das 8h às 19h de segunda a sexta. 8h às 14h aos sábados.
+      </p>
       <button>(71) 97534-4397</button>
       <button>0800-020-5243</button>
     </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Atendimento ao cliente</h5>
-        <p class="card-text">
-          Das 08h às 19h de<br />segunda a sábado, exceto feriados.
-        </p>
-      </div>
+    <div class="rounded-4 atendimento-card card">
+      <h4>Atendimento ao cliente</h4>
+      <p>Das 08h às 19h de segunda a sábado, exceto feriados.</p>
       <button>handifycontato@gmail.com</button>
       <button>0800-020-6639</button>
     </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Compre pelo Whatsapp</h5>
-        <p class="card-text">
-          Para todo o território nacional. Horário de atendimento sujeito à
-          região.
-        </p>
-      </div>
+    <div class="rounded-4 atendimento-card card">
+      <h4>Compre pelo Whatsapp</h4>
+      <p>
+        Para todo o território nacional. Horário de atendimento sujeito à
+        região.
+      </p>
       <button><i class="bi bi-whatsapp"></i> (71) 9985-7897</button>
-      <button>(71) 9535-6332</button>
+      <button><i class="bi bi-whatsapp"></i> (71) 9535-6332</button>
     </div>
-  </div>
+  </section>
 
+  <!-- Formas de pagamento -->
   <section class="pagamento card">
     <h4>Formas de pagamento</h4>
     <div class="pagamento-icones">
       <img src="../images/icones/visa-logo.png" alt="Visa" />
       <img src="../images/icones/Mastercard.png" alt="Mastercard" />
       <img src="../images/icones/Logo-ELO.png" alt="Elo" />
-      <img src="../images/icones/Logo-BOLETO.png" alt="Boleto" />
       <img src="../images/icones/Logo-PIX.png" alt="Pix" />
     </div>
   </section>
@@ -247,9 +310,10 @@
     new window.VLibras.Widget("https://vlibras.gov.br/app");
   </script>
 
-  <script type="module" src="../js/database.js"></script>
   <script type="module" src="../js/search.js"></script>
   <script type="module" src="../js/search/search-in-page.js"></script>
+  <script src="../js/search/filters.js"></script>
+  <script src="../js/theme-loader.js"></script>
   <script src="../js/mobile-pop-up.js"></script>
   <script src="../js/logged-in.js"></script>
 

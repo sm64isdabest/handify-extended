@@ -1,12 +1,9 @@
-console.log("searchInPage.js loaded");
-
-import { products } from '../database.js';
-
 const searchInput = document.getElementById('searchInput');
 const productsCards = document.getElementById('cards-inside');
-const cardTemplate = document.getElementById('cardTemplate').firstElementChild;
 const productsText = document.getElementById('texto-produtos');
 const priceInputs = document.querySelectorAll('input[name="price"]');
+
+const serverRendered = productsCards && productsCards.dataset && productsCards.dataset.serverRendered === '1';
 
 // Função para pegar o parâmetro da URL
 function getQueryParam(param) {
@@ -93,36 +90,40 @@ function renderCards(filter = '', priceFilter = '', category = '') {
     productsCards.style.visibility = 'visible';
 }
 
-// Estado atual do filtro
-let currentPriceFilter = '';
-let currentSearch = getQueryParam('q');
-searchInput.value = currentSearch;
-renderCards(currentSearch, currentPriceFilter, currentCategory);
-
-// Atualiza ao digitar
-searchInput.addEventListener('input', function () {
-    currentSearch = this.value;
+// Inicialização e bind de eventos (pulamos se o servidor já renderizou os cards)
+if (!serverRendered) {
+    // Estado atual do filtro
+    let currentPriceFilter = '';
+    let currentSearch = getQueryParam('q');
+    searchInput.value = currentSearch;
     renderCards(currentSearch, currentPriceFilter, currentCategory);
-});
 
-// Atualiza ao trocar o filtro de preço
-priceInputs.forEach(input => {
-    input.addEventListener('change', function () {
-        currentPriceFilter = this.value;
+    // Atualiza ao digitar
+    searchInput.addEventListener('input', function () {
+        currentSearch = this.value;
         renderCards(currentSearch, currentPriceFilter, currentCategory);
     });
-});
 
-const categoriaBtns = document.querySelectorAll('.categoria-btn');
-categoriaBtns.forEach(btn => {
-    btn.addEventListener('click', function () {
-        categoriaBtns.forEach(b => b.classList.remove('selected'));
-        this.classList.add('selected'); // Destaca o clicado
-
-        currentCategory = this.getAttribute('data-category') || '';
-        renderCards(currentSearch, currentPriceFilter, currentCategory);
+    // Atualiza ao trocar o filtro de preço
+    priceInputs.forEach(input => {
+        input.addEventListener('change', function () {
+            currentPriceFilter = this.value;
+            renderCards(currentSearch, currentPriceFilter, currentCategory);
+        });
     });
-});
 
-// já deixa "Todas" selecionado ao carregar
-document.querySelector('.categoria-todas')?.classList.add('selected');
+    const categoriaBtns = document.querySelectorAll('.categoria-btn');
+    categoriaBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            categoriaBtns.forEach(b => b.classList.remove('selected'));
+            this.classList.add('selected'); // Destaca o clicado
+
+            currentCategory = this.getAttribute('data-category') || '';
+            renderCards(currentSearch, currentPriceFilter, currentCategory);
+        });
+    });
+
+    // já deixa "Todas" selecionado ao carregar
+    document.querySelector('.categoria-todas')?.classList.add('selected');
+
+}

@@ -1,5 +1,3 @@
-console.log("responsive-text.js loaded");
-
 function updateText() {
   const textToChange = document.getElementById('responsive-text');
 

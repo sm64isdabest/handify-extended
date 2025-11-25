@@ -1,0 +1,20 @@
+{
+    "name": "thiago/handify-extended",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Thiago\\HandifyExtended\\": "handify-extended/",
+            "Controller\\": "Controller/",
+            "Model\\": "Model/"
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">= 8.0",
+        "ext-mbstring": "*",
+        "stripe/stripe-php": "^19.1@beta"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "11.5.x-dev"
+    }
+}

@@ -1,3 +1,71 @@
+<?php
+
+session_start();
+
+require_once '../controller/UserController.php';
+use Controller\UserController;
+
+$controller = new UserController();
+$message = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $user_fullname = trim(strip_tags($_POST['userName'] ?? ''));
+  $email = trim(strip_tags($_POST['userEmail'] ?? ''));
+  $password = $_POST['userPass'] ?? '';
+  $passwordConfirm = $_POST['userPassConfirm'] ?? '';
+  $phone = trim(strip_tags($_POST['phone'] ?? ''));
+  $birthdate = trim(strip_tags($_POST['birthdate'] ?? ''));
+  $address = trim(strip_tags($_POST['address'] ?? ''));
+
+  if (empty($user_fullname) || empty($email) || empty($password)) {
+    $message = "Preencha todos os campos obrigatórios.";
+  } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $message = "Email inválido.";
+  } elseif (strlen($password) < 6) {
+    $message = "A senha deve ter pelo menos 6 caracteres.";
+  } elseif ($password !== $passwordConfirm) {
+    $message = "As senhas não conferem.";
+  } else {
+    if (!empty($_POST['cnpj'])) {
+      $cnpj = trim(strip_tags($_POST['cnpj'] ?? ''));
+      $store_name = trim(strip_tags($_POST['storeName'] ?? ''));
+      $result = $controller->registerStoreUser($user_fullname, $email, $password, $cnpj, $store_name, $address, $phone);
+
+      if (is_array($result) && !empty($result['success'])) {
+        $_SESSION['id'] = $result['user_id'];
+        $_SESSION['user_type'] = 'store';
+        $_SESSION['email'] = $email;
+        $_SESSION['user_fullname'] = $user_fullname;
+
+        setcookie('userName', urldecode($store_name), time() + 604800, '/');
+        header('Location: ../index.php');
+        exit;
+      }
+    } else {
+      $result = $controller->registerCustomerUser($user_fullname, $email, $password, $phone, $birthdate, $address);
+
+      if (is_array($result) && !empty($result['success'])) {
+        $_SESSION['id'] = $result['user_id'];
+        $_SESSION['user_type'] = 'customer';
+        $_SESSION['email'] = $email;
+        $_SESSION['user_fullname'] = $user_fullname;
+
+        setcookie('userName', urldecode($user_fullname), time() + 604800, '/');
+        header('Location: ../index.php');
+        exit;
+      }
+    }
+
+    if (is_array($result) && !empty($result['message'])) {
+      $message = $result['message'];
+    } else {
+      $message = 'Erro ao realizar cadastro.';
+    }
+  }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -17,11 +85,11 @@
     <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
     <nav>
       <ul>
-        <li><a href="../../index.php">Home</a></li>
+        <li><a href="../index.php">Home</a></li>
         <li><a href="about.php#footer">Contato</a></li>
         <li><a href="about.php">Sobre</a></li>
         <li style="display: none;">
-          <a href="sign-up.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+          <a href="login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <li class="user-logged" style="display: none;">
           <i class="bi bi-person"></i> placeholder
@@ -33,14 +101,14 @@
     <div id="popup-menu">
       <ul class="popup-list">
         <li style="display: none;">
-          <a href="sign-up.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+          <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <li class="user-logged-mobile" style="display: none;">
           <i class="bi bi-person"></i> placeholder
         </li>
         <li><a href="about.php">Sobre</a></li>
         <li><a href="about.php#footer">Contato</a></li>
-        <li><a href="../../index.php">Home</a></li>
+        <li><a href="../index.php">Home</a></li>
       </ul>
     </div>
   </header>
@@ -52,37 +120,65 @@
       <div class="form-container">
         <h1>Cadastrar-se</h1>
         <h3>
-          Seja bem-vindo! Cadastre-se e comece a mostrar, divulgar e vender
-          seu artesanato com a gente.
+          Bem-vindo! Cadastre-se e descubra o melhor do artesanato, conectando-se com talentos únicos e produtos feitos
+          à mão.
         </h3>
-        <form>
+        <?php if (!empty($message)): ?>
+          <div class="alert alert-danger">
+            <?= htmlspecialchars($message) ?>
+          </div>
+        <?php endif; ?>
+        <form method="POST" action="">
           <label id="labelUserName" for="userName">
             <i class="bi bi-person"></i>
-            <input type="text" id="userName" autocomplete="username" placeholder="Usuário" />
+            <input type="text" id="userName" name="userName" autocomplete="name" placeholder="Nome completo" required />
           </label>
 
           <label id="labelUserEmail" for="userEmail">
             <i class="bi bi-envelope"></i>
-            <input type="email" id="userEmail" autocomplete="email" placeholder="E-mail" />
+            <input type="email" id="userEmail" name="userEmail" autocomplete="email" placeholder="E-mail" required />
           </label>
 
           <label id="labelUserPass" for="userPass">
             <i class="bi bi-key"></i>
-            <input type="password" id="userPass" placeholder="Insira sua senha" />
+            <div class="password-input-container">
+              <input type="password" id="userPass" name="userPass" placeholder="Insira sua senha" required />
+              <i class="bi bi-eye-slash password-toggle" data-target="userPass"></i>
+            </div>
           </label>
 
           <label id="labelUserPassConfirm" for="userPassConfirm">
             <i class="bi bi-lock"></i>
-            <input type="password" id="userPassConfirm" placeholder="Confirme sua senha" />
+            <div class="password-input-container">
+              <input type="password" id="userPassConfirm" name="userPassConfirm" placeholder="Confirme sua senha"
+                required />
+              <i class="bi bi-eye-slash password-toggle" data-target="userPassConfirm"></i>
+            </div>
+          </label>
+
+          <label id="labelPhone" for="phone">
+            <i class="bi bi-telephone"></i>
+            <input type="text" id="phone" name="phone" placeholder="Telefone" />
+          </label>
+
+          <label id="labelBirthdate" for="birthdate">
+            <i class="bi bi-calendar"></i>
+            <input type="date" id="birthdate" name="birthdate" placeholder="Data de nascimento" />
+          </label>
+
+          <label id="labelAddress" for="address">
+            <i class="bi bi-house"></i>
+            <input type="text" id="address" name="address" placeholder="Endereço" />
           </label>
 
           <span>Por favor, preencha todos os campos!</span>
 
           <div class="buttons">
-            <button type="button" class="active1">Para Lojas</button>
-            <button type="button" class="active" id="responsive-text">
-              Para Consumidores
+            <button type="submit" class="active" id="responsive-text">
+              Cadastre-se
             </button>
+            <button type="button" class="active1" onclick="window.location.href='sign-up-store.php'" id="btn_store">Para
+              Lojas</button>
           </div>
         </form>
       </div>
@@ -112,9 +208,11 @@
 
   <script src="../js/sign-up/responsive-text.js"></script>
   <script src="../js/sign-up/input-span-show.js"></script>
-  <script src="../js/sign-up/store-option-text.js"></script>
   <script src="../js/logged-in.js"></script>
   <script src="../js/mobile-pop-up.js"></script>
+  <script src="https://unpkg.com/imask"></script>
+  <script src="../js/sign-up/telefone.js"></script>
+  <script src="../js/sign-up/senha.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
     crossorigin="anonymous"></script>

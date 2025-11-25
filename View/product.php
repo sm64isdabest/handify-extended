@@ -1,3 +1,46 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['id']) && isset($_COOKIE['userId'], $_COOKIE['userName'], $_COOKIE['userType'])) {
+    $_SESSION['id'] = $_COOKIE['userId'];
+    $_SESSION['user_fullname'] = $_COOKIE['userName'];
+    $_SESSION['user_type'] = $_COOKIE['userType'];
+}
+
+if (!isset($_SESSION['id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+$userId = $_SESSION['id'];
+$userName = $_SESSION['user_fullname'] ?? '';
+$userType = $_SESSION['user_type'] ?? '';
+
+require_once __DIR__ . '/partials/interface_produto.php';
+require_once __DIR__ . '../../Model/Product.php';
+use Model\Product;
+
+$productModel = new Product();
+$products = $productModel->getAllProducts();
+
+if (!isset($product) || empty($product)) {
+    header('Location: index.php');
+    exit;
+}
+
+$otherProducts = array_filter($products, function ($p) use ($product) {
+    return $p['id_product'] !== $product['id_product'];
+});
+
+// BUSCA
+$searchTerm = isset($_GET['q']) ? trim($_GET['q']) : '';
+if ($searchTerm !== '') {
+    $products = $productModel->searchByName($searchTerm);
+} else {
+    $products = $productModel->getAllProducts();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -6,6 +49,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Produto - Handify</title>
     <link rel="stylesheet" href="../css/product.css" />
+    <link rel="stylesheet" href="../css/global.css" />
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -14,311 +58,193 @@
 
 <body>
     <header>
-        <div class="header-container">
+        <nav>
             <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
+
+            <!-- Funcionalidade de busca -->
             <div class="search-bar">
-                <input type="text" autocomplete="off" placeholder="Buscar produtos..." id="searchInput" />
-                <i class="bi bi-search" id="searchButton"></i>
-                <ul id="autocomplete-list" class="autocomplete-items"></ul>
+                <form method="GET" action="search.php">
+                    <input type="text" id="searchInput" name="q" autocomplete="off" placeholder="Buscar produtos..."
+                        value="<?= htmlspecialchars($searchTerm) ?>" />
+                    <button type="submit">
+                        <i id="searchButton" class="bi bi-search"></i>
+                    </button>
+                </form>
             </div>
-            <div class="menu_clc">
-                <button id="cartIconMobile">
-                    <i class="bi bi-cart"></i>
-                </button>
-                <button id="listToggle">
-                    <i class="bi bi-list"></i>
-                </button>
-            </div>
-            <nav id="mainNav">
-                <ul>
-                    <li><a href="../../index.php" class="nav-link" data-target="produtos">Home</a></li>
-                    <li><a href="about.php#footer" class="nav-link" data-target="contatos">Contato</a></li>
-                    <li><a href="about.php" class="nav-link" data-target="sobre">Sobre</a></li>
-                    <li><a href="login.php" class="entrar" data-target="entrar"><i class="bi bi-person"></i>Entrar</a>
+            <!-- Funcionalidade de busca -->
+
+            <ul>
+                <li><a href="../index.php" class="scroll-link">Home</a></li>
+                <li><a href="about.php#footer">Contato</a></li>
+                <li><a href="about.php">Sobre</a></li>
+                <li>
+                    <a href="login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+                </li>
+                <li class="user-logged">
+                    <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
+                    <span class="user-name"></span>
+                    <div class="menu-popup">
+                        <p class="user-name-popup"></p>
+                        <button class="menu-item" onclick="window.location.href='profile.php'">Meu Perfil</button>
+                        <button class="menu-item logout-btn">Sair</button>
+                    </div>
+                </li>
+            </ul>
+            <div id="popup-menu">
+                <ul class="popup-list">
+                    <li>
+                        <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
                     </li>
-                    <li class="user-logged" style="display: none;">
-                        <i class="bi bi-person"></i> placeholder
+                    <li class="user-logged">
+                        <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
+                        <span class="user-name"></span>
+                        <div class="menu-popup">
+                            <p class="user-name-popup"></p>
+                            <button class="menu-item logout-btn">Sair</button>
+                        </div>
                     </li>
+                    <li><a href="pages/about.php">Sobre</a></li>
+                    <li><a href="#footer">Contato</a></li>
+                    <li><a href="index.php" class="scroll-link">Home</a></li>
                 </ul>
-            </nav>
-        </div>
+            </div>
+        </nav>
         <div class="menu-bar">
             <div>
-                <button class="menu-bar-btn" id="categoriasBtn">Categorias</button>
-                <button class="menu-bar-btn" id="ofertasBtn">Ofertas</button>
-                <button class="menu-bar-btn" id="vender-btn"
-                    onclick="window.location.href = './sell.php'">Vender</button>
-                <button class="menu-bar-btn" id="historicoBtn">Histórico</button>
-            </div>
-            <button class="cart-btn" id="cartIconDesktop"><i class="bi bi-cart"></i></button>
-        </div>
-        <div id="popup-menu">
-            <ul class="popup-list">
-                <header class="pop_up">
-                    <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
-                    <i class="bi bi-cart3"></i>
-                    <p>Carrinho de compra</p>
-                    <button class="sair_pop"><i class="bi bi-box-arrow-right"></i></button>
-                </header>
-            </ul>
-            <div class="pag_pop"></div>
-        </div>
-        <div id="popup-menu-list">
-            <ul class="popup-list-mob">
-                <li>
+                <li style="display: none;">
                     <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
                 </li>
-                <li class="user-logged-mobile" style="display: none;">
-                    <i class="bi bi-person"></i> placeholder
-                </li>
-                <li><a href="about.php">Sobre</a></li>
-                <li><a href="about.php#footer">Contato</a></li>
-                <li><a href="../../index.php">Home</a></li>
-            </ul>
+                <a href="search.php" class="btn">Categorias</a>
+                <a href="../index.php#main" class="scroll-link btn">Ofertas</a>
+                <?php if ((isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'store') || (isset($_COOKIE['userType']) && $_COOKIE['userType'] === 'store')): ?>
+                    <a href="sell.php" class="btn">Vender</a>
+                <?php endif; ?>
+                <button id="rastrear-btn" onclick="window.location.href='profile.php'">Rastrear</button>
+            </div>
+            <button class="cart"><i class="bi bi-cart"></i></button>
         </div>
     </header>
+
     <main>
         <div class="product-page">
             <section class="product-gallery">
                 <div class="main-image">
-                    <img src="../images/produtos/bolsas/bolsa-palha.png" alt="Imagem principal do produto" />
-
+                    <img src="../uploads/products/<?php echo htmlspecialchars(basename($product['image'])); ?>"
+                        alt="<?php echo htmlspecialchars($product['name'] ?? 'Imagem do produto'); ?>" />
                     <h2 class="text_tablet">Estoque disponível</h2>
-                    <p class="sub_text_tablet">Quantidade: 1 (200 disponíveis)</p>
+                    <p class="sub_text_tablet">Quantidade: <?php echo htmlspecialchars($stock); ?>
+                        (<?php echo htmlspecialchars($stock); ?> disponíveis)</p>
                 </div>
-
             </section>
 
             <section class="product-details">
-                <div class="avaliar">
-                    <button class="sair"><i class="bi bi-arrow-left"></i></button> 4.8<span><i
-                            class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                            class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
-                </div>
-                <h1>Bolsa de palha</h1>
+                <h1><?php echo htmlspecialchars($product['name'] ?? 'Produto não encontrado'); ?></h1>
                 <p class="price">
-                    <span class="old-price">R$ 279,90 OFF</span>
-                    <span class="current-price">R$ 139,95</span>
+                    <span class="old-price"><?php echo htmlspecialchars($oldPriceFormatted); ?></span>
+                    <span class="current-price"><?php echo htmlspecialchars($priceFormatted); ?></span>
                 </p>
-                <p class="installments">em 12x R$ 23,32*</p>
+                <p class="installments">em <?php echo $installments; ?>x
+                    <?php echo htmlspecialchars($installmentAmountFormatted); ?>*
+                </p>
                 <a href="#" class="payment-methods">Ver meios de pagamentos</a>
 
-                <div class="product-info">
-                    <p>O que você precisa saber sobre esse produto</p>
-                    <p class="bolsa">Cor: <span class="color">Bege escuro</span></p>
-                    <p class="alça">
-                        Cor da Alça: <span class="handle-color">Marrom</span>
-                    </p>
-                    <p class="palha">
-                        Material: <span class="material">Palha trançada sintética</span>
-                    </p>
-                </div>
                 <div class="disponiveis_clc">
                     <h3>Estoque disponível</h3>
-                    <p>Quantidade: 1 (200 Disponível)</p>
+                    <p>Quantidade: <?php echo htmlspecialchars($stock); ?> (<?php echo htmlspecialchars($stock); ?>
+                        Disponível)</p>
                 </div>
                 <div class="botoes_adc">
-                    <button class="btn_1" id="btn_1" onclick="window.location.href = 'payment-methods.php'">Comprar Agora</button>
-                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                    <button class="add-to-cart" data-product='<?php echo json_encode([
+                        "id" => $product['id_product'] ?? 0,
+                        "name" => $product['name'] ?? '',
+                        "price" => isset($product['price']) ? number_format((float) $product['price'], 2, '.', '') : 0,
+                        "image" => $imagePath
+                    ], JSON_HEX_APOS | JSON_HEX_QUOT); ?>'>
+                        Adicionar ao Carrinho
+                    </button>
                 </div>
             </section>
 
             <section class="purchase-info">
-                <div class="delivery-info">
-                    <p>
-                        <span class="gratis">Chegará grátis amanhã</span><br />Comprando
-                        dentro das próximas 16 h 28 min
-                    </p>
-                    <p>
-                        <span class="compra">Frete Grátis</span><br />Comprando dentro das
-                        próximas 16 h 28 min
-                    </p>
-                    <p>
-                        <span class="devol">Devolução</span><br />Você tem 30 dias a
-                        partir da data de recebimento.
-                    </p>
-                </div>
-
+                <?php if (!empty($product) && isset($product['free_shipping']) && (int) $product['free_shipping'] === 1): ?>
+                    <p><span class="compra">Frete Grátis</span></p>
+                <?php endif; ?>
                 <div class="stock-info">
                     <p><strong>Estoque disponível</strong></p>
-                    <p>Quantidade: 1 (200 Disponível)</p>
+                    <p>Quantidade: <?php echo htmlspecialchars($stock); ?> (<?php echo htmlspecialchars($stock); ?>
+                        Disponível)</p>
                 </div>
-
                 <div class="purchase-buttons">
-                    <button class="buy-now" id="buy-now" onclick="window.location.href = 'payment-methods.php'">Comprar Agora</button>
-                    <button class="add-to-cart" data-index="1">Adicionar ao Carrinho</button>
+                    <button class="add-to-cart" data-product='<?= json_encode([
+                        "id" => $product['id_product'] ?? 0,
+                        "name" => $product['name'] ?? '',
+                        "price" => $product['price'] ?? 0,
+                        "image" => !empty($product['image']) ? '../uploads/products/' . $product['image'] : ''
+                    ], JSON_HEX_APOS | JSON_HEX_QUOT) ?>'>
+                        Adicionar ao Carrinho
+                    </button>
                 </div>
             </section>
         </div>
-
         <div class="ofertas">
             <section class="other-offers">
                 <h2>Outras ofertas</h2>
                 <div class="offers-container">
-                    <div class="offer-item">
-                        <div class="card">
-                            <img src="../images/produtos/utensilios/faqueiro.png" class="card-img-top"
-                                alt="Suporte de faqueiros" />
-                            <div class="card-body">
-                                <h5 class="card-title">Suporte de faqueiros</h5>
-                                <p class="card-text">R$ 89,70 OFF</p>
-                                <p class="sub-card-text">R$ 78,90</p>
-                            </div>
+                    <?php
+                    // seleciona até 5 produtos aleatórios
+                    $candidates = array_values(array_filter($products));
+                    if (!empty($candidates)) {
+                        shuffle($candidates);
+                        $random = array_slice($candidates, 0, 5);
+                    } else {
+                        $random = [];
+                    }
+
+                    foreach ($random as $rp):
+                        $rawImage = isset($rp['image']) ? $rp['image'] : '';
+                        if (!empty($rawImage) && strpos($rawImage, 'uploads/') === 0) {
+                            $imagePath = '../' . $rawImage;
+                        } elseif (!empty($rawImage)) {
+                            $imagePath = '../uploads/products/' . htmlspecialchars($rawImage);
+                        } else {
+                            $imagePath = '../images/icones/placeholder.png';
+                        }
+                        ?>
+                        <div class="produto">
+                            <img src="<?= $imagePath ?>" alt="<?= htmlspecialchars($rp['name']) ?>"
+                                onerror="this.onerror=null; this.src='../images/icones/placeholder.png';" />
+                            <span class="produto-nome"><?= htmlspecialchars($rp['name']) ?></span>
+                            <span class="produto-preco">R$ <?= number_format($rp['price'], 2, ',', '.') ?></span>
+                            <button class="produto-btn"
+                                data-product-id="<?= (int) ($rp['id_product'] ?? $rp['id'] ?? 0) ?>">Comprar</button>
                         </div>
-                        <div class="card">
-                            <img src="../images/produtos/decoracoes/Vaso.png" class="card-img-top"
-                                alt="Vasos pintados" />
-                            <div class="card-body">
-                                <h5 class="card-title">Vasos pintados</h5>
-                                <p class="card-text">R$ 199,90 OFF</p>
-                                <p class="sub-card-text">R$ 99,99</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="../images/produtos/decoracoes/Quadro.png" class="card-img-top"
-                                alt="Porta-retratos" />
-                            <div class="card-body">
-                                <h5 class="card-title">Porta-retratos</h5>
-                                <p class="card-text">R$ 57,90 OFF</p>
-                                <p class="sub-card-text">R$ 29,90</p>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <img src="../images/produtos/utensilios/Colher.png" class="card-img-top"
-                                alt="Colher de pau" />
-                            <div class="card-body">
-                                <h5 class="card-title">Colher de pau</h5>
-                                <p class="card-text">R$ 25,99 OFF</p>
-                                <p class="sub-card-text">R$ 15,99</p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
             <section class="descricao-produto">
                 <h2>Sobre o produto</h2>
-                <p>Bolsa de palha – estilo e versatilidade em cada detalhe</p>
-                <p>
-                    Com design artesanal e acabamento sofisticado, a bolsa de palha é a
-                    escolha perfeita para quem busca leveza, charme e funcionalidade.
-                    Ideal para compor looks casuais ou praianos, ela une beleza natural
-                    com praticidade no uso diário.
-                </p>
-                <p>
-                    Leve, espaçosa e resistente, conta com alças confortáveis e um
-                    interior bem distribuído, sendo ideal para levar seus itens essenciais
-                    com elegância. Um acessório que nunca sai de moda e combina com
-                    diversas ocasiões, do passeio ao ar livre até eventos descontraídos.
-                </p>
+                <p><?php echo nl2br(htmlspecialchars($product['description'] ?? 'Descrição não disponível.')); ?></p>
             </section>
 
-            <section class="produto-reviews">
-                <div class="reviews-container">
-                    <div class="avaliações">
-                        <h2>Avaliações</h2>
-                        <p>4.8 <span><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                    class="bi bi-star-half"></i></span></p>
-                        <p>123 avaliações</p>
-                    </div>
-                    <div class="reviews-destaque">
-                        <p class="opn">Opinião em destaque</p>
-                        <div class="review">
-                            <p>
-                                <picture>
-                                    <img src="../images/icones/carla.png" alt="Foto de Carla" />
-                                </picture>
-                                <strong class="Foto">Carla</strong>
-                            </p>
-                            <p>
-                                Ela é linda, o tamanho é ideal, o material de qualidade, e o
-                                preço muito bom. Amei a cor. 👜
-                            </p>
-                        </div>
-                        <div class="review">
-                            <p>
-                                <picture>
-                                    <img src="../images/icones/renata.png" alt="Foto de Renata" />
-                                </picture>
-                                <strong class="Foto">Renata</strong>
-                            </p>
-                            <p>
-                                Adorei a bolsa. Bem divertida. Cabe muita coisa. A cor também
-                                gostei. Pode comprar sem medo.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-        </div>
-        </section>
-        <div class="Produtos-similares">
-            <h1>Outros produtos similares</h1>
-            <div class="carrossel-container">
-                <button class="carrossel-arrow left">←</button>
-                <div class="carrossel-cards">
-                    <div class="card">
-                        <img src="../images/produtos/utensilios/faqueiro.png" alt="Suporte de faqueiros" />
-                        <h5>Suporte de faqueiros</h5>
-                        <p class="card-text">R$ 87,90 OFF</p>
-                        <p class="sub-card-text">R$ 78,90</p>
-                    </div>
-                    <div class="card">
-                        <img src="../images/produtos/decoracoes/Vaso.png" alt="Vasos pintados" />
-                        <h5>Vasos pintados</h5>
-                        <p class="card-text">R$ 199,90 OFF</p>
-                        <p class="sub-card-text">R$ 99,99</p>
-                    </div>
-                    <div class="card">
-                        <img src="../images/produtos/decoracoes/Quadro.png" alt="Porta-retratos" />
-                        <h5>Porta-retratos</h5>
-                        <p class="card-text">R$ 57,90 OFF</p>
-                        <p class="sub-card-text">R$ 29,90</p>
-                    </div>
-                    <div class="card">
-                        <img src="../images/produtos/utensilios/Colher.png" alt="Colher de pau" />
-                        <h5>Colher de pau</h5>
-                        <p class="card-text">R$ 25,99 OFF</p>
-                        <p class="sub-card-text">R$ 15,99</p>
-                    </div>
-                </div>
-                <button class="carrossel-arrow right">→</button>
-            </div>
-            <section class="produtos">
-                <div class="card">
-                    <img src="../images/produtos/bolsas/bolsa-palha-clara.png" class="card-img-top"
-                        alt="Bolsa De Palha Praia Feminina Bolsa Ombro Grande" />
-                    <div class="card-body">
-                        <h5>Bolsa De Palha Praia Feminina</h5>
-                        <p class="sub-card-text">R$ 95,99</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="../images/produtos/bolsas/bolsa.png" class="card-img-top"
-                        alt="Bolsa Praia Linda Palha Feminina Com Zíper + Pigente" />
-                    <div class="card-body">
-                        <h5>Bolsa Praia Linda Palha Feminina Com Zíper + Pigente</h5>
-                        <p class="sub-card-text">R$ 42,99</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="../images/produtos/bolsas/bolsa-menor.png" class="card-img-top"
-                        alt="Bolsa De Palha Feminina Clutch" />
-                    <div class="card-body">
-                        <h5>Bolsa De Palha Feminina Clutch </h5>
-                        <p class="sub-card-text">R$ 46,99</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="../images/produtos/bolsas/bolsa-maior.png" class="card-img-top"
-                        alt="Bolsa Feminina De Palha Meia Lua Grande" />
-                    <div class="card-body">
-                        <h5 class="card-title">Bolsa Feminina De Palha Meia Lua Grande</h5>
-                        <p class="sub-card-text">R$ 78,99</p>
-                    </div>
-                </div>
-            </section>
         </div>
     </main>
+
+    <div id="cart-popup" class="cart-popup">
+        <div class="cart-content">
+            <button class="cart-close">&times;</button>
+            <div class="cart-header">
+                <img src="../images/logo-handify.png" alt="Handify" class="cart-logo" />
+                <h3>Meu Carrinho</h3>
+            </div>
+            <div class="cart-items"></div>
+            <div class="cart-footer">
+                <p>Total: <span class="cart-total">R$ 0,00</span></p>
+                <button class="checkout-btn" onclick="window.location.href = 'payment-methods.php'">Ir para
+                    Pagamento</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>© 2025 HANDIFY. Todos os direitos reservados.</p>
         <div class="social-icons">
@@ -329,27 +255,27 @@
         </div>
     </footer>
 
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
-    </div>
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.produto-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const id = this.dataset.productId;
+                    if (!id || id === '0') return;
+                    window.location.href = 'product.php?id=' + encodeURIComponent(id);
+                });
+            });
+        });
     </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
-
-    <script type="module" src="../js/product/icon-pop-up.js"></script>
-    <script type="module" src="../js/product/menu-list-pop-up.js"></script>
+    <script src="../js/theme-loader.js"></script>
+    <script type="module" src="../js/logged-in.js"></script>
+    <script>
+        const currentProduct = <?php echo json_encode($product); ?>;
+    </script>
     <script type="module" src="../js/product/add-to-cart.js"></script>
-    <script type="module" src="../js/product/switch-product.js"></script>
+    <script type="module" src="../js/product/icon-pop-up.js"></script>
     <script type="module" src="../js/search.js"></script>
-    <script src="../js/logged-in.js"></script>
 </body>
 
 </html>

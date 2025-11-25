@@ -1,3 +1,46 @@
+<?php
+session_start();
+
+require_once '../Controller/UserController.php';
+use Controller\UserController;
+
+$controller = new UserController();
+$message = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $email = trim($_POST['email'] ?? '');
+  $password = $_POST['password'] ?? '';
+
+  if (empty($email) || empty($password)) {
+    $message = "Preencha todos os campos!";
+  } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $message = "Email inválido.";
+  } else {
+    if ($controller->login($email, $password)) {
+      $userName = $controller->getUserNameByEmail($email);
+      $userType = $_SESSION['user_type'] ?? 'customer';
+
+      $cookieOptions = [
+        'expires' => time() + 7 * 24 * 60 * 60,
+        'path' => '/',
+        'secure' => false,
+        'httponly' => false,
+        'samesite' => 'Lax'
+      ];
+
+      setcookie('userName', urldecode($userName), $cookieOptions);
+      setcookie('userType', $userType, $cookieOptions);
+
+      header('Location: ../index.php');
+      exit;
+    } else {
+      $message = "Email ou senha incorretos.";
+    }
+  }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -18,33 +61,26 @@
     <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
     <nav>
       <ul>
-        <li><a href="../../index.php">Produtos</a></li>
+        <li><a href="../index.php">Home</a></li>
         <li><a href="about.php#footer">Contato</a></li>
         <li><a href="about.php">Sobre</a></li>
-        <li style="display: none;">
-          <a href="login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
-        </li>
-        <li class="user-logged" style="display: none;">
-          <i class="bi bi-person"></i> placeholder
-        </li>
+        <li style="display: none;"><a href="login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a></li>
+        <li class="user-logged" style="display: none;"><i class="bi bi-person"></i> placeholder</li>
       </ul>
-      <!-- PARA DISPOSITIVOS MÓVEIS -->
       <button id="list"><i class="bi bi-list"></i></button>
     </nav>
     <div id="popup-menu">
       <ul class="popup-list">
-        <li style="display: none;">
-          <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
+        <li style="display: none;"><a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i> Entrar</a>
         </li>
-        <li class="user-logged-mobile" style="display: none;">
-          <i class="bi bi-person"></i> placeholder
-        </li>
+        <li class="user-logged-mobile" style="display: none;"><i class="bi bi-person"></i> placeholder</li>
         <li><a href="about.php">Sobre</a></li>
         <li><a href="about.php#footer">Contato</a></li>
-        <li><a href="../../index.php">Home</a></li>
+        <li><a href="../index.php">Home</a></li>
       </ul>
     </div>
   </header>
+
   <main>
     <section class="cadastro-container">
       <div class="image-container">
@@ -52,34 +88,35 @@
       </div>
       <div class="form-container">
         <h1>Login</h1>
-        <h3>
-          Seja bem-vindo! Logue sua conta e comece a mostrar, divulgar e vender seu artesanato com a gente.
-        </h3>
-        <form>
-          <label id="labelUserName" for="userName">
-            <i class="bi bi-person"></i>
-            <input type="text" id="userName" autocomplete="username" placeholder="Usuário" />
+        <h3>Seja bem-vindo! Logue sua conta e comece a mostrar, divulgar e vender seu artesanato com a gente.</h3>
+
+        <form method="POST" action="">
+          <label id="labelUserEmail" for="userEmail">
+            <i class="bi bi-envelope"></i>
+            <input type="email" id="userEmail" name="email" autocomplete="username" placeholder="Email" required />
           </label>
 
           <label id="labelUserPass" for="userPass">
             <i class="bi bi-key"></i>
-            <input type="password" id="userPass" placeholder="Insira sua senha" />
+            <input type="password" id="userPass" name="password" placeholder="Insira sua senha" required />
           </label>
 
-          <span>Por favor, preencha todos os campos!</span>
+          <?php if (!empty($message)): ?>
+            <span style="color:red; display:block;"><?= htmlspecialchars($message) ?></span>
+          <?php endif; ?>
 
           <div class="buttons">
-            <button type="button" class="active">Entrar</button>
+            <button type="submit" class="active">Entrar</button>
           </div>
 
           <div class="linkCadastro">
-            <h5>Não tem conta? <a href="sign-up.php" class="link-primary">Cadastrar-se</a> </h5>
+            <h5>Não tem conta? <a href="sign-up.php" class="link-primary">Cadastrar-se</a></h5>
           </div>
-
         </form>
       </div>
     </section>
   </main>
+
   <footer>
     <p>© 2025 HANDIFY. Todos os direitos reservados.</p>
     <div class="social-icons">
@@ -90,7 +127,6 @@
     </div>
   </footer>
 
-  <!-- VLIBRAS -->
   <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
@@ -98,17 +134,12 @@
     </div>
   </div>
   <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
+  <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
 
   <script src="../js/mobile-pop-up.js"></script>
   <script src="../js/login/input-span-show.js"></script>
   <script src="../js/logged-in.js"></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
