@@ -34,7 +34,7 @@ try {
         throw new Exception('Dados incompletos');
     }
 
-    $stripe = new \Stripe\StripeClient('chave secreta');
+    $stripe = new \Stripe\StripeClient('');
     $paymentMethod = $stripe->paymentMethods->retrieve($pm_id);
     $cardData = [
         'id_user_fk' => $_SESSION['id'],

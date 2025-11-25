@@ -36,10 +36,10 @@ $userType = $_SESSION['user_type'] ?? '';
 
       <ul>
         <li><a href="../index.php" class="scroll-link">Home</a></li>
-        <li><a href="#footer">Contato</a></li>
-        <li><a href="View/about.php">Sobre</a></li>
+        <li><a href="about.php#footer">Contato</a></li>
+        <li><a href="about.php">Sobre</a></li>
         <li>
-          <a href="View/login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
+          <a href="login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
         </li>
         <li class="user-logged" style="display: none; position: relative;">
           <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
@@ -64,9 +64,9 @@ $userType = $_SESSION['user_type'] ?? '';
               <button class="menu-item logout-btn">Sair</button>
             </div>
           </li>
-          <li><a href="pages/about.php">Sobre</a></li>
-          <li><a href="#footer">Contato</a></li>
-          <li><a href="index.php" class="scroll-link">Home</a></li>
+          <li><a href="about.php">Sobre</a></li>
+          <li><a href="about.php#footer">Contato</a></li>
+          <li><a href="../index.php" class="scroll-link">Home</a></li>
         </ul>
       </div>
     </nav>

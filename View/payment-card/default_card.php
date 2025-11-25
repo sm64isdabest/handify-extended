@@ -32,7 +32,7 @@ try {
         throw new Exception('Cartão não encontrado');
 
     $userCardModel->setDefaultCard($id_card, $_SESSION['id']);
-    $stripe = new \Stripe\StripeClient('secret_key');
+    $stripe = new \Stripe\StripeClient('secret key');
     $customerId = 'substitua_com_o_stripe_customer_id';
     $stripe->customers->update($customerId, ['invoice_settings' => ['default_payment_method' => $c['stripe_payment_method']]]);
 

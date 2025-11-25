@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <img src="../images/logo-handify.png" alt="Handify Logo" class="logo" />
     <nav>
       <ul>
-        <li><a href="../../index.php">Produtos</a></li>
+        <li><a href="../index.php">Home</a></li>
         <li><a href="about.php#footer">Contato</a></li>
         <li><a href="about.php">Sobre</a></li>
         <li style="display: none;"><a href="login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a></li>
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <li class="user-logged-mobile" style="display: none;"><i class="bi bi-person"></i> placeholder</li>
         <li><a href="about.php">Sobre</a></li>
         <li><a href="about.php#footer">Contato</a></li>
-        <li><a href="../../index.php">Home</a></li>
+        <li><a href="../index.php">Home</a></li>
       </ul>
     </div>
   </header>

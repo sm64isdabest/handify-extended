@@ -2,9 +2,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" );
 
 body {
-  font-family: "Montserrat", Arial, sans-serif;
+    font-family: "Montserrat", Arial, sans-serif;
+    margin: 0;
+    color: var(--cor-texto-primario);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
   margin: 0;
-  color: var(--cor-texto-primario);
+  padding: 0;
+  overflow-x: hidden;
 }
 
 a.btn,
@@ -37,6 +51,8 @@ a.entrar:hover {
 header {
   font-family: "Alexandria", sans-serif;
   border-bottom: 2px solid var(--cor-interativo);
+  width: 100%;
+  max-width: 100%;
 }
 
 nav {
@@ -45,6 +61,8 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
+  width: 100%;
+    max-width: 100%;
 }
 
 header .logo {
@@ -365,8 +383,9 @@ input::placeholder {
 .banner-content {
   flex: 1;
   max-width: 600px;
+  max-width: 100%;
   padding: 0 24px;
-  margin-left: 440px;
+  margin-left: 0;
   background: var(--cor-fundo-caixa);
   opacity: 0.9;
   padding: 24px;
@@ -465,6 +484,8 @@ main {
 }
 
 .ofertas {
+  flex-wrap: wrap;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -477,6 +498,8 @@ main {
 
 .oferta-dia,
 .oferta-semanal {
+  width: 100%;
+  max-width: 100%;
   background: var(--cor-fundo-caixa);
   border-radius: 22px;
   border: 2.5px dotted var(--cor-texto-primario);
@@ -668,6 +691,10 @@ main {
   font-family: "Alexandria", sans-serif;
   font-weight: 500;
   color: var(--cor-texto-primario);
+}
+
+.produto-link {
+  text-decoration: none;
 }
 
 .outras-ofertas-lista img {
@@ -958,83 +985,105 @@ footer .social-icons a i {
   transition: transform 0.1s, box-shadow 0.1s;
 }
 
-@media (max-width: 1020px) {
-  .panela,
-  .pato,
-  .banqueta-vime {
-    display: none;
+@media (max-width: 1200px) {
+  body, html {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+
+  header, nav, main, footer {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .menu-bar {
+    transform: scale(0.9);
+  }
+
+  nav ul li a {
+    font-size: 0.9rem;
   }
 }
 
-@media (min-width: 769px) {
-  #cart,
-  #list {
-    display: none;
+@media (max-width: 992px) {
+  .menu-bar {
+    transform: scale(0.8);
   }
-  .mobile-buttons {
-    display: none;
+
+  nav ul li a {
+    font-size: 0.8rem;
   }
 }
 
 @media (max-width: 768px) {
-  .header-menu,
-  .nav-links,
-  .btn-entrar,
-  .menu-bar,
-  nav ul li,
-  nav ul li a {
+  body, html {
+    width: 100%;
+    height: 100%;
+  }
+  .user-name{
     display: none;
   }
-  .search-bar {
-    width: calc(100% -  420px);
+
+  .menu-bar {
+    transform: scale(0.7);
+    margin-bottom: -6px;
   }
-  .mobile-buttons {
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
+
+  nav ul li:not(.user-logged) {
+    display: none;
   }
-  #cart,
-  #list {
-    display: block;
-  }
-  #cart:hover,
-  #cart:focus,
-  #list:hover,
-  #list:focus {
-    background-color: var(--cor-borda);
+
+  .user-logged {
+    display: flex !important;
   }
 }
 
-@media (max-width: 664px) {
-  .jarro-flor,
-  .faqueiro,
-  .poltrona-positano {
+@media (max-width: 576px) {
+  body, html {
+    width: 100%;
+    height: 100%;
+  }
+
+  .menu-bar {
+    transform: scale(0.6);
+  }
+
+  nav ul li:not(.user-logged) {
     display: none;
-  }
-  .produtos-lista {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .ofertas {
-    flex-direction: column;
-  }
-  .ofertas div:nth-child(1) {
-    gap: 0 !important;
-  }
-  .oferta-dia,
-  .oferta-semanal {
-    max-width: 100%;
-  }
-  .outras-ofertas {
-    margin: 1rem;
   }
 }
 
-@media (max-width: 544px) {
-  .produto:nth-child(3) {
+@media (max-width: 460px) {
+  .menu-bar {
     display: none;
   }
-  .search-bar {
-    width: calc(100% -  360px);
+
+  nav ul li:not(.user-logged) {
+    display: none;
+  }
+
+  body, html {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .menu-bar {
+    display: none;
+  }
+
+  nav ul li:not(.user-logged) {
+    display: none;
+  }
+
+  body, html {
+    width: 100%;
+    height: 100%;
+  }
+
+  .user-name {
+    display: none;
   }
 }

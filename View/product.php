@@ -80,7 +80,7 @@ if ($searchTerm !== '') {
                 <li>
                     <a href="login.php" class="entrar"><i class="bi bi-person"></i>Entrar</a>
                 </li>
-                <li class="user-logged" style="display: none; position: relative;">
+                <li class="user-logged">
                     <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
                     <span class="user-name"></span>
                     <div class="menu-popup">
@@ -95,7 +95,7 @@ if ($searchTerm !== '') {
                     <li>
                         <a href="login.php" class="entrar-mobile"><i class="bi bi-person"></i>Entrar</a>
                     </li>
-                    <li class="user-logged" style="display: none; position: relative;">
+                    <li class="user-logged">
                         <i class="bi bi-person profile-btn" style="cursor: pointer; font-size: 1.5rem;"></i>
                         <span class="user-name"></span>
                         <div class="menu-popup">
@@ -119,7 +119,7 @@ if ($searchTerm !== '') {
                 <?php if ((isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'store') || (isset($_COOKIE['userType']) && $_COOKIE['userType'] === 'store')): ?>
                     <a href="sell.php" class="btn">Vender</a>
                 <?php endif; ?>
-                <button id="rastrear-btn">Rastrear</button>
+                <button id="rastrear-btn" onclick="window.location.href='profile.php'">Rastrear</button>
             </div>
             <button class="cart"><i class="bi bi-cart"></i></button>
         </div>
@@ -155,7 +155,7 @@ if ($searchTerm !== '') {
                 </div>
                 <div class="botoes_adc">
                     <button class="add-to-cart" data-product='<?php echo json_encode([
-                        "id" => $product['id'] ?? 0,
+                        "id" => $product['id_product'] ?? 0,
                         "name" => $product['name'] ?? '',
                         "price" => isset($product['price']) ? number_format((float) $product['price'], 2, '.', '') : 0,
                         "image" => $imagePath
@@ -176,7 +176,7 @@ if ($searchTerm !== '') {
                 </div>
                 <div class="purchase-buttons">
                     <button class="add-to-cart" data-product='<?= json_encode([
-                        "id" => $product['id'] ?? 0,
+                        "id" => $product['id_product'] ?? 0,
                         "name" => $product['name'] ?? '',
                         "price" => $product['price'] ?? 0,
                         "image" => !empty($product['image']) ? '../uploads/products/' . $product['image'] : ''

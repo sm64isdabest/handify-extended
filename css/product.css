@@ -992,9 +992,38 @@ footer {
     text-align: center;
 }
 
-.cart-quantity {
-    min-width: 20px;
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.quantity-controls button {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-interativo);
+    color: var(--cor-interativo-texto);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: 0.15s;
+}
+
+.quantity-controls button:hover {
+    filter: brightness(1.1);
+}
+
+.quantity-controls .quantity {
+    min-width: 22px;
     text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cor-texto-primario);
 }
 
 #cart-popup .cart-footer {
@@ -1330,24 +1359,64 @@ footer {
 
 @media (max-width: 768px) {
     nav {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
         gap: 0.8rem;
+        justify-content: center;
+    }
+
+    .menu-bar {
+        width: 90%;
+        display: flex;
+        margin-bottom: -4px;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.2rem 0.5rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .menu-bar .btn,
+    #rastrear-btn {
+        font-size: 0.8rem;
+        padding: 0.35rem 0.6rem;
+    }
+
+    .menu-bar .cart i {
+        font-size: 1.2rem;
     }
 
     header nav ul {
-        display: none !important;
+        display: flex !important;
+    }
+
+    .user-logged {
+        display: flex !important;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.85rem;
+    }
+
+    .user-logged .profile-btn {
+        font-size: 1.25rem;
     }
 
     .logo {
-        height: 34px;
+        height: 30px;
     }
 
     .search-bar {
-        width: 90%;
-        padding: 0.6rem 0.9rem;
+        width: 60%;
+        padding: 0.5rem 0.8rem;
         margin-top: 0.4rem;
-        transform: none;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .search-bar input {
+        font-size: 0.85rem;
     }
 
     .product-page {
@@ -1371,7 +1440,7 @@ footer {
         max-width: 340px;
         transform: none;
     }
-}
+}           
 
 @media (max-width: 620px) {
     .search-bar {

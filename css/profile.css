@@ -67,6 +67,7 @@ header .logo {
     border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
+    justify-content: center;
     transition: background-color 0.2s, transform 0.1s;
     display: flex;
     align-items: center;
@@ -257,7 +258,7 @@ main.profile-main-container {
     gap: 12px;
     padding: 12px 15px;
     margin: 8px 0;
-    margin-top: 40px;
+    margin-top: 21px;
     border-radius: 12px;
     text-decoration: none;
     font-weight: 600;

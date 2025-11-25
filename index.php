@@ -150,51 +150,11 @@ if ($products === false) {
         ): ?>
           <a href="View/sell.php" class="btn">Vender</a>
         <?php endif; ?>
-        <button id="rastrear-btn">Rastrear</button>
+        <button id="rastrear-btn" onclick="window.location.href='View/profile.php'">Rastrear</button>
       </div>
       <button class="cart"><i class="bi bi-cart"></i></button>
     </div>
   </header>
-
-  <!-- Pop-up Rastrear -->
-  <div id="rastrear-popup" style="display: none;">
-    <div class="container-principal">
-      <header class="cabecalho">
-        <img src="images/logo-handify.png" alt="Logo Handify" class="logo" />
-        <div class="linha-vertical"></div>
-        <h2>Rastrear</h2>
-        <button class="retorn" id="close-rastrear"><i class="bi bi-x"></i></button>
-      </header>
-      <main>
-        <section class="info-produto">
-          <button id="prev-product" class="nav-arrow"><i class="bi bi-arrow-left-circle"></i></button>
-          <img id="imagem-produto" class="imagem-produto" src="" alt="Imagem do produto" />
-          <button id="next-product" class="nav-arrow"><i class="bi bi-arrow-right-circle"></i></button>
-          <div class="detalhes-produto">
-            <h3 id="nome-produto">Nome do Produto</h3>
-            <p id="descricao-produto" class="descricao"></p>
-          </div>
-        </section>
-      </main>
-      <div class="cabecalho-rastreio">
-        <span class="rotulo-numero-pedido">Código de rastreio:</span>
-        <span id="numeroPedido" class="numeroPedido"></span>
-        <button class="botao-copiar" onclick="copyOrderNumber()">Copiar</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // Evento para abrir o pop-up rastrear
-    document.getElementById('rastrear-btn').addEventListener('click', function () {
-      document.getElementById('rastrear-popup').style.display = 'flex';
-    });
-
-    // Evento para fechar o pop-up rastrear
-    document.getElementById('close-rastrear').addEventListener('click', function () {
-      document.getElementById('rastrear-popup').style.display = 'none';
-    });
-  </script>
 
   <div id="carouselExample" class="carousel slide">
     <div class="carousel-inner">
@@ -233,6 +193,9 @@ if ($products === false) {
           }
           ?>
           <div class="produto">
+            <?php if ($prod): ?>
+              <a class="produto-link" href="View/product.php?id=<?= urlencode($prod['id_product'] ?? '') ?>">
+            <?php endif; ?>
             <picture>
               <img src="<?= $imagePath ?>" class="card-img-top"
                 alt="<?= $prod ? htmlspecialchars($prod['name']) : '' ?>" />
@@ -242,6 +205,9 @@ if ($products === false) {
               <span
                 class="produto-preco"><?= $prod ? 'R$ ' . number_format((float) $prod['price'], 2, ',', '.') : '' ?></span>
             </div>
+            <?php if ($prod): ?>
+              </a>
+            <?php endif; ?>
           </div>
         <?php endfor; ?>
 
@@ -268,6 +234,9 @@ if ($products === false) {
           }
           ?>
           <div class="produto">
+            <?php if ($prod): ?>
+              <a class="produto-link" href="View/product.php?id=<?= urlencode($prod['id_product'] ?? '') ?>">
+            <?php endif; ?>
             <picture>
               <img src="<?= $imagePath ?>" class="card-img-top"
                 alt="<?= $prod ? htmlspecialchars($prod['name']) : '' ?>" />
@@ -277,6 +246,9 @@ if ($products === false) {
               <span
                 class="produto-preco"><?= $prod ? 'R$ ' . number_format((float) $prod['price'], 2, ',', '.') : '' ?></span>
             </div>
+            <?php if ($prod): ?>
+              </a>
+            <?php endif; ?>
           </div>
         <?php endfor; ?>
 
@@ -303,6 +275,9 @@ if ($products === false) {
           }
           ?>
           <div class="produto">
+            <?php if ($prod): ?>
+              <a class="produto-link" href="View/product.php?id=<?= urlencode($prod['id_product'] ?? '') ?>">
+            <?php endif; ?>
             <picture>
               <img src="<?= $imagePath ?>" class="card-img-top"
                 alt="<?= $prod ? htmlspecialchars($prod['name']) : '' ?>" />
@@ -312,6 +287,9 @@ if ($products === false) {
               <span
                 class="produto-preco"><?= $prod ? 'R$ ' . number_format((float) $prod['price'], 2, ',', '.') : '' ?></span>
             </div>
+            <?php if ($prod): ?>
+              </a>
+            <?php endif; ?>
           </div>
         <?php endfor; ?>
 
@@ -345,10 +323,16 @@ if ($products === false) {
             }
             ?>
             <div class="outras-produto-aleatorio">
+              <?php if (!empty($rp['id_product'])): ?>
+                <a class="produto-link" href="View/product.php?id=<?= urlencode($rp['id_product']) ?>">
+              <?php endif; ?>
               <picture>
                 <img src="<?= $imagePath ?>" alt="<?= htmlspecialchars($rp['name'] ?? '') ?>" />
               </picture>
               <span class="spantext"><?= htmlspecialchars($rp['name'] ?? '') ?></span>
+              <?php if (!empty($rp['id_product'])): ?>
+                </a>
+              <?php endif; ?>
             </div>
           <?php endforeach; ?>
         </div>
@@ -449,7 +433,6 @@ if ($products === false) {
     crossorigin="anonymous"></script>
   <script type="module" src="js/search.js"></script>
   <script type="module" src="js/logged-in.js"></script>
-  <script type="module" src="js/index/track-pop-up.js"></script>
   <script type="module" src="js/index/go-to-product.js"></script>
 </body>
 

@@ -90,7 +90,6 @@ $userType = $_SESSION['user_type'] ?? '';
 
                 <div class="pix-content">
                     <div class="pix-header">
-                        <img src="../images/icones/Logo-PIX.png" alt="PIX Logo" class="pix-logo" />
                         <h3>Pague com PIX</h3>
                     </div>
 
@@ -152,7 +151,7 @@ $userType = $_SESSION['user_type'] ?? '';
         new window.VLibras.Widget("https://vlibras.gov.br/app");
     </script>
 
-    <script src="../js/payment-pix/payment_confirmed.js"></script>
+    <script src="../js/payment-pix/payment-pix.js"></script>
     <script type="module" src="../js/logged-in.js"></script>
 </body>
 
